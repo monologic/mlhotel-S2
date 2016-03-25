@@ -1,0 +1,55 @@
+<div class="formularios">
+
+    <form method="POST" action="admin/AddSubHab" accept-charset="UTF-8" enctype="multipart/form-data">
+    <br><br>
+        <h2 class="tit2">Agregar Tipo de Habitacion</h2>
+        <br><br>
+        <div class="form-group">
+            <label for="tipo">Nombre</label>
+            <input class="form-control" placeholder="Nombre de la habitacion" required="required" name="nombre" type="text" id="nombre">
+        </div>
+
+        <div class="form-group">
+            <label for="foto">Seleccione imagen</label>
+            <input name="imagen" type="file" id="imagen">
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <textarea class="form-control trumbowyg-demo" required="required" name="descripcion" cols="50" rows="6" id="descripcion"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tipo">Capacidad</label>
+            <input class="form-control" placeholder="Capacidad de huespedes" required="required" name="nropersonas" type="text" id="pnropersonas">
+        </div>
+         <div class="form-group">
+            <label for="tipo">Precio</label>
+            <input class="form-control" placeholder="Precio de Habitacion" required="required" name="precio" type="text" id="precio">
+        </div>
+        
+
+        <div class="form-group">
+            
+            <input class="btn btn-primary" type="submit" value="Guardar">
+        </div>
+
+       
+    </form>  
+
+</div>
+
+<script>
+      
+      $('.trumbowyg-demo').trumbowyg({
+    fullscreenable: false,
+    closable: true,
+    btns: [ 'formatting',
+      '|', 'btnGrp-design',
+      '|', 'btnGrp-justify',
+      '|', 'btnGrp-lists',
+      ]
+});
+</script>
+
+
+        

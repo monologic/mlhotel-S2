@@ -1,0 +1,83 @@
+section.Cont-Hab{
+	display: block;
+	position:relative;
+	width: 80%;
+	margin: auto;
+	
+}
+.foto{
+	
+	height: 250px;
+	background-color: transparent;
+	padding: 25px;
+}
+.foto img{
+	width: 100%;
+	height: 100%;
+	max-width: 350px;
+}
+.desc{
+	height: 250px;
+	background-color:transparent;
+	padding: 25px;
+	
+}
+.Hab{
+	border-bottom: solid;
+	border-width: 2px;
+	margin-bottom: 10px;
+}
+.desc-B{
+
+	display: block;
+	max-height: 250px;
+	width: 100%;
+	padding-top: 20px;
+
+}
+.btnB{
+	display: block;
+	position: relative;
+	width: 90px;
+	padding:10px;
+	background-color: black;
+	text-decoration: none;
+	color: white;
+
+}
+.btnB:hover{
+	text-decoration: none;
+	color: white;
+	
+}
+.desc-B div{
+	
+}
+.tdes{
+	
+}
+.tdes h4{
+	margin-top: 0;
+	
+}
+.noticia{
+	margin-top: 100px;
+}
+.imgn{
+	
+}
+.imgn img{
+	width: 90%;
+	margin: 10px 5% 10px 5%;
+}
+article{
+	
+	margin:20px auto 20px auto;
+
+}
+.contacto{
+	margin-top: 120px;
+}
+.con-form{
+
+}

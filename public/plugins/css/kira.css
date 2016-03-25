@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+*{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	list-style: none;
+}
+.contenidogrande{
+	width: 100%;
+}
+.tit{
+	font-size: 4rem;
+	margin-top:100px;
+	color: #446CB3;
+}
+.contenedor{
+	margin: auto;
+	padding: 10px;
+	color: rgb(80, 80, 80);
+	margin-top: 40px;
+	padding-top: 10px;
+	font-family: 'Montserrat', sans-serif;
+
+}
+.objeto{
+
+	display: inline-block;
+	position: relative;
+	background: transparent;
+	width: 150px;
+	height: 150px;
+	margin: 20px;
+	color: #3A539B;
+
+}
+.objeto:hover{
+	background-color:#446CB3;
+	color: white;
+}
+.superior{
+	width: 100%;
+	height: 70%;
+
+}
+.inferior{
+	width: 100%;
+	height: 30%;
+	font-size: 1.6rem;
+}
+.objeto div span{
+	font-size: 5rem;
+	margin-top:25px;
+}
+.tit2{
+	color: #428bca;	
+	font-size: 2.7rem;
+	text-align: center;
+	top: 30px;
+	
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+}
+.formularios{
+	display: flex;
+	padding: 0px;
+	color: rgb(60,60,60);
+	
+}
+.inputs{
+	margin:auto;
+}
+.inputs a span{
+	
+	font-size: 6rem;
+	color: #428bca;	
+}
+.inputs a p{
+	font-size: 1.4rem;
+	color: #428bca;	
+	font-family: 'Ubuntu', sans-serif;
+}
+
+form{
+	margin-top: 25px;
+	display: block;
+	width: 50%;
+	color:#4183D7;;	
+	font-family: 'Montserrat', sans-serif;
+	margin-left: 50px;
+}
+
+
+li a span{
+	font-size: 1.8rem;
+	color:#446CB3;
+}
+.li{
+	color:#446CB3;
+	font-size: 1.6rem;
+}
+
+.li:hover{
+	color: #446CB3;
+}
+
+/*--Hotel estilos*/
+.table{
+	color: black;
+	width:80%;
+	margin: auto;
+	top:20px;
+}
+.hb{
+	display: block;
+	position: relative;
+	float: right;
+	width: 180px;
+}
+/* Navbar kira mi menu de elementos top*/
+.fix{
+	display: inline-block;
+	position: fixed;
+	top: 0;
+	width:100%;
+	right: 0;
+	z-index: 50;
+	background-color: white;
+
+}
+.submenu{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	right: 0;
+	height: 50px;
+	padding:10px 50px 10px;
+}
+
+ul.navbar-right li {
+    display: inline;
+   	margin-left: 20px;
+}
+ul.navbar-right li a {
+
+    text-decoration: none;   
+}
+
+
+/* Galeria de fotos de Habitacion*/
+.cont-foto{
+	display: block;
+	position: relative;
+	width: 80%;
+	padding: 20px;
+	background-color: rgb(240,240,240);
+	border-radius: 10px;
+}
+.galeria-f{
+	display: inline-block;
+	position: relative;
+	width: 165px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+.btn-x{
+	display: block;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background-color: black;
+	border-radius: 50%;
+	text-align: center;
+	top:-10px;
+	right:-10px;
+	padding-top: 3px;
+}
+
