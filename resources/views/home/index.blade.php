@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/style.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
-
-    <link rel="stylesheet" type="text/css" href="plugins/css/bootstrap.css" />
+     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/materialize/css/materialize.css"  media="screen,projection"/>
 
     <!-- Sliders-->
     <link rel="stylesheet" href="index/css/owl.carousel.css">
@@ -31,20 +31,8 @@
   
 </head>
 <style>
-.pie{
-
-  margin-top: 80px;
-  display: block;
-  position: relative;
-  bottom: 0;
-  color: white;
-  width: 100%;
-  background-color: black;
-  min-height:200px; 
-}
-
 #owl-demo{
-    margin-top:100px;
+    margin-top:0px;
     display: block;
 
 }
@@ -53,7 +41,6 @@
     width: 100%;
     height: auto;
 }
-
 .gallery
 {
     display: inline-block;
@@ -61,40 +48,54 @@
 }
 </style>
 <body ng-app="homeApp">
- <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header navbar-left">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand " href="#">Hotel Moquegua</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+ <nav class="white">
+    <div class="nav-wrapper container white">
+      <a href="#" class="brand-logo center white" style="height:115px;border-radius: 0  0 50% 50%;z-index:20; padding:0 28px 10px 28px"><img src="imagen/hostal.gif" style="width:150px"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:10px">menu</i></a>
+      <ul id="nav-mobile" class=" hide-on-med-and-down">
+        <li><a href="#/galeria">GALERIA</a></li>
+        <li><a href="#/habitaciones">HABITACIONES</a></li>
+      </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#/noticias">NOTICIAS</a></li>
+        <li><a href="#/contacto">CONTACTO</a></li>    
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#/">Inicio</a></li>
         <li><a href="#/habitaciones">Habitaciones</a></li>
         <li><a href="#/galeria">Galeria</a></li>
-        <li><a href="#">Servicios</a></li>
         <li><a href="#/noticias">Noticias</a></li>
         <li><a href="#/contacto">Contacto</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-</div>
-            
-<div ng-view  style="margin-botton:50px"></div>
-
-
-<footer class="pie">
-</footer>   
+    </div>
+  </nav>
+</div>      
+<br>
+ <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
+ <footer class="page-footer black">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Nuestras Redes Sociales</h5>
+                 <a class="btn-floating btn-large waves-effect waves-light  blue darken-4" style="margin-right:20px"><i class="fa fa-facebook"></i></a>
+                 <a class="btn-floating btn-large waves-effect waves-light blue" style="margin-right:20px"><i class="fa fa-twitter"></i></a>
+                 <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
+              </div>
+              <div class="col l4 offset-l2 s12 white-text">
+                <h5 class="white-text">Informacion</h5>
+                <p style="font-size:0.9rem;margin-top:5px;">Calle Cuzco Nº 454 / Moquegua - Perú</p>
+                <p style="font-size:0.9rem;margin-top:5px;">E-mail: reservas@residencialmoquegua.com</p>
+                <p style="font-size:0.9rem;margin-top:5px;">Telf.: 46-2316</p>
+                <p style="font-size:0.9rem;margin-top:5px;">Cel. Movistar 953970565 </p>
+                <p style="font-size:0.9rem;margin-top:5px;">Rpm #953970565.</p>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container left">
+             © 2014 Copyright by Monologic
+            </div>
+          </div>
+        </footer>   
      <!-- Llamado a angular-->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
@@ -102,12 +103,11 @@
 
     <script src="index/js/wow.min.js"></script>  
 
-   
-    <!-- Angular-Bootrstrap UI --> 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
 
      <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="plugins/materialize/js/materialize.min.js"></script>
 
     <script src="index/js/owl.carousel.js"></script> 
      
@@ -132,6 +132,8 @@
 
    <script>
     $(document).ready(function(){
+
+    $(".button-collapse").sideNav();
     //FANCYBOX
     //https://github.com/fancyapps/fancyBox
     $(".fancybox").fancybox({
