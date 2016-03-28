@@ -103,9 +103,9 @@ class habtipogaleryController extends Controller
         $Habtipof->save();
          return redirect('admin#/LisHab');
     }
-     public function getFotoHabTipo($habtipo_id)//$hotel_id
+     public function getFotoHabTipo()//$hotel_id
     {
-        $Habtiposf = Habtipofoto::where('habtipo_id', $habtipo_id)->get();
+        $Habtiposf = Habtipofoto::all();
         $Habtiposf = $Habtiposf ->toArray();
         return response()->json( $Habtiposf );
 

@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/style.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
-     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="plugins/materialize/css/materialize.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="plugins/slider/css/swiper.min.css"  media="screen,projection"/>
 
     <!-- Sliders-->
     <link rel="stylesheet" href="index/css/owl.carousel.css">
@@ -76,7 +77,7 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Nuestras Redes Sociales</h5>
+                <h5 class="white-text">Nuestras Redes Sociales</h5><br>
                  <a class="btn-floating btn-large waves-effect waves-light  blue darken-4" style="margin-right:20px"><i class="fa fa-facebook"></i></a>
                  <a class="btn-floating btn-large waves-effect waves-light blue" style="margin-right:20px"><i class="fa fa-twitter"></i></a>
                  <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
@@ -108,6 +109,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script type="text/javascript" src="plugins/materialize/js/materialize.min.js"></script>
+    <script src="plugins/slider/js/swiper.min.js"></script>  
+    <script src="plugins/slider/js/swiper.jquery.min.js"></script>  
 
     <script src="index/js/owl.carousel.js"></script> 
      
@@ -122,6 +125,7 @@
     <script src="plugins/js/controllers/galeryController.js"></script>
     <script src="plugins/js/controllers/noticiaController.js"></script>
     <script src="plugins/js/directivas/textHtml.js"></script>
+    <script src="plugins/js/controllers/habtipogalController.js">
   
     <link rel='stylesheet' href='plugins/galery/css/jquery.fancybox.min.css'/>
    <script src="plugins/galery/js/jquery.fancybox.min.js"></script>

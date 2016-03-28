@@ -1,11 +1,35 @@
 
   <div ng-controller="bannerController" ng-init="getBanners2();" style="min-height:300px">
               
-    <div id="owl-demo" class="owl-carousel" style="min-height:300px">
-
+    <div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" ng-repeat="q in banners">
+        <div class="title-s">
+           <div class="teal lighten-2 cont-txt"><p style="margin:auto">{{q.titulo}}</p></div>
+           <div class="cont-txt">{{q.contenido}}</div>
+        </div>
+         
+          <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:600px">
+        </div>
+       
+        ...
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+    
   </div><br>
   <div class="row container" style="width:70%;margin-left:15%; margin-right:15%">
-      <h4 class="center-align ">Bienvenido a Residencial Moquegua</h4><br><br>
+      <h4 class="center-align titulo1 ">Bienvenido a Residencial Moquegua</h4><br><br>
       <div class="col s4 ser-cont">
         <div class="center-align"><i class="fa fa-cutlery ser-ico"></i></div>
         <p class="center-align ">Restaurant</p>
@@ -32,72 +56,52 @@
       </div>
 
     </div>
-  <div>
+  <div><br><br>
 
 
-    <h5 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;top:20px;margin-bottom:20px">Te Ofrecelos las siguientes Habitaciones</h5> <br>
-     <section class="row Cont-Hab" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">    
-      <div class=" wow fadeInUp" style="width:90%;margin-left:10%;" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos">
-        <div class="col s12 m5" style="margin-right:20px;margin-bottom:20px">
+    <h5 class="center-align wow fadeInDown titulo1" data-wow-duration="2s"  data-wow-delay="0.5s">Te Ofrecemos las siguientes Habitaciones</h5> <br>
+     <section class="row Cont-Hab" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:800px;top:20px;">    
+      <div class=" wow fadeInUp" style="width:90%;margin-left:10%;" data-wow-duration="2s"  data-wow-delay="1.5s" ng-repeat="y in habtipos">
+        <div class="col s12 m5" style="margin-right:20px;margin-bottom:20px;min-width:250px">
           <div class="card small">
             <div class="card-image">
               <img class="h-w" src="imagen/habitaciones/{{y.foto}}">
               <div class="card-title card-panel teal lighten-2" style="height:40px; padding-top:10px">S/.{{y.precio}}</div>
             </div>
-            <div class="card-content">
-             <p>{{y.nombre}}</p>
+             <div class="card-content">
+              <p>{{y.nombre}}.</p>
             </div>
-            <div class="card-action">
-              <a class=" waves-effect waves-light btn" style="margin:10px 10px 10px 0"><i class="material-icons left">visibility</i>Ver</a>
+            <div class="card-action" style="padding:10px">
+              <a class=" waves-effect waves-light btn" ng-click="goTo3(y);" style="margin:5px"><i class="material-icons left">visibility</i>Ver</a>
               <a class=" waves-effect waves-light btn"><i class="material-icons left">loyalty</i>Reservar</a>
             </div>
           </div>
         </div>
       </div>
+    </section>
 <script>
    var cw = $('.h-w').width();
-   var res= cw/1.3;
+   var res= cw/1.6;
       $('.h-w').css({'height':res+'px'});
+
 </script>
-
-
-   <script>
-      $(document).ready(function() {
- 
-      $("#owl-demo").owlCarousel({
-
-         items : 1,
-         autoPlay: true, 
-         slideSpeed : 300,
-         paginationSpeed : 900,
-         singleItem:true,
-         navigation: false, 
-         responsive: true,
-         responsiveRefreshRate : 200,
-         responsiveBaseWidth: window,
-         singleItem : true,
-         transitionStyle : "backSlide",
-         pagination : true,
-        jsonPath : '/admin/getBanners2',
-        jsonSuccess : customDataSuccess
-
-      });
-     
-      function customDataSuccess(data){
-        var content = "";
-        for(var i in data["items"]){
-           
-         var imagen = data["items"][i].imagen;
-     
-           content += "<img src=imagen/sliders/" +imagen+ " style='width:100%;  max-height: 650px; min-height:300px'>"
-        }
-        $("#owl-demo").html(content);
-      }
-     
+ <script>
+  var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 300,
+        centeredSlides: true,
+        autoplay: 2500,
+        effect: 'coverflow',
+        autoplayDisableOnInteraction: false
     });
-
-
     </script>
+
+
+    
+
 
   
    

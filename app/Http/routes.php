@@ -55,6 +55,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::post('admin/AddFoto', 'GaleryController@AddGaleryPhoto');
 	Route::get('admin/getGaleryPhoto', 'GaleryController@getGaleriaFotos');
 
+	Route::get('admin/gethabitaciones', 'habtipogaleryController@getFotoHabTipo');
+
 	Route::get('admin/getNoticias', 'NoticiaController@getNoticias');
 	Route::post('admin/NoticiaCreate', 'NoticiaController@NoticiaCreateIndex');
 

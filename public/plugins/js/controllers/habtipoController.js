@@ -65,9 +65,13 @@ app.controller('habtipoController', function($scope,$http,$location) {
         });
     }
 
-     $scope.goTo2 = function(data) {
+    $scope.goTo2 = function(data) {
          idHabtipo = data.id;
     $location.url('/HabGalery/' + idHabtipo);
-  };
+    };
+    $scope.goTo3 = function(data) {
+         idHabtipo = data.id;
+    $location.url('/habitaciones/' + idHabtipo);
+    };
     
 });

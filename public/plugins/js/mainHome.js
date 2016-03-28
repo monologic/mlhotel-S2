@@ -18,6 +18,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/noticias", {templateUrl: "index/noticias.html", controller: "PageCtrl"})
     .when("/contacto", {templateUrl: "index/contacto.html", controller: "PageCtrl"})
     .when("/habitaciones", {templateUrl: "index/habitaciones.html", controller: "PageCtrl"})
+    .when('/habitaciones/:habtipoId', {templateUrl: "index/perfil.html", controller: "PageCtrl"})
     // Pages
     /*
         Rutas relacionadas a empleados

@@ -1,5 +1,5 @@
 app.controller('bannerController', function($scope,$http) {
-     $scope.getBanners = function () {
+     $scope.getBanners2 = function () {
         $http.get('admin/getBanners').then(function successCallback(response) {
             $scope.banners = response.data;
         }, function errorCallback(response) {

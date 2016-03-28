@@ -12,4 +12,18 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             });
            
         }
+
+    $scope.gethabitacionG= function () { 
+            $http.get('admin/gethabitaciones').then(function successCallback(response) {
+                $scope.habfotos=response.data; 
+                if (true) {
+                    
+                };
+                 
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+           
+        }
 });
