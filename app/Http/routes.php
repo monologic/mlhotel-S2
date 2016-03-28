@@ -48,14 +48,15 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::post('admin/SlidCreate', 'bannerController@sliderCreateIndex');
 	Route::post('admin/AddSubHab', 'HabTipoController@HabitacionesStore');
-	Route::get('admin/AddHab', 'HabtipoController@getHabitaciones');
+	Route::get('admin/AddHab', 'HabtipoController@getHabtipo');
 	Route::post('admin/createhabgalery', 'habtipogaleryController@HabTipoFotoStore');
 	Route::get('admin/loadhabgalery/{habtipo_id}','habtipogaleryController@getFotoHabTipo');
 
 	Route::post('admin/AddFoto', 'GaleryController@AddGaleryPhoto');
 	Route::get('admin/getGaleryPhoto', 'GaleryController@getGaleriaFotos');
 
-	Route::get('admin/gethabitaciones', 'habtipogaleryController@getFotoHabTipo');
+	Route::get('admin/gethabitaciones', 'habtipoController@getHabitaciones');
+	Route::get('admin/gethabitaciones/{id}', ['uses' => 'habtipoController@getHabitaciones', function ($id) {}]);
 
 	Route::get('admin/getNoticias', 'NoticiaController@getNoticias');
 	Route::post('admin/NoticiaCreate', 'NoticiaController@NoticiaCreateIndex');

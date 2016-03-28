@@ -19,10 +19,6 @@
     <link rel="stylesheet" href="plugins/materialize/css/materialize.css"  media="screen,projection"/>
     <link rel="stylesheet" href="plugins/slider/css/swiper.min.css"  media="screen,projection"/>
 
-    <!-- Sliders-->
-    <link rel="stylesheet" href="index/css/owl.carousel.css">
-    <link rel="stylesheet" href="index/css/owl.theme.css">
-    <link rel="stylesheet" href="index/css/owl.transitions.css">
      <!-- text tarea-->
     <link rel="stylesheet" href="index/css/owl.transitions.css">
     <!-- galery-->
@@ -51,7 +47,7 @@
 <body ng-app="homeApp">
  <nav class="white">
     <div class="nav-wrapper container white">
-      <a href="#" class="brand-logo center white" style="height:115px;border-radius: 0  0 50% 50%;z-index:20; padding:0 28px 10px 28px"><img src="imagen/hostal.gif" style="width:150px"></a>
+      <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0"><img src="imagen/hostal.gif" style="width:120px"></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:10px">menu</i></a>
       <ul id="nav-mobile" class=" hide-on-med-and-down">
         <li><a href="#/galeria">GALERIA</a></li>
@@ -136,7 +132,7 @@
 
    <script>
     $(document).ready(function(){
-
+     $('.parallax').parallax();
     $(".button-collapse").sideNav();
     //FANCYBOX
     //https://github.com/fancyapps/fancyBox

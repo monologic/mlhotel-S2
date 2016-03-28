@@ -13,4 +13,8 @@ class Habtipo extends Model
     {
         return $this->hasMany('App\Habitacion');
     }
+    public function habtipofotos()
+    {
+        return $this->hasMany('App\Habtipofoto');
+    }
 }

@@ -1,3 +1,46 @@
 <div ng-controller="habtipogalController" ng-init="gethabitacionG();">
+	<div style="position:relative;width:600px;height:600px">
+		<div class="swiper-container">
+        <div class="swiper-wrapper">
+        	<div class="swiper-slide" ng-repeat="f in galeria">
+        		<img src="imagen/habitaciones/galeria/{{f.foto}}" style="width:100%">
+        	</div>   
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+	</div>
 	
+	<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        paginationBulletRender: function (index, className) {
+            return '<span class="' + className + '" ng-repeat="h in galeria"><img src="imagen/habitaciones/galeria/{{h.foto}}" style="width:100%"></span>';
+        }
+    });
+    </script>
+	<div ng-repeat="m in habfotos">
+	   <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img <img src="imagen/habitaciones/{{m.foto}}" style="width:100%;">
+              <span class="card-title">{{m.nombre}}</span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+	      {{m.nombre}}
+		<div>{{m.descripcion}}</div>	
+		<div>{{m.nropersonas}}</div>
+
+	</div>
 </div>

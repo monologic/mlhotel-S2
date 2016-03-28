@@ -5,7 +5,7 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide" ng-repeat="q in banners">
+        <div class="swiper-slide" ng-repeat="q in banners" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
         <div class="title-s">
            <div class="teal lighten-2 cont-txt"><p style="margin:auto">{{q.titulo}}</p></div>
            <div class="cont-txt">{{q.contenido}}</div>
@@ -60,9 +60,9 @@
 
 
     <h5 class="center-align wow fadeInDown titulo1" data-wow-duration="2s"  data-wow-delay="0.5s">Te Ofrecemos las siguientes Habitaciones</h5> <br>
-     <section class="row Cont-Hab" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:800px;top:20px;">    
+     <section class="row Cont-Hab " ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:800px;top:20px;">    
       <div class=" wow fadeInUp" style="width:90%;margin-left:10%;" data-wow-duration="2s"  data-wow-delay="1.5s" ng-repeat="y in habtipos">
-        <div class="col s12 m5" style="margin-right:20px;margin-bottom:20px;min-width:250px">
+        <div class="col s12 m5 hoverable" style="margin-right:20px;margin-bottom:20px;min-width:250px">
           <div class="card small">
             <div class="card-image">
               <img class="h-w" src="imagen/habitaciones/{{y.foto}}">
@@ -91,10 +91,11 @@
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         paginationClickable: true,
-        spaceBetween: 300,
+        spaceBetween: 200,
         centeredSlides: true,
         autoplay: 2500,
         effect: 'coverflow',
+        speed: 2000,
         autoplayDisableOnInteraction: false
     });
     </script>

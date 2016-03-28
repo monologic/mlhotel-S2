@@ -7306,7 +7306,7 @@ nav {
   color:rgb(250,250,250);
   background-color: #ee6e73;
   width: 100%;
-  height: 60px;
+  height: 100px;
   line-height: 56px;
 }
 
@@ -7325,7 +7325,7 @@ nav i.material-icons {
 
 nav .nav-wrapper {
   position: relative;
-  height: 100%;
+  height: 90%;
 }
 
 @media only screen and (min-width: 993px) {

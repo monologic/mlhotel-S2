@@ -111,9 +111,18 @@ class HabtipoController extends Controller
         $Habtipo->save();
          return redirect('admin#/LisHab');
     }
-     public function getHabitaciones()
-    {
+    public function getHabtipo()
+    {   
         $Habtipos = Habtipo::all();
+        $Habtipos = $Habtipos ->toArray();
+        return response()->json( $Habtipos );
+    }
+     public function getHabitaciones($id)
+    {   
+        $Habtipos = Habtipo::where('id',$id)->get();
+        $Habtipos->each(function($Habtipos){
+          $Habtipos->habtipofotos;
+        });
         $Habtipos = $Habtipos ->toArray();
         return response()->json( $Habtipos );
     }
