@@ -34,3 +34,15 @@
 	padding-top: 0px;
   }
 }
+.tit-res{
+	width:100%;
+	background-color:black;
+	height:40px;
+	color:white;
+	margin-top:-15px;
+	border-radius: 10px 10px 0px 0px;
+	padding-top:10px; 
+}
+.nav-txt{
+	margin-top: 30px
+}

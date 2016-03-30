@@ -1,39 +1,4 @@
 <div ng-controller="habtipogalController" ng-init="gethabitacionG();">
-	<div style="position:relative;width:600px;height:600px">
-		<div class="swiper-container gallery-top">
-	        <div class="swiper-wrapper">
-	        	<div class="swiper-slide" ng-repeat="f in galeria">
-	        		<img src="imagen/habitaciones/galeria/{{f.foto}}" style="width:100%">
-	        	</div>   
-	        </div>
-	        <!-- Add Pagination -->
-	        <div class="swiper-button-next swiper-button-white"></div>
-	        <div class="swiper-button-prev swiper-button-white"></div>
-    	</div>
-		<div class="swiper-container gallery-thumbs">
-        	<div class="swiper-wrapper">
-	            <div class="swiper-slide" ng-repeat="f in galeria">
-	        		<img src="imagen/habitaciones/galeria/{{f.foto}}" style="width:100%">
-	        	</div> 
-        	</div>
-        </div>
-    </div>
-	<script>
-	    var swiper = new Swiper('.gallery-top', {
-	    	nextButton: '.swiper-button-next',
-	        prevButton: '.swiper-button-prev',
-	        spaceBetween: 10,
-	        }
-	    var galleryThumbs = new Swiper('.gallery-thumbs', {
-	        spaceBetween: 10,
-	        centeredSlides: true,
-	        slidesPerView: 'auto',
-	        touchRatio: 0.2,
-	        slideToClickedSlide: true
-	    });
-	    
-	    });
-    </script>
 	<div ng-repeat="m in habfotos">
 	   <div class="row">
         <div class="col s12 m7">

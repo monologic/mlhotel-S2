@@ -1,3 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+body{
+  font-family: 'Open Sans', sans-serif;
+}
 .ser-ico{
   font-size: 5rem;
   text-align: center;
@@ -87,12 +91,12 @@ font-family: 'Titan One', cursive;
 .cont-reservas{
     position: absolute;
     width:250px;
-    height: 300px;
+    height: 320px;
     border-radius: 10px;
     top: -380px;
     right: 10px;
-    padding: 15px 20% 10px 20%;
-    color: white;
+    padding: 15px 0px 10px 0px;
+    color: black;
 }
 .input-field input[type=text]:focus + label {
      color: black;
@@ -108,7 +112,7 @@ font-family: 'Titan One', cursive;
     color: #ffffff;
 }
 .input-field label {
-     color:white;
+     color:black;
    }
 .input-field input[type=text].valid {
      border-bottom: 1px solid white;

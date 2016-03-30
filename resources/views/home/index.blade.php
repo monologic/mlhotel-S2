@@ -38,16 +38,20 @@
 <body ng-app="homeApp">
  <nav class="white">
     <div class="nav-wrapper container white">
-      <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:0px 25px 0px 10px;color:black">Residencial Moquegua</a>
+      <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:15px 25px 0px 10px;color:black">Residencial Moquegua</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:10px">menu</i></a>
       <ul id="nav-mobile" class=" hide-on-med-and-down">
-        <li><a href="#/galeria">GALERIA</a></li>
-        <li><a href="#/habitaciones">HABITACIONES</a></li>    
+        <li class="nav-txt"><a href="#/galeria">GALERIA</a></li>
+        <li class="nav-txt"><a href="#/habitaciones">HABITACIONES</a></li>    
+      </ul>
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li  style="margin-top:20px"><a class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>   
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#/noticias">NOTICIAS</a></li>
-        <li><a href="#/contacto">CONTACTO</a></li>    
+        <li class="nav-txt"><a href="#/noticias">NOTICIAS</a></li>
+        <li class="nav-txt"><a href="#/contacto">CONTACTO</a></li>    
       </ul>
+     
       <ul class="side-nav" id="mobile-demo">
         <li><a href="#/">Inicio</a></li>
         <li><a href="#/habitaciones">Habitaciones</a></li>
@@ -58,22 +62,35 @@
     </div>
   </nav>
   <div class="fixed-action-btn click-to-toggle" style="bottom:20px; right: 24px;">
-            <a class="btn-floating btn-large blue">
+            <a class="btn-floating btn-large black">
               <i class="large material-icons">mode_edit</i>
             </a>
             <ul>
               <li>
-                <div class=" cont-reservas blue">
-                  <p class="">Reservas</p>
-                  <div class="input-field col s12">
-                      <input type="date" class="datepicker">
-                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i>  Fecha Inicio</label>
+                <div class="cont-reservas white hoverable">
+                  <div class="tit-res black"><p class="">Reservar Habitaciones</p></div>
+                  <div class="input-field col s12 m12">
+                      <input type="date" class="datepicker" style="width:70%">
+                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
                   </div>
                   <div class="input-field col s12">
-                      <input type="date" class="datepicker">
-                      <label for="icon_prefix2"><i class="fa fa-calendar"></i>  Fecha Salida</label>
+                      <input type="date" class="datepicker" style="width:70%">
+                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
                   </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
+                      <input id="icon_prefix" type="text" class="validate">
+                      
+                    </div>
+                    <div class="input-field col s6">
+                      <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
+                      <input id="icon_telephone" type="tel" class="validate">  
+                    </div>
+                  </div>
+                  <a class="waves-effect black" style="display:block;margin:-20px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white">Reservar</a>
                 </div>
+                  
               </li>
             </ul>
           </div>
@@ -145,7 +162,8 @@
       selectYears: 15 // Creates a dropdown of 15 years to control year
       });
     $(document).ready(function(){
-     $('.parallax').parallax();
+    $('.tooltipped').tooltip({delay: 50});
+    $('.parallax').parallax();
     $(".button-collapse").sideNav();
     //FANCYBOX
     //https://github.com/fancyapps/fancyBox
