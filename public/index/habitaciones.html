@@ -1,25 +1,30 @@
-   <h3 class="text-center wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:140px;margin-bottom:20px">Te Ofrecemos las siguientes Habitaciones</h3>
-     <section class="Cont-Hab" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
-    
-      <div class="Hab row wow fadeInUp" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos">
-          
-        <div class="foto col-md-4 col-sm-4 " style="margin-top:10px">
-          <img src="imagen/habitaciones/{{y.foto}} ">
-        </div>
+<h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
+  <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
+    <div class="row wow fadeInUp card" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
 
-        <div class="desc col-md-6 col-sm-6">
-          <div class="tdes">
-             <h4>{{y.nombre}}</h4>
-             <p>Capacidad: {{y.nropersonas}} personas</p>
-             <div id="th{{y.id}}"></div>
-          </div> 
-        </div> 
-
-        <div class="desc-B col-md-2 col-sm-2">
-          <div>
-            <h4 class="text-center">Desde</h4>
-            <p class="text-center">{{y.precio}}</p>
-            <a href="" class="btnB center-block "  ng-click="addDetalleReserva(y);"> + Reservar</a>
-          </div>       
-        </div>     
+      <div class="col s12 m4 l4 " style="padding:10px">
+        <img src="imagen/habitaciones/{{y.foto}}" style="width:100%">
       </div>
+      <div class="col s12 m6 l6 " >
+          <div class="black-text" style="padding-top:5px">
+            <p class="cart-titulo">{{y.nombre}}</p>
+            <p class="cart-contenido">{{y.descripcion}}</p>
+          </div>
+          <div class="card-action">
+          </div>
+      </div>
+      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+        <div>
+          <p class="cart-precio">Desde</p>
+          <p class="cart-precio" style="font-size:1rem">S/. {{y.precio}} </p>
+          <a class="waves-effect btn black">reservar</a>
+        </div>
+        
+      </div>
+    </div> 
+          <!--
+          {{y.nropersonas}}          
+          th{{y.id}} 
+          ng-click="addDetalleReserva(y);"
+
+        

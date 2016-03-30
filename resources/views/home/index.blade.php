@@ -5,39 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Residencial Moquegua</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     <!-- Styles -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/materialize/css/materialize.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="plugins/slider/css/swiper.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="index/css/reset.css">
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/style.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="plugins/materialize/css/materialize.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="plugins/slider/css/swiper.min.css"  media="screen,projection"/>
+    
 
      <!-- text tarea-->
     <link rel="stylesheet" href="index/css/owl.transitions.css">
     <!-- galery-->
    
 
-  <link rel='stylesheet' href='plugins/galery/css/jquery.fancybox.min.css'/>
+    <link rel='stylesheet' href='plugins/galery/css/jquery.fancybox.min.css'/>
   
 </head>
 <style>
-#owl-demo{
-    margin-top:0px;
-    display: block;
-
-}
-#owl-demo .item img{
-    display: block;
-    width: 100%;
-    height: auto;
-}
 .gallery
 {
     display: inline-block;
@@ -47,11 +38,11 @@
 <body ng-app="homeApp">
  <nav class="white">
     <div class="nav-wrapper container white">
-      <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0"><img src="imagen/hostal.gif" style="width:120px"></a>
+      <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:0px 25px 0px 10px;color:black">Residencial Moquegua</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:10px">menu</i></a>
       <ul id="nav-mobile" class=" hide-on-med-and-down">
         <li><a href="#/galeria">GALERIA</a></li>
-        <li><a href="#/habitaciones">HABITACIONES</a></li>
+        <li><a href="#/habitaciones">HABITACIONES</a></li>    
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="#/noticias">NOTICIAS</a></li>
@@ -66,6 +57,26 @@
       </ul>
     </div>
   </nav>
+  <div class="fixed-action-btn click-to-toggle" style="bottom:20px; right: 24px;">
+            <a class="btn-floating btn-large blue">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+              <li>
+                <div class=" cont-reservas blue">
+                  <p class="">Reservas</p>
+                  <div class="input-field col s12">
+                      <input type="date" class="datepicker">
+                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i>  Fecha Inicio</label>
+                  </div>
+                  <div class="input-field col s12">
+                      <input type="date" class="datepicker">
+                      <label for="icon_prefix2"><i class="fa fa-calendar"></i>  Fecha Salida</label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
 </div>      
 <br>
  <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
@@ -123,14 +134,16 @@
     <script src="plugins/js/directivas/textHtml.js"></script>
     <script src="plugins/js/controllers/habtipogalController.js">
   
-    <link rel='stylesheet' href='plugins/galery/css/jquery.fancybox.min.css'/>
-   <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
-
+    <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 
    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
 
    <script>
+      $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
     $(document).ready(function(){
      $('.parallax').parallax();
     $(".button-collapse").sideNav();
@@ -142,7 +155,7 @@
     });
 });
    </script> 
-
+    
     
     <script>
     new WOW().init();

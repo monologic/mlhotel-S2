@@ -84,3 +84,38 @@ font-family: 'Titan One', cursive;
         color:red;
         background: black;
     }
+.cont-reservas{
+    position: absolute;
+    width:250px;
+    height: 300px;
+    border-radius: 10px;
+    top: -380px;
+    right: 10px;
+    padding: 15px 20% 10px 20%;
+    color: white;
+}
+.input-field input[type=text]:focus + label {
+     color: black;
+   }
+.picker__date-display, .picker__weekday-display{
+    background-color:black;
+}
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    border-radius: 50%;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    background-color: black;
+    color: #ffffff;
+}
+.input-field label {
+     color:white;
+   }
+.input-field input[type=text].valid {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }

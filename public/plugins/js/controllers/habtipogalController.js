@@ -17,7 +17,6 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             $http.get('admin/gethabitaciones/'+IdHab).then(function successCallback(response) {
                 $scope.habfotos=response.data;
                 $scope.galeria = response.data[0].habtipofotos;
-                alert($scope.galeria);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
