@@ -1,12 +1,12 @@
 <div class="container noticia" ng-controller="noticiaController" ng-init="getNoticias();">
-	<h2 class="text-center">Informate de nuestras noticias</h2>
+	<h2 class="center-algin" style="margin:40px auto 50px auto">Informate de nuestras noticias</h2>
 	<br>
-	<article ng-repeat="x in noticia" class="row">
+	<article ng-repeat="x in noticia" class="row conteiner">
 
-		<div class="col-md-4 col-sm-6 imgn ">
-			<img src="imagen/Noticia/{{x.imagen}}">
+		<div class="col m4 s12">
+			<img src="imagen/Noticia/{{x.imagen}}" style="width:100%">
 		</div>
-		<div class="col-md-8 col-sm-6">
+		<div class="col m6 s12">
 			<h3>{{x.titulo}}</h3>
 			<div>Fecha: {{x.fecha}}</div>
 			<div>Autor: {{x.fuente}}</div>
