@@ -47,7 +47,7 @@
                 <ul data-menu="main" class="menu__level">
                     <li class="menu__item"><a class="menu__link"  href="#">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Registrar</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" data-submenu="submenu-3" >Habitaciones</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-5" href="#">Servicios</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Usuarios</a></li>
@@ -83,19 +83,8 @@
                 </ul>
                 <!-- Submenu 3 -->
                 <ul data-menu="submenu-3" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Buckwheat</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Millet</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Quinoa</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Wild Rice</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Durum Wheat</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Promo Packs</a></li>
-                </ul>
-                <!-- Submenu 3-1 -->
-                <ul data-menu="submenu-3-1" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Starter Kit</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">The Essential 8</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Bolivian Secrets</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Flour Packs</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Ver Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Crear Habitaciones</a></li>
                 </ul>
                 <!-- Submenu 4 -->
                 <ul data-menu="submenu-4" class="menu__level">
@@ -211,6 +200,7 @@
     <script src="plugins/js/controllers/noticiaController.js"></script>
     <script src="plugins/js/controllers/contactoController.js"></script>
     <script src="plugins/js/controllers/habtipogalController.js"></script>
+    <script src="plugins/js/controllers/habitacionController.js"></script>
     
 
     <script>

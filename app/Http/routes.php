@@ -26,6 +26,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('banner', 'bannerController');
 	Route::resource('habtipo', 'HabtipoController');
 	Route::resource('habtipoF', 'habtipogaleryController');
+	Route::resource('habitacion', 'HabitacionController');
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
 	Route::get('getEmpForUsers', 'empleadoController@getEmpleadosParaUsuarios');
@@ -33,6 +34,9 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('getHoteles', 'HotelController@getHoteles');
 	Route::get('getHotelesSimple', 'HotelController@getHotelesSimple');
 	Route::get('getContactos', 'ContactoController@getContactos');
+	Route::get('getHabtipos', 'HabtipoController@getHabitaciones');
+	Route::get('getEstados', 'EstadoController@getEstados');
+	Route::get('getHabitacions', 'HabitacionController@getHabitacions');
 
 	
 	Route::post('crearAdminHotel', 'HotelController@crearAdminHotel');

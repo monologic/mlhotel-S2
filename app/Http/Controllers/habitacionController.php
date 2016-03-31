@@ -9,11 +9,15 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Habsubtipo;
+use App\Habitacion;
 
-class HabSubTipoController extends Controller
-{ 
-
+class HabitacionController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         //
@@ -35,19 +39,15 @@ class HabSubTipoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubHabitacionesStore(Request $request)
+    public function store(Request $request)
     {
-       if($request->file('imagen'))
-        {
-            $file = $request -> file('imagen');
-            $name = 'subHab_'. time() . '.' .$file->getClientOriginalExtension();
-            $path=public_path() . "/imagen/habitaciones/";
-            $file -> move($path,$name);
-        }
-        $Habsubtipo = new Habsubtipo($request->all());
-        $Habsubtipo->foto = $name;
-        $Habsubtipo->save();
-         return redirect('admin#/LisHab');
+        $habitacion = new Habitacion($request->all());
+        $habitacion->hotel_id = Auth::user()->empleado->hotel->id;
+        $habitacion->save();
+
+        return response()->json([
+            "mensaje" => 'Habitación Creada'
+        ]);
     }
 
     /**
@@ -94,12 +94,19 @@ class HabSubTipoController extends Controller
     {
         //
     }
-    public function getSubHabitaciones()
+
+    public function getHabitacions()
     {
-        $Habsubtipos = Habsubtipo::all();
-        $Habsubtipos = $Habsubtipos ->toArray();
-        return response()->json( $Habsubtipos );
+        $habitaciones =  Habitacion::where([
+                            ['hotel_id', Auth::user()->empleado->hotel->id],
+                        ])->get();
+
+        $habitaciones->each(function($habitaciones){
+            $habitaciones->estado;
+        });
+        $habitaciones->each(function($habitaciones){
+            $habitaciones->habtipo;
+        });
+        return response()->json( $habitaciones->toArray() );
     }
-
-
 }

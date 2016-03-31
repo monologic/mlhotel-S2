@@ -49,6 +49,11 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/Empleados", {templateUrl: "partials/admin/personal/ver.html", controller: "PageCtrl"})
 
+    .when("/Habitacion", {templateUrl: "partials/habitacion/crear.html", controller: "PageCtrl"})
+    .when("/Habitaciones", {templateUrl: "partials/habitacion/ver.html", controller: "PageCtrl"})
+
+    .when("/Buscar", {templateUrl: "partials/registro/buscar.html", controller: "PageCtrl"})
+
 
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
