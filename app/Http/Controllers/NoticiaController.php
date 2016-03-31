@@ -87,7 +87,7 @@ class NoticiaController extends Controller
     }
     public function getNoticias()
     {
-        $Noticias = Noticia::all();
+        $Noticias = Noticia::orderBy('fecha','DESC')->get();
         $Noticias = $Noticias ->toArray();
 
 

@@ -6,5 +6,14 @@ app.controller('noticiaController', function($scope,$http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
-    }    
+    }  
+     $scope.getNoticiash = function () {
+        $http.get('admin/getNoticias').then(function successCallback(response) {
+            $scope.noticias = response.data[0];
+            console.log( $scope.noticia);
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }   
 });
