@@ -15,7 +15,7 @@ app.controller('habitacionController', function($scope,$http) {
     }
 
     $scope.getHabtipos = function () {
-        $http.get('admin/getHabtipos').then(function successCallback(response) {
+        $http.get('admin/AddHab').then(function successCallback(response) {
             console.log(response.data);
             $scope.habtipos = response.data;
         }, function errorCallback(response) {

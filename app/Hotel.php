@@ -8,7 +8,7 @@ class Hotel extends Model
 {
 	public $timestamps = false;
 
-    protected $fillable = ['nombre', 'pais', 'region_estado','ciudad','direccion', 'telefono'];
+    protected $fillable = ['nombre', 'pais', 'region_estado','ciudad','direccion', 'telefono','correo'];
 	
     public function habsubtipos()
     {

@@ -40,7 +40,7 @@
     <nav class=" white">
       <div class="nav-wrapper white" style="width:80%;margin-left:auto;margin-right:auto">
         <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:15px 25px 0px 10px;color:black">Residencial Moquegua</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:10px">menu</i></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" hide-on-med-and-down">
           <li class="nav-txt"><a href="#/galeria">GALERIA</a></li>
           <li class="nav-txt"><a href="#/habitaciones">HABITACIONES</a></li>    
@@ -152,7 +152,8 @@
     <script src="plugins/js/controllers/galeryController.js"></script>
     <script src="plugins/js/controllers/noticiaController.js"></script>
     <script src="plugins/js/directivas/textHtml.js"></script>
-    <script src="plugins/js/controllers/habtipogalController.js">
+    <script src="plugins/js/controllers/habtipogalController.js"></script>
+    <script src="plugins/js/controllers/hotelController.js"></script>
   
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 

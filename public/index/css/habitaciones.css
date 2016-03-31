@@ -49,9 +49,57 @@
 /*noticias */
 .noticia-cont h3{
 	font-size: 2rem;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 .noticia-cont div{
 	font-size: 1rem;
 	margin-bottom: 5px;
+}
+.container2{
+	width: 80%;
+	margin:30px auto 60px auto;
+}
+.con-form{
+	margin-top: 30px;
+}
+.not{
+	margin-bottom: 120px;
+}
+/*Contacto*/
+.cont-info{
+	
+	color: black;
+	padding-top: 50px;
+}
+.cont-info p{
+	margin-left: 30px;
+}
+.text-center{
+	text-align: center;
+}
+/*Perfil de las habitaciones*/
+.swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+    .gallery-top {
+        height: 80%;
+        width: 100%;
+    }
+    .gallery-thumbs {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+    .gallery-thumbs .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+    .gallery-thumbs .swiper-slide-active {
+        opacity: 1;
+    }
+.cont-perfil{
+	width: 80%;
+	margin: 60px auto 60px auto;
 }

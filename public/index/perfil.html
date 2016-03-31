@@ -1,25 +1,59 @@
-<div ng-controller="habtipogalController" ng-init="gethabitacionG();">
-	<div ng-repeat="m in habfotos">
-	   <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-image">
-              <img <img src="imagen/habitaciones/{{m.foto}}" style="width:100%;">
-              <span class="card-title">{{m.nombre}}</span>
+<div class="cont-perfil">
+  <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();">
+    <div class="col m6 s12">
+      <div style="width:100%;height:400px;margin-top:50px">
+        <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="s in galeria" style="background-image:url('imagen/habitaciones/galeria/{{s.foto}}')"></div>
+                
             </div>
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+        <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="s in galeria" style="background-image:url('imagen/habitaciones/galeria/{{s.foto}}')"></div>
             </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+    
+     <script>
+      var galleryTop = new Swiper('.gallery-top', {
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          spaceBetween: 10,
+          effect: 'fade',
+      });
+      var galleryThumbs = new Swiper('.gallery-thumbs', {
+          spaceBetween: 10,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          touchRatio: 0.2,
+          slideToClickedSlide: true
+      });
+      galleryTop.params.control = galleryThumbs;
+      galleryThumbs.params.control = galleryTop;
+      
+      </script>
+    <div ng-repeat="m in habfotos">
+       <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img <img src="imagen/habitaciones/{{m.foto}}" style="width:100%;">
+                <span class="card-title">{{m.nombre}}</span>
+              </div>
+              <div class="card-content">
+                <div>{{m.descripcion}}</div> 
+                <div>{{m.nropersonas}}</div> 
+              </div>
+            
             </div>
           </div>
         </div>
-      </div>
-	      {{m.nombre}}
-		<div>{{m.descripcion}}</div>	
-		<div>{{m.nropersonas}}</div>
-
-	</div>
+    </div>
+  </div>
 </div>
+  
