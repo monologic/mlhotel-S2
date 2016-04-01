@@ -6,12 +6,13 @@
     <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide" ng-repeat="q in banners" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
-        <div class="title-s">
-           <div class="teal lighten-2 cont-txt wow fadeInUp" data-wow-duration="4s" data-wow-delay="2s"><p style="margin:auto">{{q.titulo}}</p></div>
-           <div class="cont-txt wow fadeInUp" data-wow-duration="4s" data-wow-delay="2s">{{q.contenido}}</div>
-        </div>
+          <div class="title-s">
+             <div class="teal lighten-2 cont-txt wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="margin:auto">{{q.titulo}}</p></div>
+             <div class="cont-txt wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s">{{q.contenido}}</div>
+          </div>
          
           <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:600px">
+
         </div>
        
         ...
@@ -97,7 +98,7 @@
     </div>  
 <script>
    var cw = $('.h-w').width();
-   var res= cw/1.6;
+   var res= cw/1.9;
       $('.h-w').css({'height':res+'px'});
 
 </script>
@@ -109,10 +110,11 @@
         paginationClickable: true,
         spaceBetween: 200,
         centeredSlides: true,
-        autoplay: 2500,
+        autoplay: 3500,
+        autoplayStopOnLast:false,
+        autoplayDisableOnInteraction:true,
         effect: 'coverflow',
         speed: 2000,
-        autoplayDisableOnInteraction: false
     });
     </script>
 

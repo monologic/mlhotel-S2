@@ -79,8 +79,7 @@
 }
 /*Perfil de las habitaciones*/
 .swiper-container {
-        width: 90%;
-        height: 300px;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
