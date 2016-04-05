@@ -8,9 +8,9 @@ class Reserva extends Model
 {
     public $timestamps = false;
     
-    public function habreservas()
+    public function habtiporeservas()
     {
-    	return $this->hasMany('App\Habreserva');
+    	return $this->hasMany('App\Habtiporeserva');
     }
 
     public function registro()

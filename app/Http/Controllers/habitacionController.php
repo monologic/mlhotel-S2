@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use App\Habitacion;
+use App\Habtipo;
+
 
 class HabitacionController extends Controller
 {
@@ -107,6 +109,7 @@ class HabitacionController extends Controller
         $habitaciones->each(function($habitaciones){
             $habitaciones->habtipo;
         });
+
         return response()->json( $habitaciones->toArray() );
     }
 }

@@ -17,4 +17,9 @@ class Habtipo extends Model
     {
         return $this->hasMany('App\Habtipofoto');
     }
+    public function habtiporeservas()
+    {
+        return $this->hasMany('App\Habtiporeserva');
+        
+    }
 }
