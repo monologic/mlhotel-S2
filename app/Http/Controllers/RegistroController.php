@@ -25,17 +25,25 @@ class RegistroController extends Controller {
     				->get();
 
     	$r = $r->toArray();
-    	$hab_id_array = array();
 
-    	foreach ($r as $key => $regs) {
-    		foreach ($regs as $k => $habitacion_id)
-    			array_push($hab_id_array, $habitacion_id);
-    	}
+        if (count($r) != 0) {
+            $hab_id_array = array();
 
-    	$habs = Habitacion::whereNotIn('id', $hab_id_array)
-                          ->orderBy('habtipo_id', 'asc')
-                          ->get();
+            foreach ($r as $key => $regs) {
+                foreach ($regs as $k => $habitacion_id)
+                    array_push($hab_id_array, $habitacion_id);
+            }
 
+            $habs = Habitacion::whereNotIn('id', $hab_id_array)
+                              ->orderBy('habtipo_id', 'asc')
+                              ->get();
+        }
+        else {
+            $habs = Habitacion::orderBy('habtipo_id', 'asc')
+                              ->get();
+        }
+    	
+        
         $habs->each(function($habs){
             $habs->estado;
         });
@@ -55,7 +63,7 @@ class RegistroController extends Controller {
                 }
             }
         }
-
+dd($habtipos);
         $reservas = Reserva::where('reservaestado_id', '2')
                           ->whereBetween('fecha_inicio', [$fechaini, $fechafin])
                           ->orWhere(DB::raw("$fechaini between fecha_inicio and fecha_fin"))
@@ -63,27 +71,34 @@ class RegistroController extends Controller {
 
         $reservas->each(function($reservas){
             $reservas->habtiporeservas;
-        });
+        });     
 
         $reservas = $reservas->toArray();
-        foreach ($reservas as $h => $reserva) {
-            foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
-                foreach ($habtipos as $k => $ht) {
-                    if ($ht['id'] == $habtipo['habtipo_id']) {
-                        $habtipos[$k]['habtiporeservas'][] = $habtipo;
+        if (count($reservas)!=0) {
+            foreach ($reservas as $h => $reserva) {
+                foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
+                    foreach ($habtipos as $k => $ht) {
+                        if ($ht['id'] == $habtipo['habtipo_id']) {
+                            $habtipos[$k]['habtiporeservas'][] = $habtipo;
+                        }
                     }
                 }
             }
         }
-        
+    
         foreach ($habtipos as $k => $habtipo) {
-            $r = count($habtipo['habtiporeservas']);
-            $habtipos[$k]['habtiporeservascount'] = $r;
+            if (count($reservas) != 0) {
+                $r = count($habtipo['habtiporeservas']);
+                $habtipos[$k]['habtiporeservascount'] = $r;
+            }
+            else
+                $habtipos[$k]['habtiporeservascount'] = 0   ;
+            
             $r2 = count($habtipo['habitaciones']);
             $habtipos[$k]['habitacionescount'] = $r2;
 
         }
-        //dd($habtipos);
+        //dd($reservas);
     	return response()->json($habtipos);
     }
 }
