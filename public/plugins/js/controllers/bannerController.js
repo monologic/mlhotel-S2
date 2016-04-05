@@ -7,6 +7,14 @@ app.controller('bannerController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+    $scope.getBanners3 = function () {
+        $http.get('admin/getBanners2').then(function successCallback(response) {
+            $scope.banners2 = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 
    var idBanner;
 

@@ -2,6 +2,19 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+
+.misres{
+  display: block;
+  position: fixed;
+  margin-top: 300px;
+  width: 200px,
+  height:300px;
+  background-color: black;
+  z-index: 300;
+}
+
+
+
 .ser-ico{
   font-size: 5rem;
   text-align: center;

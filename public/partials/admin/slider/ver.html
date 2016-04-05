@@ -1,4 +1,4 @@
-<div id="page-wrapper" ng-controller="bannerController" ng-init="getBanners2();">
+<div id="page-wrapper" ng-controller="bannerController" ng-init="getBanners3();">
     <br><br><br>
     <h3 class="tit2">Banners</h3>
     <br><br>
@@ -24,7 +24,7 @@
     		</tr>
     	</thead>
     	<tbody>
-    		<tr ng-repeat="x in banners">
+    		<tr ng-repeat="x in banners2">
 			    <td>{{$index+1}}</td>
                 <td>{{x.titulo}}</td>
                 <td ><img src="imagen/sliders/{{x.imagen}}" style="with:50px; height:50px "></td>
@@ -57,15 +57,18 @@
                         </div>
                         <div class="form-group ">
                             <label for="titulo">Contenido</label>
-                            <input type="textarea" class="form-control" id="titulo" ng-model="mlcontenido">
-                        </div>
-                        <div class="form-group ">
-                            <label for="estado">Estado</label>
-                            <input type="text" class="form-control" id="estado" placeholder="Estado" ng-model="mlestado">
+                            <textarea class="form-control" required="required" name="descripcion" ng-model="mlcontenido" cols="50" rows="6" id="descripcion"></textarea>
                         </div>
                         <div class="form-group ">
                             <label for="orden">Orden</label>
                             <input type="text" class="form-control" id="orden" placeholder="Orden" ng-model="mlorden">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo">Estado</label>
+                            <select class="form-control" required="required" name="estado" type="text" id="estado" ng-model="mlestado">
+                              <option value="Activo">Activo</option>
+                              <option value="Inactivo">Inactivo</option>
+                            </select>
                         </div>
                     
                     </form>

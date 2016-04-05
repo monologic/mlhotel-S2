@@ -1,6 +1,6 @@
 <div class="cont-perfil">
   <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();">
-    <div class="col m6 s12">
+    <div class="col m7 s12">
       <div style="  position: relative;width:100%;height:400px;margin-top:50px">
         <div class="swiper-container gallery-top">
             <div class="swiper-wrapper">
@@ -37,23 +37,44 @@
       galleryThumbs.params.control = galleryTop;
       
       </script>
-    <div ng-repeat="m in habfotos">
-       <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img <img src="imagen/habitaciones/{{m.foto}}" style="width:100%;">
-                <span class="card-title">{{m.nombre}}</span>
-              </div>
-              <div class="card-content">
-                <div>{{m.descripcion}}</div> 
-                <div>{{m.nropersonas}}</div> 
-              </div>
-            
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
+
+      <div class="col s12 m5  hoverable" style="margin: 50px 0px 20px 0px">
+          <form class="row container2" ng-repeat="m in habfotos">
+                  <p class="center-align" style="font-size: 1.7rem;">Desde</p>
+                  <p class="center-align" style="font-size: 1.4rem">{{m.precio}}</p>
+                  <div class="input-field col s12 m12">
+                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
+                      <input type="date" class="datepicker" id="today" min="04-02-2016">    
+                  </div>
+                  <div class="input-field col s12 m12">
+                      <input type="date" class="datepicker">
+                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
+                  </div>
+                  <div>
+                    <a class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto "><i class="material-icons left">search</i>Reservar</a>
+                  </div>
+                  
+        </form>
+      </div>
+      
+    
 </div>
   
+      <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();">
+        <div class="col s12 m6" style="padding-top: 45px">
+         <div ng-repeat="c in habfotos">
+          <h3>{{c.nombre}}</h3><br>
+          <p>Maximos de personas: </p>
+          <p>{{c.nropersonas}}</p>
+          <p>Descripcion :</p>
+          <p>{{c.descripcion}}</p>
+        </div>
+       </div>
+      </div>
+
+<script>
+   $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
+</script>

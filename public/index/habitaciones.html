@@ -1,5 +1,33 @@
 <h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
   <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
+
+
+    <div>
+      <form class="row">
+                  <div class="input-field col s12 m3">
+                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
+                      <input type="date" class="datepicker" id="today" min="04-02-2016">
+                      
+                  </div>
+                  <div class="input-field col s12 m3">
+                      <input type="date" class="datepicker">
+                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6 m3">
+                      <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
+                      <input id="icon_prefix" type="text" >
+                      
+                    </div>
+                    <div class="input-field col s6 m3">
+                      <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
+                      <input id="icon_telephone" type="text">  
+                    </div>
+                  </div>
+                  <a class="waves-effect black btn"><i class="material-icons left">search</i>Buscar</a>
+                </div>
+      </form>
+    </div>
     <div class="row wow fadeInUp card" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
 
       <div class="col s12 m4 l4 " style="padding:10px">
@@ -22,9 +50,20 @@
         
       </div>
     </div> 
+<script>
+   $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
+   
+</script>
+<script>
+  
+</script>
           <!--
           {{y.nropersonas}}          
           th{{y.id}} 
           ng-click="addDetalleReserva(y);"
+
 
         

@@ -116,7 +116,7 @@ class bannerController extends Controller
     }
     public function getBanners()
     {
-        $Sliders = Slider::all();
+        $Sliders = Slider::where('estado', 'activo')->orderBy('orden', 'asc')->get();
         $Sliders = $Sliders ->toArray();
 
 
@@ -124,10 +124,10 @@ class bannerController extends Controller
     }
      public function getBanners2()
     {
-        $Sliders = Slider::all();
+        $Sliders = Slider::orderBy('orden', 'asc')->get();
         $Sliders = $Sliders -> toArray();
         //return response()->json('item'=>$Sliders);
-        return response()->json(['items' => $Sliders]);
+        return response()->json($Sliders);
     }
 
       public function dataEditar(Request $request)

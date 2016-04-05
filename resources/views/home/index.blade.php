@@ -46,7 +46,7 @@
           <li class="nav-txt"><a href="#/habitaciones">HABITACIONES</a></li>    
         </ul>
          <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li  style="margin-top:20px"><a class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>   
+          <li  style="margin-top:20px"><a class="btn-floating tooltipped"onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>   
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li class="nav-txt"><a href="#/noticias">NOTICIAS</a></li>
@@ -64,41 +64,18 @@
     </nav>
   </div>
  
-  <div class="fixed-action-btn click-to-toggle" style="bottom:20px; right: 24px;">
-            <a class="btn-floating btn-large black">
-              <i class="large material-icons">mode_edit</i>
-            </a>
-            <ul>
-              <li>
-                <div class="cont-reservas white hoverable">
-                  <div class="tit-res black"><p class="">Reservar Habitaciones</p></div>
-                  <div class="input-field col s12 m12">
-                      <input type="date" class="datepicker" style="width:70%">
-                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <input type="date" class="datepicker" style="width:70%">
-                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
-                      <input id="icon_prefix" type="text" class="validate">
-                      
-                    </div>
-                    <div class="input-field col s6">
-                      <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
-                      <input id="icon_telephone" type="tel" class="validate">  
-                    </div>
-                  </div>
-                  <a class="waves-effect black" style="display:block;margin:-20px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white">Reservar</a>
-                </div>
-                  
-              </li>
-            </ul>
-          </div>
 </div>      
 <br>
+<div id="caja">
+
+  <form>
+    <table>
+      
+    </table>
+    <a href="" type="submit" value:Reservar></a>
+  </form>
+  
+</div>
  <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
  <footer class="page-footer black">
           <div class="container">
@@ -161,10 +138,7 @@
     <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
 
    <script>
-      $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-      });
+     
     $(document).ready(function(){
     $('.tooltipped').tooltip({delay: 50});
     $('.parallax').parallax();
@@ -180,10 +154,24 @@
     
     
     <script>
-    new WOW().init();
+    
+      var clic = 1;
+      function divLogin(){ 
+         if(clic==1){
+         document.getElementById("caja").style.height = "100px";
+         clic = clic + 1;
+         } else{
+             document.getElementById("caja").style.height = "0px";      
+          clic = 1;
+         }   
+      }
+
+
     
     </script>
     <script>
+      new WOW().init();
+
       function initMap() {
       // Create a map object and specify the DOM element for display.
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -193,7 +181,5 @@
       });
     }
     </script>
-
-
 </body>
 </html>
