@@ -11,6 +11,13 @@
  z-index: 202;
   transition: height .4s;
 }
+.separador-index{
+	width: 100%;
+	border-bottom:solid;
+	border-width: 1px;
+	border-color: rgb(150,150,150);
+	margin: 40px 0px 40px 0px; 
+}
 .swiper-container{
 	top: 5px;
 }
