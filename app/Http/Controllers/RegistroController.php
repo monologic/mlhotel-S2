@@ -63,18 +63,20 @@ class RegistroController extends Controller {
                 }
             }
         }
-dd($habtipos);
+        //dd($habtipos);
         $reservas = Reserva::where('reservaestado_id', '2')
                           ->whereBetween('fecha_inicio', [$fechaini, $fechafin])
                           ->orWhere(DB::raw("$fechaini between fecha_inicio and fecha_fin"))
                           ->get();
 
+        
+
         $reservas->each(function($reservas){
             $reservas->habtiporeservas;
         });     
-
+        
         $reservas = $reservas->toArray();
-        if (count($reservas)!=0) {
+        if (count($reservas) != 0) {
             foreach ($reservas as $h => $reserva) {
                 foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
                     foreach ($habtipos as $k => $ht) {
@@ -98,7 +100,7 @@ dd($habtipos);
             $habtipos[$k]['habitacionescount'] = $r2;
 
         }
-        //dd($reservas);
-    	return response()->json($habtipos);
+        //dd($habtipos);
+        return response()->json($habtipos);
     }
 }
