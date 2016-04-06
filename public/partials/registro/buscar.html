@@ -29,11 +29,14 @@
         </table>
     </div>
     <br>
+    <div>
+        <a href="" class="btn btn-success" style="display:none;position: fixed;bottom:50px;right: 50px">Guardar Cambios</a>
+    </div>
     <div ng-repeat="habtipo in tipoPerHabs">
         <h3 style="color:black">{{habtipo.nombre}}</h3>
         <div class="row">
-            <div class="col-md-6">Reservadas: {{habtipo.habtiporeservascount}}</div> 
-            <div class="col-md-6">disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div>  
+            <div class="col-md-6"> <div style="width: 60%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#1E8BC3;color:black;">Reservadas: {{habtipo.habtiporeservascount}}</div></div> 
+            <div class="col-md-6"> <div style="width: 60%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#F9690E;color:black;">disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div></div>  
         </div>
         <div class="row">
             <table class="table table-hover col-md-12" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
@@ -42,7 +45,7 @@
                         <th>Número Habitación</th>
                         <th>Estado</th>
                         <th>Tipo de Habitación</th>
-                        <th>Acción</th>
+                        <th>Ocupar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +55,11 @@
                         <td>{{p.estado.nombre}}</td>
                         <td>{{p.habtipo.nombre}}</td>
                         <td>
-                            <a href="" class="btn btn-success">Registrar</a>
+                            <div class="checkbox ">
+                              <label>
+                                <input  value="" style="left: 45%">
+                              </label>
+                            </div>
                         </td>
                       </tr>
                 </tbody>
