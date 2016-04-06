@@ -1,4 +1,4 @@
-<div id="page-wrapper" ng-controller="registroController" ng-init="getHabtipos();">
+<div id="page-wrapper" ng-controller="registroController" ng-init="getHabtipos();" style="width: 80%;margin:20px auto 100px auto">
     <br><br><br>
     <h3 class="tit2">Registrar (Booking)</h3>
     <br><br>
@@ -6,30 +6,23 @@
         <table>
             <form>
                 <tr>
-                    <td><label for="fechaini">Fecha Inicio</label></td>
-                    <td><label for="fechafin">Fecha Fin</label></td>
-                    <td><label>Tipo de Habitación</label></td>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px "><label for="fechaini" >Fecha Inicio</label></td>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px "><label for="fechafin">Fecha Fin</label></td>
+                    
                 </tr>
                 <tr>
-                    <td>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px " >
                         <div class="form-group ">
                             <input type="date" class="form-control" id="fechaini" ng-model="fechaini">
                         </div>
                     </td>
-                    <td>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px " >
                         <div class="form-group">
                             <input type="date" class="form-control" id="fechafin" ng-model="fechafin">
                         </div>
                     </td>
                     <td>
-                        <div class="form-group">
-                            <select id="habtipo_id" ng-model='habtipo_id' ng-options="habtipo.nombre for habtipo in habtipos track by habtipo.id" class="form-control">
-                                <option value="">Seleccione una Opción...</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-primary" ng-click="buscar();">Buscar</a>
+                        <a href="" class="btn btn-primary" ng-click="buscar();" style="margin-top:-20px">Buscar</a>
                     </td>
                 </tr>
             </form>
@@ -37,28 +30,34 @@
     </div>
     <br>
     <div ng-repeat="habtipo in tipoPerHabs">
-        <h3>{{habtipo.nombre}}</h3>
-        <h4>Habitaciones reservadas en este periodo: {{habtipo.habtiporeservascount}}</h4>
-        <h4>Disponibilidad: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</h4>        
-        <table class="table table-hover">
-        	<thead>
-        		<tr>
-        			<th>Número Habitación</th>
-        			<th>Estado</th>
-                    <th>Tipo de Habitación</th>
-                    <th>Acción</th>
-        		</tr>
-        	</thead>
-        	<tbody>
-        		<tr ng-repeat="p in habtipo.habitaciones">
-    			    
-                    <td>{{p.numero}}</td>
-                    <td>{{p.estado.nombre}}</td>
-                    <td>{{p.habtipo.nombre}}</td>
-                    <td>
-                    </td>
-    			  </tr>
-        	</tbody>
-      	</table>
+        <h3 style="color:black">{{habtipo.nombre}}</h3>
+        <div class="row">
+            <div class="col-md-6">Reservadas: {{habtipo.habtiporeservascount}}</div> 
+            <div class="col-md-6">disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div>  
+        </div>
+        <div class="row">
+            <table class="table table-hover col-md-12" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
+                <thead>
+                    <tr>
+                        <th>Número Habitación</th>
+                        <th>Estado</th>
+                        <th>Tipo de Habitación</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="p in habtipo.habitaciones">
+                        
+                        <td>{{p.numero}}</td>
+                        <td>{{p.estado.nombre}}</td>
+                        <td>{{p.habtipo.nombre}}</td>
+                        <td>
+                            <a href="" class="btn btn-success">Registrar</a>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>    
+        
     </div>
 
