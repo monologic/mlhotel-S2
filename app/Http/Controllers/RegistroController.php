@@ -116,9 +116,18 @@ class RegistroController extends Controller {
 
         $registro->save();
 
+        $this->cambiarEstadoHabs($registro->habitacion_id);
+
         return response()->json([
             "mensaje" => 'Registro Creado'
         ]);
 
+    }
+    public function cambiarEstadoHabs($id)
+    {
+        $hab = Habitacion::find($id);
+        $hab->estado_id = 2;
+        $hab->save();
+        
     }
 }
