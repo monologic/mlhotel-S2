@@ -22,4 +22,8 @@ class Habtipo extends Model
         return $this->hasMany('App\Habtiporeserva');
         
     }
+    public function habtipo_serviciointernos()
+    {
+        return $this->hasMany('App\Habtipo_serviciointerno');
+    }
 }

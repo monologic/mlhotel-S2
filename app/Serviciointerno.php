@@ -8,5 +8,10 @@ class Serviciointerno extends Model
 {
     public $timestamps = false;
     
-    protected $fillable = ['titulo', 'imagen', 'contenido','orden','estado'];
+    protected $fillable = ['nombre','icono'];
+    
+    public function habtipo_serviciointernos()
+    {
+        return $this->hasMany('App\Habtipo_serviciointerno');
+    }
 }

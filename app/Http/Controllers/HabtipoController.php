@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
 use App\Habtipo;
+use App\Serviciointerno;
+use App\Habtipo_serviciointerno;
 
 class HabtipoController extends Controller
 {
@@ -109,19 +111,53 @@ class HabtipoController extends Controller
         $Habtipo = new Habtipo($request->all());
         $Habtipo->foto = $name;
         $Habtipo->save();
-         return redirect('admin#/LisHab');
+        $idhab=$Habtipo->id;
+         //return redirect('admin#/LisHab');        
+        $servicios= Serviciointerno::select('id')->get();
+        $servicios=$servicios->toArray();
+        foreach ($servicios as $key => $servicio) {
+             $htsi = new Habtipo_serviciointerno();
+             $htsi->estado = 'false';
+             $htsi->habtipo_id=$idhab;
+             $htsi->serviciointerno_id=$servicio['id'];
+             $htsi->save();   
+        }
+        return redirect('admin#/LisHab');  
     }
     public function getHabtipo()
     {   
         $Habtipos = Habtipo::all();
+         $Habtipos->each(function($Habtipos){
+            $iconos=$Habtipos->habtipo_serviciointernos;
+            $Habtipos->habtipo_serviciointernos->each(function($iconos){
+                $iconos->serviciointerno;
+            });
+
+        });
         $Habtipos = $Habtipos ->toArray();
         return response()->json( $Habtipos );
     }
-     public function getHabitaciones($id)
+     public function getIconos($id)
     {   
         $Habtipos = Habtipo::where('id',$id)->get();
         $Habtipos->each(function($Habtipos){
           $Habtipos->habtipofotos;
+        });
+        $Habtipos = $Habtipos ->toArray();
+        return response()->json( $Habtipos );
+    }
+
+     public function getHabitaciones($id)
+    {   
+
+        $Habtipos = Habtipo::where('id',$id)->get();
+        $Habtipos->each(function($Habtipos){
+            $Habtipos->habtipofotos;
+            $iconos=$Habtipos->habtipo_serviciointernos;
+            $Habtipos->habtipo_serviciointernos->each(function($iconos){
+                $iconos->serviciointerno;
+            });
+
         });
         $Habtipos = $Habtipos ->toArray();
         return response()->json( $Habtipos );
@@ -133,5 +169,7 @@ class HabtipoController extends Controller
         $url = explode("=", $request->url['hash']);
         dd($url[1]);
     }
-
+    public function editar($id_servicio, $id_habtipo){
+        
+    }
 }
