@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Registro;
 use App\Habitacion;
 use App\Habtipo;
@@ -102,5 +104,30 @@ class RegistroController extends Controller {
         }
         //dd($habtipos);
         return response()->json($habtipos);
+    }
+
+    public function store(Request $request)
+    {
+        $registro = new Registro();
+        $registro->usuario_id = Auth::user()->id;
+        $registro->habitacion_id = $request->habitacion_id;
+        $registro->fechaentrada = $request->fechaini . " " . date('H:i:s');
+        $registro->fechasalida = $request->fechafin. " " . Auth::user()->empleado->hotel->checkout;
+
+        $registro->save();
+
+        $this->cambiarEstadoHabs($registro->habitacion_id);
+
+        return response()->json([
+            "mensaje" => 'Registro Creado'
+        ]);
+
+    }
+    public function cambiarEstadoHabs($id)
+    {
+        $hab = Habitacion::find($id);
+        $hab->estado_id = 2;
+        $hab->save();
+        
     }
 }
