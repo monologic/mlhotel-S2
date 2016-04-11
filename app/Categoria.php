@@ -8,13 +8,10 @@ class Categoria extends Model
 {
     public $timestamps = false;
 
+     protected $fillable = ['nombre', 'foto', 'descripcion'];
+
     public function servicios()
     {
     	return $this->hasMany('App\Servicio');
-    }
-
-    public function hotel()
-    {
-    	return $this->belongsTo('App\Hotel');
     }
 }

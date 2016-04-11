@@ -56,6 +56,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('admin/getBanners2', 'bannerController@getBanners2');
 
 	Route::post('admin/SlidCreate', 'bannerController@sliderCreateIndex');
+	Route::post('admin/ServiceCreate', 'categoriaController@ServiceCreateIndex');
 	Route::post('admin/AddSubHab', 'HabTipoController@HabitacionesStore');
 	Route::get('admin/AddHab', 'HabtipoController@getHabtipo');
 	Route::post('admin/createhabgalery', 'habtipogaleryController@HabTipoFotoStore');
@@ -63,6 +64,10 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::post('admin/AddFoto', 'GaleryController@AddGaleryPhoto');
 	Route::get('admin/getGaleryPhoto', 'GaleryController@getGaleriaFotos');
+
+	Route::post('admin/ServiceCreate', 'categoriaController@ServiceCreateIndex');
+	Route::get('admin/getServicios', 'categoriaController@getServices');
+
 	
 	Route::get('admin/gethabitaciones/{id}', ['uses' => 'habtipoController@getHabitaciones', function ($id) {}]);
 	Route::get('admin/buscar/{fechaini}/{fechafin}', ['uses' => 'RegistroController@buscar', function ($fechaini, $fechafin) {
