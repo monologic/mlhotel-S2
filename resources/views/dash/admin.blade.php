@@ -29,6 +29,7 @@
     <!-- menu styles -->
     <link rel="stylesheet" type="text/css" href="plugins/multilevel/css/component.css" />
     <script src="plugins/multilevel/js/modernizr-custom.js"></script>
+    <link rel="stylesheet" href="plugins/iconos/flaticon.css">
 </head>
 
 <body ng-app="tutorialWebApp">
@@ -45,9 +46,9 @@
             <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
             <div class="menu__wrap">
                 <ul data-menu="main" class="menu__level">
-                    <li class="menu__item"><a class="menu__link"  href="#">Reservas</a></li>  
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Registrar</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" data-submenu="submenu-3" >Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/habitacion">Reservas</a></li>  
+                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
+                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-5" href="#">Servicios</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Usuarios</a></li>
@@ -83,8 +84,8 @@
                 </ul>
                 <!-- Submenu 3 -->
                 <ul data-menu="submenu-3" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Ver Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Crear Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones">Ver Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Habitacion">Crear Habitaciones</a></li>
                 </ul>
                 <!-- Submenu 4 -->
                 <ul data-menu="submenu-4" class="menu__level">
@@ -117,11 +118,11 @@
                 </ul>
 
                 <ul data-menu="submenu-8" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#/BandejaEntrada">Bandeja de Entrada</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/LisBanner">Banners</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/LisHab">Tipos de Habitaciones</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/LisGaleria">Galeria de Fotos</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/LisNoticias">Noticias</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/LisServicios">Servicios</a></li>
                     <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Cargos/crear">Crear Cargos</a></li>

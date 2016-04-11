@@ -1,3 +1,6 @@
+<script>
+  document.title = "Habitaciones - Residencial Moquegua";
+</script>
 <h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
   <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
 
@@ -33,12 +36,16 @@
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" style="width:100%">
       </div>
-      <div class="col s12 m6 l6 " >
+      <div class="col s12 m6 l6 ">
           <div class="black-text" style="padding-top:5px">
             <p class="cart-titulo">{{y.nombre}}</p>
             <p class="cart-contenido">{{y.descripcion}}</p>
           </div>
-          <div class="card-action">
+          <div class="separador"></div>
+          <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
+              <div ng-if="servicio.estado=='true'">
+                <div style="margin-left: 20px;font-size: 1.4rem"><i class="fa {{servicio.serviciointerno.icono}}"></i></div>
+              </div>
           </div>
       </div>
       <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/style.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
+    <link rel="stylesheet" href="plugins/iconos/flaticon.css">
     
 
      <!-- text tarea-->
@@ -39,7 +40,7 @@
   <div class="navbar-fixed">
     <nav class=" white">
       <div class="nav-wrapper white" style="width:80%;margin-left:auto;margin-right:auto">
-        <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:15px 25px 0px 10px;color:black">Residencial Moquegua</a>
+        <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:15px 25px 0px 10px;color:black">Residencial Moquegua </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" hide-on-med-and-down">
           <li class="nav-txt"><a href="#/galeria">GALERIA</a></li>
@@ -54,7 +55,7 @@
         </ul>
        
         <ul class="side-nav" id="mobile-demo">
-          <li><a href="#/">Inicio</a></li>
+          <li><a href="#/">Inicio </a></li>
           <li><a href="#/habitaciones">Habitaciones</a></li>
           <li><a href="#/galeria">Galeria</a></li>
           <li><a href="#/noticias">Noticias</a></li>
@@ -87,6 +88,7 @@
                  <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
               </div>
               <div class="col l4 offset-l2 s12 white-text">
+                </div>
                 <h5 class="white-text">Informacion</h5>
                 <p style="font-size:0.9rem;margin-top:5px;">Calle Cuzco Nº 454 / Moquegua - Perú</p>
                 <p style="font-size:0.9rem;margin-top:5px;">E-mail: reservas@residencialmoquegua.com</p>

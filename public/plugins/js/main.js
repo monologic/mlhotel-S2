@@ -28,6 +28,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Usuarios/crear", {templateUrl: "partials/usuario/crear.html", controller: "PageCtrl"})
     .when("/Usuarios/crearTipo", {templateUrl: "partials/usuariotipo/crear.html", controller: "PageCtrl"})
 
+    .when("/LisServicios", {templateUrl: "partials/admin/servicios/servicios.html", controller: "PageCtrl"})
+    .when("/CrearServicios", {templateUrl: "partials/admin/servicios/crear.html", controller: "PageCtrl"})
+
     .when("/Banner", {templateUrl: "partials/admin/slider/banner.html", controller: "PageCtrl"})
     .when("/LisBanner", {templateUrl: "partials/admin/slider/ver.html", controller: "PageCtrl"})
 

@@ -2,7 +2,9 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
-
+.option2{
+  display: block;
+}
 .misres{
   display: block;
   position: fixed;
