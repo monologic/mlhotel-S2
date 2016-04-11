@@ -146,6 +146,12 @@ class HabtipoController extends Controller
         $Habtipos = $Habtipos ->toArray();
         return response()->json( $Habtipos );
     }
+    public function getHabtipos()
+    {
+        $Habtipos = Habtipo::all();
+        $Habtipos = $Habtipos ->toArray();
+        return response()->json( $Habtipos );
+    }
 
      public function getHabitaciones($id)
     {   

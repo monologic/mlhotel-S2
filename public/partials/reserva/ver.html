@@ -1,0 +1,38 @@
+<div id="page-wrapper" ng-controller="reservaController" ng-init="getReservasPorAsignar();">
+    <br><br><br>
+    <h3 class="tit2">Reservas Por Asignar</h3>
+    <br><br>
+    <div ng-repeat="y in reservas" class="row" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
+        <p><h3>Reserva # {{$index+1}}</h3></p>
+        
+        
+        <div class="col-sm-5">
+            <h4>Detalles</h4>
+            <p>Reservado para: {{ y.cliente.nombres }} {{ y.cliente.apellidos }} </p>
+            <p>Fecha de Entrada: {{ y.fecha_inicio }}</p>
+            <p>Fecha de Salida: {{ y.fecha_fin }}</p>
+        </div>
+
+        <div class="col-sm-4">
+            <h4>Habitaciones</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Tipo de Habitación</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="z in y.habtiporeservas">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ z.habtipo.nombre }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-3">
+            <a href="" class="btn btn-primary">Asignar Habitaciones</a>
+        </div>
+    </div>
+    
+

@@ -53,6 +53,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Habitaciones", {templateUrl: "partials/habitacion/ver.html", controller: "PageCtrl"})
 
     .when("/Buscar", {templateUrl: "partials/registro/buscar.html", controller: "PageCtrl"})
+    
+    .when("/Reservas", {templateUrl: "partials/reserva/ver.html", controller: "PageCtrl"})
 
 
     // else 404

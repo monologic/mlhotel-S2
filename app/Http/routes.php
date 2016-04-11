@@ -37,8 +37,10 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('getHotelesSimple', 'HotelController@getHotelesSimple');
 	Route::get('getContactos', 'ContactoController@getContactos');
 	Route::get('getHabtipos', 'HabtipoController@getHabitaciones');
+	Route::get('getHabtipos2', 'HabtipoController@getHabtipos');
 	Route::get('getEstados', 'EstadoController@getEstados');
 	Route::get('getHabitacions', 'HabitacionController@getHabitacions');
+	Route::get('buscarReservasNoAsignadas', 'ReservaController@getReservasNoAsignadas');
 
 	
 	Route::post('crearAdminHotel', 'HotelController@crearAdminHotel');

@@ -202,6 +202,7 @@
     <script src="plugins/js/controllers/habtipogalController.js"></script>
     <script src="plugins/js/controllers/habitacionController.js"></script>
     <script src="plugins/js/controllers/registroController.js"></script>
+    <script src="plugins/js/controllers/reservaController.js"></script>
     
 
     <script>

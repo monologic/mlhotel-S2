@@ -2,9 +2,9 @@ app.controller('registroController', function($scope,$http) {
 
     $scope.ponerFecha = function () {
         var f = new Date();
-        $scope.fechaini = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" + "0" +f.getDate();
-        $scope.fechafin = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" + "0" +(f.getDate() + 1);
-        
+        $scope.fechaini = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +f.getDate();
+        $scope.fechafin = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 1);
+        alert($scope.fechaini);
         /*
         var fechaini1 = new Date($scope.fechaini);
         var fechafin1 = new Date($scope.fechafin);
@@ -43,8 +43,6 @@ app.controller('registroController', function($scope,$http) {
             $("#guardarChecks").css("display","block");
         else
             $("#guardarChecks").css("display","none");
-
-        
     }
 
     $scope.guardarRegistros = function () {
