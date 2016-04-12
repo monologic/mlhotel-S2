@@ -114,7 +114,7 @@
      <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-    <script type="text/javascript" src="plugins/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="plugins/materialize/js/materialize.js"></script>
     <script src="plugins/slider/js/swiper.min.js"></script>  
     <script src="plugins/slider/js/swiper.jquery.min.js"></script>  
 
@@ -133,6 +133,7 @@
     <script src="plugins/js/directivas/textHtml.js"></script>
     <script src="plugins/js/controllers/habtipogalController.js"></script>
     <script src="plugins/js/controllers/hotelController.js"></script>
+    <script src="plugins/js/controllers/serviciosController.js"></script>
   
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 
@@ -140,11 +141,15 @@
     <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
 
    <script>
-     
+    
     $(document).ready(function(){
+
+    
+
+
     $('.tooltipped').tooltip({delay: 50});
     $('.parallax').parallax();
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav(); 
     //FANCYBOX
     //https://github.com/fancyapps/fancyBox
     $(".fancybox").fancybox({
@@ -167,8 +172,6 @@
           clic = 1;
          }   
       }
-
-
     
     </script>
     <script>

@@ -1,26 +1,37 @@
- 
- <div class="row" style="width: 80%;margin: 100px auto 100px auto">
-
-    <div class="col s4">
-      <ul class="tabs option2">
-        <li class="tab col s3"><a class="active" href="#test1">Restaurante</a></li>
-        <li class="tab col s3"><a href="#test2">Spa</a></li>
-        <li class="tab col s3 "><a href="#test3">Entrenamiento </a></li>
-        <li class="tab col s3"><a href="#test4">Reuniones</a></li>
-        <li class="tab col s3"><a href="#test5">Mascotas</a></li>
-      </ul>
+<div class="row" ng-controller="serviciosController" ng-init="getServicios();" style="width: 90%;margin: 80px auto 100px auto">
+    <p class="titulo2">Servicios</p>
+    
+    <div class="row" style="margin-top: 80px">
+      <div class="col s3" style="">
+        <ul class="tabs option2" >
+          <li class="tab col s3" ng-repeat="u in ser"><a  name="#test{{$index}}" ng-href="#test{{$index+1}}">{{u.nombre}}</a></li>
+        </ul>
+      </div>
+     
+      <div class="col s9" style="background-color: red">
+          <div class="text-alter">
+                    <h3 class="titulo3">Nuestro Servicios</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.      
+        </div>
+        <div ng-repeat="r in ser" id="test{{($index+1)}}" style="display: none;z-index: 10" onclick="eventc()" >
+          <img src="imagen/sliders/{{r.foto}}jpg" alt="" style="width: 100%">
+          <div>
+            {{r.descripcion}}
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div id="test1" class="col s8">Test 1</div>
-    <div id="test2" class="col s8">Test 2</div>
-    <div id="test3" class="col s8">Test 3</div>
-    <div id="test4" class="col s8">Test 4</div>
-    <div id="test5" class="col s8">Articulo para mascotas</div>
-  </div>
+    
+    
+</div>
 
 <script>
   $(document).ready(function(){
     $('ul.tabs').tabs();
   });
-
 </script>

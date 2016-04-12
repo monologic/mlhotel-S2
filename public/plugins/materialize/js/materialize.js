@@ -1204,7 +1204,7 @@ $(document).ready(function(){
         $active = $(this).find('li.tab a').first();
       }
 
-      $active.addClass('active');
+      $active.addClass('');
       $index = $links.index($active);
       if ($index < 0) {
         $index = 0;

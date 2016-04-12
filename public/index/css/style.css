@@ -2,6 +2,29 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+/*Estos son los estiloes de servicios*/
+.text-alter{
+  display: block;
+  position: absolute;
+  width: 50%;
+  color: rgb(100,100,100);
+  left: 30%;
+  margin-top:0px;
+  z-index: -20;
+
+}
+.titulo2{
+  display: block;
+  font-size:1.8rem;
+  margin: 20px auto 40px auto;
+  text-align: center;
+}
+.titulo3{
+  font-size:1.6rem;
+  margin: 10px auto 20px auto;
+  text-align: justify;
+}
+
 .option2{
   display: block;
 }
