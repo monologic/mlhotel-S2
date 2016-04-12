@@ -2,20 +2,28 @@
     <br><br><br>
     <h3 class="tit2">Asignar Habitaciones</h3>
     <br><br>
-    <div class="formularios">
-        <h4>Detalles</h4>
-            <p>Reservado para: {{ Reservas.cliente.nombres }} {{ Reservas.cliente.apellidos }} </p>
-            <p>Fecha de Entrada: {{ Reservas.fecha_inicio }}</p>
-            <p>Fecha de Salida: {{ Reservas.fecha_fin }}</p>
+    <div class="formularios ">
+            <div class="row"style="width: 100%" >
+                <div class="col-md-4">
+                     <p>Reservado para:  </p>
+                    <p style="margin-left: 20px">{{ Reservas.cliente.nombres }} {{ Reservas.cliente.apellidos }}</p>
+                </div>
+               <div class="col-md-4">
+                   <p>Fecha de Entrada: </p>
+                    <p style="margin-left: 20px">{{ Reservas.fecha_inicio }}</p>
+               </div>
+                <div class="col-md-4">
+                    <p>Fecha de Salida: </p>
+                    <p style="margin-left: 20px">{{ Reservas.fecha_fin }}</p>
+                </div>
+                
+            </div>
+            
         </div>
-        <div class="col-sm-6">
-            <h4>Habitaciones</h4>
+        <div class="static-reserva">
+            <h4 class="text-center">Habitaciones</h4>
             <table class="table">
                 <thead>
-                    <tr>
-                        <td>Tipo de Habitación</td>
-                        <td>Por Asignar</td>
-                    </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="z in Reservas.habtiposcount">
@@ -35,13 +43,12 @@
             <div class="col-md-6"> <div style="width: 60%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#1E8BC3;color:black;">Reservadas: {{habtipo.habtiporeservascount}}</div></div> 
             <div class="col-md-6"> <div style="width: 60%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#F9690E;color:black;">disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div></div>  
         </div>
-        <div class="row">
-            <table class="table table-hover col-md-12" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
+        <div class="tabla-hab">
+            <table class="table table-hover" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
                 <thead>
                     <tr>
                         <th>Número Habitación</th>
                         <th>Estado</th>
-                        <th>Tipo de Habitación</th>
                         <th>Ocupar</th>
                     </tr>
                 </thead>
@@ -50,7 +57,6 @@
                         
                         <td>{{p.numero}}</td>
                         <td>{{p.estado.nombre}}</td>
-                        <td>{{p.habtipo.nombre}}</td>
                         <td>
                             <div class="checkbox">
                               <label>

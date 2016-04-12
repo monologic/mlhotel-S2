@@ -1,38 +1,45 @@
-<div id="page-wrapper" ng-controller="reservaController" ng-init="getReservasPorAsignar();">
+<div id="page-wrapper" ng-controller="reservaController" ng-init="getReservasPorAsignar();" style="width: 80%;margin: 20px auto 40px auto;">
     <br><br><br>
     <h3 class="tit2">Reservas Por Asignar</h3>
     <br><br>
-    <div ng-repeat="y in reservas" class="row" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888; border:1px solid #b3b3b3">
-        <p><h3>Reserva # {{$index+1}}</h3></p>
-        
-        
-        <div class="col-sm-5">
-            <h4>Detalles</h4>
-            <p>Reservado para: {{ y.cliente.nombres }} {{ y.cliente.apellidos }} </p>
-            <p>Fecha de Entrada: {{ y.fecha_inicio }}</p>
-            <p>Fecha de Salida: {{ y.fecha_fin }}</p>
-        </div>
+    <div ng-repeat="y in reservas" class="row">
+        <p>
+          <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+             {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }}
+          </button>
+        </p>
 
-        <div class="col-sm-4">
-            <h4>Habitaciones</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Tipo de Habitación</td>
-                        <td>Por Asignar</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="z in y.habtiposcount">
-                        <td>{{ z.nombre }}</td>
-                        <td>{{ z.count }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="collapse" id="{{y.id}}" style="padding: 20px;border-width:0.1px;border:solid;border-radius: 5px;margin-bottom:10px">
+              <div class="card card-block row" style="color:black">
+                <div class="col-md-4">
+                    <p>Fecha de Entrada:</p>
+                    <p style="margin-left: 30px">{{ y.fecha_inicio }}</p>
+                    <p>Fecha de Salida: </p>
+                    <p style="margin-left: 30px">{{ y.fecha_fin }}</p>
+                </div >    
+                
+                <div class="col-md-4">
+                    <table class="table">
+                        <p class="text-center">Habitaciones</p>
+                        <tbody>
+                            <tr ng-repeat="z in y.habtiposcount">
+                                <td>{{ z.nombre }}</td>
+                                <td>{{ z.count }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+            </div>
+            <div class="col-sm-4" style="bottom: 0;">
+                <a href="admin#/ReservaAsignar/{{y.id}}" class="btn btn-success">Asignar Habitaciones</a>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-3">
-            <a href="admin#/ReservaAsignar/{{y.id}}" class="btn btn-primary">Asignar Habitaciones</a>
-        </div>
-    </div>
+    </div>    
+<script>
+$('#myCollapsible').collapse({
+  toggle: false
+})
     
-
+</script>

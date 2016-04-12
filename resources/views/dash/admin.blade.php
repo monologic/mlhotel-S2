@@ -46,7 +46,7 @@
             <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
             <div class="menu__wrap">
                 <ul data-menu="main" class="menu__level">
-                    <li class="menu__item"><a class="menu__link"  href="#/habitacion">Reservas</a></li>  
+                    <li class="menu__item"><a class="menu__link"  href="#/Reservas">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
@@ -180,6 +180,7 @@
         <!-- Our Website Javascripts -->
 
     <script src="{{ asset('plugins/js/main.js') }}"></script>
+    <script src="{{ asset('plugins/js/bootstrap.min.js') }}"></script>
     <!-- /view -->
     <script src="plugins/multilevel/js/classie.js"></script>
     <script src="plugins/multilevel/js/dummydata.js"></script>
