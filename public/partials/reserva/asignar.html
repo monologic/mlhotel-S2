@@ -1,33 +1,30 @@
-<div id="page-wrapper" ng-controller="registroController" ng-init="ponerFecha();" style="width: 80%;margin:20px auto 100px auto">
+<div id="page-wrapper" ng-controller="registroController" style="width: 80%;margin:20px auto 100px auto" ng-init="getReservaInfo();">
     <br><br><br>
-    <h3 class="tit2">Registrar (Booking)</h3>
+    <h3 class="tit2">Asignar Habitaciones</h3>
     <br><br>
     <div class="formularios">
-        <table>
-            <form>
-                <tr>
-                    <td style="min-width:200px;padding:0px 10px 0px 10px "><label for="fechaini" >Fecha Inicio</label></td>
-                    <td style="min-width:200px;padding:0px 10px 0px 10px "><label for="fechafin">Fecha Fin</label></td>
-                    
-                </tr>
-                <tr>
-                    <td style="min-width:200px;padding:0px 10px 0px 10px " >
-                        <div class="form-group ">
-                            <input type="date" class="form-control" id="fechaini" ng-model="fechaini">
-                        </div>
-                    </td>
-                    <td style="min-width:200px;padding:0px 10px 0px 10px " >
-                        <div class="form-group">
-                            <input type="date" class="form-control" id="fechafin" ng-model="fechafin">
-                        </div>
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-primary" ng-click="buscar();" style="margin-top:-20px">Buscar</a>
-                    </td>
-                </tr>
-            </form>
-        </table>
-    </div>
+        <h4>Detalles</h4>
+            <p>Reservado para: {{ Reservas.cliente.nombres }} {{ Reservas.cliente.apellidos }} </p>
+            <p>Fecha de Entrada: {{ Reservas.fecha_inicio }}</p>
+            <p>Fecha de Salida: {{ Reservas.fecha_fin }}</p>
+        </div>
+        <div class="col-sm-6">
+            <h4>Habitaciones</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Tipo de Habitación</td>
+                        <td>Por Asignar</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="z in Reservas.habtiposcount">
+                        <td>{{ z.nombre }}</td>
+                        <td>{{ z.count }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     <br>
     <div>
         <a href="" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); "style="display:none;position: fixed;bottom:50px;right: 50px">Guardar Cambios</a>

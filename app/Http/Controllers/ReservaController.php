@@ -104,6 +104,85 @@ class ReservaController extends Controller
             });
         });
 
+        $reservas = $reservas->toArray();
+
+        foreach ($reservas as $j => $reserva) {
+            $habtipos = $reserva['habtiporeservas'];
+            $ht = array();
+            foreach ($habtipos as $key => $habtipo) {    
+                if (count($ht) > 0) {
+                    foreach ($ht as $k => $htt) {
+                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
+                            $ht[$k]['count']++;
+                        }
+                        else {
+                            $habtipo['habtipo']['count'] = 1;
+                            $ht[] = $habtipo['habtipo'];
+                        }
+
+                    }
+                }
+                else {
+                    $habtipo['habtipo']['count'] = 1;
+                    $ht[] = $habtipo['habtipo'];
+                    
+                }
+
+                $reservas[$j]['habtiposcount'] = $ht;
+
+            }
+        }
+        
+
+        return response()->json( $reservas );
+    }
+
+    public function getReserva($id)
+    {
+        $reservas = Reserva::where('id', $id)
+                           ->get();
+
+        $reservas->each(function($reservas){
+            $reservas->cliente;
+        });
+
+        $reservas->each(function($reservas){
+            $reservas->habtiporeservas;
+            $habReserva = $reservas->habtiporeservas;
+            $reservas->habtiporeservas->each(function($habReserva){
+                $habReserva->habtipo;
+            });
+        });
+        
+        $reservas = $reservas->toArray();
+
+        foreach ($reservas as $j => $reserva) {
+            $habtipos = $reserva['habtiporeservas'];
+            $ht = array();
+            foreach ($habtipos as $key => $habtipo) {    
+                if (count($ht) > 0) {
+                    foreach ($ht as $k => $htt) {
+                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
+                            $ht[$k]['count']++;
+                        }
+                        else {
+                            $habtipo['habtipo']['count'] = 1;
+                            $ht[] = $habtipo['habtipo'];
+                        }
+
+                    }
+                }
+                else {
+                    $habtipo['habtipo']['count'] = 1;
+                    $ht[] = $habtipo['habtipo'];
+                    
+                }
+
+                $reservas[$j]['habtiposcount'] = $ht;
+
+            }
+        }
         return response()->json( $reservas );
     }
 }
+                        

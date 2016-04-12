@@ -1,4 +1,4 @@
-app.controller('registroController', function($scope,$http) {
+app.controller('registroController', function($scope,$http , $routeParams) {
 
     $scope.ponerFecha = function () {
         var f = new Date();
@@ -58,5 +58,24 @@ app.controller('registroController', function($scope,$http) {
             // or server returns response with an error status.
             }); 
         }
+    }
+    $scope.getReservaInfo = function () {
+        $scope.idReserva = $routeParams.idReserva;
+
+        $http.get('admin/getReserva/' + $scope.idReserva).then(function successCallback(response) {
+            $scope.Reservas = response.data[0];
+            var fi = $scope.Reservas.fecha_inicio;
+            fi = fi.split(" ");
+            $scope.fechaini = fi[0];
+            var ff = $scope.Reservas.fecha_fin;
+            ff = ff.split(" ");
+            $scope.fechafin = ff[0];
+    
+            $scope.buscar();
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });   
+        
     }
 });

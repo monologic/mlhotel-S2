@@ -2,7 +2,7 @@
     <br><br><br>
     <h3 class="tit2">Reservas Por Asignar</h3>
     <br><br>
-    <div ng-repeat="y in reservas" class="row" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
+    <div ng-repeat="y in reservas" class="row" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888; border:1px solid #b3b3b3">
         <p><h3>Reserva # {{$index+1}}</h3></p>
         
         
@@ -18,20 +18,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <td>#</td>
                         <td>Tipo de Habitación</td>
+                        <td>Por Asignar</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="z in y.habtiporeservas">
-                        <td>{{ $index+1 }}</td>
-                        <td>{{ z.habtipo.nombre }}</td>
+                    <tr ng-repeat="z in y.habtiposcount">
+                        <td>{{ z.nombre }}</td>
+                        <td>{{ z.count }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="col-sm-3">
-            <a href="" class="btn btn-primary">Asignar Habitaciones</a>
+            <a href="admin#/ReservaAsignar/{{y.id}}" class="btn btn-primary">Asignar Habitaciones</a>
         </div>
     </div>
     

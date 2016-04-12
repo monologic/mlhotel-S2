@@ -58,6 +58,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Buscar", {templateUrl: "partials/registro/buscar.html", controller: "PageCtrl"})
     
     .when("/Reservas", {templateUrl: "partials/reserva/ver.html", controller: "PageCtrl"})
+    .when("/ReservaAsignar/:idReserva", {templateUrl: "partials/reserva/asignar.html", controller: "PageCtrl"})
 
 
     // else 404
