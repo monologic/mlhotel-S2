@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Categoria;
+use App\Servicio;
 
 class categoriaController extends Controller
 {
@@ -104,7 +105,37 @@ class categoriaController extends Controller
      public function getServices()
     {
         $Servicios = Categoria::all();
+        $Servicios->each(function($Servicios){
+            $Servicios->servicios;
+        });
+        
         $Servicios = $Servicios ->toArray();
         return response()->json( $Servicios );
     }
+     public function getServicesompletoC($id)
+    {
+        $Servicios = Categoria::where('id',$id)->get();
+        $Servicios->each(function($Servicios){
+            $Servicios->servicios;
+        });
+        $Servicios = $Servicios->toArray();
+        return response()->json( $Servicios );
+    }
+
+    public function ServiceCreateforCategory(Request $request)
+    {
+        
+      if($request->file('foto'))
+        {
+            $file = $request -> file('foto');
+            $name = 'servicio_cat'. time() . '.' .$file->getClientOriginalExtension();
+            $path=public_path() . "/imagen/Categoria/";
+            $file -> move($path,$name);
+        }
+        $servicioC = new Servicio($request->all());
+        $servicioC->foto = $name;
+        $servicioC->save();
+         return redirect('admin#/LisServicios');
+    }
+
 }

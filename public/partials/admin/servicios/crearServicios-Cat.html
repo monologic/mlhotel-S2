@@ -1,13 +1,12 @@
+<div class="formularios"  ng-controller="serviciosController" ng-init="geturl()">
 
-<div class="formularios">
-
-    <form method="POST" action="admin/ServiceCreate" accept-charset="UTF-8" enctype="multipart/form-data">
+    <form method="POST" action="admin/ServiceCreateCategory" accept-charset="UTF-8" enctype="multipart/form-data">
     <br><br>
-        <h2 class="tit2">Crear Categoria para Servicio</h2>
+        <h2 class="tit2">Crear Servicio</h2>
         <br><br>
         <div class="form-group">
             <label for="tipo">Nombre</label>
-            <input class="form-control" placeholder="Nombre de la categoria" required="required" name="nombre" type="text" id="nombre">
+            <input class="form-control" placeholder="Nombre del servicio" required="required" name="servicio" type="text" id="servicio">
         </div>
 
         <div class="form-group">
@@ -19,6 +18,9 @@
             <label for="descripcion">Descripcion</label>
             <textarea class="form-control trumbowyg-demo" required="required" name="descripcion" cols="50" rows="5" id="descripcion"></textarea>
         </div>
+        <div class="form-group" style="display: none">
+            <input class="form-control" placeholder="Nombre del servicio" required="required" name="categoria_id" type="text" id="categoria_id" ng-model="categoria_id">
+        </div>
         <div class="form-group">
             
             <input class="btn btn-primary" type="submit" value="Guardar Servicio">
@@ -27,5 +29,3 @@
        
     </form>  
 </div>
-
-        

@@ -8,6 +8,8 @@ class Servicio extends Model
 {
     public $timestamps = false;
     
+     protected $fillable = ['servicio', 'foto', 'descripcion','categoria_id'];
+
     public function categoria()
     {
     	return $this->belongsTo('App\Categoria');
@@ -15,6 +17,6 @@ class Servicio extends Model
 
     public function regservicio()
     {
-    	return $this->hasMany('App\Regservicio')
+    	return $this->hasMany('App\Regservicio');
     }
 }

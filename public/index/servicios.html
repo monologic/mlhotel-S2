@@ -8,7 +8,7 @@
         </ul>
       </div>
      
-      <div class="col s9" style="background-color: red">
+      <div class="col s9" style="background-color: white;">
           <div class="text-alter">
                     <h3 class="titulo3">Nuestro Servicios</h3>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -18,12 +18,26 @@
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.      
         </div>
-        <div ng-repeat="r in ser" id="test{{($index+1)}}" style="display: none;z-index: 10" onclick="eventc()" >
-          <img src="imagen/sliders/{{r.foto}}jpg" alt="" style="width: 100%">
+
+        <div ng-repeat="r in ser" id="test{{($index+1)}}" style="display: none;z-index: 10;min-height: 300px" onclick="eventc()" >
+          <p>{{r.nombre}}</p><br>
+          <div class="" style="background-image: url('imagen/sliders/{{r.foto}}jpg');width:100%;height: 150px"></div>
           <div>
-            {{r.descripcion}}
+            <p>{{r.descripcion}}</p>
+          </div>
+          <div class="row" ng-repeat="c in r.servicios" style="padding: 20px">
+            <div class="col m6">
+              <p>{{c.servicio}}</p>
+              <p>{{c.descripcion}}</p>
+            </div>
+            <div class="col m6" style="padding: 20px">
+              <img src="imagen/categoria/{{c.foto}}" style="width: 100%" alt="">
+            </div>
+            
+            
           </div>
         </div>
+
       </div>
     </div>
     

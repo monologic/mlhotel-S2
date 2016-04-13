@@ -30,6 +30,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/LisServicios", {templateUrl: "partials/admin/servicios/servicios.html", controller: "PageCtrl"})
     .when("/CrearServicios", {templateUrl: "partials/admin/servicios/crear.html", controller: "PageCtrl"})
+    .when("/Servicios/:catId", {templateUrl: "partials/admin/servicios/serviciosxCat.html", controller: "PageCtrl"})
+    .when("/CrearServiciosCat/:idSer", {templateUrl: "partials/admin/servicios/crearServicios-Cat.html", controller: "PageCtrl"})
 
     .when("/Banner", {templateUrl: "partials/admin/slider/banner.html", controller: "PageCtrl"})
     .when("/LisBanner", {templateUrl: "partials/admin/slider/ver.html", controller: "PageCtrl"})
