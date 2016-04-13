@@ -7,14 +7,16 @@
        <label class="checkbox-inline" ng-repeat="servicios in r.habtipo_serviciointernos" style="margin-left:0px; margin-bottom: 60px;padding-top: 0">
         <div ng-if="servicios.estado=='true'">
             <div style="text-align:left;width: 80px;margin-right:100px">
-                <input type="checkbox" id="inlineCheckbox1" value="option1" checked="" style="margin-top: 20%">
+                <input type="checkbox" id="{{servicios.serviciointerno.id}}" value="option1" checked="" style="margin-top: 20%">
+                <label for=""></label>
                 <i class="{{servicios.serviciointerno.icono}}" style="text-align: center;font-size:5rem;"></i>
                 <div style="font-size: 1.2rem;text-align: center">{{servicios.serviciointerno.nombre}}</div>
             </div>
         </div>
         <div ng-if="servicios.estado=='false'">
             <div style="text-align:left;width: 80px;margin-top: 0px;margin-right:100px">
-                <input type="checkbox" id="inlineCheckbox1" value="option1" style="margin-top: 20%">
+                <input type="checkbox" id="{{servicios.serviciointerno.id}}" value="option1" style="margin-top: 20%">
+                <label for=""></label>
                 <i class="{{servicios.serviciointerno.icono}}" style="text-align: center;font-size:5rem;"></i>
                 <div style="font-size: 1.2rem;text-align: center">{{servicios.serviciointerno.nombre}}</div>
             </div>
@@ -22,7 +24,7 @@
           
         </label>
         <br>
-        <a href="" type="submit" class="btn btn-primary"> Guardar Cambios</a>
+        <a href="" ng-click="GuardarIcon()" type="submit" class="btn btn-primary"> Guardar Cambios</a>
     </div>
 
 

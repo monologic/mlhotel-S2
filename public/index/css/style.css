@@ -3,6 +3,18 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 /*Estos son los estiloes de servicios*/
+.tituloSer{
+  font-size: 2.4rem;
+  color: rgb(180,180,180);
+  font-weight: bold;
+}
+.subtituloSer{
+  font-size: 1.4rem;
+  color:rgb(100,100,100);
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 20px
+}
 .text-alter{
   display: block;
   position: absolute;
