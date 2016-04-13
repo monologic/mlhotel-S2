@@ -40,6 +40,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('getHabtipos2', 'HabtipoController@getHabtipos');
 	Route::get('getEstados', 'EstadoController@getEstados');
 	Route::get('getHabitacions', 'HabitacionController@getHabitacions');
+	Route::get('getHabitacionsDetallado', 'HabitacionController@getHabitacionsDetallado');
 	Route::get('buscarReservasNoAsignadas', 'ReservaController@getReservasNoAsignadas');
 	Route::get('getReserva/{idReserva}', 'ReservaController@getReserva');
 	

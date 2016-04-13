@@ -112,4 +112,35 @@ class HabitacionController extends Controller
 
         return response()->json( $habitaciones->toArray() );
     }
+    public function getHabitacionsDetallado()
+    {
+        $habitaciones =  Habitacion::where([
+                            ['hotel_id', Auth::user()->empleado->hotel->id],
+                        ])->get();
+
+        $habitaciones->each(function($habitaciones){
+            $habitaciones->estado;
+        });
+        $habitaciones->each(function($habitaciones){
+            $habitaciones->habtipo;
+        });
+        
+        $habitaciones = $habitaciones->toArray();
+        
+        $registros = RegistroController::registrosDeHoy();
+
+        foreach ($habitaciones as $key => $habitacion) {
+            $habitaciones[$key]['registro'] = array();
+            foreach ($registros as $k => $registro) {
+                if ($habitacion['id'] == $registro['id']) {
+                    $habitaciones[$key]['registro'] = $registro;
+                }
+            }
+            
+        }
+        
+        //dd($habitaciones);
+
+        return response()->json( $habitaciones );   
+    }
 }

@@ -130,4 +130,24 @@ class RegistroController extends Controller {
         $hab->save();
         
     }
+
+    public static function registrosDeHoy()
+    {   $fechaini = date("Y-m-d")." 00:00:00";
+        $fechafin = date("Y-m-d")." 11:59:59";
+        $r = Registro::whereBetween('fechaentrada', [ date("Y-m-d")." 00:00:00", date("Y-m-d")." 11:59:59"])
+                     ->orWhere(DB::raw("'$fechaini' between fechaentrada and fechasalida"))
+                     ->get();
+
+        $r->each(function($r){
+            $r->regclientes;
+            $regclientes = $r->regclientes;
+            $r->regclientes->each(function($regclientes){
+                $regclientes->cliente;
+            });
+        });
+
+        $r = $r->toArray();
+
+        return $r;
+    }
 }

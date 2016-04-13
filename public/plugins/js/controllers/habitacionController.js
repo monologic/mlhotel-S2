@@ -40,5 +40,14 @@ app.controller('habitacionController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+    $scope.getHabitacionesDetallado = function () {
+        $http.get('admin/getHabitacionsDetallado').then(function successCallback(response) {
+            console.log(response.data);
+            $scope.habitaciones = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 
 });
