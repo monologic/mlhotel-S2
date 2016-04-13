@@ -162,4 +162,23 @@ class RegistroController extends Controller {
 
         return $r;
     }
+    public function getRegistro($id)
+    {
+        $registro = Registro::where('id', $id)
+                            ->get();
+        $registro->each(function($registro){
+            $registro->regclientes;
+            $regclientes = $registro->regclientes;
+            $registro->regclientes->each(function($regclientes){
+                $regclientes->cliente;
+            });
+
+        });
+        $registro->each(function($registro) {
+            $registro->habitacion;
+            $registro->habitacion->habtipo;
+        });
+
+        return response()->json($registro);
+    }
 }

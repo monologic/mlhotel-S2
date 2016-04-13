@@ -132,7 +132,7 @@ class HabitacionController extends Controller
         foreach ($habitaciones as $key => $habitacion) {
             $habitaciones[$key]['registro'] = array();
             foreach ($registros as $k => $registro) {
-                if ($habitacion['id'] == $registro['id']) {
+                if ($habitacion['id'] == $registro['habitacion_id']) {
                     $habitaciones[$key]['registro'] = $registro;
                 }
             }

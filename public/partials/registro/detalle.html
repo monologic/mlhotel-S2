@@ -1,0 +1,22 @@
+<div id="page-wrapper" ng-controller="registroController" ng-init="buscarRegistro();" style="width: 90%;margin:20px auto 100px auto">
+<br><br><br>
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>Detalles de Habitación</h1>
+			<p>Número de habitación : {{ registro.habitacion.numero }}</p>
+			<p>Fecha Entrada : {{ registro.fechaentrada }}</p>
+			<p>Fecha Salida : {{ registro.fechasalida }}</p>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>Huéspedes</h3>
+			<table>
+				<tr ng-repeat="huesped in registro.regclientes">
+					<td>{{huesped.cliente.nombres}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

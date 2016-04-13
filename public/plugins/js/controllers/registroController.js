@@ -78,4 +78,16 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         });   
         
     }
+    $scope.buscarRegistro = function () {
+        $scope.idRegistro = $routeParams.idRegistro;
+
+        $http.get('admin/buscarRegistro/' + $scope.idRegistro).then(function successCallback(response) {
+            
+            $scope.registro = response.data[0];
+            
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 });
