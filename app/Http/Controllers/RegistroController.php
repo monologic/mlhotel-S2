@@ -18,14 +18,22 @@ use App\Habtiporeserva;
 use DB;
 
 class RegistroController extends Controller {
+
+    public $fechainicio;
+    static $fechaInicio;
+
     
     public function buscar($fechaini, $fechafin)
     {
+        $this->fechainicio = $fechaini. " " . date('H:i:s');
     	$r = Registro::select('habitacion_id')
-    				->whereBetween('fechaentrada', [$fechaini, $fechafin])
-    				->orWhere(DB::raw("$fechaini between fechaentrada and fechasalida"))
+    				->whereBetween('fechaentrada', [$this->fechainicio, $fechafin. " 12:00:00"])
+    				->orWhere(function($query){
+                        $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
+                        })
     				->get();
 
+        
     	$r = $r->toArray();
 
         if (count($r) != 0) {
@@ -132,11 +140,15 @@ class RegistroController extends Controller {
     }
 
     public static function registrosDeHoy()
-    {   $fechaini = date("Y-m-d")." 00:00:00";
+    {   self::$fechaInicio = date("Y-m-d H:i:s");
         $fechafin = date("Y-m-d")." 11:59:59";
-        $r = Registro::whereBetween('fechaentrada', [ date("Y-m-d")." 00:00:00", date("Y-m-d")." 11:59:59"])
-                     ->orWhere(DB::raw("'$fechaini' between fechaentrada and fechasalida"))
+        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." 11:59:59"])
+                     ->orWhere(function($query){
+                        $query->whereRaw(DB::raw("'".self::$fechaInicio."' between fechaentrada and fechasalida"));
+                        })
                      ->get();
+
+                     
 
         $r->each(function($r){
             $r->regclientes;

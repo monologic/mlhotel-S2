@@ -20,9 +20,15 @@
                 <td>{{x.numero}}</td>
                 <td>{{x.estado.nombre}}</td>
                 <td>{{x.habtipo.nombre}}</td>
-                <td ng-if="(x.registro.regclientes).length == 0 ">
-                    <a href="" class="btn btn-warning">Ver</a>
+                <td ng-if="(x.registro).length == 0 ">
                 </td>
+                <td ng-if="(x.registro.regclientes).length > 0 ">
+                    <a href="" class="btn btn-success">Ver</a>
+                </td>
+                <td ng-if="(x.registro.regclientes).length == 0 ">
+                    <a href="" class="btn btn-warning">Ver (Completar Datos)</a>
+                </td>
+                
 			  </tr>
     	</tbody>
   	</table>

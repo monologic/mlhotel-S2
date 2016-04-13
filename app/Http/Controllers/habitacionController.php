@@ -128,7 +128,7 @@ class HabitacionController extends Controller
         $habitaciones = $habitaciones->toArray();
         
         $registros = RegistroController::registrosDeHoy();
-
+        //dd($registros);
         foreach ($habitaciones as $key => $habitacion) {
             $habitaciones[$key]['registro'] = array();
             foreach ($registros as $k => $registro) {
@@ -139,7 +139,7 @@ class HabitacionController extends Controller
             
         }
         
-        //dd($habitaciones);
+        
 
         return response()->json( $habitaciones );   
     }
