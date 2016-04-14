@@ -180,7 +180,7 @@
         <!-- Our Website Javascripts -->
 
     <script src="{{ asset('plugins/js/main.js') }}"></script>
-    <script src="{{ asset('plugins/js/bootstrap.min.js') }}"></script>
+    
     <!-- /view -->
     <script src="plugins/multilevel/js/classie.js"></script>
     <script src="plugins/multilevel/js/dummydata.js"></script>

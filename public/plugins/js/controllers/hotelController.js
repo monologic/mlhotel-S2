@@ -7,7 +7,8 @@ app.controller('hotelController', function($scope,$http) {
                 'region_estado':$scope.region,
                 'ciudad':$scope.ciudad,
                 'direccion':$scope.direccion,
-                'telefono':$scope.telefono
+                'telefono':$scope.telefono,
+                'correo':$scope.correo
             }).then(function successCallback(response) {
                 $scope.mensaje = response.data.mensaje;
             }, function errorCallback(response) {
@@ -27,7 +28,7 @@ app.controller('hotelController', function($scope,$http) {
 
      $scope.getHotelesF = function () {
         $http.get('/getHotelF').then(function successCallback(response) {
-            $scope.infos = response.data;
+            $scope.infos = response.data[0];
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
@@ -92,6 +93,7 @@ app.controller('hotelController', function($scope,$http) {
         $scope.ciuHotel = data.ciudad;
         $scope.dirHotel = data.direccion;
         $scope.fonoHotel = data.telefono;
+        $scope.correo = data.correo;
     }
     $scope.editarHotel = function () {
 
@@ -101,7 +103,8 @@ app.controller('hotelController', function($scope,$http) {
                 'region_estado':$scope.regHotel,
                 'ciudad':$scope.ciuHotel,
                 'direccion':$scope.dirHotel,
-                'telefono':$scope.fonoHotel
+                'telefono':$scope.fonoHotel,
+                'correo':$scope.correo
             }).then(function successCallback(response) {
                  $scope.hoteles = response.data;
             }, function errorCallback(response) {

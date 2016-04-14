@@ -77,10 +77,10 @@
           <div class="row">
 
             <div class="col s12 m3">Servicios :</div>
-            <div class="col s12 m9" style="padding-left:-10px">
+            <div class="col s12 m9" style="padding:20px 10px 10px 0px">
               <div ng-repeat="servicios in c.habtipo_serviciointernos" style="display: inline-block;">
-             <div ng-if="servicios.estado=='true'" style="max-width: 300px;color: black; margin: 10px;margin-left: 30px" >
-               <i class="fa {{servicios.serviciointerno.icono}}" style="font-size: 1.2rem"></i> <div style="font-size: 1rem;display: inline-block;margin-left:10px">{{servicios.serviciointerno.nombre}}</div>
+                <div ng-if="servicios.estado=='true'" style="width: 130px;color: black;margin:0px 15px 25px 0px">
+                <i class="fa {{servicios.serviciointerno.icono}}" style="font-size: 1.2rem"></i> <div style="font-size: 1rem;display: inline-block;margin-left:10px">{{servicios.serviciointerno.nombre}}</div>
              </div>
            </div> 
             </div>

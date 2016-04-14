@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\habtipo_serviciointerno;
 
 class IconController extends Controller
 {
@@ -71,7 +72,9 @@ class IconController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $iconos = habtipo_serviciointerno::find($id);
+        $iconos->fill($request->all());
+        $iconos->save(); 
     }
 
     /**

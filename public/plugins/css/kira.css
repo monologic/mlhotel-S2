@@ -6,8 +6,49 @@
 	list-style-type: none;
 	list-style: none;
 }
+.cont-img{
+
+	display: block;
+	border: solid;
+	border-color: rgb(200,200,200);
+	border-width: 2px;
+	border-radius: 10px;
+	padding: 25px;
+	width: 80%;
+	margin: 20px auto 40px auto;
+}
+.btn-plusimg{
+	float: right;
+
+
+}
+.cont-btn{
+	border-bottom: solid;
+	border-color: rgb(200,200,200);
+	border-width: 2px;
+
+}
+.cont-icos{
+	width: 80%;
+	margin: 30px auto 20px;
+	border: solid;
+	border-width: 2px;
+	border-radius: 10px;
+	border-color: rgb(200,200,200);
+	padding: 30px 15px 15px 15px;
+	color: black;
+}
+´.btn-margin{
+	display: block;
+	width: 100%;
+	background-color: red;
+	border-top:solid;
+	border-width: 2px;
+	border-color: rgb(200,200,200); 
+}
+
 input[type=checkbox] {
-	display: none;
+	display: ;
 }
 input[type=checkbox] + label:before {
     content: "";  
@@ -19,13 +60,16 @@ input[type=checkbox] + label:before {
     background-color:white;  
     border: solid;
     border-width: 3px;
-    border-color: #4183D7;
+    border-color: white;
 
 }
 input[type=checkbox]:checked + label:before {
-    content:"\2714"; /* Tick */
-    color:#00B16A;
-    background-color: white; 
+    
+    width: 100px;
+    height: 10px;
+   	margin-bottom:-25px;
+    color:transparent;
+    background-color: blue; 
     text-align:center;
     font-size: 3rem;
     line-height:10px;

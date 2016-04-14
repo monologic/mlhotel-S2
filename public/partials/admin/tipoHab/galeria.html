@@ -3,19 +3,19 @@
 <div id="page-wrapper" ng-controller="habtipogalController" ng-init="gethabitacionG();" style="margin-top:80px">
 
 
-    <div ng-repeat="r in habfotos" style="width: 80%;margin: 0px auto 40px auto; color:black">
+    <div ng-repeat="r in habfotos" class="cont-icos">
        <label class="checkbox-inline" ng-repeat="servicios in r.habtipo_serviciointernos" style="margin-left:0px; margin-bottom: 60px;padding-top: 0">
         <div ng-if="servicios.estado=='true'">
-            <div style="text-align:left;width: 80px;margin-right:100px">
-                <input type="checkbox" id="{{servicios.serviciointerno.id}}" value="option1" checked="" style="margin-top: 20%">
+            <div style="text-align:left;width: 60px;margin-right:100px">
+                <input type="checkbox" id="{{servicios.serviciointerno.id}}" value="option1" checked="" style="margin-top: 20%;display: none">
                 <label for=""></label>
-                <i class="{{servicios.serviciointerno.icono}}" style="text-align: center;font-size:5rem;"></i>
+                <i class="{{servicios.serviciointerno.icono}}" style="text-align: center;font-size:5rem;z-index: 10px;"></i>
                 <div style="font-size: 1.2rem;text-align: center">{{servicios.serviciointerno.nombre}}</div>
             </div>
         </div>
         <div ng-if="servicios.estado=='false'">
-            <div style="text-align:left;width: 80px;margin-top: 0px;margin-right:100px">
-                <input type="checkbox" id="{{servicios.serviciointerno.id}}" value="option1" style="margin-top: 20%">
+            <div style="text-align:left;width: 60px;margin-top: 0px;margin-right:100px">
+                <input type="checkbox" id="{{servicios.serviciointerno.id}}" value="option1" style="margin-top: 20%;display: none">
                 <label for=""></label>
                 <i class="{{servicios.serviciointerno.icono}}" style="text-align: center;font-size:5rem;"></i>
                 <div style="font-size: 1.2rem;text-align: center">{{servicios.serviciointerno.nombre}}</div>
@@ -23,19 +23,28 @@
         </div>
           
         </label>
-        <br>
-        <a href="" ng-click="GuardarIcon()" type="submit" class="btn btn-primary"> Guardar Cambios</a>
+        <div class="btn-margin">
+            <a href="" ng-click="GuardarIcon()" type="submit" class="btn btn-primary"> Guardar Cambios</a>
+        </div>
+        
     </div>
 
+    <div class="cont-img">
+        <div class="cont-btn">
+            <a href="" class="btn btn-primary btn-plusimg" data-toggle="modal" data-target="#editar"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>  Agregar Imagen</a><br><br>
+        </div>
+        
 
-	<a href="" class="btn btn-primary" style="margin-left:12%;" data-toggle="modal" data-target="#editar"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>  Agregar Imagen</a><br><br>
-	<section class="cont-foto center-block"   > {{x.nombre}}
-		<div class="galeria-f" ng-repeat="x in habfotos">
-			<a href="" class="btn-x " ><span class="glyphicon glyphicon-remove"></span></a>
-			<img src="imagen/habitaciones/galeria/{{x.foto}}"  style="width:100%;border-radius: 10px;">
-		</div>
-		
-	</section>
+        <section class="center-block">
+            <div class="galeria-f" ng-repeat="x in habfotos" style="width: 90%">
+                <div ng-repeat="a in x.habtipofotos" style="width: 180px;height: 150px;display: inline-block;margin: 20px 20px 20px 20px">
+                    <a class="btn btn-success" style="display: block;position: absolute;">x</a>
+                    <img src="imagen/habitaciones/galeria/{{a.foto}}" style="width: 100%;" >
+                </div>
+            </div>  
+        </section>
+    </div>
+	
 
 <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarModal">
         <div class="modal-dialog" role="document">

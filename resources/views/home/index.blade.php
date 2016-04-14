@@ -78,6 +78,7 @@
   
 </div>
  <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
+
  <footer class="page-footer black">
           <div class="container">
             <div class="row">
@@ -87,14 +88,14 @@
                  <a class="btn-floating btn-large waves-effect waves-light blue" style="margin-right:20px"><i class="fa fa-twitter"></i></a>
                  <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
               </div>
-              <div class="col l4 offset-l2 s12 white-text">
+              <div class="col l4 offset-l2 s12 white-text" ng-controller="hotelController" ng-init="getHotelesF();">
                 </div>
                 <h5 class="white-text">Informacion</h5>
-                <p style="font-size:0.9rem;margin-top:5px;">Calle Cuzco Nº 454 / Moquegua - Perú</p>
-                <p style="font-size:0.9rem;margin-top:5px;">E-mail: reservas@residencialmoquegua.com</p>
-                <p style="font-size:0.9rem;margin-top:5px;">Telf.: 46-2316</p>
-                <p style="font-size:0.9rem;margin-top:5px;">Cel. Movistar 953970565 </p>
-                <p style="font-size:0.9rem;margin-top:5px;">Rpm #953970565.</p>
+                <p style="font-size:0.9rem;margin-top:5px;color:white;">{{infos.ciudad}}</p>
+                <p style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: reservas@residencialmoquegua.com</p>
+                <p style="font-size:0.9rem;margin-top:5px;color:white;">Telf.: 46-2316</p>
+                <p style="font-size:0.9rem;margin-top:5px;color:white;">Cel. Movistar 953970565 </p>
+                <p style="font-size:0.9rem;margin-top:5px;color:white;">Rpm #953970565.</p>
             </div>
           </div>
           <div class="footer-copyright">

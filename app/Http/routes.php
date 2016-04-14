@@ -28,6 +28,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('habtipoF', 'habtipogaleryController');
 	Route::resource('habitacion', 'HabitacionController');
 	Route::resource('registro', 'RegistroController');
+	Route::resource('icono', 'IconController');
+
 
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');

@@ -50,16 +50,15 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="p in habtipo.habitaciones">
-                        
                         <td>{{p.numero}}</td>
                         <td>{{p.estado.nombre}}</td>
                         <td>{{p.habtipo.nombre}}</td>
                         <td>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox" id="{{ p.numero }}" ng-change="clickOnCheck(p);" ng-model="checks" class="checks" style="left: 45%">
-                              </label>
-                            </div>
+                            
+                              
+                                <input type="checkbox" id="{{ p.numero }}" ng-change="clickOnCheck(p);" ng-model="checks" class="checks" style="left:45%">
+                              
+                            
                         </td>
                       </tr>
                 </tbody>

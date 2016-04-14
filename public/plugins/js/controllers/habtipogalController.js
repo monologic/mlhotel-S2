@@ -29,11 +29,17 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             for (var i = 0; i < iconos.length; i++) {
                 if ($('#'+iconos[i].id).prop('checked'))
                     iconos[i].estado='true';
-            $http.put('admin/gethabitaciones/'+IdHab).then(function successCallback(response) {
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
+                else
+                    iconos[i].estado='false';
+                $http.put('admin/icono/'+iconos[i].id,{   
+                    'serviciointerno_id':iconos[i].serviciointerno_id,
+                    'habtipo_id':iconos[i].habtipo_id,
+                    'estado':iconos[i].estado
+                    }).then(function successCallback(response) {
+                    }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
             }          
         }
 
