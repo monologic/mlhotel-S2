@@ -90,4 +90,15 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+    $scope.finalizar = function (id) {
+        $http.get('admin/finalizarRegistro/' + id).then(function successCallback(response) {
+            
+            alert("Se ha finalizado la estadía...");
+            $location.url(response.data.mensaje);
+            
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 });

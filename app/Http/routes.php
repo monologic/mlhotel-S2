@@ -53,9 +53,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::post('dataEditarHotel', 'HotelController@dataEditar');
 
 	Route::post('buscarPersonal', 'PersonalController@buscar');
-	
-
-
+	Route::get('finalizarRegistro/{idRegistro}', 'RegistroController@finalizar');
 });
 	Route::get('admin/getBanners', 'bannerController@getBanners');
 	Route::get('admin/getBanners2', 'bannerController@getBanners2');

@@ -63,7 +63,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/ReservaAsignar/:idReserva", {templateUrl: "partials/reserva/asignar.html", controller: "PageCtrl"})
     .when("/DetalleHabitaciones", {templateUrl: "partials/habitacion/detalleHabitacion.html", controller: "PageCtrl"})
     .when("/detalleHabitacion/:idRegistro", {templateUrl: "partials/registro/detalle.html", controller: "PageCtrl"})
-
+    .when("/terminarRegistro/:idRegistro", {templateUrl: "partials/registro/terminar.html", controller: "PageCtrl"})
 
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});

@@ -23,7 +23,7 @@
                 <td ng-if="(x.registro).length == 0 ">
                 </td>
                 <td ng-if="(x.registro.regclientes).length > 0 ">
-                    <a href="" class="btn btn-success">Ver</a>
+                    <a href="admin#/terminarRegistro/{{x.registro.id}}" class="btn btn-success">Ver</a>
                 </td>
                 <td ng-if="(x.registro.regclientes).length == 0 ">
                     <a href="admin#/detalleHabitacion/{{x.registro.id}}" class="btn btn-warning">Ver (Completar Datos)</a>

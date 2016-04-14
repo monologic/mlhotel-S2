@@ -181,4 +181,21 @@ class RegistroController extends Controller {
 
         return response()->json($registro);
     }
+    public function finalizar($id)
+    {
+        $registro = Registro::find($id);
+    
+        $registro->fechasalida = date("Y-m-d H:i:s");
+        $registro->save();
+
+        $registro->habitacion;
+
+        $hab = Habitacion::find($registro->habitacion->id);
+        $hab->estado_id = 1;
+        $hab->save();
+
+        return response()->json([
+            "mensaje" => 'Admin#/Habitaciones'
+        ]);
+    }
 }
