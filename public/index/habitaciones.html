@@ -2,32 +2,49 @@
   document.title = "Habitaciones - Residencial Moquegua";
 </script>
 <h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
-  <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
+  <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();ponerFecha();" style="min-height:300px;top:20px">
 
 
     <div>
       <form class="row">
                   <div class="input-field col s12 m3">
-                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
-                      <input type="date" class="datepicker" id="today" min="04-02-2016">
+                      <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
+                      <input type="date"  id="fechaini" ng-model="fechaini" min="04-02-2016">
                       
                   </div>
                   <div class="input-field col s12 m3">
-                      <input type="date" class="datepicker">
-                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
+                      <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar"></i> Fecha Salida</p>
+                      <input type="date"  id="fechafin" ng-model="fechafin">
+                      
                   </div>
                   <div class="row">
-                    <div class="input-field col s6 m3">
-                      <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
-                      <input id="icon_prefix" type="text" >
-                      
+                     <div class="input-field col s12 m3">
+                        <select>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                        </select>
+                        <label style="font-size: 1rem"><i class="fa fa-male" aria-hidden="true" ></i> Adultos</label>
                     </div>
-                    <div class="input-field col s6 m3">
-                      <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
-                      <input id="icon_telephone" type="text">  
+                    <div class="input-field col s12 m3">
+                        <select>
+                          <option value="">-</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                        </select>
+                        <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i> Niños</label>
                     </div>
                   </div>
-                  <a class="waves-effect black btn"><i class="material-icons left">search</i>Buscar</a>
+                  <a class="waves-effect black btn" ng-click="buscar();"><i class="material-icons left">search</i>Buscar</a>
                 </div>
       </form>
     </div>
@@ -58,6 +75,9 @@
       </div>
     </div> 
 <script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
    $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year

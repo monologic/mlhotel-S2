@@ -91,7 +91,7 @@
               <div class="col l4 offset-l2 s12 white-text" ng-controller="hotelController" ng-init="getHotelesF();">
                 </div>
                 <h5 class="white-text">Informacion</h5>
-                <p style="font-size:0.9rem;margin-top:5px;color:white;">{{infos.ciudad}}</p>
+                <p style="font-size:0.9rem;margin-top:5px;color:white;"></p>
                 <p style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: reservas@residencialmoquegua.com</p>
                 <p style="font-size:0.9rem;margin-top:5px;color:white;">Telf.: 46-2316</p>
                 <p style="font-size:0.9rem;margin-top:5px;color:white;">Cel. Movistar 953970565 </p>
@@ -135,7 +135,9 @@
     <script src="plugins/js/controllers/habtipogalController.js"></script>
     <script src="plugins/js/controllers/hotelController.js"></script>
     <script src="plugins/js/controllers/serviciosController.js"></script>
-  
+    <script src="plugins/js/controllers/buscarController.js"></script>
+
+
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 
    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>

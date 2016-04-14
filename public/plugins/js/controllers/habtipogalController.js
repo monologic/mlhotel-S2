@@ -27,8 +27,10 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
 
     $scope.GuardarIcon= function () { 
             for (var i = 0; i < iconos.length; i++) {
-                if ($('#'+iconos[i].id).prop('checked'))
+                if ($('#'+iconos[i].id).prop('checked')){
+                    alert('entro')
                     iconos[i].estado='true';
+                }
                 else
                     iconos[i].estado='false';
                 $http.put('admin/icono/'+iconos[i].id,{   
