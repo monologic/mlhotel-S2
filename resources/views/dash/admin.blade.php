@@ -70,11 +70,8 @@
                 </ul>
                 <!-- Submenu 2 -->
                 <ul data-menu="submenu-2" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Citrus Fruits</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Berries</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Tropical Fruits</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Melons</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Buscar</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Registrados</a></li>
                 </ul>
                 <!-- Submenu 2-1 -->
                 <ul data-menu="submenu-2-1" class="menu__level">

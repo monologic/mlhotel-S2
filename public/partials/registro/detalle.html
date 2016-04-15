@@ -1,17 +1,22 @@
-<div id="page-wrapper" ng-controller="registroController" ng-init="buscarRegistro();" style="width: 90%;margin:20px auto 100px auto">
-<br><br><br>
-	<div class="row">
-		<div class="col-sm-12">
-			<h1>Detalles de Habitación</h1>
-			<p>Número de habitación : {{ registro.habitacion.numero }}</p>
-			<p>Fecha Entrada : {{ registro.fechaentrada }}</p>
-			<p>Fecha Salida : {{ registro.fechasalida }}</p>
-
+<div id="page-wrapper" ng-controller="registroController" ng-init="buscarRegistro();" style="width: 90%;margin:40px auto 100px auto;color: black">
+	<br><br><br>
+	<div class="row" style="top: 20px">
+		<h1 class="tit2">Detalles de Habitación</h1><br>
+		<div style="margin-left: 20px;">Habitación : {{ registro.habitacion.numero }}</div><br>
+		<div class="col-sm-12 col-md-4 infos">
+			<p>Fecha Entrada :</p>
+			<p style="margin-left: 35px">{{ registro.fechaentrada }}</p>
+		</div>
+		<div class="col-sm-12 col-md-4 infos">
+			<p>Fecha Salida :</p>
+			<p style="margin-left: 35px">{{ registro.fechasalida }}</p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-12 col-md-7 cont-hues">
 			<h3>Huéspedes</h3>
+			<div class="separador"></div>
+			<a  class="btn btn-success" onclick="sal()" style="margin-top:-40px;float: right"><i class="glyphicon glyphicon-plus"></i></a>
 			<table>
 				<tr ng-repeat="huesped in registro.regclientes">
 					<td>{{huesped.cliente.nombres}}</td>
@@ -19,4 +24,90 @@
 			</table>
 		</div>
 	</div>
+	<object class="addcliente" id="caja">
+		<div style="display:block;background-color: #4183D7;height: 50px;padding: 15px">
+			<div class="text-center" style="display: block;font-size: 1.5rem;font-weight: bold;color: white;">Registro de Huespedes</div>
+		</div>
+		
+		<div class="form-registro">
+			<br>
+			<div class="form-group">
+				<label for="exampleInputEmail1">DNI</label>
+				<div class="form-inline" style="width: 100%">
+					<input type="text" class="form-control" id="" placeholder="Documento de Indentidad" ng-model="DNI">
+			    	<a class="btn btn-success"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></a>
+				</div>
+			    
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Nombres</label>
+			    <input type="text" class="form-control" id="" placeholder="Nombres del cliente" ng-model="nombre">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Apellido</label>
+			    <input type="text" class="form-control" id="" placeholder="Apellidos del cliente" ng-model="apellido">
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			    Hombre
+			  </label>
+			   <label>
+			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" >
+			    Mujer
+			  </label>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Fecha de Nacimiento</label>
+			    <input type="date" class="form-control" id="" ng-model="fechan">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Estado Civil</label>
+			    <input type="text" class="form-control" id="" placeholder="Estado civil" ng-model="estadoCivil">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Pais</label>
+			    <input type="text" class="form-control" id="" placeholder="Pais" ng-model="pais">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Ciudad</label>
+			    <input type="text" class="form-control" id="" placeholder="Ciudad" ng-model="ciudad">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Procedencia</label>
+			    <input type="text" class="form-control" id="" placeholder="Pais/Ciudad de Procedencia del cliente" ng-model="procedencia">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Destino</label>
+			    <input type="text" class="form-control" id="" placeholder="Destino final" ng-model="destino">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Celular</label>
+			    <input type="text" class="form-control" id="" placeholder="Telefono movil" ng-model="celular">
+			</div>
+			<br>
+			<a  class="btn btn-primary center-block">+ Agregar</a>
+			<br>
+		</object>
+
+	
+	<br>
+	<a href="" class="btn btn-primary">Guardar Cambios</a>
 </div>
+
+<script>
+	var clic = 1;
+    function sal(){ 
+    if(clic==1){
+       document.getElementById("caja").style.width = "350px";
+       document.getElementById("caja").style.transition = "all 1s";
+       clic = clic + 1;
+    } else
+    {
+       document.getElementById("caja").style.width = "0px"; 
+       document.getElementById("caja").style.transition = "all 1s";     
+       clic = 1;
+   }   
+}
+</script>
