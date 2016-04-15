@@ -88,7 +88,10 @@ app.controller('habtipoController', function($scope,$http,$location) {
     $scope.buscar = function () {
         $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             $scope.tipoPerHabs = response.data;
-            //ordenarPorTipo(response.data);
+
+            $scope.mayor
+            $scope.menor
+
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

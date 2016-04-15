@@ -15,6 +15,9 @@ use App\Habtipo;
 use App\Reserva;
 use App\Habtiporeserva;
 
+use App\Serviciointerno;
+use App\Habtipo_serviciointerno;
+
 use DB;
 
 class RegistroController extends Controller {
@@ -64,6 +67,17 @@ class RegistroController extends Controller {
         $habs = $habs->toArray();
 
         $habtipos = Habtipo::all();
+
+        $habtipos->each(function($habtipos){
+            $iconos=$habtipos->habtipo_serviciointernos;
+            $habtipos->habtipo_serviciointernos->each(function($iconos){
+                $iconos->serviciointerno;
+            });
+
+        });
+
+
+
         $habtipos = $habtipos->toArray();
 
         foreach ($habs as $key => $hab) {

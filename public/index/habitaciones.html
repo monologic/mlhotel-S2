@@ -1,6 +1,7 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script>
+
 <h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
   <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();ponerFecha();" style="min-height:300px;top:20px">
 
@@ -44,11 +45,11 @@
                         <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i> Niños</label>
                     </div>
                   </div>
-                  <a class="waves-effect black btn" ng-click="buscar();"><i class="material-icons left">search</i>Buscar</a>
+                  <a class="waves-effect black btn" onclick="esconder();" ng-click="buscar();"><i class="material-icons left">search</i>Buscar</a>
                 </div>
       </form>
     </div>
-    <div class="row wow fadeInUp card" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+    <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
 
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" style="width:100%">
@@ -74,6 +75,40 @@
         
       </div>
     </div> 
+
+    <!-- Busqueda de habitaciones div none -->
+
+    <div  class="row wow fadeInUp card busquedas" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+
+      <div class="col s12 m4 l4 " style="padding:10px">
+        <img src="imagen/habitaciones/{{y.foto}}" style="width:100%">
+      </div>
+      <div class="col s12 m6 l6 ">
+          <div class="black-text" style="padding-top:5px">
+            <p class="cart-titulo">{{y.nombre}}</p>
+            <p class="cart-contenido">{{y.descripcion}}</p>
+          </div>
+          <div class="separador"></div>
+          <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
+              <div ng-if="servicio.estado=='true'">
+                <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i></div>
+              </div>
+          </div>
+      </div>
+      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+        <div>
+          <p>Disponibilidad:</p>
+          <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
+          <p class="cart-precio">Desde</p>
+          <p class="cart-precio" style="font-size:1rem">S/. {{y.precio}} </p>
+          <a class="waves-effect btn black">reservar</a>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Termino -->
+
 <script>
   $(document).ready(function() {
     $('select').material_select();
@@ -85,7 +120,9 @@
    
 </script>
 <script>
-  
+  function esconder(){
+    $('.hab').css({'display':'none'});
+  }
 </script>
           <!--
           {{y.nropersonas}}          
