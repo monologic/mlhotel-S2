@@ -184,16 +184,22 @@ class HotelController extends Controller
         $empleado->fill($request->all());
         $empleado->save();
 
+        $u = Usuario::where('empleado_id', $empleado->id)->get();
+
+        if ($u->count() > 0) {
+            $user = Usuario::find($u[0]->id);
+            $user->delete();
+            //dd("Eliminando");
+        }
+        
         $usuario = new Usuario();
         $usuario->empleado_id = $empleado->id;
         $usuario->usuario = $this->crearUsuario($empleado->nombres, $empleado->apellidos);
         $usuario->password = bcrypt($empleado->dni);
         $usuario->usuariotipo_id = $this->getIdTipoUsuarioAdminHotel();
         $usuario->save();
-
-
+        
         $res = $this->getHoteles();
-
         return $res;
     }
 
