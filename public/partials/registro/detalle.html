@@ -17,10 +17,21 @@
 			<h3>Huéspedes</h3>
 			<div class="separador"></div>
 			<a  class="btn btn-success" onclick="sal()" style="margin-top:-40px;float: right"><i class="glyphicon glyphicon-plus"></i></a>
-			<table>
-				<tr ng-repeat="huesped in registro.regclientes">
-					<td>{{huesped.cliente.nombres}}</td>
-				</tr>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="huesped in regClientes">
+						<td>{{huesped.cliente.nombres}} {{huesped.cliente.apellidos}}</td>
+						<td>
+							<a href="" class="btn btn-warning" ng-click="eliminarHuesped(huesped.id);">X</a>
+						</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
@@ -34,19 +45,19 @@
 			<div class="form-group">
 				<label for="exampleInputEmail1">DNI</label>
 				<div class="form-inline" style="width: 100%">
-					<input type="text" class="form-control" id="" placeholder="Documento de Indentidad" ng-model="DNI">
-			    	<a class="btn btn-success"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></a>
+					<input type="text" class="form-control" id="" placeholder="Documento de Indentidad" ng-model="dni">
+			    	<a class="btn btn-success" ng-click="buscarHuesped();"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></a>
 				</div>
 			    
 			</div>
 			<br>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Nombres</label>
-			    <input type="text" class="form-control" id="" placeholder="Nombres del cliente" ng-model="nombre">
+			    <input type="text" class="form-control" id="" placeholder="Nombres del cliente" ng-model="nombres">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Apellido</label>
-			    <input type="text" class="form-control" id="" placeholder="Apellidos del cliente" ng-model="apellido">
+				<label for="exampleInputEmail1">Apellidos</label>
+			    <input type="text" class="form-control" id="" placeholder="Apellidos del cliente" ng-model="apellidos">
 			</div>
 			<div class="radio">
 			  <label>
@@ -60,7 +71,7 @@
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Fecha de Nacimiento</label>
-			    <input type="date" class="form-control" id="" ng-model="fechan">
+			    <input type="date" class="form-control" id="" ng-model="fechanac">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Estado Civil</label>
@@ -86,9 +97,16 @@
 				<label for="exampleInputEmail1">Celular</label>
 			    <input type="text" class="form-control" id="" placeholder="Telefono movil" ng-model="celular">
 			</div>
-			<br>
-			<a  class="btn btn-primary center-block">+ Agregar</a>
-			<br>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Profesión u Ocupación</label>
+			    <input type="text" class="form-control" id="" placeholder="Telefono movil" ng-model="prof_ocup">
+			</div>
+			<div class="form-group" ng-if="huesped == 'false'">
+				<a class="btn btn-primary center-block" ng-click="nuevoHuesped();">+ Agregar</a>
+			</div>
+			<div class="form-group" ng-if="huesped == 'true'">
+				<a class="btn btn-primary center-block" ng-click="editarHuesped();">+ Agregar</a>
+			</div>
 		</object>
 
 	

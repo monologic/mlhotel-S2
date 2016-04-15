@@ -101,4 +101,107 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+    $scope.buscarHuesped = function () {
+        $http.get('admin/buscarHuesped/' + $scope.dni).then(function successCallback(response) {
+            
+            if ((response.data).length > 0){
+                $scope.huesped = 'true';
+
+                $scope.idHuesped = response.data[0].id; 
+                $scope.nombres = response.data[0].nombres;
+                $scope.apellidos = response.data[0].apellidos;
+                $scope.fechanac = response.data[0].fecha_nac;
+                $scope.pais = response.data[0].pais;
+                $scope.ciudad = response.data[0].ciudad;
+                $scope.celular = response.data[0].celular;
+                $scope.prof_ocup = response.data[0].prof_ocup;
+
+            }
+            else{
+                alert("No se encontró el Cliente")
+                $scope.huesped = 'false';
+            }
+
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
+    $scope.nuevoHuesped = function () {
+        $http.post('admin/cliente',
+            {   'nombres':$scope.nombres,
+                'apellidos':$scope.apellidos,
+                'sexo':$('#sexo').val(),
+                'fecha_nac':$scope.fechanac,
+                'dni':$scope.dni,
+                'pais':$scope.pais,
+                'ciudad':$scope.ciudad,
+                'procedencia':$scope.procedencia,
+                'estado_civil':$scope.estadoCivil,
+                'destino':$scope.destino,
+                'prof_ocup':$scope.prof_ocup,
+                'celular':$scope.celular,
+                'registro_id':$scope.registro.id,
+                
+            }).then(function successCallback(response) {
+                
+                $scope.regClientes = response.data;
+
+                $scope.nombres = "";
+                $scope.apellidos = "";
+                $scope.fechanac = "";
+                $scope.pais = "";
+                $scope.ciudad = "";
+                $scope.celular = "";
+                $scope.prof_ocup = "";
+                $scope.procedencia = "";
+                $scope.destino = "";
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            }); 
+    }
+    $scope.editarHuesped = function () {
+        $http.put('admin/cliente/' + $scope.idHuesped,
+            {   'nombres':$scope.nombres,
+                'apellidos':$scope.apellidos,
+                'sexo':$('#sexo').val(),
+                'fecha_nac':$scope.fechanac,
+                'dni':$scope.dni,
+                'pais':$scope.pais,
+                'ciudad':$scope.ciudad,
+                'procedencia':$scope.procedencia,
+                'estado_civil':$scope.estadoCivil,
+                'destino':$scope.destino,
+                'prof_ocup':$scope.prof_ocup,
+                'celular':$scope.celular,
+                'registro_id':$scope.registro.id,
+                
+            }).then(function successCallback(response) {
+                
+                $scope.regClientes = response.data;
+
+                $scope.nombres = "";
+                $scope.apellidos = "";
+                $scope.fechanac = "";
+                $scope.pais = "";
+                $scope.ciudad = "";
+                $scope.celular = "";
+                $scope.prof_ocup = "";
+                $scope.procedencia = "";
+                $scope.destino = "";
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });   
+    }
+    $scope.eliminarHuesped = function (id) {
+        $http.delete( 'admin/regClienteEliminar/'+id ).then(function successCallback(response) {
+            $scope.regClientes = response.data;
+        }, function errorCallback(response) {
+            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+        });
+    }
 });

@@ -29,7 +29,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('habitacion', 'HabitacionController');
 	Route::resource('registro', 'RegistroController');
 	Route::resource('icono', 'IconController');
-
+	Route::resource('cliente', 'ClienteController');
+	Route::resource('regcliente', 'RegclienteController');
 
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
@@ -47,6 +48,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	
 	Route::get('getReserva/{idReserva}', 'ReservaController@getReserva');
 	Route::get('buscarRegistro/{idRegistro}', 'RegistroController@getRegistro');
+
+	Route::get('buscarHuesped/{dni}', 'ClienteController@buscarHuesped');
 	
 	Route::post('crearAdminHotel', 'HotelController@crearAdminHotel');
 	Route::post('guardarAdminHotel', 'HotelController@guardarAdminHotel');
@@ -54,6 +57,9 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::post('buscarPersonal', 'PersonalController@buscar');
 	Route::get('finalizarRegistro/{idRegistro}', 'RegistroController@finalizar');
+
+	Route::delete('regClienteEliminar/{id}', 'ClienteController@eliminarRegCliente');
+
 });
 	Route::get('admin/getBanners', 'bannerController@getBanners');
 	Route::get('admin/getBanners2', 'bannerController@getBanners2');
