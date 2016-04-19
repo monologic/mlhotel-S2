@@ -78,6 +78,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::post('admin/ServiceCreateCategory', 'categoriaController@ServiceCreateforCategory');
 	Route::get('admin/getServicios', 'categoriaController@getServices');
 
+
 	
 	Route::get('admin/gethabitaciones/{id}', ['uses' => 'habtipoController@getHabitaciones', function ($id) {}]);
 	Route::get('admin/CategoriaServicio/{id}', ['uses' => 'categoriaController@getServicesompletoC', function ($id) {}]);
@@ -106,7 +107,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
+    Route::post('service/carrito', 'carritoController@addCarrito');
+    Route::get('service/micar', 'carritoController@getCar');
     Route::get('/home', 'HomeController@index');
 });
 

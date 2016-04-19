@@ -1,15 +1,36 @@
+
 @import url(https://fonts.googleapis.com/css?family=Niconne);
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 #caja{
+display: block;
  position: fixed;
- background-color: red;
+ background-color: white;
  width: 300px;
  margin: auto;
- height: 0px;
- top:0;
- right: 0;
+ margin-top:18px;
+ right: -400px;
  z-index: 202;
-  transition: height .4s;
+  transition: all .4s;
+  color: black
+}
+thead{
+	font-size: 1rem;
+}
+tbody{
+	font-size: 0.9rem;
+}
+.title-reser{
+	display:block;
+	height: 40px;
+	padding: 10px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: white;
+	top:0; 
+	text-align: center;
+}
+td{
+	margin-right: 20px;
 }
 .separador-index{
 	width: 100%;

@@ -28,7 +28,8 @@ app.controller('hotelController', function($scope,$http) {
 
      $scope.getHotelesF = function () {
         $http.get('/getHotelF').then(function successCallback(response) {
-            $scope.infos = response.data[0];
+            $scope.infos = response.data;
+            console.log($scope.infos);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

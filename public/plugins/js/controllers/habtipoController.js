@@ -97,4 +97,32 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
     }
+     $scope.enviarhab = function (data) {
+        $http.post('service/carrito',
+            {
+                'id':data.id,
+                'nombre':data.nombre,
+                'capacidad':data.nropersonas,
+                'precio':data.precio
+
+            }).then(function successCallback(response) {
+                $scope.res();
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+    $scope.res = function () {
+        $http.get('service/micar',
+            {
+                
+            }).then(function successCallback(response) {
+                $scope.car=response.data;
+                console.log($scope.car);
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+
 });

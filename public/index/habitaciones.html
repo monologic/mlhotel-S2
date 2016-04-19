@@ -3,7 +3,7 @@
 </script>
 
 <h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
-  <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();ponerFecha();" style="min-height:300px;top:20px">
+  <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
 
 
     <div>
@@ -21,6 +21,7 @@
                   <div class="row">
                      <div class="input-field col s12 m3">
                         <select>
+                          <option value="nada"></option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -33,7 +34,7 @@
                     </div>
                     <div class="input-field col s12 m3">
                         <select>
-                          <option value="">-</option>
+                          <option value=""></option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -56,8 +57,9 @@
       </div>
       <div class="col s12 m6 l6 ">
           <div class="black-text" style="padding-top:5px">
-            <p class="cart-titulo">{{y.nombre}}</p>
+            <p class="cart-titulo" id="nombre">{{y.nombre}}</p>
             <p class="cart-contenido">{{y.descripcion}}</p>
+            <p class="cart-contenido"  style="display: none">{{y.nropersonas}}</p>
           </div>
           <div class="separador"></div>
           <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
@@ -69,8 +71,8 @@
       <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
         <div>
           <p class="cart-precio">Desde</p>
-          <p class="cart-precio" style="font-size:1rem">S/. {{y.precio}} </p>
-          <a class="waves-effect btn black">reservar</a>
+          <p class="cart-precio" id="precio"   style="font-size:1rem">S/. {{y.precio}} </p>
+          <a class="waves-effect btn black" onclick="Materialize.toast('Completa los datos y Busca :)', 4000)">reservar</a>
         </div>
         
       </div>
@@ -85,8 +87,9 @@
       </div>
       <div class="col s12 m6 l6 ">
           <div class="black-text" style="padding-top:5px">
-            <p class="cart-titulo">{{y.nombre}}</p>
-            <p class="cart-contenido">{{y.descripcion}}</p>
+            <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
+            <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
+            <p class="cart-contenido"  style="display: none"  id="capacidad" ng-model="capacidad">{{y.nropersonas}}</p>
           </div>
           <div class="separador"></div>
           <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
@@ -100,8 +103,8 @@
           <p>Disponibilidad:</p>
           <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
           <p class="cart-precio">Desde</p>
-          <p class="cart-precio" style="font-size:1rem">S/. {{y.precio}} </p>
-          <a class="waves-effect btn black">reservar</a>
+          <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
+          <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
         </div>
         
       </div>

@@ -64,21 +64,53 @@
       </div>
     </nav>
   </div>
- 
-</div>      
-<br>
-<div id="caja">
-
-  <form>
-    <table>
-      
-    </table>
-    <a href="" type="submit" value:Reservar></a>
-  </form>
-  
 </div>
- <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
+<div id="caja"  ng-controller="habtipoController" ng-init="res();">
+  <div class="title-reser teal lighten-2">Mis Reservas</div>
+  <div style=";width: 80%;margin:40px auto 20px auto">
+    <table class="">
+      <thead>
+        <tr>
+          <th data-field="nombre">Habitacion</th>
+          <th data-field="cant" width="80px">Cant.</th>
+          <th data-field="precio">Precio</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr ng-repeat="r in car.items">
+          <td>@{{r.nombre}}</td>
+          <td width="80px">
+          <div class="input-field" style="width: 30px;">
+            <select>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="3">4</option>
+              <option value="3">5</option>
+              <option value="3">6</option>
+            </select>
+          </div>
+        </td>
+          <td>@{{r.precio}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_cart">
+                    <input type="hidden" name="upload" value="1">
+                    <input type="hidden" name="business" value="chalex_777@hotmail.com">
+                    <div id="productos_carrito">
+                        <input type="hidden" name="item_name" value="Item Name">
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="hidden" name="amount" value="0.00">
+                    </div>
 
+      <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
+    </form>
+  </div>
+</div>      
+ <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
  <footer class="page-footer black">
           <div class="container">
             <div class="row">
@@ -89,13 +121,14 @@
                  <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
               </div>
               <div class="col l4 offset-l2 s12 white-text" ng-controller="hotelController" ng-init="getHotelesF();">
+                <div >
+                  <h5 class="white-text">Informacion</h5>
+                  <p style="font-size:0.9rem;margin-top:5px;color:white;" >@{{infos.nombre}}</p>                 
+                  <p style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: @{{infos.correo}}</p>
+                  <p style="font-size:0.9rem;margin-top:5px;color:white;">Telf.: @{{infos.telefono}}</p>
+                  <p style="font-size:0.9rem;margin-top:5px;color:white;">@{{infos.ciudad}}</p>
                 </div>
-                <h5 class="white-text">Informacion</h5>
-                <p style="font-size:0.9rem;margin-top:5px;color:white;"></p>
-                <p style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: reservas@residencialmoquegua.com</p>
-                <p style="font-size:0.9rem;margin-top:5px;color:white;">Telf.: 46-2316</p>
-                <p style="font-size:0.9rem;margin-top:5px;color:white;">Cel. Movistar 953970565 </p>
-                <p style="font-size:0.9rem;margin-top:5px;color:white;">Rpm #953970565.</p>
+              </div>
             </div>
           </div>
           <div class="footer-copyright">
@@ -104,6 +137,7 @@
             </div>
           </div>
         </footer>   
+
      <!-- Llamado a angular-->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
@@ -136,7 +170,7 @@
     <script src="plugins/js/controllers/hotelController.js"></script>
     <script src="plugins/js/controllers/serviciosController.js"></script>
     <script src="plugins/js/controllers/buscarController.js"></script>
-
+    <script src="plugins/js/controllers/carritoController.js"></script>
 
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 
@@ -168,10 +202,13 @@
       var clic = 1;
       function divLogin(){ 
          if(clic==1){
-         document.getElementById("caja").style.height = "100px";
+         document.getElementById("caja").style.height = "100%";
+         document.getElementById("caja").style.right = "0";
+         document.getElementById("caja").style.transition = "all 0.4s";
          clic = clic + 1;
          } else{
-             document.getElementById("caja").style.height = "0px";      
+             document.getElementById("caja").style.right = "-400px";  
+             document.getElementById("caja").style.transition = "all 0.4s";    
           clic = 1;
          }   
       }
