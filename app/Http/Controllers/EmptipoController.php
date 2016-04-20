@@ -58,7 +58,7 @@ class EmptipoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -69,7 +69,7 @@ class EmptipoController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -81,7 +81,11 @@ class EmptipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $emptipo = Emptipo::find($id);
+        $emptipo->fill($request->all());
+        $emptipo->save();
+
+        return $this->getEmptipos();
     }
 
     /**
@@ -92,7 +96,9 @@ class EmptipoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Emptipo::destroy($id);
+
+        return $this->getEmptipos();
     }
 
    

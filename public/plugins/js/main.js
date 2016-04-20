@@ -22,6 +22,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         Rutas relacionadas a empleados
     */
     .when("/Cargos/crear", {templateUrl: "partials/emptipo/crear.html", controller: "PageCtrl"})
+    .when("/Cargos/ver", {templateUrl: "partials/emptipo/ver.html", controller: "PageCtrl"})
     
     .when("/Empleados/crear", {templateUrl: "partials/empleado/crear.html", controller: "PageCtrl"})
     

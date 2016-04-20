@@ -46,6 +46,8 @@
             <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
             <div class="menu__wrap">
                 <ul data-menu="main" class="menu__level">
+
+                @if (Auth::user()->usuariotipo->nombre!="Root")
                     <li class="menu__item"><a class="menu__link"  href="#/Reservas">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
@@ -54,9 +56,10 @@
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Usuarios</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-7" href="#">Empleado</a></li>
 
-                     @if (Auth::user()->usuariotipo->nombre=="Root")
+                @endif
+                    @if (Auth::user()->usuariotipo->nombre=="Root")
 
-                        <li class="menu__item"><a class="menu__link" data-submenu="submenu-8" href="#">Adminstrador</a></li>
+                        <li class="menu__item"><a class="menu__link" data-submenu="submenu-8" href="#">Administrador</a></li>
 
                     @endif
                 </ul>
@@ -66,7 +69,7 @@
                     <li class="menu__item"><a class="menu__link" href="#/Empleados/crear">Crear Empleado</a></li>
                     <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
                     <li class="menu__item"><a class="menu__link" href="#">Ver Cargos</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Cargos/crear">Crear Cargo</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
                 </ul>
                 <!-- Submenu 2 -->
                 <ul data-menu="submenu-2" class="menu__level">
@@ -122,7 +125,7 @@
                     <li class="menu__item"><a class="menu__link" href="#/LisServicios">Servicios</a></li>
                     <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Cargos/crear">Crear Cargos</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Empleados">Empleados y Usuarios</a></li>
                 </ul>
             </div>
