@@ -99,11 +99,11 @@
     <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
                     <input type="hidden" name="cmd" value="_cart">
                     <input type="hidden" name="upload" value="1">
-                    <input type="hidden" name="business" value="chalex_777@hotmail.com">
-                    <div id="productos_carrito">
-                        <input type="hidden" name="item_name" value="Item Name">
+                    <input type="hidden" name="business" value="chalex_777@hotmail.com"">
+                    <div ng-repeat="v in car.items">
+                        <input type="hidden" name="item_name_@{{$index+1}}" value="@{{v.nombre}}">
                         <input type="hidden" name="currency_code" value="USD">
-                        <input type="hidden" name="amount" value="0.00">
+                        <input type="hidden" name="amount_@{{$index+1}}" value="@{{v.precio}}">
                     </div>
 
       <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          

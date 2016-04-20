@@ -92,6 +92,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::get('getHotelF', 'HotelController@getHotelesFooter');
 
+	Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );
+
 
 
 /*
