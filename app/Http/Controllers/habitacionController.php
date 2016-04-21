@@ -94,7 +94,9 @@ class HabitacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Habitacion::destroy($id);
+
+        return $this->getHabitacions();
     }
 
     public function getHabitacions()

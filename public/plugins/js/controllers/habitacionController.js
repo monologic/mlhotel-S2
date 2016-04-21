@@ -55,7 +55,7 @@ app.controller('habitacionController', function($scope,$http) {
             {   'tipo':$scope.tipo,
                 'descripcion':$scope.descripcion
             }).then(function successCallback(response) {
-                $scope.cargos = response.data;
+                $scope.habitaciones = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -66,11 +66,24 @@ app.controller('habitacionController', function($scope,$http) {
 
         if (r) {
             $http.delete( 'admin/habitacion/'+id ).then(function successCallback(response) {
-                $scope.cargos = response.data;
+                $scope.habitaciones = response.data;
             }, function errorCallback(response) {
                 alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
             });
         }
+    }
+
+    $scope.dataEditar = function (data) {
+
+        $scope.getEstados();
+        $scope.getHabtipos();
+
+        $scope.id = data.id;
+
+        $scope.numero = data.numero;
+        $scope.habtipo_id = data.habtipo_id;
+        $scope.estado_id = data.estado_id;
+        
     }
 
 });
