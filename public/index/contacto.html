@@ -8,13 +8,15 @@
 	        <label for="nombre">Asunto</label>
 	        <input class="form-control" placeholder="Escriba su nombre" required="required" name="subject" type="text" id="subject">
 	    </div>
+	    <br>
 		<div class="form-group">
 		    <label for="exampleInputEmail1">Correo</label>
 		    <input type="email" class="form-control" id="email" name="email" placeholder="Email" name="correo">
-	  	</div>	
+	  	</div>
+	  	<br>	
 	  	<div class="fomr-group">
 	  		 <label for="tipo">Mensaje</label>
-			 <textarea class="form-control" rows="3" id="body" name="body"></textarea>
+			 <textarea  class="materialize-textarea" rows="2" id="body" name="body"></textarea>
 	  	</div>
 	  	<br>
 	  	<input type="submit" class="btn btn-primary" style="width:150px" value="Enviar">
@@ -85,6 +87,9 @@ function ruta(){
 	   
       alert("lat");
 }
+</script>
+<script>
+  $('#body').trigger('autoresize');
 </script>
 
 

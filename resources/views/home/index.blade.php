@@ -82,17 +82,17 @@
           <td>@{{r.nombre}}</td>
           <td width="80px">
           <div class="input-field" style="width: 30px;">
-            <select>
+            <select id="@{{$index+1}}" onchange="calcular();">
               <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-              <option value="3">4</option>
-              <option value="3">5</option>
-              <option value="3">6</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
             </select>
           </div>
         </td>
-          <td>@{{r.precio}}</td>
+          <td><div id="@{{$index+1}}s">@{{r.precio}}</div><div id="@{{$index+1}}p" style="display: none">@{{r.precio}}</div></td>
         </tr>
       </tbody>
     </table>
@@ -104,6 +104,7 @@
                         <input type="hidden" name="item_name_@{{$index+1}}" value="@{{v.nombre}}">
                         <input type="hidden" name="currency_code" value="USD">
                         <input type="hidden" name="amount_@{{$index+1}}" value="@{{v.precio}}">
+                        <input type="hidden" id="@{{$index+1}}c" name="quantity_@{{$index+1}}" value="">
                     </div>
 
       <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
@@ -225,6 +226,22 @@
         zoom: 8
       });
     }
+    </script>
+    <script>
+     function calcular(){
+        for (var i = 1; i < 15; i++) {
+          var rs=document.getElementById(i).value;
+          var precio=document.getElementById(i+"p").innerHTML;
+          var res=rs*precio;
+          document.getElementById(i+"s").innerHTML=res+".00";
+
+          sd=document.getElementById(i).value;
+          document.getElementById(i+"c").value=sd;
+          alert(sd);
+
+        }
+      
+     }
     </script>
 </body>
 </html>
