@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Hotel;
 use App\Empleado;
 use App\Emptipo;
@@ -220,5 +222,25 @@ class HotelController extends Controller
         $hotel = $hotel->toArray();
         //Sdd($hotel);
         return response()->json( $hotel[0] );   
+    }
+
+    public function configHoraHotel(Request $request)
+    {
+        $hotel = Hotel::find(Auth::user()->empleado->hotel->id);
+
+        $hotel->checkin = $request->checkin;
+        $hotel->checkout = $request->checkout;
+
+        $hotel->save();
+
+        return response()->json([
+            "mensaje" => 'Se ha modificado la hora de Ingreso y Salida'
+        ]);
+    }
+
+    public function getHotel()
+    {
+        $hotel = Hotel::find(Auth::user()->empleado->hotel->id);
+        return response()->json( $hotel );  
     }
 }

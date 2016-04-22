@@ -47,15 +47,22 @@
             <div class="menu__wrap">
                 <ul data-menu="main" class="menu__level">
 
-                @if (Auth::user()->usuariotipo->nombre!="Root")
+                @if (Auth::user()->usuariotipo->nombre == "Administrador")
                     <li class="menu__item"><a class="menu__link"  href="#/Reservas">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-5" href="#">Servicios</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Usuarios</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-7" href="#">Empleado</a></li>
+                    
+                    <li class="menu__item"><a class="menu__link"  href="#/configChecks">Configurar Check-In y Check-out</a></li>  
+                @endif
 
+                @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")
+                    <li class="menu__item"><a class="menu__link"  href="#/Reservas">Reservas</a></li>  
+                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
+                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
                 @endif
                     @if (Auth::user()->usuariotipo->nombre=="Root")
 

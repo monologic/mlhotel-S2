@@ -121,9 +121,23 @@ app.controller('hotelController', function($scope,$http) {
         });
     }
     
+    $scope.configCheckout = function () {
+        $http.post('admin/configHoraHotel',
+            {   'checkin':$scope.checkin,
+                'checkout':$scope.checkout
+            }).then(function successCallback(response) {
+                alert(response.data.mensaje);
+            }, function errorCallback(response) {
+            });
+    }
+    $scope.getHotel = function () {
+        $http.get('admin/getHotel').then(function successCallback(response) {
+            $scope.checkin = response.data.checkin;
+            $scope.checkout = response.data.checkout;
 
-
-
-
-    
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    } 
 });

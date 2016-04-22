@@ -1,0 +1,23 @@
+<div id="page-wrapper" ng-controller="hotelController" ng-init="getHotel();">
+<br><br>
+<label>{{mensaje}}</label>
+   
+    <h3 class="text-center tit2">Configuración de Check-in y Check-out</h3>
+    <div class="formularios">    
+    <form>
+        <div class="form-group">
+            <label for="">Check-In</label>
+            <input type="time" class="form-control" id="checkin" placeholder="Hora de ingreso al hotel" ng-model="checkin">
+        </div>
+         <div class="form-group">
+            <label for="">Check-out</label>
+            <input type="time" class="form-control" id="checkout" placeholder="Hora de salida del Hotel" ng-model="checkout">
+        </div>
+        
+        <div class="inputs">
+            <a href="" ng-click="configCheckout();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><p>Guardar</p> </a> <br><br>
+        </div>
+    </form>
+    </div>
+
+</div>

@@ -90,8 +90,11 @@ class RegistroController extends Controller {
         //dd($habtipos);
         $reservas = Reserva::where('reservaestado_id', '2')
                           ->whereBetween('fecha_inicio', [$fechaini, $fechafin])
-                          ->orWhere(DB::raw("$fechaini between fecha_inicio and fecha_fin"))
+                          ->orWhere(function($query){
+                            $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
+                            })
                           ->get();
+
 
         
 
@@ -104,14 +107,16 @@ class RegistroController extends Controller {
             foreach ($reservas as $h => $reserva) {
                 foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
                     foreach ($habtipos as $k => $ht) {
-                        if ($ht['id'] == $habtipo['habtipo_id']) {
+                        if ( $ht['id'] == $habtipo['habtipo_id']) {
                             $habtipos[$k]['habtiporeservas'][] = $habtipo;
                         }
+                        else
+                            $habtipos[$k]['habtiporeservas'] = null;
                     }
                 }
             }
         }
-    
+        //dd($habtipos);
         foreach ($habtipos as $k => $habtipo) {
             if (count($reservas) != 0) {
                 $r = count($habtipo['habtiporeservas']);

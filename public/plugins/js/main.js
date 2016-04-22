@@ -66,6 +66,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/detalleHabitacion/:idRegistro", {templateUrl: "partials/registro/detalle.html", controller: "PageCtrl"})
     .when("/terminarRegistro/:idRegistro", {templateUrl: "partials/registro/terminar.html", controller: "PageCtrl"})
 
+    .when("/configChecks", {templateUrl: "partials/config/horas.html", controller: "PageCtrl"})
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
