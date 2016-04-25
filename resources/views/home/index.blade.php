@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hotel,Moquegua,Residencial Moquegua,Servicios">
+    <meta name="description" content="Residencial moquegua, uno de los mejores hoteles de la cuidad de Moquegua">
+    <meta name="author" content="Javier Coaila">
 
     <title>Residencial Moquegua</title>
 
@@ -237,8 +240,6 @@
 
           sd=document.getElementById(i).value;
           document.getElementById(i+"c").value=sd;
-          alert(sd);
-
         }
       
      }

@@ -1,9 +1,6 @@
 <script>
   document.title = "Residencial Moquegua";
-</script>
-<script>
-  document.title = "Inicio - Residencial Moquegua";
-</script>
+</script> 
   <div ng-controller="bannerController" ng-init="getBanners2();" style="min-height:300px">
               
     <div class="swiper-container">
@@ -35,7 +32,7 @@
     
   </div><br>
   <div class="row container" style="width:70%;margin-left:15%; margin-right:15%">
-      <h4 class="center-align titulo1" style="font-family: 'Niconne', cursive;">Bienvenido a Residencial Moquegua</h4><br><br>
+      <h4 class="center-align titulo1" style="font-family: 'Niconne', cursive;" >Bienvenido a Residencial Moquegua</h4><br><br>
       <div class="col s4 ser-cont">
         <div class="center-align"><i class="fa fa-cutlery ser-ico"></i></div>
         <p class="center-align ">Restaurant</p>
@@ -71,7 +68,7 @@
         <div class="col s12 m5 hoverable" style="margin-right:20px;margin-bottom:20px;min-width:250px">
           <div class="card small">
             <div class="card-image">
-              <img class="h-w" src="imagen/habitaciones/{{y.foto}}">
+              <img class="h-w" src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}" >
               <div class="card-title card-panel black" style="height:50px; padding-top:3px;font-size: 1.1rem;line-height:20px"><p>Desde </p><p>S/. {{y.precio}}</p></div>
             </div>
              <div class="card-content">

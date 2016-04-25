@@ -53,7 +53,7 @@
     <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
 
       <div class="col s12 m4 l4 " style="padding:10px">
-        <img src="imagen/habitaciones/{{y.foto}}" style="width:100%">
+        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
       </div>
       <div class="col s12 m6 l6 ">
           <div class="black-text" style="padding-top:5px">
@@ -83,7 +83,7 @@
     <div  class="row wow fadeInUp card busquedas" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
 
       <div class="col s12 m4 l4 " style="padding:10px">
-        <img src="imagen/habitaciones/{{y.foto}}" style="width:100%">
+        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
       </div>
       <div class="col s12 m6 l6 ">
           <div class="black-text" style="padding-top:5px">
@@ -104,7 +104,7 @@
           <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
           <p class="cart-precio">Desde</p>
           <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
-          <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
+          <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)" href="javascript:location.reload()">reservar</a>
         </div>
         
       </div>

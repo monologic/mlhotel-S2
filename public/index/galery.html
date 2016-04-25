@@ -8,7 +8,7 @@
 		<div class='list-group gallery'>
             <div class='col m4 wow fadeInLeft' data-wow-delay="0.{{$index+5}}s" style="display:block;position:relative;visibility: visible; -webkit-animation-delay: 0.{{$index+5}}s; -moz-animation-delay: 0.{{$index+9}}s; animation-delay: 0.{{$index+5}}s;height:250px" ng-repeat="y in fotos">
                 <a class="thumbnail fancybox" rel="darkbox" href="imagen/galery/{{y.imagen}}">
-                    <img class="img-responsive" alt="" src="imagen/galery/{{y.imagen}}" style="width:100%" />
+                    <img class="img-responsive" alt="Hotel Moquegua {{y.titulo}}"  src="imagen/galery/{{y.imagen}}" style="width:100%" />
                     <div class='text-center'>
                         <small class='text-muted'>{{$index+1}}, {{y.titulo}}</small>
                     </div> <!-- text-right / end -->
