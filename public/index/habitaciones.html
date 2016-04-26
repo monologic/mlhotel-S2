@@ -1,164 +1,132 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-
-<h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();res();" style="min-height:300px;top:20px">
-
-
-    <div>
-      <form class="row">
-                  <div class="input-field col s12 m3">
-                      <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
-                      <input type="date"  id="fechaini" ng-model="fechaini" min="04-02-2016">
-                      
-                  </div>
-                  <div class="input-field col s12 m3">
-                      <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar"></i> Fecha Salida</p>
-                      <input type="date"  id="fechafin" ng-model="fechafin">
-                      
-                  </div>
-                  <div class="row">
-                     <div class="input-field col s12 m3">
-                        <select>
-                          <option value="nada"></option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                        </select>
-                        <label style="font-size: 1rem"><i class="fa fa-male" aria-hidden="true" ></i> Adultos</label>
-                    </div>
-                    <div class="input-field col s12 m3">
-                        <select>
-                          <option value=""></option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                        </select>
-                        <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i> Niños</label>
-                    </div>
-                  </div>
-                  <a class="waves-effect black btn" onclick="esconder();" ng-click="buscar();"><i class="material-icons left">search</i>Buscar</a>
-                </div>
-      </form>
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();res();" style="min-height:300px;margin-top:100px">
+  <form class="row">
+    <div class="input-field col s12 m3">
+      <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
+      <input type="date"  id="fechaini" ng-model="fechaini" min="04-02-2016">
     </div>
-    <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
-    <div id="fechae"></div>
-    <div id="fechas"></div>
-      <div class="col s12 m4 l4 " style="padding:10px">
-        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+    <div class="input-field col s12 m3">
+      <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar"></i> Fecha Salida</p>
+      <input type="date"  id="fechafin" ng-model="fechafin">
+    </div>
+      <div class="input-field col s12 m3">
+        <select>
+          <option value="nada"></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <label style="font-size: 1rem"><i class="fa fa-male" aria-hidden="true" ></i> Adultos</label>
       </div>
-      <div class="col s12 m6 l6 ">
-          <div class="black-text" style="padding-top:5px">
-            <p class="cart-titulo" id="nombre">{{y.nombre}}</p>
-            <p class="cart-contenido">{{y.descripcion}}</p>
-            <p class="cart-contenido"  style="display: none">{{y.nropersonas}}</p>
-          </div>
-          <div class="separador"></div>
-          <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
-              <div ng-if="servicio.estado=='true'">
-                <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i></div>
-              </div>
-          </div>
+      <div class="input-field col s12 m3">
+        <select>
+          <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i> Niños</label>
       </div>
-      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
-        <div>
-          <p class="cart-precio">Desde</p>
-          <p class="cart-precio" id="precio"   style="font-size:1rem">S/. {{y.precio}} </p>
-          <a class="waves-effect btn black" onclick="Materialize.toast('Completa los datos y Busca :)', 4000)">reservar</a>
-        </div>
+      <div class="col s12 m12">
+        <a class="waves-effect black btn" onclick="esconder();" ng-click="buscar();"><i class="material-icons left">search</i>Buscar</a>
+      </div>
         
-      </div>
-    </div> 
+  </form>
 
+  <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+    <div class="col s12 m4 l4 " style="padding:10px">
+      <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+    </div>
+    <div class="col s12 m6 l6 ">
+      <div class="black-text" style="padding-top:5px">
+        <p class="cart-titulo" id="nombre">{{y.nombre}}</p>
+        <p class="cart-contenido">{{y.descripcion}}</p>
+        <p class="cart-contenido"  style="display: none">{{y.nropersonas}}</p>
+      </div>
+      <div class="separador"></div>
+      <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
+        <div ng-if="servicio.estado=='true'">
+          <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+      <div>
+        <p class="cart-precio">Desde</p>
+        <p class="cart-precio" id="precio"   style="font-size:1rem">S/. {{y.precio}} </p>
+        <a class="waves-effect btn black" onclick="Materialize.toast('Completa los datos y Busca :)', 4000)">reservar</a>
+      </div>
+    </div>
+  </div> 
     <!-- Busqueda de habitaciones div none -->
 
-    <div  class="row wow fadeInUp card busquedas" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
-
-      <div class="col s12 m4 l4 " style="padding:10px">
-        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+  <div  class="row wow fadeInUp card busquedas" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+    <div class="col s12 m4 l4 " style="padding:10px">
+      <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+    </div>
+    <div class="col s12 m6 l6 ">
+      <div class="black-text" style="padding-top:5px">
+        <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
+        <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
+        <p class="cart-contenido"  style="display: none"  id="capacidad" ng-model="capacidad">{{y.nropersonas}}</p>
       </div>
-      <div class="col s12 m6 l6 ">
-          <div class="black-text" style="padding-top:5px">
-            <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
-            <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
-            <p class="cart-contenido"  style="display: none"  id="capacidad" ng-model="capacidad">{{y.nropersonas}}</p>
+      <div class="separador"></div>
+      <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
+        <div ng-if="servicio.estado=='true'">
+          <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i>
           </div>
-          <div class="separador"></div>
-          <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
-              <div ng-if="servicio.estado=='true'">
-                <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i></div>
-              </div>
-          </div>
-      </div>
-      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
-        <div>
-          <p ng-model="fechaini"></p>
-          <p ng-model="fechafin"></p>
-          <p>Disponibilidad:</p>
-          <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
-          <p class="cart-precio">Desde</p>
-          <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
-          <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
         </div>
-        
       </div>
     </div>
-
-  <div id="caja" style="top:65px;">
+    <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+      <div>
+        <p ng-model="fechaini"></p>
+        <p ng-model="fechafin"></p>
+        <p>Disponibilidad:</p>
+        <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
+        <p class="cart-precio">Desde</p>
+        <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
+        <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
+      </div> 
+    </div>
+  </div>
+  <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:65px;">
     <div class="title-reser teal lighten-2">Mis Reservas</div>
-    <div style=";width: 80%;margin:40px auto 20px auto">
-      <table class="">
+    <div  style=";width: 80%;margin:40px auto 20px auto">
+      <table>
         <thead>
           <tr>
-            <th data-field="nombre">Habitacion</th>
-            <th data-field="cant" width="80px">Cant.</th>
-            <th data-field="precio">Precio</th>
+            <th>Habitacion</th>
+            <th>Cant.</th>
+            <th>Precio</th>
           </tr>
         </thead>
-        
-        <tbody>
-          <tr ng-repeat="l in car.items">
-            <td>{{l.nombre}}</td>
-            <td width="80px">
-                <div class="input-field" style="width: 30px;">
-                  <select id="{{$index+1}}" onchange="calcular();">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-              </div>    
+        <tbody >
+          <tr ng-repeat="o in car.items">
+            <td>{{o.nombre}}</td>
+            <td width="50px">
+              <input type="number" id="{{$index+1}}" name="points" min="0" max="20" step="1" value="1" onchange="calcular()">
             </td>
-            <td><div id="@{{$index+1}}s">{{l.precio}}</div><div id="@{{$index+1}}p" style="display: none">{{l.precio}}</div></td>
+            <td id="{{$index+1}}s">{{o.precio}}<div id="{{$index+1}}p" style="display: none">{{o.precio}}</div></td>
           </tr>
         </tbody>
       </table>
-      <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_cart">
-        <input type="hidden" name="upload" value="1">
-        <input type="hidden" name="business" value="chalex_777@hotmail.com">
-        <div ng-repeat="v in car.items">
-          <input type="hidden" name="item_name_{{$index+1}}" value="{{v.nombre}}">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="amount_{{$index+1}}" value="{{v.precio}}">
-          <input type="hidden" id="{{$index+1}}c" name="quantity_{{$index+1}}" value="">
-        </div>
-        <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
-      </form>
+      <div style="margin: 40px auto 20px auto">
+        <a class="waves-effect waves-light btn">Reservar</a>
+      </div>
     </div>
-  </div>
-
+  </div> 
 </section>   <!-- Termino -->
 
 <script>
@@ -178,9 +146,6 @@
           var precio=document.getElementById(i+"p").innerHTML;
           var res=rs*precio;
           document.getElementById(i+"s").innerHTML=res+".00";
-
-          sd=document.getElementById(i).value;
-          document.getElementById(i+"c").value=sd;
         }
       
      }
