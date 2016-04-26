@@ -1,9 +1,9 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
-</script>
+</script> 
 
 <h4 class="center-align wow fadeInDown" data-wow-duration="2s"  data-wow-delay="2s" style="display:block;position:relative;margin-top:60px;margin-bottom:20px;font-family: 'Montserrat', sans-serif;">Te Ofrecemos las siguientes Habitaciones</h4><br>
-  <section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:300px;top:20px">
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();res();" style="min-height:300px;top:20px">
 
 
     <div>
@@ -51,7 +51,8 @@
       </form>
     </div>
     <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
-
+    <div id="fechae"></div>
+    <div id="fechas"></div>
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
       </div>
@@ -100,33 +101,91 @@
       </div>
       <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
         <div>
+          <p ng-model="fechaini"></p>
+          <p ng-model="fechafin"></p>
           <p>Disponibilidad:</p>
           <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
           <p class="cart-precio">Desde</p>
           <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
-          <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)" href="javascript:location.reload()">reservar</a>
+          <a class="waves-effect btn black" ng-click="enviarhab(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
         </div>
         
       </div>
     </div>
 
-    <!-- Termino -->
+  <div id="caja" style="top:65px;">
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
+    <div style=";width: 80%;margin:40px auto 20px auto">
+      <table class="">
+        <thead>
+          <tr>
+            <th data-field="nombre">Habitacion</th>
+            <th data-field="cant" width="80px">Cant.</th>
+            <th data-field="precio">Precio</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr ng-repeat="l in car.items">
+            <td>{{l.nombre}}</td>
+            <td width="80px">
+                <div class="input-field" style="width: 30px;">
+                  <select id="{{$index+1}}" onchange="calcular();">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+              </div>    
+            </td>
+            <td><div id="@{{$index+1}}s">{{l.precio}}</div><div id="@{{$index+1}}p" style="display: none">{{l.precio}}</div></td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="upload" value="1">
+        <input type="hidden" name="business" value="chalex_777@hotmail.com">
+        <div ng-repeat="v in car.items">
+          <input type="hidden" name="item_name_{{$index+1}}" value="{{v.nombre}}">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="amount_{{$index+1}}" value="{{v.precio}}">
+          <input type="hidden" id="{{$index+1}}c" name="quantity_{{$index+1}}" value="">
+        </div>
+        <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
+      </form>
+    </div>
+  </div>
+
+</section>   <!-- Termino -->
 
 <script>
   $(document).ready(function() {
     $('select').material_select();
-  });
-   $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-      });
-   
+  }); 
 </script>
 <script>
   function esconder(){
     $('.hab').css({'display':'none'});
   }
 </script>
+ <script>
+     function calcular(){
+        for (var i = 1; i < 15; i++) {
+          var rs=document.getElementById(i).value;
+          var precio=document.getElementById(i+"p").innerHTML;
+          var res=rs*precio;
+          document.getElementById(i+"s").innerHTML=res+".00";
+
+          sd=document.getElementById(i).value;
+          document.getElementById(i+"c").value=sd;
+        }
+      
+     }
+    </script>
+
           <!--
           {{y.nropersonas}}          
           th{{y.id}} 

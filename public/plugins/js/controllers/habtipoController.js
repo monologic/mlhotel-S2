@@ -2,6 +2,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
 	var hotel;
 	var datos;
     var gdata;
+    var fechas;
+    var fechas2;
     $scope.getHabTipo = function () {
         $http.get('admin/AddHab').then(function successCallback(response) {
         	$scope.habtipos=response.data;
@@ -78,6 +80,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
         var f = new Date();
         $scope.fechaini = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +f.getDate();
         $scope.fechafin = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 1);
+        fechas=$scope.fechaini;
+        fechasi=$scope.fechafin;
         /*
         var fechaini1 = new Date($scope.fechaini);
         var fechafin1 = new Date($scope.fechafin);
@@ -88,7 +92,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
     $scope.buscar = function () {
         $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             $scope.tipoPerHabs = response.data;
-
+            fechas=$scope.fechaini;
+            fechas2=$scope.fechafin;
             $scope.mayor
             $scope.menor
 
@@ -99,11 +104,14 @@ app.controller('habtipoController', function($scope,$http,$location) {
     }
      $scope.enviarhab = function (data) {
         $http.post('service/carrito',
-            {
+           
+            {   
                 'id':data.id,
                 'nombre':data.nombre,
                 'capacidad':data.nropersonas,
-                'precio':data.precio
+                'precio':data.precio,
+                'fechaini':fechas,
+                'fechafin':fechas2
 
             }).then(function successCallback(response) {
                 $scope.res();
@@ -115,10 +123,9 @@ app.controller('habtipoController', function($scope,$http,$location) {
     $scope.res = function () {
         $http.get('service/micar',
             {
-                
+
             }).then(function successCallback(response) {
                 $scope.car=response.data;
-                console.log($scope.car);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

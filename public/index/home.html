@@ -132,6 +132,51 @@
               </li>
             </ul>
           </div>
+ <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:65px;">
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
+    <div style=";width: 80%;margin:40px auto 20px auto">
+      <table class="">
+        <thead>
+          <tr>
+            <th data-field="nombre">Habitacion</th>
+            <th data-field="cant" width="80px">Cant.</th>
+            <th data-field="precio">Precio</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr ng-repeat="l in car.items">
+            <td>{{l.nombre}}</td>
+            <td width="80px">
+                <div class="input-field" style="width: 30px;">
+                  <select id="{{$index+1}}" onchange="calcular();">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+              </div>    
+            </td>
+            <td><div id="@{{$index+1}}s">{{l.precio}}</div><div id="@{{$index+1}}p" style="display: none">{{l.precio}}</div></td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="upload" value="1">
+        <input type="hidden" name="business" value="chalex_777@hotmail.com">
+        <div ng-repeat="v in car.items">
+          <input type="hidden" name="item_name_{{$index+1}}" value="{{v.nombre}}">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="amount_{{$index+1}}" value="{{v.precio}}">
+          <input type="hidden" id="{{$index+1}}c" name="quantity_{{$index+1}}" value="">
+        </div>
+        <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
+      </form>
+    </div>
+  </div>
 <script>
    var cw = $('.h-w').width();
    var res= cw/1.9;
@@ -139,6 +184,9 @@
 
 </script>
  <script>
+ $(document).ready(function() {
+    $('select').material_select();
+  }); 
   $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year

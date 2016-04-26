@@ -76,8 +76,6 @@ class RegistroController extends Controller {
 
         });
 
-
-
         $habtipos = $habtipos->toArray();
 
         foreach ($habs as $key => $hab) {

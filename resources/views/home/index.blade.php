@@ -39,6 +39,9 @@
     margin-top: 20px;
 }
 </style>
+
+
+
 <body ng-app="homeApp">
   <div class="navbar-fixed">
     <nav class=" white">
@@ -63,57 +66,12 @@
           <li><a href="#/galeria">Galeria</a></li>
           <li><a href="#/noticias">Noticias</a></li>
           <li><a href="#/contacto">Contacto</a></li>
+          <li><a href="#/micarrito">Mi carrito</a></li>
         </ul>
       </div>
     </nav>
   </div>
 </div>
-<div id="caja"  ng-controller="habtipoController" ng-init="res();">
-  <div class="title-reser teal lighten-2">Mis Reservas</div>
-  <div style=";width: 80%;margin:40px auto 20px auto">
-    <table class="">
-      <thead>
-        <tr>
-          <th data-field="nombre">Habitacion</th>
-          <th data-field="cant" width="80px">Cant.</th>
-          <th data-field="precio">Precio</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr ng-repeat="r in car.items">
-          <td>@{{r.nombre}}</td>
-          <td width="80px">
-          <div class="input-field" style="width: 30px;">
-            <select id="@{{$index+1}}" onchange="calcular();">
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-        </td>
-          <td><div id="@{{$index+1}}s">@{{r.precio}}</div><div id="@{{$index+1}}p" style="display: none">@{{r.precio}}</div></td>
-        </tr>
-      </tbody>
-    </table>
-    <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
-                    <input type="hidden" name="cmd" value="_cart">
-                    <input type="hidden" name="upload" value="1">
-                    <input type="hidden" name="business" value="chalex_777@hotmail.com"">
-                    <div ng-repeat="v in car.items">
-                        <input type="hidden" name="item_name_@{{$index+1}}" value="@{{v.nombre}}">
-                        <input type="hidden" name="currency_code" value="USD">
-                        <input type="hidden" name="amount_@{{$index+1}}" value="@{{v.precio}}">
-                        <input type="hidden" id="@{{$index+1}}c" name="quantity_@{{$index+1}}" value="">
-                    </div>
-
-      <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
-    </form>
-  </div>
-</div>      
  <div ng-view  style="margin-botton:100px;margin-top:-20px"></div>
  <footer class="page-footer black">
           <div class="container">
@@ -144,6 +102,7 @@
 
      <!-- Llamado a angular-->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
 
@@ -158,6 +117,8 @@
     <script src="plugins/slider/js/swiper.jquery.min.js"></script>  
 
     <script src="index/js/owl.carousel.js"></script> 
+
+    <script src="plugins/uiRoute/angular-ui-router.js"></script> 
      
 
     <!--JS principal -->
@@ -178,16 +139,11 @@
 
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 
-   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
 
    <script>
-    
     $(document).ready(function(){
-
-    
-
-
     $('.tooltipped').tooltip({delay: 50});
     $('.parallax').parallax();
     $(".button-collapse").sideNav(); 
@@ -229,20 +185,6 @@
         zoom: 8
       });
     }
-    </script>
-    <script>
-     function calcular(){
-        for (var i = 1; i < 15; i++) {
-          var rs=document.getElementById(i).value;
-          var precio=document.getElementById(i+"p").innerHTML;
-          var res=rs*precio;
-          document.getElementById(i+"s").innerHTML=res+".00";
-
-          sd=document.getElementById(i).value;
-          document.getElementById(i+"c").value=sd;
-        }
-      
-     }
     </script>
 </body>
 </html>
