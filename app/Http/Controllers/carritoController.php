@@ -6,85 +6,210 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Session;
+
+use DB;
+
+use App\Registro;
+use App\Habitacion;
+use App\Habtipo;
+use App\Reserva;
+use App\Habtiporeserva;
 
 class carritoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public $fechainicio;
+    static $fechaInicio;
+
+    public function __construct()
     {
-        //
+        if(!\Session::has('fechas')) \Session::put('fechas', array());
+        if(!\Session::has('cart')) \Session::put('cart', array());
+        if(!\Session::has('cliente')) \Session::put('cliente', array());
+    }
+   
+    public function buscarHabitaciones($fechaini, $fechafin)
+    {
+        $fechas = \Session::get('fechas');
+        $fechas['fecha_inicio'] = $fechaini;
+        $fechas['fecha_fin'] = $fechafin;
+        \Session::put('fechas', $fechas);   
+
+        $this->fechainicio = $fechaini. " " . date('H:i:s');
+        $r = Registro::select('habitacion_id')
+                    ->whereBetween('fechaentrada', [$this->fechainicio, $fechafin. " 12:00:00"])
+                    ->orWhere(function($query){
+                        $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
+                        })
+                    ->get();
+
+        
+        $r = $r->toArray();
+
+        if (count($r) != 0) {
+            $hab_id_array = array();
+
+            foreach ($r as $key => $regs) {
+                foreach ($regs as $k => $habitacion_id)
+                    array_push($hab_id_array, $habitacion_id);
+            }
+
+            $habs = Habitacion::whereNotIn('id', $hab_id_array)
+                              ->orderBy('habtipo_id', 'asc')
+                              ->get();
+        }
+        else {
+            $habs = Habitacion::orderBy('habtipo_id', 'asc')
+                              ->get();
+        }
+        
+        
+        $habs->each(function($habs){
+            $habs->estado;
+        });
+        $habs->each(function($habs){
+            $habs->habtipo;
+        });
+
+        $habs = $habs->toArray();
+
+        $habtipos = Habtipo::all();
+
+        $habtipos->each(function($habtipos){
+            $iconos=$habtipos->habtipo_serviciointernos;
+            $habtipos->habtipo_serviciointernos->each(function($iconos){
+                $iconos->serviciointerno;
+            });
+
+        });
+
+        $habtipos = $habtipos->toArray();
+
+        foreach ($habs as $key => $hab) {
+            foreach ($habtipos as $k => $habtipo) {
+                if ($habtipo['id'] == $hab['habtipo_id']) {
+                    $habtipos[$k]['habitaciones'][] = $hab;
+                }
+            }
+        }
+        //dd($habtipos);
+        $reservas = Reserva::where('reservaestado_id', '2')
+                          ->whereBetween('fecha_inicio', [$fechaini, $fechafin])
+                          ->orWhere(function($query){
+                            $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
+                            })
+                          ->get();
+
+
+        
+
+        $reservas->each(function($reservas){
+            $reservas->habtiporeservas;
+        });     
+        
+        $reservas = $reservas->toArray();
+        if (count($reservas) != 0) {
+            foreach ($reservas as $h => $reserva) {
+                foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
+                    foreach ($habtipos as $k => $ht) {
+                        if ( $ht['id'] == $habtipo['habtipo_id']) {
+                            $habtipos[$k]['habtiporeservas'][] = $habtipo;
+                        }
+                        else
+                            $habtipos[$k]['habtiporeservas'] = null;
+                    }
+                }
+            }
+        }
+        //dd($habtipos);
+        foreach ($habtipos as $k => $habtipo) {
+            if (count($reservas) != 0) {
+                $r = count($habtipo['habtiporeservas']);
+                $habtipos[$k]['habtiporeservascount'] = $r;
+            }
+            else
+                $habtipos[$k]['habtiporeservascount'] = 0   ;
+            
+            $r2 = count($habtipo['habitaciones']);
+            $habtipos[$k]['habitacionescount'] = $r2;
+
+        }
+        //dd($habtipos);
+        return response()->json($habtipos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // Show cart
+    public function show()
     {
-        //
+        $cart = \Session::get('cart');
+        //$total = $this->total();
+        //return view('store.cart', compact('cart', 'total'));
+        //dd($cart);
+        $cartRet = $cart;
+        return response()->json( $cartRet );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    // Add item
+    public function add(Habtipo $Habtipo)
     {
-        //
+        $cart = \Session::get('cart');
+        $Habtipo->quantity = 1;
+        $cart[$Habtipo->id] = $Habtipo;
+        \Session::put('cart', $cart);
+
+        //return redirect()->route('cart-show');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    // Delete item
+    public function delete(Habtipo $Habtipo)
     {
-        //
+        $cart = \Session::get('cart');
+        unset($cart[$Habtipo->id]);
+        \Session::put('cart', $cart);
+
+        //return redirect()->route('cart-show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // Update item
+    public function update(Habtipo $Habtipo, $quantity)
     {
-        //
+        $cart = \Session::get('cart');
+        $cart[$Habtipo->id]->quantity = $quantity;
+        \Session::put('cart', $cart);
+
+        //return redirect()->route('cart-show');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    // Trash cart
+    public function trash()
     {
-        //
+        \Session::forget('cart');
+
+        //return redirect()->route('cart-show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    // Total
+    private function total()
     {
-        //
+        $cart = \Session::get('cart');
+        $total = 0;
+        foreach($cart as $item){
+            $total += $item->price * $item->quantity;
+        }
+
+        return $total;
     }
+
+    // Detalle del pedido
+    public function orderDetail()
+    {
+        if(count(\Session::get('cart')) <= 0) return redirect()->route('home');
+        $cart = \Session::get('cart');
+        $total = $this->total();
+
+        return view('store.order-detail', compact('cart', 'total'));
+    }
+
+    /*
     public function addCarrito(Request $request){
 
         $carrito = $request->all();
@@ -107,4 +232,5 @@ class carritoController extends Controller
 
         return response()->json( Session::get('car') );
     }
+    */
 }

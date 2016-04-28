@@ -110,11 +110,69 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::bind('habtipo', function($id){
+	return App\Habtipo::where('id', $id)->first();
+});
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::post('service/carrito', 'carritoController@addCarrito');
-    Route::get('service/micar', 'carritoController@getCar');
+    
     Route::get('/home', 'HomeController@index');
+
+    // Carrito -------------
+
+    Route::get('cart/buscarHabitaciones/{fechaini}/{fechafin}', ['uses' => 'carritoController@buscarHabitaciones', function ($fechaini, $fechafin) {
+	}]);
+
+	Route::get('cart/show', [
+		'as' => 'cart-show',
+		'uses' => 'carritoController@show'
+	]);
+
+	Route::get('cart/add/{habtipo}', [
+		'as' => 'cart-add',
+		'uses' => 'carritoController@add'
+	]);
+
+	Route::get('cart/delete/{habtipo}',[
+		'as' => 'cart-delete',
+		'uses' => 'carritoController@delete'
+	]);
+
+	Route::get('cart/trash', [
+		'as' => 'cart-trash',
+		'uses' => 'carritoController@trash'
+	]);
+
+	Route::get('cart/update/{habtipo}/{quantity}', [
+		'as' => 'cart-update',
+		'uses' => 'carritoController@update'
+	]);
+
+	Route::get('order-detail', [
+		'middleware' => 'auth:user',
+		'as' => 'order-detail',
+		'uses' => 'carritoController@orderDetail'
+	]);
+	
+	Route::get('payment', array(
+		'as' => 'payment',
+		'uses' => 'PaypalController@postPayment',
+	));
+
+	// Después de realizar el pago Paypal redirecciona a esta ruta
+	Route::get('payment/status', array(
+		'as' => 'payment.status',
+		'uses' => 'PaypalController@getPaymentStatus',
+	));
 });
+
+// Paypal
+
+// Enviamos nuestro pedido a PayPal
+
+
+
+
+
 

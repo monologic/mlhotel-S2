@@ -90,7 +90,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
         */
     }
     $scope.buscar = function () {
-        $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
+        $http.get('cart/buscarHabitaciones/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             $scope.tipoPerHabs = response.data;
             fechas=$scope.fechaini;
             fechas2=$scope.fechafin;
@@ -102,17 +102,9 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
     }
-     $scope.enviarhab = function (data) {
-        $http.post('service/carrito',
-           
-            {   
-                'id':data.id,
-                'nombre':data.nombre,
-                'capacidad':data.nropersonas,
-                'precio':data.precio,
-                'fechaini':fechas,
-                'fechafin':fechas2
-
+    $scope.addCarrito = function (data) {
+        $http.get('cart/add/'+data.id,
+            {
             }).then(function successCallback(response) {
                 $scope.res();
             }, function errorCallback(response) {
@@ -120,16 +112,24 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
-    $scope.res = function () {
-        $http.get('service/micar',
-            {
 
+    $scope.res = function () {
+        $http.get('cart/show',
+            {
             }).then(function successCallback(response) {
-                $scope.car=response.data;
+                $scope.car = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
     }
-
+     $scope.pagar = function () {
+        $http.get('payment',
+            {
+            }).then(function successCallback(response) {
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
 });

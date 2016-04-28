@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Habtiporeserva extends Model
 {
+	public $timestamps = false;
+
+    protected $fillable = ['habtipo_id', 'reserva_id'];
+
     public function habtipo()
     {
     	return $this->belongsTo('App\habtipo');
