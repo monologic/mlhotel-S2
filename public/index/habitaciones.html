@@ -101,9 +101,10 @@
       </div> 
     </div>
   </div>
-  <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:65px;">
+  <div id="caja" style="top:65px;">
     <div class="title-reser teal lighten-2">Mis Reservas</div>
     <div  style=";width: 80%;margin:40px auto 20px auto">
+    <div id="cont-table">
       <table>
         <thead>
           <tr>
@@ -116,15 +117,34 @@
           <tr ng-repeat="o in car">
             <td>{{o.nombre}}</td>
             <td width="50px">
-              <input type="number" id="{{$index+1}}" name="points" min="0" max="20" step="1" value="1" onchange="calcular()">
+              <input type="number" id="{{$index+1}}" name="points" min="0" max="20" step="1" ng-model="example"  ng-change="actualizar({{$index+1}})">
             </td>
-            <td id="{{$index+1}}s">{{o.precio}}<div id="{{$index+1}}p" style="display: none">{{o.precio}}</div></td>
+            <td id="{{$index+1}}s">{{o.precio*example}}.00<div id="{{$index+1}}p" style="display: none">{{o.precio}}</div></td>
           </tr>
         </tbody>
       </table>
-      <div style="margin: 40px auto 20px auto">
-        <a class="waves-effect waves-light btn" href="payment">Reservar</a>
+    </div>
+      
+      <div>
+        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();">Continuar</a>
       </div>
+      
+
+      <div id="cliente" class="row" hidden >
+        <div class="input-field col s12 centrar">
+          <input type="text" class="validate">
+          <label for="last_name" style="color: #6C7A89">Nombre completo</label>
+        </div>
+         <div class="input-field col s12 centrar">
+          <input type="text" class="validate">
+          <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
+        </div> 
+        <div style="display:block;top:40px">
+          <a class="waves-effect waves-light btn centrar" href="payment">Reservar</a>
+        </div>
+      </div>
+
+      
     </div>
   </div> 
 </section>   <!-- Termino -->
@@ -140,14 +160,14 @@
   }
 </script>
  <script>
-     function calcular(){
-        for (var i = 1; i < 15; i++) {
-          var rs=document.getElementById(i).value;
-          var precio=document.getElementById(i+"p").innerHTML;
-          var res=rs*precio;
-          document.getElementById(i+"s").innerHTML=res+".00";
-        }
-      
+     function comprar(){
+      $('#cont-table').css({'border':'1px dashed #BDC3C7'});
+      $('#cont-table').css({'padding':'15px'});
+      $('#cont-table').css({'border-radius':'8px'});
+      $('#cont-table').css({'background':'#D2D7D3'});
+      $('#cont-table').css({'transition':'all 0.5s'});
+      $('#btnc').css({'display':'none'});
+      $('#cliente').css({'display':'block'});
      }
     </script>
 

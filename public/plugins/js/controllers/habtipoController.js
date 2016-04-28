@@ -132,4 +132,9 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
+    $scope.actualizar= function(id){
+        idval=$('#'+id).val();
+
+    }
+    $scope.example=1
 });
