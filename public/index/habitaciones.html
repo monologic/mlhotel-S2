@@ -117,30 +117,34 @@
           <tr ng-repeat="o in car">
             <td>{{o.nombre}}</td>
             <td width="50px">
-              <input type="number" id="{{$index+1}}" name="points" min="0" max="20" step="1" ng-model="example"  ng-change="actualizar({{$index+1}})">
+              <input type="number" id="{{$index+1}}" name="points" min="0" max="20" step="1" ng-model="example"  ng-change="actualizar({{$index+1}}, o.id, car)">
             </td>
-            <td id="{{$index+1}}s">{{o.precio*example}}.00<div id="{{$index+1}}p" style="display: none">{{o.precio}}</div></td>
+            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
           </tr>
         </tbody>
       </table>
     </div>
       
       <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();">Continuar</a>
+        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();" ng-click='actualizarCarrito(car)'>Continuar</a>
       </div>
       
 
       <div id="cliente" class="row" hidden >
         <div class="input-field col s12 centrar">
-          <input type="text" class="validate">
-          <label for="last_name" style="color: #6C7A89">Nombre completo</label>
+          <input type="text" class="validate" ng-model="nombres">
+          <label for="last_name" style="color: #6C7A89">Nombres</label>
+        </div>
+        <div class="input-field col s12 centrar">
+          <input type="text" class="validate" ng-model="apellidos">
+          <label for="last_name" style="color: #6C7A89">Apellidos</label>
         </div>
          <div class="input-field col s12 centrar">
-          <input type="text" class="validate">
+          <input type="text" class="validate" ng-model="dni">
           <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
         </div> 
         <div style="display:block;top:40px">
-          <a class="waves-effect waves-light btn centrar" href="payment">Reservar</a>
+          <a class="waves-effect waves-light btn centrar" ng-click="guardarCliente();">Reservar</a>
         </div>
       </div>
 

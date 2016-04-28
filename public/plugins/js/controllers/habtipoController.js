@@ -132,9 +132,41 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
-    $scope.actualizar= function(id){
-        idval=$('#'+id).val();
-
+    $scope.actualizar= function(id, idObjeto, data){
+        idval = $('#'+id).val();
+        for (x in data) {
+            if (x == idObjeto)
+                data[x].quantity = idval;
+        }
+        $scope.car = data;
     }
+
+    $scope.actualizarCarrito = function (data) {
+        for (x in data) {
+            $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
+            {
+            }).then(function successCallback(response) {
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
+    }
+
+    $scope.guardarCliente = function () {
+        $http.post('cart/cliente',
+            {   'nombres':$scope.nombres,
+                'apellidos':$scope.apellidos,
+                'dni':$scope.dni
+            }).then(function successCallback(response) {
+                 $scope.pagar();
+            }, function errorCallback(response) {
+                
+            });
+    }
+    $scope.pagar = function () {
+        window.location.href = 'payment';
+    }
+
     $scope.example=1
 });

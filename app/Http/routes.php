@@ -139,6 +139,11 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' => 'carritoController@delete'
 	]);
 
+	Route::post('cart/cliente',[
+		'as' => 'cart-cliente',
+		'uses' => 'carritoController@guardarCliente'
+	]);
+
 	Route::get('cart/trash', [
 		'as' => 'cart-trash',
 		'uses' => 'carritoController@trash'

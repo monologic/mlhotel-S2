@@ -209,6 +209,12 @@ class carritoController extends Controller
         return view('store.order-detail', compact('cart', 'total'));
     }
 
+    //Guardar Cliente en BD y Session
+    public function guardarCliente(Request $request)
+    {
+        dd($request->all());
+    }
+
     /*
     public function addCarrito(Request $request){
 
