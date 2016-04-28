@@ -14,6 +14,7 @@ use App\Habitacion;
 use App\Habtipo;
 use App\Reserva;
 use App\Habtiporeserva;
+use App\Cliente;
 
 class carritoController extends Controller
 {
@@ -212,7 +213,17 @@ class carritoController extends Controller
     //Guardar Cliente en BD y Session
     public function guardarCliente(Request $request)
     {
-        dd($request->all());
+        $c = Cliente::where('dni', $request->dni)->get();
+        if ($c->count() == 0) {
+            $cli = new Cliente($request->all());
+            $cli->save();
+        }
+        else
+            $cli = $c[0];
+
+        $cliente = \Session::get('cliente');
+        $cliente['id'] = $cli->id;
+        \Session::put('cliente', $cliente);
     }
 
     /*

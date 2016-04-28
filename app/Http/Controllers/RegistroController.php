@@ -108,8 +108,10 @@ class RegistroController extends Controller {
                         if ( $ht['id'] == $habtipo['habtipo_id']) {
                             $habtipos[$k]['habtiporeservas'][] = $habtipo;
                         }
-                        else
+                        if (!isset($habtipos[$k]['habtiporeservas'])) {
                             $habtipos[$k]['habtiporeservas'] = null;
+                        }
+                        
                     }
                 }
             }

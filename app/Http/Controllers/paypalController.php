@@ -21,6 +21,7 @@ use PayPal\Api\Transaction;
 
 use App\Reserva;
 use App\Habtiporeserva;
+use App\Hotel;
 
 class PaypalController extends BaseController
 {
@@ -161,7 +162,7 @@ class PaypalController extends BaseController
 			// Enviar correo a admin
 			// Redireccionar
 
-			$this->saveOrder(\Session::get('cart'));
+			$this->saveOrder(\Session::get('cart'),\Session::get('fechas'),\Session::get('cliente'));
 
 			\Session::forget('cart');
 
@@ -172,17 +173,25 @@ class PaypalController extends BaseController
 	}
 
 
-	private function saveOrder($cart)
+	private function saveOrder($cart, $fechas, $cliente)
 	{
 	    $subtotal = 0;
 	    foreach($cart as $item){
 	        $subtotal += $item->precio * $item->quantity;
 	    }
-	    
+
+	    $hoteles = Hotel::orderBy('id', 'asc')->get();
+		$hotel = $hoteles[0];
+		$fechaInicio = $fechas['fecha_inicio'] . " " . $hotel->checkin;
+		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
+
 	    $reserva = Reserva::create([
 	        'total' => $subtotal,
 	        'reservaestado_id' => 2,
-	        'cliente_id' => 1
+	        'fecha_reserva' => date('Y-m-d'),
+	        'fecha_inicio' => $fechaInicio,
+	        'fecha_fin' => $fechaFin,
+	        'cliente_id' => $cliente['id']
 	    ]);
 	    
 	    foreach($cart as $item){
