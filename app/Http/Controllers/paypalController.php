@@ -22,6 +22,7 @@ use PayPal\Api\Transaction;
 use App\Reserva;
 use App\Habtiporeserva;
 use App\Hotel;
+use App\Cambiomonedatipo;
 
 class PaypalController extends BaseController
 {
@@ -37,6 +38,9 @@ class PaypalController extends BaseController
 
 	public function postPayment()
 	{
+		$monedas = Cambiomonedatipo::where('siglas','USD')->get();
+		$moneda = $monedas[0];
+
 		$payer = new Payer();
 		$payer->setPaymentMethod('paypal');
 
@@ -50,15 +54,19 @@ class PaypalController extends BaseController
 
 		foreach($cart as $producto){
 			//dd($producto->nombre);
+
+			$precioDolar = round(($producto->precio / $moneda->tipocambio), 2);
+
+
 			$item = new Item();
 			$item->setName($producto->nombre)
 			->setCurrency($currency)
 			->setDescription($producto->descripcion)
 			->setQuantity($producto->quantity)
-			->setPrice($producto->precio);
+			->setPrice($precioDolar);
 
 			$items[] = $item;
-			$subtotal += $producto->quantity * $producto->precio;
+			$subtotal += $producto->quantity * $precioDolar;
 		}
 
 		$item_list = new ItemList();

@@ -31,6 +31,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('icono', 'IconController');
 	Route::resource('cliente', 'ClienteController');
 	Route::resource('regcliente', 'RegclienteController');
+	Route::resource('moneda', 'CambioMonedaTipoController');
 
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');

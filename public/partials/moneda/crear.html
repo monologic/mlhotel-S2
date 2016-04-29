@@ -1,0 +1,27 @@
+<div id="page-wrapper" ng-controller="monedaController">
+<br><br>
+<label>{{mensaje}}</label>
+   
+    <h3 class="text-center tit2">Crear Moneda</h3>
+    <div class="formularios">    
+    <form>
+        <div class="form-group">
+            <label for="moneda">Nombre de Moneda</label>
+            <input type="text" class="form-control" id="moneda" ng-model="moneda">
+        </div>
+        <div class="form-group">
+            <label for="siglas">Siglas</label>
+            <input type="text" class="form-control" id="siglas" ng-model="siglas">
+        </div>
+         <div class="form-group">
+            <label for="tipocambio">Tipo de Cambio</label>
+            <input type="text" class="form-control" id="tipocambio" placeholder="formato: 3.000" ng-model="tipocambio">
+        </div>
+        
+        <div class="inputs">
+            <a href="" ng-click="enviar();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><p>Guardar</p> </a> <br><br>
+        </div>
+    </form>
+    </div>
+
+</div>

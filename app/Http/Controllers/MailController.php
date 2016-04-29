@@ -10,11 +10,11 @@ use Mail;
 class MailController extends Controller
 {
    public function send(Request $request){
-   		$data= $request->all();
+   		$data = $request->all();
    		Mail::send('contacto.contacto', $data, function ($message) {
-		    $message->from('love_mauco@hotmail.com', 'Hotel-Contact');
+		    $message->from('chalex_777@hotmail.com', 'Daniel Flores');
 		    $message->subject('Preguntas de los contactos');
-		    $message->to('btr_manuel2@hotmail.com');
+		    $message->to('redlein7@gmail.com');
 		});
 
    }

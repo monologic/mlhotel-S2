@@ -67,6 +67,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/terminarRegistro/:idRegistro", {templateUrl: "partials/registro/terminar.html", controller: "PageCtrl"})
 
     .when("/configChecks", {templateUrl: "partials/config/horas.html", controller: "PageCtrl"})
+
+    .when("/Moneda/crear", {templateUrl: "partials/moneda/crear.html", controller: "PageCtrl"})
+    .when("/Moneda/ver", {templateUrl: "partials/moneda/ver.html", controller: "PageCtrl"})
+
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);

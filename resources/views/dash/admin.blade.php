@@ -213,6 +213,7 @@
     <script src="plugins/js/controllers/registroController.js"></script>
     <script src="plugins/js/controllers/reservaController.js"></script>
     <script src="plugins/js/controllers/serviciosController.js"></script>
+    <script src="plugins/js/controllers/monedaController.js"></script>
     
 
     <script>
