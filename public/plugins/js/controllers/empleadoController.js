@@ -21,7 +21,7 @@ app.controller('empleadoController', function($scope,$http) {
 
     $scope.getEmptipos = function () {
         $http.get('admin/getEmptipos').then(function successCallback(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.emptipos = response.data;
         }, function errorCallback(response) {
         // called asynchronously if an error occurs

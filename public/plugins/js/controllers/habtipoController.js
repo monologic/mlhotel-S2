@@ -142,6 +142,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
     }
 
     $scope.actualizarCarrito = function (data) {
+        $('#porcentaje').material_select();
         for (x in data) {
             $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
             {
@@ -154,10 +155,12 @@ app.controller('habtipoController', function($scope,$http,$location) {
     }
 
     $scope.guardarCliente = function () {
+        
         $http.post('cart/cliente',
             {   'nombres':$scope.nombres,
                 'apellidos':$scope.apellidos,
-                'dni':$scope.dni
+                'dni':$scope.dni,
+                'porcentaje':$('#porcentaje').val()
             }).then(function successCallback(response) {
                  $scope.pagar();
             }, function errorCallback(response) {
@@ -166,6 +169,17 @@ app.controller('habtipoController', function($scope,$http,$location) {
     }
     $scope.pagar = function () {
         window.location.href = 'payment';
+    }
+
+    $scope.getPorcentajes = function () {
+        $http.get('admin/getPorcentajes').then(function successCallback(response) {
+                //
+                $scope.porcentajes = response.data;
+                
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
     }
 
     $scope.example=1

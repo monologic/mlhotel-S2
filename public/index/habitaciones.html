@@ -1,7 +1,7 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();res();" style="min-height:300px;margin-top:100px">
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getHabTipo();res();getPorcentajes();" style="min-height:300px;margin-top:100px">
   <form class="row">
     <div class="input-field col s12 m3">
       <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
@@ -126,7 +126,7 @@
     </div>
       
       <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();" ng-click='actualizarCarrito(car)'>Continuar</a>
+        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();" ng-click='actualizarCarrito(car);'>Continuar</a>
       </div>
       
 
@@ -142,10 +142,19 @@
          <div class="input-field col s12 centrar">
           <input type="text" class="validate" ng-model="dni">
           <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
-        </div> 
+        </div>
+        <br><br>
+        <div class="input-field col s12" centrar>
+          <select id="porcentaje" ng-model='porcentaje' ng-options="p.porcentaje + '%' for p in porcentajes track by p.porcentaje">
+            <option value="" disabled selected>Escoja un porcentaje</option>
+          </select>
+          <label>Desea Pagar solo un porcentaje?</label>
+        </div>
         <div style="display:block;top:40px">
           <a class="waves-effect waves-light btn centrar" ng-click="guardarCliente();">Reservar</a>
         </div>
+        
+
       </div>
 
       

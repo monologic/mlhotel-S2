@@ -32,6 +32,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('cliente', 'ClienteController');
 	Route::resource('regcliente', 'RegclienteController');
 	Route::resource('moneda', 'CambioMonedaTipoController');
+	Route::resource('porcentaje', 'PorcentajeController');
 
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
@@ -66,6 +67,9 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::delete('regClienteEliminar/{id}', 'ClienteController@eliminarRegCliente');
 
 });
+
+	Route::get('admin/getPorcentajes', 'PorcentajeController@index');
+
 	Route::get('admin/getBanners', 'bannerController@getBanners');
 	Route::get('admin/getBanners2', 'bannerController@getBanners2');
 

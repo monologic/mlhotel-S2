@@ -26,6 +26,7 @@ class carritoController extends Controller
         if(!\Session::has('fechas')) \Session::put('fechas', array());
         if(!\Session::has('cart')) \Session::put('cart', array());
         if(!\Session::has('cliente')) \Session::put('cliente', array());
+        if(!\Session::has('porcentaje')) \Session::put('porcentaje', array());
     }
    
     public function buscarHabitaciones($fechaini, $fechafin)
@@ -225,6 +226,10 @@ class carritoController extends Controller
         $cliente = \Session::get('cliente');
         $cliente['id'] = $cli->id;
         \Session::put('cliente', $cliente);
+
+        $porcentaje = \Session::get('porcentaje');
+        $porcentaje['porcentaje'] = $request->porcentaje;
+        \Session::put('porcentaje', $porcentaje);
     }
 
     /*

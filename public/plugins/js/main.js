@@ -71,6 +71,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Moneda/crear", {templateUrl: "partials/moneda/crear.html", controller: "PageCtrl"})
     .when("/Moneda/ver", {templateUrl: "partials/moneda/ver.html", controller: "PageCtrl"})
 
+    .when("/Porcentaje/crear", {templateUrl: "partials/porcentaje/crear.html", controller: "PageCtrl"})
+    .when("/Porcentaje/ver", {templateUrl: "partials/porcentaje/ver.html", controller: "PageCtrl"})
+
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
