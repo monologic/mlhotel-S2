@@ -55,7 +55,8 @@ class PaypalController extends BaseController
 		foreach($cart as $producto){
 			//dd($producto->nombre);
 
-			$precioDolar = round(($producto->precio / $moneda->tipocambio), 2);
+			$precioProducto = $producto->precio * 0.5;
+			$precioDolar = round(($precioProducto / $moneda->tipocambio), 2);
 
 
 			$item = new Item();
@@ -72,7 +73,7 @@ class PaypalController extends BaseController
 		$item_list = new ItemList();
 		$item_list->setItems($items);
 
-		$details = new Details();
+		$details = new Details();	
 		$details->setSubtotal($subtotal);
 
 		$total = $subtotal;
@@ -81,12 +82,12 @@ class PaypalController extends BaseController
 		$amount->setCurrency($currency)
 			->setTotal($total)
 			->setDetails($details);
-
+		
 		$transaction = new Transaction();
 		$transaction->setAmount($amount)
 			->setItemList($item_list)
 			->setDescription('Pedido de prueba en mi Laravel App Store');
-
+		//dd($transaction);
 		$redirect_urls = new RedirectUrls();
 		$redirect_urls->setReturnUrl(\URL::route('payment.status'))
 			->setCancelUrl(\URL::route('payment.status'));
