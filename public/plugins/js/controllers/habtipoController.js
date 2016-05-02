@@ -112,18 +112,22 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
-
     $scope.res = function () {
         $http.get('cart/show',
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
+                $scope.actualizarTotal(response.data);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
     }
-     $scope.pagar = function () {
+    $scope.updateAll = function () {
+        alert('all');
+        
+    }
+    $scope.pagar = function () {
         $http.get('payment',
             {
             }).then(function successCallback(response) {
@@ -132,25 +136,29 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
-    $scope.actualizar= function(id, idObjeto, data){
-        idval = $('#'+id).val();
+    /**
+     * Actualiza la cantidad en el carrito
+     */
+    $scope.actualizar = function(id, idObjeto, data){
+        cantidad = $('#'+id).val();
         for (x in data) {
             if (x == idObjeto)
-                data[x].quantity = idval;
+                data[x].quantity = cantidad;
         }
         $scope.car = data;
     }
-    $scope.actualizarTotal= function(id, idObjeto, data){
+    $scope.actualizarTotal = function(data){
         var total=0;
         for (x in data) {
             subp=data[x].precio*data[x].quantity;
             total+=subp;
         }
-        $scope.totalq=total+'.00'
-    }
 
+        $scope.totalq = 'S/' + total + '.00';
+
+    }
     $scope.actualizarCarrito = function (data) {
-        $('#porcentaje').material_select();
+        
         for (x in data) {
             $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
             {
@@ -162,43 +170,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
         }
     }
 
-    $scope.guardarCliente = function () {
-        
-        $http.post('cart/cliente',
-            {   'nombres':$scope.nombres,
-                'apellidos':$scope.apellidos,
-                'dni':$scope.dni,
-                'porcentaje':$('#porcentaje').val()
-            }).then(function successCallback(response) {
-                 $scope.pagar();
-            }, function errorCallback(response) {
-                
-            });
-    }
-    $scope.pagar = function () {
-        window.location.href = 'payment';
-    }
-
-    $scope.getPorcentajes = function () {
-        $http.get('admin/getPorcentajes').then(function successCallback(response) {
-                //
-                $scope.porcentajes = response.data;
-                
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
-    }
-    $scope.example=1
-
-    $scope.getTotal = function(){
-    var total = 0;
-    for(var i = 0; i < $scope.car.length; i++){
-        var product = $scope.car[i];
-        total += (car.precio * car.quantity);
-    }
-    return total;
-}
-
+    $scope.example=1;
+    
 
 });

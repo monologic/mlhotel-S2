@@ -28,18 +28,32 @@
         </tr>
       </tbody>
     </table>
-    <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
-      <input type="hidden" name="cmd" value="_cart">
-      <input type="hidden" name="upload" value="1">
-      <input type="hidden" name="business" value="chalex_777@hotmail.com">
-      <div ng-repeat="v in car.items">
-        <input type="hidden" name="item_name_@{{$index+1}}" value="{{v.nombre}}">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="amount_{{$index+1}}" value="{{v.precio}}">
-        <input type="hidden" id="{{$index+1}}c" name="quantity_{{$index+1}}" value="">
+   <div id="cliente" class="row" hidden >
+        <div class="input-field col s6 centrar">
+          <input type="text" class="validate" ng-model="nombres">
+          <label for="last_name" style="color: #6C7A89">Nombres</label>
+        </div>
+        <div class="input-field col s6 centrar">
+          <input type="text" class="validate" ng-model="apellidos">
+          <label for="last_name" style="color: #6C7A89">Apellidos</label>
+        </div>
+         <div class="input-field col s12 centrar" style="margin-top:-8px">
+          <input type="text" class="validate" ng-model="dni">
+          <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
+        </div>
+        <br><br>
+  
+        <div style="display:block;top:40px">
+          <a class="waves-effect waves-light btn centrar" ng-click="guardarCliente();">Reservar</a>
+        </div>
+        <div class="input-field col s12" centrar>
+          <select id="porcentaje" ng-change='actualizarTotal();' ng-model='porcentaje' ng-options="p.porcentaje + '%' for p in porcentajes track by p.porcentaje">
+            <option value="" disabled selected>Escoja un porcentaje</option>
+          </select>
+          <label>Desea Pagar solo un porcentaje?</label>
+        </div>
+
       </div>
-      <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
-    </form>
 </div> 
 
 

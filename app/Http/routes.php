@@ -69,6 +69,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 });
 
 	Route::get('admin/getPorcentajes', 'PorcentajeController@index');
+	Route::get('admin/getTipoCambio', 'CambioMonedaTipoController@getTipoCambioDolar');
 
 	Route::get('admin/getBanners', 'bannerController@getBanners');
 	Route::get('admin/getBanners2', 'bannerController@getBanners2');

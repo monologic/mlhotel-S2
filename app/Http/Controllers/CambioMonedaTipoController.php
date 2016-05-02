@@ -98,4 +98,12 @@ class CambioMonedaTipoController extends Controller
 
         return $this->index();
     }
+
+    public function getTipoCambioDolar()
+    {
+        $monedas = Cambiomonedatipo::where('siglas','USD')->get();
+        $moneda = $monedas[0];
+
+        return response()->json($moneda);
+    }
 }
