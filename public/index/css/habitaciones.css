@@ -9,7 +9,7 @@
 display: block;
  position: fixed;
  background-color: white;
- width: 300px;
+ width: 350px;
  margin: auto;
  margin-top:18px;
  right: -400px;
@@ -19,9 +19,17 @@ display: block;
 }
 thead{
 	font-size: 1rem;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: rgb(200,200,200);
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	line-height: 40px
 }
 tbody{
-	font-size: 0.9rem;
+	top: 10px;
+	font-size: 0.8rem;
+	padding: 10px
 }
 .title-reser{
 	display:block;

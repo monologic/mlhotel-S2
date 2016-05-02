@@ -113,33 +113,38 @@
             <th>Precio</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody>
           <tr ng-repeat="o in car">
             <td>{{o.nombre}}</td>
             <td width="50px">
-              <input type="number" id="{{$index+1}}" name="points" min="0" max="20" step="1" ng-model="example"  ng-change="actualizar({{$index+1}}, o.id, car)">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="0" max="20" step="1" ng-model="example"  ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal({{$index+1}}, o.id, car)">
             </td>
             <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Total:</td>
+            <td ng-bind="totalq"></td>
           </tr>
         </tbody>
       </table>
     </div>
       
       <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();" ng-click='actualizarCarrito(car);'>Continuar</a>
+        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();" ng-click='actualizarCarrito(car);sumar();'>Continuar</a>
       </div>
       
 
       <div id="cliente" class="row" hidden >
-        <div class="input-field col s12 centrar">
+        <div class="input-field col s6 centrar">
           <input type="text" class="validate" ng-model="nombres">
           <label for="last_name" style="color: #6C7A89">Nombres</label>
         </div>
-        <div class="input-field col s12 centrar">
+        <div class="input-field col s6 centrar">
           <input type="text" class="validate" ng-model="apellidos">
           <label for="last_name" style="color: #6C7A89">Apellidos</label>
         </div>
-         <div class="input-field col s12 centrar">
+         <div class="input-field col s12 centrar" style="margin-top:-8px">
           <input type="text" class="validate" ng-model="dni">
           <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
         </div>

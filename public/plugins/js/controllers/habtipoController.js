@@ -140,6 +140,14 @@ app.controller('habtipoController', function($scope,$http,$location) {
         }
         $scope.car = data;
     }
+    $scope.actualizarTotal= function(id, idObjeto, data){
+        var total=0;
+        for (x in data) {
+            subp=data[x].precio*data[x].quantity;
+            total+=subp;
+        }
+        $scope.totalq=total+'.00'
+    }
 
     $scope.actualizarCarrito = function (data) {
         $('#porcentaje').material_select();
@@ -181,6 +189,16 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
-
     $scope.example=1
+
+    $scope.getTotal = function(){
+    var total = 0;
+    for(var i = 0; i < $scope.car.length; i++){
+        var product = $scope.car[i];
+        total += (car.precio * car.quantity);
+    }
+    return total;
+}
+
+
 });

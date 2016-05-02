@@ -42,6 +42,69 @@
 	<div style="position:relative;top:-40px;z-index: 20px"><a class="waves-effect waves-light btn" onclick="ruta();"><i class="material-icons left">input</i>Trazar ruta</a></div>
 </div>
 
+<section ng-controller="habtipoController" ng-init="descrip();getHabTipo();res();getPorcentajes();" style="min-height:300px;margin-top:100px">
+
+	<div id="caja" style="top:65px;">
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
+    <div  style=";width: 80%;margin:40px auto 20px auto">
+    <div id="cont-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Habitacion</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="o in car">
+            <td>{{o.nombre}}</td>
+            <td width="50px">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="0" max="20" step="1" ng-model="example"  ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal({{$index+1}}, o.id, car)">
+            </td>
+            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Total:</td>
+            <td ng-bind="totalq"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      
+      <div>
+        <a id="btnc" class="waves-effect waves-light btn centrar" onclick="comprar();" ng-click='actualizarCarrito(car);sumar();'>Continuar</a>
+      </div>
+      
+
+      <div id="cliente" class="row" hidden >
+        <div class="input-field col s6 centrar">
+          <input type="text" class="validate" ng-model="nombres">
+          <label for="last_name" style="color: #6C7A89">Nombres</label>
+        </div>
+        <div class="input-field col s6 centrar">
+          <input type="text" class="validate" ng-model="apellidos">
+          <label for="last_name" style="color: #6C7A89">Apellidos</label>
+        </div>
+         <div class="input-field col s12 centrar" style="margin-top:-8px">
+          <input type="text" class="validate" ng-model="dni">
+          <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
+        </div>
+        <br><br>
+        <div class="input-field col s12" centrar>
+          <select id="porcentaje" ng-model='porcentaje' ng-options="p.porcentaje + '%' for p in porcentajes track by p.porcentaje">
+            <option value="" disabled selected>Escoja un porcentaje</option>
+          </select>
+          <label>Desea Pagar solo un porcentaje?</label>
+        </div>
+        <div style="display:block;top:40px">
+          <a class="waves-effect waves-light btn centrar" ng-click="guardarCliente();">Reservar</a>
+        </div>   
+      </div>   
+    </div>
+  </div>
+</section>
 
 <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"></script>
 

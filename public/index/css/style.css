@@ -181,3 +181,32 @@ font-family: 'Titan One', cursive;
      border-bottom: 1px solid white;
      box-shadow: 0 1px 0 0 white;
    }
+input[type="number"] {
+    position: relative;
+    margin: 0 0 1rem;
+    width: 40px;
+    height: 25px;
+    border-color: #BBB #ECECEC #ECECEC #BBB;
+    padding: .1rem;
+}
+
+/* Spin Buttons modified */
+input[type="number"].mod::-webkit-outer-spin-button, 
+input[type="number"].mod::-webkit-inner-spin-button {
+    -webkit-appearance:valid;
+    background: red url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAKUlEQVQYlWNgwAT/sYhhKPiPT+F/LJgEsHv37v+EMGkmkuImoh2NoQAANlcun/q4OoYAAAAASUVORK5CYII=) no-repeat center center;
+    width: 3em;
+    color: red;
+    opacity: .5; /* shows Spin Buttons per default (Chrome >= 39) */
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+input[type="number"].mod::-webkit-inner-spin-button:hover,
+input[type="number"].mod::-webkit-inner-spin-button:active{
+    opacity: 1;
+    width: 10px;
+}
+
