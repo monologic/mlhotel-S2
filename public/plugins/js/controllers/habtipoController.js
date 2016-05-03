@@ -90,10 +90,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
         */
     }
     $scope.buscar = function () {
+     
         $http.get('cart/buscarHabitaciones/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             $scope.tipoPerHabs = response.data;
-            fechas=$scope.fechaini;
-            fechas2=$scope.fechafin;
+            fechas = $scope.fechaini;
+            fechas2 = $scope.fechafin;
             $scope.mayor
             $scope.menor
 

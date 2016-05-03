@@ -141,7 +141,7 @@
     </div>
       
       <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click-"actualizarCarrito(car)" onclick="comprar();">Continuar</a>
+        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
       </div>
       
 
@@ -167,23 +167,3 @@
     $('.hab').css({'display':'none'});
   }
 </script>
- <script>
-     function comprar(){
-      $('#cont-table').css({'border':'1px dashed #BDC3C7'});
-      $('#cont-table').css({'padding':'15px'});
-      $('#cont-table').css({'border-radius':'8px'});
-      $('#cont-table').css({'background':'#D2D7D3'});
-      $('#cont-table').css({'transition':'all 0.5s'});
-      $('#btnc').css({'display':'none'});
-      $('#cliente').css({'display':'block'});
-     }
-    </script>
- 
-
-          <!--
-          {{y.nropersonas}}          
-          th{{y.id}} 
-          ng-click="addDetalleReserva(y);"
-
-
-        

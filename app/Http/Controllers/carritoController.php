@@ -31,9 +31,14 @@ class carritoController extends Controller
    
     public function buscarHabitaciones($fechaini, $fechafin)
     {
+        $dias = (strtotime($fechaini)-strtotime($fechafin))/86400;
+        $dias = abs($dias); 
+        $dias = floor($dias);
+
         $fechas = \Session::get('fechas');
         $fechas['fecha_inicio'] = $fechaini;
         $fechas['fecha_fin'] = $fechafin;
+        $fechas['dias'] = $dias;
         \Session::put('fechas', $fechas);   
 
         $this->fechainicio = $fechaini. " " . date('H:i:s');
