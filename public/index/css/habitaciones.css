@@ -1,6 +1,13 @@
 
 @import url(https://fonts.googleapis.com/css?family=Niconne);
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+.dispo{
+	width: 100%;
+	margin:-20px auto 15px auto;
+	color:white;
+	padding:5px;
+	text-align: center;
+}
 .centrar{
 	margin-top: 30px;
 	width: 100%;

@@ -5,11 +5,19 @@
   <form class="row">
     <div class="input-field col s12 m3">
       <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
-      <input type="date"  id="fechaini" ng-model="fechaini" min="04-02-2016">
+      <input input-date
+      id="fechaini" 
+      class="datepicker" 
+      ng-model="fechaini.timer"
+      container="html"
+      format="dd mmm yyyy"
+      type="text" 
+      on-set="onDateSet()"
+       >
     </div>
     <div class="input-field col s12 m3">
       <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar"></i> Fecha Salida</p>
-      <input type="date"  id="fechafin" ng-model="fechafin">
+      <input type="date" class="datepicker" id="fechafin" ng-model="fechafin">
     </div>
       <div class="input-field col s12 m3">
         <select>
@@ -38,7 +46,7 @@
         <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i>Niños</label>
       </div>
       <div class="col s12 m12">
-        <a class="waves-effect black btn" onclick="esconder();" ng-click="buscar();"><i class="material-icons left">search</i>Buscar</a>
+        <a class="waves-effect black btn" onclick="esconder();" ng-click="buscarHab();"><i class="material-icons left">search</i>Buscar</a>
       </div>
         
   </form>
@@ -91,10 +99,7 @@
     </div>
     <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
       <div>
-        <p ng-model="fechaini"></p>
-        <p ng-model="fechafin"></p>
-        <p>Disponibilidad:</p>
-        <p>{{y.habitacionescount-y.habtiporeservascount}}</p>
+        <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
         <p class="cart-precio">Desde</p>
         <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
         <a class="waves-effect btn black" ng-click="inicializarCombo();addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
@@ -150,7 +155,12 @@
 <script>
   $(document).ready(function() {
     $('select').material_select();
-  }); 
+  });
+   $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'dd-mm-yyyy',
+  });
 </script>
 <script>
   function esconder(){
@@ -168,6 +178,7 @@
       $('#cliente').css({'display':'block'});
      }
     </script>
+ 
 
           <!--
           {{y.nropersonas}}          
