@@ -186,13 +186,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
         }
         window.location.href = '#/micarrito';
     }
-<<<<<<< HEAD
-    
-
-=======
     $scope.onDateSet = function(){
        console.log($scope.fechaini.timer);
        //outputs '10 Sep' , where i expect to find the date object
-}
->>>>>>> origin/master
+    }
 });

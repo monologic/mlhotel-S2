@@ -24,6 +24,11 @@ display: block;
   transition: all .4s;
   color: black
 }
+.border-top{
+	border-top: solid;
+	border-width: 1px;
+	border-color: rgb(200,200,200);
+}
 thead{
 	font-size: 1rem;
 	border-bottom: solid;
@@ -36,7 +41,8 @@ thead{
 tbody{
 	top: 10px;
 	font-size: 0.8rem;
-	padding: 10px
+	padding: 10px;
+	line-height: 30px;
 }
 .title-reser{
 	display:block;
