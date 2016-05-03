@@ -12,7 +12,27 @@ app.controller('carritoController', function($scope,$http) {
             // or server returns response with an error status.
             });
     }
+    $scope.res = function () {
+        $http.get('cart/show',
+            {
+            }).then(function successCallback(response) {
+                $scope.car = response.data;
+                $scope.actualizarTotal(response.data);
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+    $scope.actualizarTotal = function(data){
+        var total=0;
+        for (x in data) {
+            subp=data[x].precio*data[x].quantity;
+            total+=subp;
+        }
+        $scope.totalN = total;
+        $scope.totalq = 'S/' + total + '.00';
 
+    }
     $scope.guardarCliente = function () {
         
         $http.post('cart/cliente',
@@ -49,9 +69,17 @@ app.controller('carritoController', function($scope,$http) {
             }, function errorCallback(response) {
             });
     }
-    $scope.example=1;
-    $scope.inicializarCombo = function () {
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         $('#porcentaje').material_select();
-    }
+    });
+
+    $('#porcentaje').change(function() {
+        var porcentaje = $('#porcentaje').val();
+        totalR = $scope.totalN * porcentaje / 100;
+        totalRDolares = totalR / $scope.tipoCambio;
+        $('#TotalR').text('Total: S/' + totalR.toFixed(2) + ' ó $' + totalRDolares.toFixed(2)) ;
+
+    });
     
 });

@@ -137,6 +137,8 @@
     <script src="plugins/js/controllers/buscarController.js"></script>
     <script src="plugins/js/controllers/carritoController.js"></script>
 
+    <script src="plugins/js/directivas/onFinishRender.js"></script>
+
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>

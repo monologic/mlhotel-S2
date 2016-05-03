@@ -1,34 +1,40 @@
 <div class="title-reser teal lighten-2">Mis Reservas</div >
-  <div style=";width: 80%;margin:40px auto 20px auto" ng-controller="habtipoController" ng-init="res();">
-    <table class="">
-      <thead>
-        <tr>
-          <th data-field="nombre">Habitacion</th>
-          <th data-field="cant" width="80px">Cant.</th>
-          <th data-field="precio">Precio</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr ng-repeat="r in car.items">
-          <td>{{r.nombre}}</td>
-          <td width="80px">
-          <div class="input-field" style="width: 30px;">
-            <select id="{{$index+1}}" onchange="calcular();">
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-        </td>
-          <td><div id="@{{$index+1}}s">{{r.precio}}</div><div id="@{{$index+1}}p" style="display: none">{{r.precio}}</div></td>
-        </tr>
-      </tbody>
-    </table>
-   <div id="cliente" class="row" hidden >
+  <div style=";width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();res();getTipoCambio();">
+    <div>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th>Habitacion</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="o in car" on-finish-render="ngRepeatFinished">
+            <td>{{o.nombre}}</td>
+            <td>{{o.quantity}}</td>
+            <td>{{o.precio}}</td>
+            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+       
+      <div>Total: {{totalq}}</div>
+      <br>
+       <div class="input-field col s12" centrar>
+        <select id="porcentaje" ng-model='porcentaje' ng-options="p.porcentaje + '%' for p in porcentajes track by p.porcentaje">
+          <option value="0" disabled selected>Escoja un porcentaje</option>
+        </select>
+        <label>Desea Pagar solo un porcentaje?</label>
+      </div>
+      <div id="TotalR"></div>  
+    </div>
+
+
+   <div id="cliente" class="row" >
         <div class="input-field col s6 centrar">
           <input type="text" class="validate" ng-model="nombres">
           <label for="last_name" style="color: #6C7A89">Nombres</label>
@@ -46,14 +52,11 @@
         <div style="display:block;top:40px">
           <a class="waves-effect waves-light btn centrar" ng-click="guardarCliente();">Reservar</a>
         </div>
-        <div class="input-field col s12" centrar>
-          <select id="porcentaje" ng-change='actualizarTotal();' ng-model='porcentaje' ng-options="p.porcentaje + '%' for p in porcentajes track by p.porcentaje">
-            <option value="" disabled selected>Escoja un porcentaje</option>
-          </select>
-          <label>Desea Pagar solo un porcentaje?</label>
-        </div>
+       
 
       </div>
+    
+      
 </div> 
 
 
