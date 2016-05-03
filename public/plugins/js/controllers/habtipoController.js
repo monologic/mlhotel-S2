@@ -102,6 +102,22 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
     }
+     $scope.buscarHab = function () {
+        var fini = $('#fechaini').val()
+        var ffin = $('#fechaini').val()
+
+        $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
+            $scope.tipoPerHabs = response.data;
+            fechas=$scope.fechaini;
+            fechas2=$scope.fechafin;
+            $scope.mayor
+            $scope.menor
+
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
     $scope.addCarrito = function (data) {
         $http.get('cart/add/'+data.id,
             {
@@ -169,8 +185,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
             });
         }
     }
-
-    $scope.example=1;
-    
-
+    $scope.onDateSet = function(){
+       console.log($scope.fechaini.timer);
+       //outputs '10 Sep' , where i expect to find the date object
+}
 });
