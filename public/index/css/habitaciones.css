@@ -1,6 +1,9 @@
 
 @import url(https://fonts.googleapis.com/css?family=Niconne);
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+.sel {
+	max-width: 150px;
+}
 .icono-in-input{
 	position: absolute;
 	right: 35px;
