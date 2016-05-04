@@ -48,6 +48,7 @@ class PaypalController extends BaseController
 		$subtotal = 0;
 		$cart = \Session::get('cart');
 		$porcentaje = \Session::get('porcentaje');
+		$fechas = \Session::get('fechas');
 
 		//dd($cart);
 
@@ -56,7 +57,7 @@ class PaypalController extends BaseController
 		foreach($cart as $producto){
 			//dd($producto->nombre);
 
-			$precioProducto = $producto->precio * $porcentaje['porcentaje']/100;
+			$precioProducto = $producto->precio * $porcentaje['porcentaje'] / 100 * $fechas['dias'];
 			$precioDolar = round(($precioProducto / $moneda->tipocambio), 2);
 
 

@@ -135,6 +135,11 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' => 'carritoController@show'
 	]);
 
+	Route::get('cart/getDias', [
+		'as' => 'cart-dias',
+		'uses' => 'carritoController@getDias'
+	]);
+
 	Route::get('cart/add/{habtipo}', [
 		'as' => 'cart-add',
 		'uses' => 'carritoController@add'

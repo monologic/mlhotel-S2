@@ -123,6 +123,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $http.get('cart/add/'+data.id,
             {
             }).then(function successCallback(response) {
+                $scope.getDias();
                 $scope.res();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -135,14 +136,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
                 $scope.actualizarTotal(response.data);
+                
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
-    }
-    $scope.updateAll = function () {
-        alert('all');
-        
     }
     $scope.pagar = function () {
         $http.get('payment',
@@ -170,8 +168,9 @@ app.controller('habtipoController', function($scope,$http,$location) {
             subp=data[x].precio*data[x].quantity;
             total+=subp;
         }
-
+        $scope.totalN = total.toFixed(2);
         $scope.totalq = 'S/' + total + '.00';
+        $scope.Total = ($scope.totalN * $scope.fechas.dias).toFixed(2);
 
     }
     $scope.actualizarCarrito = function (data) {
@@ -190,5 +189,16 @@ app.controller('habtipoController', function($scope,$http,$location) {
     $scope.onDateSet = function(){
        console.log($scope.fechaini.timer);
        //outputs '10 Sep' , where i expect to find the date object
+    }
+
+    $scope.getDias = function () {
+        $http.get('cart/getDias',
+            {
+            }).then(function successCallback(response) {
+                $scope.fechas = response.data;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
     }
 });

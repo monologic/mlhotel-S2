@@ -1,7 +1,7 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();getPorcentajes();" style="min-height:300px;margin-top:100px">
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();getDias();res();getPorcentajes();" style="min-height:300px;margin-top:100px">
   <form class="row">
     <div class="input-field col s12 m3" style="padding:25px">
       <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha entrada</p>
@@ -64,7 +64,7 @@
         
       </div>
       <div class="col s12 m12">
-        <a class="waves-effect black btn" onclick="esconder();Cdias()" ng-click="buscarHab();"><i class="material-icons left">search</i>Buscar</a>
+        <a class="waves-effect black btn" onclick="esconder();" ng-click="buscarHab();"><i class="material-icons left">search</i>Buscar</a>
       </div>
         
   </form>
@@ -120,7 +120,7 @@
         <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
         <p class="cart-precio">Desde</p>
         <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
-        <a class="waves-effect btn black" ng-click="inicializarCombo();addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
+        <a class="waves-effect btn black" ng-click="addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservar :)', 4000)">reservar</a>
       </div> 
     </div>
   </div>
@@ -155,7 +155,7 @@
           </tr>
         </tbody>
       </table>
-      <div>{{totalDescuento}}</div>
+      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
     </div>
       
       <div>

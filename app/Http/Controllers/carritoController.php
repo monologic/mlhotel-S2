@@ -156,6 +156,16 @@ class carritoController extends Controller
         return response()->json( $cartRet );
     }
 
+    public function getDias()
+    {
+        $cart = \Session::get('fechas');
+        //$total = $this->total();
+        //return view('store.cart', compact('cart', 'total'));
+        //dd($cart);
+        $fechas = $cart;
+        return response()->json( $fechas );
+    }
+
     // Add item
     public function add(Habtipo $Habtipo)
     {

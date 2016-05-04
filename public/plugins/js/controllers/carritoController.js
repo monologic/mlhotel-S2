@@ -18,6 +18,7 @@ app.controller('carritoController', function($scope,$http) {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
                 $scope.actualizarTotal(response.data);
+                $scope.getDias();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -29,8 +30,9 @@ app.controller('carritoController', function($scope,$http) {
             subp=data[x].precio*data[x].quantity;
             total+=subp;
         }
-        $scope.totalN = total;
+        $scope.totalN = total.toFixed(2);
         $scope.totalq = 'S/' + total + '.00';
+        $scope.Total = ($scope.totalN * $scope.fechas.dias).toFixed(2);
 
     }
     $scope.guardarCliente = function () {
@@ -76,10 +78,19 @@ app.controller('carritoController', function($scope,$http) {
 
     $('#porcentaje').change(function() {
         var porcentaje = $('#porcentaje').val();
-        totalR = $scope.totalN * porcentaje / 100;
+        totalR = $scope.Total * porcentaje / 100;
         totalRDolares = totalR / $scope.tipoCambio;
         $('#TotalR').text('Total: S/' + totalR.toFixed(2) + ' ó $' + totalRDolares.toFixed(2)) ;
 
     });
-    
+    $scope.getDias = function () {
+        $http.get('cart/getDias',
+            {
+            }).then(function successCallback(response) {
+                $scope.fechas = response.data;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
 });

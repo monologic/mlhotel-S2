@@ -1,5 +1,5 @@
 <div class="title-reser teal lighten-2">Mis Reservas</div >
-  <div style=";width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();res();getTipoCambio();">
+  <div style=";width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();">
   <div class="row">
     <h2>Mis reservas</h2>
     <div class="col m6" style="padding:20px 40px 20px 40px">
@@ -28,6 +28,8 @@
         </tbody>
       </table>
       <br><br>
+
+      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
       <div>   
         <br><br>
         <div class="input-field col s12" centrar>
