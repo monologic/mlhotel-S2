@@ -118,12 +118,13 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+
+        $('.hab').css({'display':'none'});
     }
     $scope.addCarrito = function (data) {
         $http.get('cart/add/'+data.id,
             {
             }).then(function successCallback(response) {
-                $scope.getDias();
                 $scope.res();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -196,6 +197,15 @@ app.controller('habtipoController', function($scope,$http,$location) {
             {
             }).then(function successCallback(response) {
                 $scope.fechas = response.data;
+
+                $('#fechaini').val(response.data.fecha_inicio);
+                $('#fechafin').val(response.data.fecha_fin);
+                
+
+                if ((response.data).hasOwnProperty('dias')) {
+                    $scope.buscarHab();
+                }
+
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
