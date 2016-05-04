@@ -86,7 +86,8 @@ class habtipogaleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Habtipofoto::destroy($id);
+
     }
 
       public function HabTipoFotoStore(Request $request)

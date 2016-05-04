@@ -38,8 +38,8 @@
         <section class="center-block">
             <div class="galeria-f" ng-repeat="x in habfotos" style="width: 90%">
                 <div ng-repeat="a in x.habtipofotos" style="width: 180px;height: 150px;display: inline-block;margin: 20px 20px 20px 20px">
-                    <a class="btn btn-success" style="display: block;position: absolute;">x</a>
-                    <img src="imagen/habitaciones/galeria/{{a.foto}}" style="width: 100%;" >
+                    <a class="btn btn-danger" ng-click="eliminar(a.id);" style="display: block;position: absolute;margin-right:0">x</a>
+                    <img src="imagen/habitaciones/galeria/{{a.foto}}" style="width: 180px;height: 130px;" >
                 </div>
             </div>  
         </section>
