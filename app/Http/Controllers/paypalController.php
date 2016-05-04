@@ -214,9 +214,12 @@ class PaypalController extends BaseController
 	
 	private function saveOrderItem($item, $reserva_id)
 	{
-		Habtiporeserva::create([
-			'habtipo_id' => $item->id,
-			'reserva_id' => $reserva_id
-		]);
+		for ($i = 0; $i < $item['quantity']; $i++) { 
+			Habtiporeserva::create([
+				'habtipo_id' => $item->id,
+				'reserva_id' => $reserva_id
+			]);
+		}
+		
 	}
 }

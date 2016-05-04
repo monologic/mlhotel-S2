@@ -137,7 +137,7 @@
     <script src="plugins/js/controllers/serviciosController.js"></script>
     <script src="plugins/js/controllers/buscarController.js"></script>
     <script src="plugins/js/controllers/carritoController.js"></script>
-
+    <script src="plugins/js/controllers/reservaController.js"></script>
     <script src="plugins/js/directivas/onFinishRender.js"></script>
 
     <script src="plugins/galery/js/jquery.fancybox.min.js"></script>

@@ -8,7 +8,7 @@ class Usuario extends Authenticatable
 {
     public $timestamps = false;
 
-    protected $fillable = ['empleado_id', 'usuario', 'password', 'usuariotipo_id'];
+    protected $fillable = ['empleado_id', 'usuario', 'password', 'usuariotipo_id', 'activo'];
     
     public function empleado()
    	{

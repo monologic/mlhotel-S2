@@ -181,23 +181,28 @@ class HotelController extends Controller
 
     public function guardarAdminHotel(Request $request)
     {
+        $e = Empleado::find($request->empleado);
+        $e->emptipo_id = 2;
+        $e->save();
 
-        $empleado = Empleado::find($request->empleado);
-        $empleado->fill($request->all());
-        $empleado->save();
-
-        $u = Usuario::where('empleado_id', $empleado->id)->get();
+        $u = Usuario::where('empleado_id', $request->empleado)->get();
 
         if ($u->count() > 0) {
             $user = Usuario::find($u[0]->id);
-            $user->delete();
+            $user->usuariotipo_id = 3;
+            $user->save();
             //dd("Eliminando");
         }
+
+        $empleado = new Empleado($request->all());
+        $empleado->emptipo_id = $this->getIdCargoAdminHotel();
+        $empleado->save();
         
         $usuario = new Usuario();
         $usuario->empleado_id = $empleado->id;
         $usuario->usuario = $this->crearUsuario($empleado->nombres, $empleado->apellidos);
         $usuario->password = bcrypt($empleado->dni);
+        $usuario->activo = 1;
         $usuario->usuariotipo_id = $this->getIdTipoUsuarioAdminHotel();
         $usuario->save();
         

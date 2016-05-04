@@ -81,7 +81,6 @@
     </section>
     <div class="noticia" ng-controller="noticiaController" ng-init="getNoticiash();" style="width:100%;background-color:rgb(230,230,230);padding-top:80px;padding-bottom:30px;" >
       <article class="row" style="width:80%;margin:-30px auto 25px auto">
-
         <div class="col m5 s12 wow fadeInLeft" data-wow-delay="1.5s" data-wow-duration="2s">
           <img src="imagen/Noticia/{{noticias.imagen}}" style="width:100%">
         </div>
@@ -95,40 +94,41 @@
       </article>
       
     </div>  
-
-    <div class="fixed-action-btn click-to-toggle" style="bottom:20px; right: 24px;">
-            <a class="btn-floating btn-large black">
-              <i class="large material-icons">mode_edit</i>
-            </a>
-            <ul>
-              <li>
-                <div class="cont-reservas white hoverable">
-                  <div class="tit-res black"><p class="">Reservar Habitaciones</p></div>
-                  <div class="input-field col s12 m12">
-                      <input type="date" class="datepicker" style="width:70%">
-                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <input type="date" class="datepicker" style="width:70%">
-                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
-                      <input id="icon_prefix" type="text" class="validate">
-                      
+    <div ng-controller="reservaController">
+      <div class="fixed-action-btn click-to-toggle" style="bottom:20px; right: 24px;">
+              <a class="btn-floating btn-large black">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li>
+                  <div class="cont-reservas white hoverable">
+                    <div class="tit-res black"><p class="">Reservar Habitaciones</p></div>
+                    <div class="input-field col s12 m12">
+                        <input type="date" class="datepicker" style="width:70%" id="fechaini">
+                        <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
                     </div>
-                    <div class="input-field col s6">
-                      <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
-                      <input id="icon_telephone" type="tel" class="validate">  
+                    <div class="input-field col s12">
+                        <input type="date" class="datepicker" style="width:70%" id="fechafin">
+                        <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
                     </div>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
+                        <input id="icon_prefix" type="text" class="validate">
+                        
+                      </div>
+                      <div class="input-field col s6">
+                        <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
+                        <input id="icon_telephone" type="tel" class="validate">  
+                      </div>
+                    </div>
+                    <a class="waves-effect black" style="display:block;margin:-20px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white" ng-click='buscarHab();'>Reservar</a>
                   </div>
-                  <a class="waves-effect black" style="display:block;margin:-20px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white">Reservar</a>
-                </div>
-                  
-              </li>
-            </ul>
-          </div>
+                    
+                </li>
+              </ul>
+      </div>
+    </div>
  <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:65px;">
     <div class="title-reser teal lighten-2">Mis Reservas</div>
     <div style=";width: 80%;margin:40px auto 20px auto">

@@ -103,7 +103,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
     }
-     $scope.buscarHab = function () {
+    $scope.buscarHab = function () {
         var fini = $('#fechaini').val()
         var ffin = $('#fechafin').val()
 

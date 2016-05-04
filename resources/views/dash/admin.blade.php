@@ -55,7 +55,9 @@
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Usuarios</a></li>
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-7" href="#">Empleado</a></li>
                     
-                    <li class="menu__item"><a class="menu__link"  href="#/configChecks">Configurar Check-In y Check-out</a></li>  
+                    <li class="menu__item"><a class="menu__link"  href="#/configChecks">Configurar Check-In y Check-out</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver">Tipos de Cambio</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Porcentaje de Pago Reserva</a></li>  
                 @endif
 
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")

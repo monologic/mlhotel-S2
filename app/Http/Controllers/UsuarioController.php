@@ -41,6 +41,7 @@ class UsuarioController extends Controller
     {
         $usuario = new Usuario($request->all());
         $usuario->password = bcrypt($request->password);
+        $usuario->activo = 1;
         $usuario->save();
 
         return response()->json([
