@@ -105,7 +105,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
     }
      $scope.buscarHab = function () {
         var fini = $('#fechaini').val()
-        var ffin = $('#fechaini').val()
+        var ffin = $('#fechafin').val()
 
         $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
             $scope.tipoPerHabs = response.data;

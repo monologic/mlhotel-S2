@@ -46,7 +46,7 @@
         <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i>Niños</label>
       </div>
       <div class="col s12 m12">
-        <a class="waves-effect black btn" onclick="esconder();" ng-click="buscarHab();"><i class="material-icons left">search</i>Buscar</a>
+        <a class="waves-effect black btn" onclick="esconder();Cdias()" ng-click="buscarHab();"><i class="material-icons left">search</i>Buscar</a>
       </div>
         
   </form>
@@ -159,8 +159,26 @@
    $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year
-    format: 'dd-mm-yyyy',
+    format: 'yyyy-mm-dd',
   });
+  var MILISENGUNDOS_POR_DIA = 1000 * 60 * 60 * 24;
+
+  function diferenciaEntreDiasEnDias(a, b)
+  {
+    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.floor((utc2 - utc1) / MILISENGUNDOS_POR_DIA);
+  }
+  function Cdias(){
+    var dia1 = new Date("9/1/2001");
+    var dia2 = new Date("15/1/2001");
+
+    var resultado = diferenciaEntreDiasEnDias(dia1, dia2);
+
+    alert(resultado);
+  }
+  
 </script>
 <script>
   function esconder(){
