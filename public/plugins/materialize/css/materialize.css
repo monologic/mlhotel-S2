@@ -3334,6 +3334,7 @@ nav ul a span.badge {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
 
 .circle {
@@ -9453,14 +9454,16 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   margin: 0 0 15px 0;
   padding: 0;
   display: block;
+
 }
+
 
 .select-wrapper span.caret {
   color: initial;
   position: absolute;
   right: 0;
   top: 16px;
-  font-size: 10px;
+  font-size: 0px;
 }
 
 .select-wrapper span.caret.disabled {

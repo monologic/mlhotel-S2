@@ -3,47 +3,65 @@
 </script> 
 <section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();getPorcentajes();" style="min-height:300px;margin-top:100px">
   <form class="row">
-    <div class="input-field col s12 m3">
-      <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
-      <input input-date
-      id="fechaini" 
-      class="datepicker" 
-      ng-model="fechaini.timer"
-      container="html"
-      format="dd mmm yyyy"
-      type="text" 
-      on-set="onDateSet()"
-       >
-    </div>
-    <div class="input-field col s12 m3">
-      <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar"></i> Fecha Salida</p>
-      <input type="date" class="datepicker" id="fechafin" ng-model="fechafin">
-    </div>
-      <div class="input-field col s12 m3">
-        <select>
-          <option value="nada"></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-        </select>
-        <label style="font-size: 1rem"><i class="fa fa-male" aria-hidden="true" ></i> Adultos</label>
+    <div class="input-field col s12 m3" style="padding:25px">
+      <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha entrada</p>
+      <div>
+        <input input-date id="fechaini" class="datepicker" ng-model="fechaini">
+        <div class="icono-in-input">
+          <i class="fa fa-calendar"></i>
+        </div>
+        
       </div>
-      <div class="input-field col s12 m3">
-        <select>
-          <option value=""></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-        </select>
-        <label style="font-size: 1rem"><i class="fa fa-child" aria-hidden="true"></i>Niños</label>
+      
+    </div>
+    <div class="input-field col s12 m3" style="padding:25px">
+      <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha salida</p>
+      <div>
+        <input type="date" class="datepicker" id="fechafin" ng-model="fechafin">
+        <div class="icono-in-input">
+          <i class="fa fa-calendar"></i>
+        </div>
+        
+      </div>
+      
+    </div>
+      <div class="input-field col s12 m3" style="padding:25px">
+        <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-male" aria-hidden="true" ></i> Adultos</p>
+        <div class="sel">
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+          <div class="icono-in-input">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+        </div>
+        
+        
+      </div>
+      <div class="input-field col s12 m3" style="padding:25px">
+        <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-child" aria-hidden="true"></i>Niños</p>
+        <div class="sel">
+          <select>
+            <option value="">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+          <div class="icono-in-input">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
+        </div>
+        
       </div>
       <div class="col s12 m12">
         <a class="waves-effect black btn" onclick="esconder();Cdias()" ng-click="buscarHab();"><i class="material-icons left">search</i>Buscar</a>
@@ -142,12 +160,7 @@
       
       <div>
         <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
-      </div>
-      
-
-  
-
-      
+      </div>    
     </div>
   </div> 
 </section>   <!-- Termino -->
@@ -161,24 +174,6 @@
     selectYears: 15, // Creates a dropdown of 15 years to control year
     format: 'yyyy-mm-dd',
   });
-  var MILISENGUNDOS_POR_DIA = 1000 * 60 * 60 * 24;
-
-  function diferenciaEntreDiasEnDias(a, b)
-  {
-    var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-
-    return Math.floor((utc2 - utc1) / MILISENGUNDOS_POR_DIA);
-  }
-  function Cdias(){
-    var dia1 = new Date("9/1/2001");
-    var dia2 = new Date("15/1/2001");
-
-    var resultado = diferenciaEntreDiasEnDias(dia1, dia2);
-
-    alert(resultado);
-  }
-  
 </script>
 <script>
   function esconder(){

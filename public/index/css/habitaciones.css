@@ -1,6 +1,13 @@
 
 @import url(https://fonts.googleapis.com/css?family=Niconne);
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+.icono-in-input{
+	position: absolute;
+	right: 35px;
+	top: 45px;
+	z-index: -30;
+	font-size: 1.1rem;
+}
 .dispo{
 	width: 100%;
 	margin:-20px auto 15px auto;
