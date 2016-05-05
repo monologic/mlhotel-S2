@@ -211,4 +211,26 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // or server returns response with an error status.
             });
     }
+
+    $scope.eliminarItem = function (id) {
+        $http.get('cart/delete/'+id,
+            {
+            }).then(function successCallback(response) {
+                $scope.res();
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+
+    $scope.vaciarCarrito = function () {
+        $http.get('cart/trash',
+            {
+            }).then(function successCallback(response) {
+                $scope.res();
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
 });
