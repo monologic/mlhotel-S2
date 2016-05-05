@@ -52,6 +52,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('getReserva/{idReserva}', 'ReservaController@getReserva');
 	Route::get('buscarRegistro/{idRegistro}', 'RegistroController@getRegistro');
 
+	Route::get('activarDesactivar/{idUsuario}', 'UsuarioController@activarDesactivar');
+
 	Route::get('buscarHuesped/{dni}', 'ClienteController@buscarHuesped');
 	
 	Route::post('crearAdminHotel', 'HotelController@crearAdminHotel');

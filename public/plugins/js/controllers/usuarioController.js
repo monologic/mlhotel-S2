@@ -37,5 +37,33 @@ app.controller('usuarioController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+
+    $scope.getUsuarios = function () {
+        $http.get('admin/usuario')
+        .then(function successCallback(response) {
+
+            $scope.usuarios = response.data;
+
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
+
+    $scope.activarDesactivar = function (id) {
+        r = confirm("¿Deseas cambiar el estado a este Usuario?");
+
+        if (r) {
+            $http.get('admin/activarDesactivar/' + id)
+            .then(function successCallback(response) {
+
+                $scope.usuarios = response.data;
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
+    }
     
 });

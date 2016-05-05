@@ -18,7 +18,15 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = \DB::table('usuarios')
+                       ->join('empleados', 'empleados.id', '=', 'usuarios.empleado_id')
+                       ->join('usuariotipos', 'usuariotipos.id', '=', 'usuarios.usuariotipo_id')
+                       ->join('emptipos', 'emptipos.id', '=', 'empleados.emptipo_id')
+                       ->select('usuarios.*', 'empleados.nombres', 'empleados.apellidos', 'usuariotipos.nombre as usuariotipo', 'emptipos.tipo as tipoempleado' )
+                       ->where('empleados.hotel_id',\Auth::user()->empleado->hotel->id)
+                       ->get();
+
+        return response()->json( $usuarios );          
     }
 
     /**
@@ -28,7 +36,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -92,5 +100,21 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function activarDesactivar($id)
+    {
+        $usuario = Usuario::find($id);
+        if ($usuario->activo == 1) {
+            $usuario->activo = 0;
+        }
+        else{
+            $usuario->activo = 1;
+        }
+
+        $usuario->save();
+
+        return $this->index();
+       
     }
 }

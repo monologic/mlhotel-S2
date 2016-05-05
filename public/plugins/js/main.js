@@ -27,6 +27,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Empleados/crear", {templateUrl: "partials/empleado/crear.html", controller: "PageCtrl"})
     
     .when("/Usuarios/crear", {templateUrl: "partials/usuario/crear.html", controller: "PageCtrl"})
+    .when("/Usuarios/ver", {templateUrl: "partials/usuario/ver.html", controller: "PageCtrl"})
     .when("/Usuarios/crearTipo", {templateUrl: "partials/usuariotipo/crear.html", controller: "PageCtrl"})
 
     .when("/LisServicios", {templateUrl: "partials/admin/servicios/servicios.html", controller: "PageCtrl"})
