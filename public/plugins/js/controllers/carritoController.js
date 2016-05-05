@@ -36,8 +36,11 @@ app.controller('carritoController', function($scope,$http) {
 
     }
     $scope.guardarCliente = function () {
-        
-        $http.post('cart/cliente',
+
+        if ($('#porcentaje').val().trim() === '') {
+        alert('Debes seleccionar una opcion');
+        } else {
+            $http.post('cart/cliente',
             {   'nombres':$scope.nombres,
                 'apellidos':$scope.apellidos,
                 'dni':$scope.dni,
@@ -48,6 +51,8 @@ app.controller('carritoController', function($scope,$http) {
                 
             }
         );
+        }
+        
     }
     
     $scope.pagar = function () {
@@ -74,7 +79,10 @@ app.controller('carritoController', function($scope,$http) {
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
         $('#porcentaje').material_select();
-    });
+
+        // for HTML5 "required" attribute
+        $("#porcentaje[required]").css({display: "inline", height: 0, padding: 0, width: 0});
+        });
 
     $('#porcentaje').change(function() {
         var porcentaje = $('#porcentaje').val();
