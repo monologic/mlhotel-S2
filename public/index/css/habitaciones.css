@@ -7,7 +7,7 @@
 .icono-in-input{
 	position: absolute;
 	right: 35px;
-	top: 45px;
+	bottom: 50px;
 	z-index: -30;
 	font-size: 1.1rem;
 }
