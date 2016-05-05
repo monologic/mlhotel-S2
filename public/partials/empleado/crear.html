@@ -3,53 +3,54 @@
 
     <h3 class="text-center tit2">Registro de Empleados</h3>
     <div class="formularios">
-        <form>
+        <form ng-submit="enviar()">
             <div class="form-group ">
                 <label for="exampleInputEmail1">Nombres</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombres" ng-model="nombre">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombres" ng-model="nombre" required>
             </div>
             <div class="form-group ">
                 <label for="exampleInputEmail1">Apellidos</label>
-                <input type="text" class="form-control" id="apellido" placeholder="Apellidos" ng-model="apellido">
+                <input type="text" class="form-control" id="apellido" placeholder="Apellidos" ng-model="apellido" required>
             </div>
             <div class="radio">Sexo:
                 <label>
-                    <input type="radio" name="optionsRadios" id="sexo" value="Masculino"  checked>
+                    <input type="radio" name="optionsRadios" id="sexo" value="Masculino"  checked required>
                     Masculino
                 </label>
                 <label>
-                    <input type="radio" name="optionsRadios" id="sexo" value="Femenino">
+                    <input type="radio" name="optionsRadios" id="sexo" value="Femenino" required>
                     Femenino
                 </label>
 
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="nacimiento" ng-model="nacimiento">
+                <input type="date" class="form-control" id="nacimiento" ng-model="nacimiento" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">DNI</label>
-                <input type="text" class="form-control" id="dni" placeholder="Numero de DNI" ng-model="dni">
+                <input type="text" class="form-control" id="dni" placeholder="Numero de DNI" ng-model="dni" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Direccion</label>
-                <input type="text" class="form-control" id="direccion" placeholder="Direccion donde reside" ng-model="direccion">
+                <input type="text" class="form-control" id="direccion" placeholder="Direccion donde reside" ng-model="direccion" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Numero telefonico</label>
-                <input type="text" class="form-control" id="celular" placeholder="Numero telefonico o celular" ng-model="celular">
+                <input type="text" class="form-control" id="celular" placeholder="Numero telefonico o celular" ng-model="celular" required>
             </div>
             <div class="form-group">
                 <label>Tipo de Empleado</label>
-                <select id="emptipo_id" ng-model='emptipo_id' ng-options="emptipo.tipo for emptipo in emptipos track by emptipo.id" class="form-control">
+                <select id="emptipo_id" ng-model='emptipo_id' ng-options="emptipo.tipo for emptipo in emptipos track by emptipo.id" class="form-control" required>
                     <option value="">Seleccione una Opción...</option>
                 </select>
             </div>
+            <div class="inputs">
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true">Guardar</button><br>
+            </div>
         </form>
 
-        <div class="inputs">
-            <a href="" ng-click="enviar();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><p>Guardar</p> </a> <br><br>
-        </div>
+        
     </div>
 </div>
 

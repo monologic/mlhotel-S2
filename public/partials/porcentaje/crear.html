@@ -4,14 +4,14 @@
    
     <h3 class="text-center tit2">Crear Porcentaje para pago de Reservas Online</h3>
     <div class="formularios">    
-    <form>
+    <form ng-submit="enviar()">
         <div class="form-group">
             <label for="moneda">Valor de Porcentaje</label>
-            <input type="text" class="form-control" id="porcentaje" ng-model="porcentaje">
+            <input type="text" class="form-control" id="porcentaje" ng-model="porcentaje" required>
         </div>
         
         <div class="inputs">
-            <a href="" ng-click="enviar();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><p>Guardar</p></a><br><br>
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true">Guardar</button><br>
         </div>
     </form>
     </div>

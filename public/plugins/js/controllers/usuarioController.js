@@ -7,7 +7,7 @@ app.controller('usuarioController', function($scope,$http) {
                 'password':$scope.password,
                 'usuariotipo_id':$('#usuariotipo_id').val()
             }).then(function successCallback(response) {
-                $scope.mensaje = response.data.mensaje;
+                alert(response.data.mensaje);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

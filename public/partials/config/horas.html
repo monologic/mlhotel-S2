@@ -4,18 +4,17 @@
    
     <h3 class="text-center tit2">Configuración de Check-in y Check-out</h3>
     <div class="formularios">    
-    <form>
+    <form ng-submit="configCheckout()">
         <div class="form-group">
             <label for="">Check-In</label>
-            <input type="time" class="form-control" id="checkin" placeholder="Hora de ingreso al hotel" ng-model="checkin">
+            <input type="time" class="form-control" id="checkin" placeholder="Hora de ingreso al hotel" ng-model="checkin" required>
         </div>
          <div class="form-group">
             <label for="">Check-out</label>
-            <input type="time" class="form-control" id="checkout" placeholder="Hora de salida del Hotel" ng-model="checkout">
+            <input type="time" class="form-control" id="checkout" placeholder="Hora de salida del Hotel" ng-model="checkout" required>
         </div>
-        
         <div class="inputs">
-            <a href="" ng-click="configCheckout();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><p>Guardar</p> </a> <br><br>
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true">Guardar</button><br>
         </div>
     </form>
     </div>

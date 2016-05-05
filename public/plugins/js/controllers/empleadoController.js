@@ -12,7 +12,7 @@ app.controller('empleadoController', function($scope,$http) {
                 'emptipo_id':$('#emptipo_id').val()
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-                $scope.mensaje = response.data.mensaje;
+                alert(response.data.mensaje);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
