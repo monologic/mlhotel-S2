@@ -3,7 +3,7 @@
   <form ng-submit="guardarCliente()" >
   <div class="row">
     <h2>Mis reservas</h2>
-    <div class="col m6" style="padding:20px 40px 20px 40px">
+    <div class="col m6" id="ventana" style="padding:20px 40px 20px 40px">
       <table class="highlight">
         <thead>
           <tr>
@@ -42,7 +42,7 @@
         <div id="TotalR"></div>  
       </div>
     </div>
-    <div id="cliente" class="col m6" style="padding:0px 30px 20px 30px">
+    <div id="cliente" class="col m4" style="padding:0px 30px 20px 30px">
         <div class="input-field col s12 centrar">
           <input type="text" class="validate" ng-model="nombres" required>
           <label for="last_name" style="color: #6C7A89">Nombres</label>
@@ -58,13 +58,57 @@
         <br><br>
   
         <div style="display:block;top:40px">
-          <button type="submit" class="waves-effect waves-light btn centrar">Reservar</button>
+          <button type="submit" class="waves-effect waves-light btn centrar modal-trigger" href="#modal1">Reservar</button>
         </div>
     </div>
+    
     </form>
   </div>   
 </div> 
+<!-- Modal Blanco -->
+<div id="modalBlanco"> 
+<div class='cargar'>
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
 
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
 
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
 
- 
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+    </div>
+    <div style="margin-top: 30px; margin-left: -40px; font-size: 20px">Enviando Datos</div>
+  </div>
+</div>

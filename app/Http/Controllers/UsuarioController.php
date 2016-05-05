@@ -88,7 +88,16 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        $req = $request->all();
+        if (array_key_exists('usuario', $req)) {
+            $usuario->usuario = $request->usuario;
+        }
+        if (array_key_exists('password', $req)) {
+            $usuario->password = bcrypt($request->password);
+        }
+        $usuario->save();
+        return response()->json( $usuario );
     }
 
     /**
@@ -116,5 +125,12 @@ class UsuarioController extends Controller
 
         return $this->index();
        
+    }
+
+    public function getUsuario()
+    {
+        $usuario = Usuario::find(\Auth::user()->id);
+        return response()->json( $usuario );
+
     }
 }

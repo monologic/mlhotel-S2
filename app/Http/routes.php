@@ -48,6 +48,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('getHabitacionsDetallado', 'HabitacionController@getHabitacionsDetallado');
 	Route::get('buscarReservasNoAsignadas', 'ReservaController@getReservasNoAsignadas');
 	Route::get('getHotel', 'HotelController@getHotel');
+	Route::get('getUsuario', 'UsuarioController@getUsuario');
 	
 	Route::get('getReserva/{idReserva}', 'ReservaController@getReserva');
 	Route::get('buscarRegistro/{idRegistro}', 'RegistroController@getRegistro');
@@ -67,6 +68,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('finalizarRegistro/{idRegistro}', 'RegistroController@finalizar');
 
 	Route::delete('regClienteEliminar/{id}', 'ClienteController@eliminarRegCliente');
+
+
 
 });
 

@@ -65,5 +65,53 @@ app.controller('usuarioController', function($scope,$http) {
             });
         }
     }
+
+    $scope.getUsuarioActual = function () {
+        $http.get('admin/getUsuario')
+        .then(function successCallback(response) {
+            $scope.idUsuario = response.data.id;
+            $scope.usuario = response.data.usuario;
+
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
+    $scope.actualizarUsuario = function (id) {
+        $http.put('admin/usuario/'+id,
+        {
+            'usuario':$scope.usuario
+        })
+        .then(function successCallback(response) {
+            alert('Se ha modificado tu nombre de Usuario')
+            $scope.idUsuario = response.data.id;
+            $scope.usuario = response.data.usuario;
+
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
+    $scope.actualizarPassword = function (id) {
+        if ($scope.password == $scope.password2) {
+            $http.put('admin/usuario/'+id,
+            {
+                'password':$scope.password
+            })
+            .then(function successCallback(response) {
+                alert('Se ha modificado tu Password')
+                $scope.idUsuario = response.data.id;
+                $scope.usuario = response.data.usuario;
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
+        else {
+            alert("El Password no coincide");
+        }
+        
+    }
     
 });

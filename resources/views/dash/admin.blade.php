@@ -112,7 +112,7 @@
                 </ul>
 
                 <ul data-menu="submenu-6" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Ver Usuarios</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Usuarios/ver">Ver Usuarios</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Usuarios/crear">Crear Usuarios</a></li>
                     <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Usuarios/crearTipo">Agregar tipo usuario</a></li>
@@ -164,8 +164,9 @@
                             
                             
                             </a>
-
+                           
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="#/Perfil"><i class="fa fa-btn fa-sign-out"></i>Perfil</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
