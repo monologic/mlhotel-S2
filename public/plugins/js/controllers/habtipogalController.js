@@ -51,5 +51,22 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
         });
     }
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+         var galleryTop = new Swiper('.gallery-top', {
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          spaceBetween: 10,
+          effect: 'fade',
+      });
+      var galleryThumbs = new Swiper('.gallery-thumbs', {
+          spaceBetween: 10,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          touchRatio: 0.2,
+          slideToClickedSlide: true
+      });
+      galleryTop.params.control = galleryThumbs;
+      galleryThumbs.params.control = galleryTop;     
+    });
 
 });

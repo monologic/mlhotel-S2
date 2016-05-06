@@ -13,31 +13,11 @@
         </div>
         <div class="swiper-container gallery-thumbs">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" ng-repeat="s in galeria" style="background-image:url('imagen/habitaciones/galeria/{{s.foto}}')"></div>
+                <div class="swiper-slide" ng-repeat="s in galeria" on-finish-render="ngRepeatFinished" style="background-image:url('imagen/habitaciones/galeria/{{s.foto}}')"></div>
             </div>
         </div>
       </div>
     </div>
-    
-     <script>
-      var galleryTop = new Swiper('.gallery-top', {
-          nextButton: '.swiper-button-next',
-          prevButton: '.swiper-button-prev',
-          spaceBetween: 10,
-          effect: 'fade',
-      });
-      var galleryThumbs = new Swiper('.gallery-thumbs', {
-          spaceBetween: 10,
-          centeredSlides: true,
-          slidesPerView: 'auto',
-          touchRatio: 0.2,
-          slideToClickedSlide: true
-      });
-      galleryTop.params.control = galleryThumbs;
-      galleryThumbs.params.control = galleryTop;
-      
-      </script>
-
       <div class="col s12 m5  hoverable" style="margin: 50px 0px 20px 0px">
           <form class="row container2" ng-repeat="m in habfotos">
                   <p class="center-align" style="font-size: 1.7rem;">Desde</p>
