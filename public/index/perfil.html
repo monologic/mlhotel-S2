@@ -1,5 +1,5 @@
 <div class="cont-perfil">
-  <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();">
+  <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();getDias();res();">
     <div class="col m7 s12 gal" >
       <div style="  position: relative;width:100%;height:400px;margin-top:50px">
         <div class="swiper-container gallery-top">
@@ -19,23 +19,70 @@
       </div>
     </div>
       <div class="col s12 m5  hoverable" style="margin: 50px 0px 20px 0px">
-          <form class="row container2" ng-repeat="m in habfotos">
+          <form ng-submit="buscarHab()" class="row container2">
                   <p class="center-align" style="font-size: 1.7rem;">Desde</p>
-                  <p class="center-align" style="font-size: 1.4rem">{{m.precio}}</p>
+                  <p class="center-align" style="font-size: 1.4rem">{{habfotos.0.precio}}</p>
                   <div class="input-field col s12 m12">
-                      <label for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</label>
-                      <input type="date" class="datepicker" id="today" min="04-02-2016">    
+                      <p for="icon_prefix2"> <i class="fa fa-calendar"></i>Fecha Entrada</p>
+                      <input type="date" class="datepicker" id="fechaini" required>    
                   </div>
                   <div class="input-field col s12 m12">
-                      <input type="date" class="datepicker">
-                      <label for="icon_prefix2"><i class="fa fa-calendar"></i> Fecha Salida</label>
+                      <p for="icon_prefix2"><i class="fa fa-calendar"></i>Fecha Salida</p>
+                      <input type="date" class="datepicker" id="fechafin" required>
+                      
                   </div>
-                  <div>
-                    <a class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto "><i class="material-icons left">search</i>Reservar</a>
+                  <div id="buscar">
+                    <button type='submit' class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto "><i class="material-icons left">search</i>Buscar</button>
                   </div>
                   
         </form>
+        <div id="reservar" style="display: none;" style="background-color: red">
+                    <div class="teal lighten-2 dispo" ><p>Disp. : {{busqueda.habitacionescount-busqueda.habtiporeservascount}} hab.</p></div>
+                    <br>
+                    <a class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto " ng-click='addCarrito(busqueda);' onclick="Materialize.toast('Añadido a tus reservar :)', 4000)"><i class="material-icons left">search</i>Reservas</a>
+                  </div>
       </div>
+
+      <div id="caja" style="top:65px;">
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
+    <br>
+    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
+    <div  style=";width: 80%;margin:40px auto 20px auto">
+    <div id="cont-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Habitacion</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="o in car">
+            <td>{{o.nombre}}</td>
+            <td width="50px">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
+            </td>
+            <td>{{o.precio}}</td>
+            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">Total por Día:</td>
+            <td ng-bind="totalq"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
+    </div>
+      
+      <div>
+        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
+      </div>    
+    </div>
+  </div> 
       
     
 </div>
@@ -70,9 +117,3 @@
        </div>
       </div>
 
-<script>
-   $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-      });
-</script>

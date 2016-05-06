@@ -15,12 +15,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
        
-    }
-       
-      $scope.descrip = function () {
-        console.log('entra');
-        
-        }    
+    } 
 
     var details = Array();
     $scope.addDetalleReserva =function (data) {
@@ -132,21 +127,13 @@ app.controller('habtipoController', function($scope,$http,$location) {
             });
     }
     $scope.res = function () {
+        $scope.getDias();
         $http.get('cart/show',
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
+
                 $scope.actualizarTotal(response.data);
-                
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
-    }
-    $scope.pagar = function () {
-        $http.get('payment',
-            {
-            }).then(function successCallback(response) {
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -164,6 +151,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $scope.car = data;
     }
     $scope.actualizarTotal = function(data){
+        
         var total=0;
         for (x in data) {
             subp=data[x].precio*data[x].quantity;
@@ -191,21 +179,25 @@ app.controller('habtipoController', function($scope,$http,$location) {
        console.log($scope.fechaini.timer);
        //outputs '10 Sep' , where i expect to find the date object
     }
-
+    $scope.buscarAuto = function () {
+        $http.get('cart/getDias',
+            {
+            }).then(function successCallback(response) {
+                $('#fechaini').val(response.data.fecha_inicio);
+                $('#fechafin').val(response.data.fecha_fin);
+                if ((response.data).hasOwnProperty('dias')) {
+                    $scope.buscarHab();
+                }
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
     $scope.getDias = function () {
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
                 $scope.fechas = response.data;
-
-                $('#fechaini').val(response.data.fecha_inicio);
-                $('#fechafin').val(response.data.fecha_fin);
-                
-
-                if ((response.data).hasOwnProperty('dias')) {
-                    $scope.buscarHab();
-                }
-
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
