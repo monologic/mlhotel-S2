@@ -1,6 +1,23 @@
 <script>
   document.title = "Residencial Moquegua";
 </script> 
+<div id="bookingR" class="booking hoverable">
+  <div ng-controller="reservaController">
+    <div class=" cont-book  row" style="padding-top: 20px;">
+      <div class="calendar">
+        <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
+        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+        <input type="date" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+      </div>
+      <div class="calendar">
+        <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
+        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+        <input type="date" style="height:20px;width:100%; padding: 5px;" id="fechafin">
+      </div>
+      <a class="waves-effect black" style="display:block;margin:30px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'>Reservar</a>
+    </div>
+  </div>
+</div>
   <div ng-controller="bannerController" ng-init="getBanners2();" style="min-height:300px">
               
     <div class="swiper-container">
@@ -9,34 +26,7 @@
         <!-- Slides -->
         <div class="swiper-slide" ng-repeat="q in banners" style="transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
           <div class="title-s">
-             <div class="teal lighten-2 cont-txt wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="margin:auto">{{q.titulo}}</p></div>
-             <div class="cont-txt wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s">{{q.contenido}}
-          </div>
-          <div class="booking hoverable">
-            <div ng-controller="reservaController">
-              <div class=" cont-book  row">
-                <div class="input-field col s12 m12">
-                  <p style="text-align: left;"></i> Fecha Entrada</p>
-                  <input type="date" style="width:90%;float:left" id="fechaini">  
-                </div>
-                <div class="input-field col s12 m12">
-                  <p style="text-align: left;"></i> Fecha Salida</p>
-                  <input type="date" style="width:90%;float:left" id="fechafin"> 
-                </div>
-                <div class="row">
-                  <div class="input-field col s6">
-                    <label for="icon_prefix"><i class="fa fa-user"></i>  Adultos</label>
-                    <input id="icon_prefix" type="text" class="validate">
-                  </div>
-                  <div class="input-field col s6">
-                    <label for="icon_telephone"><i class="fa fa-child"></i>  Niños</label>
-                    <input id="icon_telephone" type="tel" class="validate">  
-                  </div>
-                </div>
-                <a class="waves-effect black" style="display:block;margin:-20px auto 0 auto;width:140px;height:30px;padding-top:15px;color:white" ng-click='buscarHab();'>Reservar</a>
-                </div>
-            </div>
-          </div>
+             <div class="wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="font-size: 3.5rem;max-width: 400px;color: white;position:absolute;right: 60px;margin-top: 0px">{{q.titulo}}</p></div>
           </div>
          
           <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:600px">
@@ -57,6 +47,25 @@
 </div>
     
   </div><br>
+<div id="book" class="booking2 hoverable center-block">
+  <div ng-controller="reservaController">
+    <div class=" cont-book  row" style="padding-top: 20px;">
+      <div class="calendar2">
+        <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
+        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+        <input type="date" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+      </div>
+      <div class="calendar2">
+        <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
+        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+        <input type="date" style="height:20px;width:100%; padding: 5px;" id="fechafin">
+      </div>
+      <div class="calendar2">
+        <a class="waves-effect black" style="display:block;margin:30px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'>Reservar</a>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="row container" style="width:70%;margin-left:15%; margin-right:15%">
       <h4 class="center-align titulo1" style="font-family: 'Niconne', cursive;" >Bienvenido a Residencial Moquegua</h4><br><br>
       <div class="col s4 ser-cont">
@@ -194,19 +203,3 @@
         speed: 2000,
     });
     </script>
-
-
-    
-
-
-  
-   
-
-
-
- 
-
-  
-
-
-  

@@ -199,3 +199,29 @@ td{
   	left: 48%;
   	
 }
+/* Estilos de Booking */
+
+.calendar{
+	display: block;
+	background-image:green;
+	background-repeat:no-repeat;
+	position: relative;
+	width: 200px;
+	height: 20px;
+	margin-bottom: 70px;
+}
+.calendar input{
+	z-index: 10;
+}
+input[type="date"]{
+	background-color: transparent;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+	width: 20px;
+	height: 20px;
+	color: transparent;
+	background-color: transparent;
+}
+input[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}

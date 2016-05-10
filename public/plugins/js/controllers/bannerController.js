@@ -2,6 +2,12 @@ app.controller('bannerController', function($scope,$http) {
      $scope.getBanners2 = function () {
         $http.get('admin/getBanners').then(function successCallback(response) {
             $scope.banners = response.data;
+            if (screen.width<758) 
+            {
+                $('#bookingR').css('display','none');
+                $('#book').css('display','block');
+            }
+                
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

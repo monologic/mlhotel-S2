@@ -45,19 +45,19 @@
 <body ng-app="homeApp">
   <div class="navbar-fixed">
     <nav class=" white">
-      <div class="nav-wrapper white" style="width:80%;margin-left:auto;margin-right:auto">
-        <a href="#" class="brand-logo center" style="height:100%;z-index:20; padding:0px 10px 0 15px;margin:15px 25px 0px 10px;color:black">Residencial Moquegua </a>
+      <div class="nav-wrapper white" style="width:90%;margin-left:auto;margin-right:auto">
+        <a href="#" class="brand-logo center" style="height:100%;z-index:0; padding:0px 25px 0 0px;margin:15px 10% 0px 5px;color:black;">Residencial Moquegua </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" hide-on-med-and-down">
           <li class="nav-txt"><a href="#/galeria">GALERIA</a></li>
           <li class="nav-txt"><a href="#/habitaciones">HABITACIONES</a></li>    
         </ul>
          <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li  style="margin-top:20px"><a class="btn-floating tooltipped"onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>   
+          <li  style="margin-top:20px"><a class="btn-floating tooltipped" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>   
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="nav-txt"><a href="#/noticias">NOTICIAS</a></li>
-          <li class="nav-txt"><a href="#/contacto">CONTACTO</a></li>    
+          <li class="nav-txt"><a href="#/noticias"> NOTICIAS</a></li>
+          <li class="nav-txt"><a href="#/contacto"> CONTACTO</a></li>    
         </ul>
        
         <ul class="side-nav" id="mobile-demo">

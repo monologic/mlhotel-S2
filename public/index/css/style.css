@@ -4,12 +4,33 @@ body{
 }
 /* booking slider*/
 .booking{
-  position: fixed;
+  position: absolute;
   background-color: rgba(250,250,250,0.8);
-  top:20px;
+  top:80px;
   left: 60px;
   width: 300px;
   border-radius: 10px;
+  z-index: 12;
+}
+.booking2{
+  display: none;
+  position: relative;
+  background-color: rgba(250,250,250,0.8);
+  margin-top:0px;
+  bottom: 60px;
+  max-width: 800px;
+  border-radius: 10px;
+  z-index: 12;
+}
+.calendar2{
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 20px;
+  margin-bottom: 70px;
+}
+.calendar2 input{
+  z-index: 10;
 }
 .cont-book{
   width: 80%;
