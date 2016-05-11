@@ -30,6 +30,9 @@
    
 
     <link rel='stylesheet' href='plugins/galery/css/jquery.fancybox.min.css'/>
+
+    <link rel="stylesheet" href="plugins/datepicker/jquery-ui.css">
+    <link rel="stylesheet" href="plugins/datepicker/jquery-ui.theme.css">
   
 </head>
 <style>
@@ -48,9 +51,11 @@
       <div class="nav-wrapper white" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
         <a href="#" class="brand-logo center" style="display: block;height:100%; padding:0px 25px 0 0px;margin:15px 10% 0px 5px;color:black;">Residencial Moquegua </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-top: 40px">
+        <ul id="nav-mobile" class="left hide-on-med-and-down" style="margin-top: 40px">
           <li class="nav-txt"><a href="#/habitaciones">HABITACIONES</a></li>
           <li class="nav-txt"><a href="#/galeria">GALERIA</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-top: 40px">
           <li class="nav-txt"><a href="#/servicios">SERVICIOS</a></li>
           <li class="nav-txt"><a href="#/noticias"> NOTICIAS</a></li>
           <li class="nav-txt"><a href="#/contacto"> CONTACTO</a></li>
@@ -141,6 +146,7 @@
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
+    <script src="plugins/datepicker/jquery-ui.js"></script>
 
    <script>
     $(document).ready(function(){

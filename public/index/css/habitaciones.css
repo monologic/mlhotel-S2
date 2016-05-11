@@ -206,7 +206,7 @@ td{
 	background-image:green;
 	background-repeat:no-repeat;
 	position: relative;
-	width: 200px;
+	max-width: 160px;
 	height: 20px;
 	margin-bottom: 70px;
 }

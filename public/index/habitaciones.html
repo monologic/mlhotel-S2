@@ -1,35 +1,31 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px;margin-top:100px">
-  <form class="row">
-    <div class="input-field col s12 m3" style="padding:25px">
-      <p style="margin-top: -15px;margin-bottom: 0px"> <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha entrada</p>
-      <div>
-        <input input-date id="fechaini" class="datepicker" ng-model="fechaini">
-        <div class="icono-in-input">
-          <i class="fa fa-calendar"></i>
+<div class="booking hoverable center-block" style="margin-top:100px">
+  <div ng-controller="reservaController">
+    <div class=" cont-book  row" style="padding-top: 20px;">
+      <div class="col m5">
+        <div class="calendar">
+          <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
+          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+          <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini">
         </div>
+      </div>
+      <div class="col m5">
+        <div class="calendar">
+          <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
+          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+          <input type="text" style="height:20px;width:100%; padding: 5px;" id="fechafin">
+        </div>
+      </div>
+      <div class="col m2">
+        <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
       </div>
       
     </div>
-    <div class="input-field col s12 m3" style="padding:25px">
-      <p style="margin-top: -15px;margin-bottom: 0px"><i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha salida</p>
-      <div>
-        <input type="date" class="datepicker" id="fechafin" ng-model="fechafin">
-        <div class="icono-in-input">
-          <i class="fa fa-calendar"></i>
-        </div>
-        
-      </div>
-      
-    </div>  
-    </div>
-      <div class="col s12 m3">
-        <a class="waves-effect black btn" ng-click="buscarHab();getDias();"><i class="material-icons left">search</i>Buscar</a>
-      </div>
-        
-  </form>
+  </div>
+</div>
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
 
   <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
     <div class="col s12 m4 l4 " style="padding:10px">
@@ -139,5 +135,25 @@
   });
 </script>
 <script>
-  
+  $(function() {
+    $( "#fechaini" ).datepicker({
+      dateFormat: "dd-mm-yy",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      minDate: 0,
+      onClose: function( selectedDate ) {
+        $( "#fechafin" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#fechafin" ).datepicker({
+      dateFormat: "dd-mm-yy",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#fechaini" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
 </script>

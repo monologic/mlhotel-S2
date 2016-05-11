@@ -1,23 +1,6 @@
 <script>
   document.title = "Residencial Moquegua";
 </script> 
-<div id="bookingR" class="booking hoverable">
-  <div ng-controller="reservaController">
-    <div class=" cont-book  row" style="padding-top: 20px;">
-      <div class="calendar">
-        <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
-        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-        <input type="date" style="height:20px;width:100%;padding: 5px;" id="fechaini">
-      </div>
-      <div class="calendar">
-        <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
-        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-        <input type="date" style="height:20px;width:100%; padding: 5px;" id="fechafin">
-      </div>
-      <a class="waves-effect black" style="display:block;margin:30px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'>Reservar</a>
-    </div>
-  </div>
-</div>
   <div ng-controller="bannerController" ng-init="getBanners2();" style="min-height:300px">
               
     <div class="swiper-container">
@@ -44,25 +27,29 @@
     
     <!-- If we need scrollbar -->
     <div class="swiper-scrollbar"></div>
+  </div>
 </div>
-    
-  </div><br>
-<div id="book" class="booking2 hoverable center-block">
+<div class="booking hoverable center-block">
   <div ng-controller="reservaController">
     <div class=" cont-book  row" style="padding-top: 20px;">
-      <div class="calendar2">
-        <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
-        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-        <input type="date" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+      <div class="col m5">
+        <div class="calendar">
+          <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
+          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+          <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+        </div>
       </div>
-      <div class="calendar2">
-        <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
-        <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-        <input type="date" style="height:20px;width:100%; padding: 5px;" id="fechafin">
+      <div class="col m5">
+        <div class="calendar">
+          <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
+          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+          <input type="text" style="height:20px;width:100%; padding: 5px;" id="fechafin">
+        </div>
       </div>
-      <div class="calendar2">
-        <a class="waves-effect black" style="display:block;margin:30px auto 0 auto;width:140px;height:30px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'>Reservar</a>
+      <div class="col m2">
+        <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;border-radius: 5px" ng-click='buscarHab();'> <i class="small material-icons">searcht</i></a>
       </div>
+      
     </div>
   </div>
 </div>
@@ -202,3 +189,28 @@
         speed: 2000,
     });
     </script>
+    <script>
+    
+  $(function() {
+    $( "#fechaini" ).datepicker({
+      dateFormat: "dd-mm-yy",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      minDate: 0,
+      onClose: function( selectedDate ) {
+        $( "#fechafin" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#fechafin" ).datepicker({
+      dateFormat: "dd-mm-yy",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 2,
+      onClose: function( selectedDate ) {
+        $( "#fechaini" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  
+  </script>
