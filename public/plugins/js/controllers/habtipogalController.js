@@ -46,7 +46,7 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
         }
     $scope.eliminar = function (id) {
         $http.delete( 'admin/habtipoF/'+id ).then(function successCallback(response) {
-            $scope.habfotos = response.data;
+            window.location.reload()
         }, function errorCallback(response) {
             alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
         });

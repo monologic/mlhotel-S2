@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Habtipofoto;
-use App\Habtipo;
+use App\Servicio;
 
-class habtipogaleryController extends Controller
+class ServicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,9 +48,7 @@ class habtipogaleryController extends Controller
      */
     public function show($id)
     {
-        $Habtiposf = Habtipofoto::where('habtipo_id', $id)->get();
-        $Habtiposf = $Habtiposf ->toArray();
-        return response()->json( $Habtiposf );
+        //
     }
 
     /**
@@ -75,7 +71,9 @@ class habtipogaleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-    
+        $servicio = Servicio::find($id);
+        $servicio->fill($request->all());
+        $servicio->save();
     }
 
     /**
@@ -86,32 +84,6 @@ class habtipogaleryController extends Controller
      */
     public function destroy($id)
     {
-       
-
-        Habtipofoto::destroy($id);
-
+        Servicio::destroy($id);
     }
-
-      public function HabTipoFotoStore(Request $request)
-    {
-       if($request->file('imagen'))
-        {
-            $file = $request -> file('imagen');
-            $name = 'HabtipoGalery_'. time() . '.' .$file->getClientOriginalExtension();
-            $path=public_path() . "/imagen/habitaciones/galeria";
-            $file -> move($path,$name);
-        }
-        $Habtipof = new Habtipofoto($request->all());
-        $Habtipof->foto = $name;
-        $Habtipof->save();
-        return redirect('admin#/HabGalery/'. $Habtipof->habtipo_id);
-    }
-     public function getFotoHabTipo()//$hotel_id
-    {
-        $Habtiposf = Habtipofoto::all();
-        $Habtiposf = $Habtiposf ->toArray();
-        return response()->json( $Habtiposf );
-
-    }
-        
 }

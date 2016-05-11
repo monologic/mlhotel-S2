@@ -73,7 +73,9 @@ class categoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->fill($request->all());
+        $categoria->save();
     }
 
     /**
@@ -83,8 +85,10 @@ class categoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $categoria = Categoria::find($id);
+        $categoria->activo = 0;
+        $categoria->save();
     }
 
     public function ServiceCreateIndex(Request $request)
@@ -99,12 +103,13 @@ class categoriaController extends Controller
         }
         $categoria = new Categoria($request->all());
         $categoria->foto = $name;
+        $categoria->activo = 1;
         $categoria->save();
-         return redirect('admin#/LisServicio');
+         return redirect('admin#/LisServicios');
     }
      public function getServices()
     {
-        $Servicios = Categoria::all();
+        $Servicios = Categoria::where('activo', 1)->get();
         $Servicios->each(function($Servicios){
             $Servicios->servicios;
         });
@@ -114,7 +119,10 @@ class categoriaController extends Controller
     }
      public function getServicesompletoC($id)
     {
-        $Servicios = Categoria::where('id',$id)->get();
+        $Servicios = Categoria::where( [
+                            ['id',$id],
+                            ['activo',1],
+                        ])->get();
         $Servicios->each(function($Servicios){
             $Servicios->servicios;
         });
@@ -135,7 +143,7 @@ class categoriaController extends Controller
         $servicioC = new Servicio($request->all());
         $servicioC->foto = $name;
         $servicioC->save();
-         return redirect('admin#/LisServicios');
+         return redirect('admin#/Servicios/' . $servicioC->categoria_id);
     }
 
 }

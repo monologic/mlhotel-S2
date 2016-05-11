@@ -33,6 +33,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('regcliente', 'RegclienteController');
 	Route::resource('moneda', 'CambioMonedaTipoController');
 	Route::resource('porcentaje', 'PorcentajeController');
+	Route::resource('servicio', 'ServicioController');
+	Route::resource('categoria', 'categoriaController');
 
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');

@@ -76,10 +76,10 @@ class HabtipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tipohab = Habtipo::find($id);
+        $tipohab = $id;
         $tipohab->fill($request->all());
         $tipohab->save();
-        $resp = $this->getHabitaciones();
+        $resp = $this->getHabtipo();
 
         return $resp;
     }
@@ -93,8 +93,10 @@ class HabtipoController extends Controller
     public function destroy($id)
 
     {
-        // 
-        Habtipo::destroy($id->id);
+        $id->activo = 0;
+        $id->save();
+
+        return $this->getHabtipo();
 
     }
 
@@ -109,6 +111,7 @@ class HabtipoController extends Controller
         }
         $Habtipo = new Habtipo($request->all());
         $Habtipo->foto = $name;
+        $Habtipo->activo = 1;
         $Habtipo->save();
         $idhab=$Habtipo->id;
          //return redirect('admin#/LisHab');        
@@ -125,7 +128,7 @@ class HabtipoController extends Controller
     }
     public function getHabtipo()
     {   
-        $Habtipos = Habtipo::all();
+        $Habtipos = Habtipo::where('activo', 1)->get();
          $Habtipos->each(function($Habtipos){
             $iconos=$Habtipos->habtipo_serviciointernos;
             $Habtipos->habtipo_serviciointernos->each(function($iconos){
@@ -138,7 +141,10 @@ class HabtipoController extends Controller
     }
      public function getIconos($id)
     {   
-        $Habtipos = Habtipo::where('id',$id)->get();
+        $Habtipos = Habtipo::where( [
+                            ['id',$id],
+                            ['activo',1],
+                        ])->get();
         $Habtipos->each(function($Habtipos){
           $Habtipos->habtipofotos;
         });
@@ -147,7 +153,7 @@ class HabtipoController extends Controller
     }
     public function getHabtipos()
     {
-        $Habtipos = Habtipo::all();
+        $Habtipos = Habtipo::where('activo', 1)->get();
         $Habtipos = $Habtipos ->toArray();
         return response()->json( $Habtipos );
     }
@@ -155,7 +161,10 @@ class HabtipoController extends Controller
      public function getHabitaciones($id)
     {   
 
-        $Habtipos = Habtipo::where('id',$id)->get();
+        $Habtipos = Habtipo::where( [
+                            ['id',$id],
+                            ['activo',1],
+                        ])->get();
         $Habtipos->each(function($Habtipos){
             $Habtipos->habtipofotos;
             $iconos=$Habtipos->habtipo_serviciointernos;
@@ -168,7 +177,7 @@ class HabtipoController extends Controller
         return response()->json( $Habtipos );
     }
 
-     public function dataEditar(Request $request)
+    public function dataEditar(Request $request)
     {
         
         $url = explode("=", $request->url['hash']);

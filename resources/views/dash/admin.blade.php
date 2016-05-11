@@ -99,16 +99,10 @@
                 <!-- Submenu 4 -->
                 <ul data-menu="submenu-4" class="menu__level">
                     <li class="menu__item"><a class="menu__link" href="#">Grain Mylks</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Seed Mylks</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Nut Mylks</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Nutri Drinks</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">Selection</a></li>
                 </ul>
                 <!-- Submenu 4-1 -->
                 <ul data-menu="submenu-4-1" class="menu__level">
                     <li class="menu__item"><a class="menu__link" href="#">Nut Mylk Packs</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Amino Acid Heaven</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Allergy Free</a></li>
                 </ul>
 
                 <ul data-menu="submenu-6" class="menu__level">
@@ -177,7 +171,7 @@
         </div>
         
         <div class="content">
-
+        <h1>Hola</h1>
             <div ng-view></div>
 
         </div>
