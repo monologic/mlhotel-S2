@@ -31,6 +31,7 @@ class carritoController extends Controller
    
     public function buscarHabitaciones($fechaini, $fechafin)
     {
+        
         $dias = (strtotime($fechaini)-strtotime($fechafin))/86400;
         $dias = abs($dias); 
         $dias = floor($dias);
@@ -79,7 +80,7 @@ class carritoController extends Controller
 
         $habs = $habs->toArray();
 
-        $habtipos = Habtipo::all();
+        $habtipos = Habtipo::where('activo', 1)->get();;
 
         $habtipos->each(function($habtipos){
             $iconos=$habtipos->habtipo_serviciointernos;

@@ -2,8 +2,10 @@
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
 <div class="booking hoverable center-block" style="margin-top:100px">
-  <div ng-controller="reservaController">
-    <div class=" cont-book  row" style="padding-top: 20px;">
+  
+</div>
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
+  <div class=" cont-book  row" style="padding-top: 20px;">
       <div class="col m5">
         <div class="calendar">
           <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
@@ -23,10 +25,6 @@
       </div>
       
     </div>
-  </div>
-</div>
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
-
   <div  class="row wow fadeInUp card hab" data-wow-duration="2s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
     <div class="col s12 m4 l4 " style="padding:10px">
       <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
@@ -83,6 +81,7 @@
     </div>
   </div>
   <div id="caja" style="top:65px;">
+    <br><br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>
     <br>
     <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
@@ -128,16 +127,11 @@
   $(document).ready(function() {
     $('select').material_select();
   });
-   $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year
-    format: 'yyyy-mm-dd',
-  });
 </script>
 <script>
   $(function() {
     $( "#fechaini" ).datepicker({
-      dateFormat: "dd-mm-yy",
+      dateFormat: "yy-mm-dd",
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 2,
@@ -147,7 +141,7 @@
       }
     });
     $( "#fechafin" ).datepicker({
-      dateFormat: "dd-mm-yy",
+      dateFormat: "yy-mm-dd",
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 2,

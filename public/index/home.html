@@ -116,49 +116,46 @@
       
     </div>  
  <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:65px;">
+    <br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>
-    <div style=";width: 80%;margin:40px auto 20px auto">
-      <table class="">
+    <br>
+    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
+    <div  style=";width: 80%;margin:40px auto 20px auto">
+    <div id="cont-table">
+      <table>
         <thead>
           <tr>
-            <th data-field="nombre">Habitacion</th>
-            <th data-field="cant" width="80px">Cant.</th>
-            <th data-field="precio">Precio</th>
+            <th>Habitacion</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
           </tr>
         </thead>
-        
         <tbody>
-          <tr ng-repeat="l in car.items">
-            <td>{{l.nombre}}</td>
-            <td width="80px">
-                <div class="input-field" style="width: 30px;">
-                  <select id="{{$index+1}}" onchange="calcular();">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-              </div>    
+          <tr ng-repeat="o in car">
+            <td>{{o.nombre}}</td>
+            <td width="50px">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
             </td>
-            <td><div id="@{{$index+1}}s">{{l.precio}}</div><div id="@{{$index+1}}p" style="display: none">{{l.precio}}</div></td>
+            <td>{{o.precio}}</td>
+            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">Total por Día:</td>
+            <td ng-bind="totalq"></td>
           </tr>
         </tbody>
       </table>
-      <form action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_cart">
-        <input type="hidden" name="upload" value="1">
-        <input type="hidden" name="business" value="chalex_777@hotmail.com">
-        <div ng-repeat="v in car.items">
-          <input type="hidden" name="item_name_{{$index+1}}" value="{{v.nombre}}">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="amount_{{$index+1}}" value="{{v.precio}}">
-          <input type="hidden" id="{{$index+1}}c" name="quantity_{{$index+1}}" value="">
-        </div>
-        <input type="submit" name="submit" value="Reservar" class="waves-effect waves-light btn" style="display: block;align-content: center;">          
-      </form>
+      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
     </div>
+      
+      <div>
+        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
+      </div>    
+    </div>
+  </div> 
   </div>
 <script>
    var cw = $('.h-w').width();
@@ -193,7 +190,7 @@
     
   $(function() {
     $( "#fechaini" ).datepicker({
-      dateFormat: "dd-mm-yy",
+      dateFormat: "yy-mm-dd",
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 2,
@@ -203,7 +200,7 @@
       }
     });
     $( "#fechafin" ).datepicker({
-      dateFormat: "dd-mm-yy",
+      dateFormat: "yy-mm-dd",
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 2,

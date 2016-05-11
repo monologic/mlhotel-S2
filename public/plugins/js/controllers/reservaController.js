@@ -11,8 +11,9 @@ app.controller('reservaController', function($scope,$http) {
 	}
 
 	$scope.buscarHab = function () {
-        var fini = $scope.formatDate($('#fechaini').val());
-        var ffin = $scope.formatDate($('#fechafin').val());
+    
+        var fini = $('#fechaini').val();
+        var ffin = $('#fechafin').val();
 
         $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
         	window.location.href = '#/habitaciones';
@@ -21,16 +22,5 @@ app.controller('reservaController', function($scope,$http) {
         // or server returns response with an error status.
         });
 
-    }
-    $scope.formatDate = function (date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-
-        if (month.length < 2) month = '0' + month;
-        if (day.length < 2) day = '0' + day;
-
-        return [year, month, day].join('-');
     }
 });
