@@ -60,7 +60,7 @@ class GaleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -72,7 +72,11 @@ class GaleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $galery = Galeria::find($id);
+        $galery->fill($request->all());
+        $galery->save();
+        $res = $this->getGaleriaFotos();
+        return $res;
     }
 
     /**
@@ -83,7 +87,10 @@ class GaleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Galeria::destroy($id);
+
+        $res = $this->getGaleriaFotos();
+        return redirect('#/LisGaleria');
     }
 
     public function AddGaleryPhoto(Request $request)

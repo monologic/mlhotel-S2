@@ -94,7 +94,7 @@ class bannerController extends Controller
         Slider::destroy($id);
 
         return $this-> getBanners();
-        return redirect('admin#/LisBanner');
+        return redirect('#/LisBanner');
     }
     public function sliderCreateIndex(Request $request)
     {

@@ -72,7 +72,11 @@ class NoticiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $noticias = Noticia::find($id);
+        $noticias->fill($request->all());
+        $noticias->save();
+        $res = $this->getNoticias();
+        return $res;
     }
 
     /**
@@ -83,7 +87,9 @@ class NoticiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Noticia::destroy($id);
+        $res = $this->getNoticias();
+        return redirect('#/LisNoticias');
     }
     public function getNoticias()
     {

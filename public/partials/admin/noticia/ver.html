@@ -46,7 +46,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h2 class="modal-title" id="myModalLabel">Editar Banner</h2>
+                    <h2 class="modal-title" id="myModalLabel">Editar Noticia</h2>
                 </div>
                 <div class="modal-body">
                         
@@ -56,23 +56,30 @@
                             <input type="text" class="form-control" id="titulo" placeholder="Titulo o nomnbre" ng-model="mltitulo">
                         </div>
                         <div class="form-group ">
+                            <label for="orden">Fuente</label>
+                            <input type="text" class="form-control" id="fuente" placeholder="Orden" ng-model="mlfuente">
+                        </div>
+
+                        <div class="form-group ">
                             <label for="titulo">Contenido</label>
-                            <input type="textarea" class="form-control" id="titulo" ng-model="mlcontenido">
+                            <input type="textarea" class="form-control" id="contenido" ng-model="mlcontenido">
                         </div>
                         <div class="form-group ">
-                            <label for="estado">Estado</label>
-                            <input type="text" class="form-control" id="estado" placeholder="Estado" ng-model="mlestado">
+                            <label for="orden">Fecha</label>
+                            <input type="date" class="form-control" id="fecha" ng-model="mlfecha">
                         </div>
-                        <div class="form-group ">
-                            <label for="orden">Orden</label>
-                            <input type="text" class="form-control" id="orden" placeholder="Orden" ng-model="mlorden">
+                         <div class="form-group">
+                            <label for="tipo">Estado</label>
+                            <select class="form-control" required="required" name="estado" type="text" id="estado" ng-model="mlestado">
+                              <option value="Activo">Activo</option>
+                              <option value="Inactivo">Inactivo</option>
+                            </select>
                         </div>
-                    
                     </form>
                      </div>
                  <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a href="" class="btn btn-primary" ng-click="editarBanner();" data-dismiss="modal">Guardar</a>
+                    <a href="" class="btn btn-primary" ng-click="editarNot();" data-dismiss="modal">Guardar</a>
                 </div>
             </div>
         </div>

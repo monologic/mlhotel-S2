@@ -35,6 +35,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('porcentaje', 'PorcentajeController');
 	Route::resource('servicio', 'ServicioController');
 	Route::resource('categoria', 'categoriaController');
+	Route::resource('galeria', 'galeryController');
+	Route::resource('noticia', 'noticiaController');
 
 
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
