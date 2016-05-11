@@ -16,8 +16,9 @@ var app = angular.module('tutorialWebApp', [
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
-    .when("/", {templateUrl: "partials/panel user.html", controller: "PageCtrl"})
-    .when("/root", {templateUrl: "partials/panel root.html", controller: "PageCtrl"})
+    .when("/", {templateUrl: "partials/panelAdmin.html", controller: "PageCtrl"})
+    .when("/user", {templateUrl: "partials/paneluser.html", controller: "PageCtrl"})
+    .when("/root", {templateUrl: "partials/panelroot.html", controller: "PageCtrl"})
     // Pages
     /*
         Rutas relacionadas a empleados
