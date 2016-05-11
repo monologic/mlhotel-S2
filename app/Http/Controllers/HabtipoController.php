@@ -94,9 +94,8 @@ class HabtipoController extends Controller
 
     {
         // 
-        Habtipo::destroy($id);
+        Habtipo::destroy($id->id);
 
-        return $this->getHabitaciones();
     }
 
       public function HabitacionesStore(Request $request)
