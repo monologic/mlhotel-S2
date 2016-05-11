@@ -209,7 +209,8 @@ class PaypalController extends BaseController
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
 
-	    echo "La compra se realizo";
+	    return redirect('/#/comprarealizada');
+
 	}
 	
 	private function saveOrderItem($item, $reserva_id)

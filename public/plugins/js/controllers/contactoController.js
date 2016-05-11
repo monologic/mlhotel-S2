@@ -2,6 +2,7 @@ app.controller('contactoController', function($scope,$http) {
      $scope.getContacto = function () {
         $http.get('admin/getContactos').then(function successCallback(response) {
             $scope.contactos = response.data;
+            alert('mensaje envidado')
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

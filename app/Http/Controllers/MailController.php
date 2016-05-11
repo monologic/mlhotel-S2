@@ -16,6 +16,7 @@ class MailController extends Controller
 		    $message->subject('Preguntas de los contactos');
 		    $message->to('redlein7@gmail.com');
 		});
+		return redirect('/#/mensajeenviado');
 
    }
 }

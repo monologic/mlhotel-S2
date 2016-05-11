@@ -14,7 +14,6 @@ class ContactoController extends Controller
     {
         $Contacto = new Contacto($request->all());
          $Contacto->save();
-         return redirect('/');
     }
     public function getContactos()
     {

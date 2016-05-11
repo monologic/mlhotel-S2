@@ -21,6 +21,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when('/habitaciones/:habtipoId', {templateUrl: "index/perfil.html", controller: "PageCtrl"})
     .when("/servicios", {templateUrl: "index/servicios.html", controller: "PageCtrl"})
     .when("/micarrito", {templateUrl: "index/carrito.html", controller: "PageCtrl"})
+    .when("/mensajeenviado", {templateUrl: "index/mensaje.html", controller: "PageCtrl"})
+    .when("/comprarealizada", {templateUrl: "index/endcompras.html", controller: "PageCtrl"})
     // Pages
     /*
         Rutas relacionadas a empleados
