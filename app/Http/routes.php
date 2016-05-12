@@ -39,6 +39,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('noticia', 'noticiaController');
 
 
+	Route::get('getclientess', 'ClienteController@getclientes');
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
 	Route::get('getEmpForUsers', 'empleadoController@getEmpleadosParaUsuarios');
 	Route::get('getUsuarioTipos', 'UsuariotipoController@getUsuarioTipos');

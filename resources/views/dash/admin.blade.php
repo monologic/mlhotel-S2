@@ -10,7 +10,6 @@
     <meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
     <meta name="author" content="Codrops" />
     <link rel="shortcut icon" href="favicon.ico">
-
     <script src="plugins/angular/jquery.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -30,6 +29,9 @@
     <link rel="stylesheet" type="text/css" href="plugins/multilevel/css/component.css" />
     <script src="plugins/multilevel/js/modernizr-custom.js"></script>
     <link rel="stylesheet" href="plugins/iconos/flaticon.css">
+    <link rel="stylesheet" href="plugins/morris/morris.css">
+    <script src="plugins/morris/raphael-min.js"></script>
+    <script src="plugins/morris/morris.js"></script>
 </head>
 
 <body ng-app="tutorialWebApp">
@@ -49,7 +51,7 @@
 
                 @if (Auth::user()->usuariotipo->nombre == "Administrador")  
                     <li class="menu__item"><a class="menu__link" href="#/Habitaciones" >Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Empleados/ver">Empleado</a></li>
                     
                     <li class="menu__item"><a class="menu__link"  href="#/configChecks">Hora de E/S</a></li>
@@ -70,6 +72,7 @@
                         <li class="menu__item"><a class="menu__link" href="#/LisNoticias">Noticias</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/LisServicios">Servicios</a></li>
                         <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/Reporte">Reportes</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/Empleados">Empleados y Usuarios</a></li>

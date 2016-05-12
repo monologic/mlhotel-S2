@@ -1,0 +1,25 @@
+<div style="display: block;width: 100%;height: 100%;background-color: white;">
+	<div class="">
+		
+	</div>
+	<div style="display: block;position: relative;width:260px;height: 280px;border:solid;border-width:1px;border-radius: 10px ">
+		<p style="text-align: center;border-bottom: solid;border-width:1px;height: 25px ">Estadisticas de Habitaciones</p>
+		<div class="" style="width: 250px;height: 250px">
+			<div id="graph" style="display: block;position: relative;margin-top: -60px"></div>
+		</div>
+	</div>
+	
+	
+	
+</div>
+<script>
+	  Morris.Donut({
+	  element: 'graph',
+	  data: [
+	    {value: 70, label: 'Habitacion simple', formatted: 'at least 70%' },
+	    {value: 15, label: 'Habitacion Doble', formatted: 'approx. 15%' },
+	    {value: 10, label: 'Habitacion Matrimonial', formatted: 'approx. 10%' },
+	  ],
+	  formatter: function (x, data) { return data.formatted; }
+	});
+	</script>

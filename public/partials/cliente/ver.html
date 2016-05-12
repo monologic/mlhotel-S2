@@ -1,0 +1,27 @@
+<div id="page-wrapper" ng-controller="clienteController" ng-init="getClientes();">
+    <br><br><br>
+    <h3 class="tit2">Clientes</h3>
+    <br><br>
+    
+    <table class="table table-hover">
+    	<thead>
+    		<tr>
+    			<th>#</th>
+    			<th>Apellidos</th>
+                <th>Nombres</th>
+                <th>DNI</th>
+                <th>Telefono</th>
+                
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr ng-repeat="x in cliente">
+			    <td>{{$index+1}}</td>
+                <td>{{x.apellidos}}</td>
+                <td>{{x.nombres}}</td>
+                <td>{{x.dni}}</td>
+                <td>{{x.celular}}</td>
+			  </tr>
+    	</tbody>
+  	</table>
+</div>

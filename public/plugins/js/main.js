@@ -29,6 +29,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/Empleados/ver", {templateUrl: "partials/empleado/ver.html", controller: "PageCtrl"})
     .when("/Empleados/crear", {templateUrl: "partials/empleado/crear.html", controller: "PageCtrl"})
+
+    .when("/Clientes/ver", {templateUrl: "partials/cliente/ver.html", controller: "PageCtrl"})
     
     .when("/Usuarios/crear", {templateUrl: "partials/usuario/crear.html", controller: "PageCtrl"})
     .when("/Usuarios/ver", {templateUrl: "partials/usuario/ver.html", controller: "PageCtrl"})
@@ -78,7 +80,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/Porcentaje/crear", {templateUrl: "partials/porcentaje/crear.html", controller: "PageCtrl"})
     .when("/Porcentaje/ver", {templateUrl: "partials/porcentaje/ver.html", controller: "PageCtrl"})
-
+    .when("/Reporte", {templateUrl: "partials/admin/reporte/reportes.html", controller: "PageCtrl"})
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);

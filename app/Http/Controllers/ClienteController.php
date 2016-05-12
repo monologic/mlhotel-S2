@@ -133,4 +133,12 @@ class ClienteController extends Controller
         $regCliente->delete();
         return $this->getRegClientes($registro_id);
     }
+    public function getclientes()
+    {
+        $Cliente = Cliente::orderBy('nombres', 'asc')->get();
+        $Cliente = $Cliente ->toArray();
+
+
+        return response()->json( $Cliente );
+    }
 }
