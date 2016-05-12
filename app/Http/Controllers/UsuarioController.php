@@ -52,9 +52,8 @@ class UsuarioController extends Controller
         $usuario->activo = 1;
         $usuario->save();
 
-        return response()->json([
-            "mensaje" => 'Usuario Creado'
-        ]);
+        $empController = new empleadoController();
+        return $empController->getEmpleadosFull();
     }
 
     /**
@@ -97,7 +96,8 @@ class UsuarioController extends Controller
             $usuario->password = bcrypt($request->password);
         }
         $usuario->save();
-        return response()->json( $usuario );
+        $empController = new empleadoController();
+        return $empController->getEmpleadosFull();
     }
 
     /**
@@ -124,13 +124,11 @@ class UsuarioController extends Controller
         $usuario->save();
 
         return $this->index();
-       
     }
 
     public function getUsuario()
     {
         $usuario = Usuario::find(\Auth::user()->id);
         return response()->json( $usuario );
-
     }
 }

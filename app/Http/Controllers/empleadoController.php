@@ -129,4 +129,16 @@ class empleadoController extends Controller
         return response()->json( $empleados );
         
     }
+
+    public function getEmpleadosFull()
+    {
+        $empleados = \DB::table('empleados')
+            ->leftJoin('usuarios', 'usuarios.empleado_id', '=', 'empleados.id')
+            ->join('emptipos', 'emptipos.id', '=', 'empleados.emptipo_id')
+            ->select('empleados.*', 'usuarios.id as usuario_id', 'usuarios.usuario', 'usuarios.usuariotipo_id', 'usuarios.activo', 'emptipos.tipo as tipoempleado')
+            ->where('empleados.hotel_id', Auth::user()->empleado->hotel->id)
+            ->get();
+
+        return response()->json( $empleados );
+    }
 }

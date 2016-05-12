@@ -13,6 +13,13 @@ app.controller('porcentajeController', function($scope,$http) {
     $scope.getPorcentajes = function () {
         $http.get('admin/porcentaje').then(function successCallback(response) {
                 $scope.porcentajes = response.data;
+                for (x in response.data) {
+                    if(response.data[x].porcentaje == 0)
+                        $scope.reservasCero = 'Se aceptan las Reservas por S/. 0.00';
+                    else
+                        $scope.reservasCero = 'No se aceptan las Reservas por S/. 0.00';
+
+                } 
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -41,7 +48,8 @@ app.controller('porcentajeController', function($scope,$http) {
 
         if (r) {
             $http.delete( 'admin/porcentaje/'+id ).then(function successCallback(response) {
-                $scope.porcentajes = response.data;
+                window.location.reload()
+
             }, function errorCallback(response) {
                 alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
             });
