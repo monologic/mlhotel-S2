@@ -13,6 +13,9 @@ y atraccion por parte del usuario
 
 Especificaciones del Sistema:
 
+- estadistica.: habitaciones ocupadas
+				reservas realisadas
+				ganancias
 
 
 

@@ -40,35 +40,39 @@
         <button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
         <nav id="ml-menu" class="menu">
             <div class="dummy-logo">
-                <div class="dummy-icon foodicon foodicon--coconut"></div>
-                <h2 class="dummy-heading">Fooganic</h2>
+                <div ><i class="glyphicon glyphicon-cloud" style="font-size: 6rem"></i></div>
+                <a href="/login"><h2 class="dummy-heading" style="margin-top: 0px">PANEL DE CONTROL</h2></a>
             </div>
             <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
             <div class="menu__wrap">
                 <ul data-menu="main" class="menu__level">
 
-                @if (Auth::user()->usuariotipo->nombre == "Administrador")
-                    <li class="menu__item"><a class="menu__link"  href="#/Reservas">Reservas</a></li>  
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Usuarios</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-7" href="#">Empleado</a></li>
+                @if (Auth::user()->usuariotipo->nombre == "Administrador")  
+                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" >Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Empleados/ver">Empleado</a></li>
                     
-                    <li class="menu__item"><a class="menu__link"  href="#/configChecks">Configurar Check-In y Check-out</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/configChecks">Hora de E/S</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver">Tipos de Cambio</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Porcentaje de Pago Reserva</a></li>  
+                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Config. Pagos</a></li>  
                 @endif
 
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")
-                    <li class="menu__item"><a class="menu__link"  href="#/Reservas">Reservas</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/Reservas">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="google.com"  >Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#">Clientes</a></li>
                 @endif
                     @if (Auth::user()->usuariotipo->nombre=="Root")
 
-                        <li class="menu__item"><a class="menu__link" data-submenu="submenu-8" href="#">Administrador</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisBanner">Banners</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisHab">Tipos de Habitaciones</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisGaleria">Galeria de Fotos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisNoticias">Noticias</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisServicios">Servicios</a></li>
+                        <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/Empleados">Empleados y Usuarios</a></li>
 
                     @endif
                 </ul>
@@ -84,52 +88,6 @@
                 <ul data-menu="submenu-2" class="menu__level">
                     <li class="menu__item"><a class="menu__link" href="#/Buscar">Buscar</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Registrados</a></li>
-                </ul>
-                <!-- Submenu 2-1 -->
-                <ul data-menu="submenu-2-1" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Exotic Mixes</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Wild Pick</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Vitamin Boosters</a></li>
-                </ul>
-                <!-- Submenu 3 -->
-                <ul data-menu="submenu-3" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones">Ver Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Habitacion">Crear Habitaciones</a></li>
-                </ul>
-                <!-- Submenu 4 -->
-                <ul data-menu="submenu-4" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Grain Mylks</a></li>
-                </ul>
-                <!-- Submenu 4-1 -->
-                <ul data-menu="submenu-4-1" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Nut Mylk Packs</a></li>
-                </ul>
-
-                <ul data-menu="submenu-6" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#/Usuarios/ver">Ver Usuarios</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Usuarios/crear">Crear Usuarios</a></li>
-                    <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Usuarios/crearTipo">Agregar tipo usuario</a></li>
-                </ul>
-
-                 <ul data-menu="submenu-7" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Ver Empleados</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Empleados/crear">Crear Empleado</a></li>
-                    <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Ver Cargos</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Cargos/crear">Crear Cargo</a></li>
-                </ul>
-
-                <ul data-menu="submenu-8" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#/LisBanner">Banners</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/LisHab">Tipos de Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/LisGaleria">Galeria de Fotos</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/LisNoticias">Noticias</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/LisServicios">Servicios</a></li>
-                    <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Empleados">Empleados y Usuarios</a></li>
                 </ul>
             </div>
         </nav>
