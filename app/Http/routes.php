@@ -37,6 +37,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('categoria', 'categoriaController');
 	Route::resource('galeria', 'galeryController');
 	Route::resource('noticia', 'noticiaController');
+	Route::resource('pago', 'PagotipoController');
 
 
 	Route::get('getclientess', 'ClienteController@getclientes');

@@ -55,5 +55,41 @@ app.controller('porcentajeController', function($scope,$http) {
             });
         }
     }
-    
+
+    $scope.getTiposPago = function () {
+        $http.get('admin/pago').then(function successCallback(response) {
+                $scope.pagoCero = response.data[0];
+                for (i in response.data) {
+                    if (response.data[i].activo == 0) {
+                        (response.data).splice(i,1);
+                    }
+                }
+                $scope.pagoTipos = response.data;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+    $scope.cambiarEstado = function (data) {
+        if (data.activo == 1) 
+            data.activo = 0;
+        else
+            data.activo = 1;
+        $http.put('admin/pago/' + data.id, {
+            'activo': data.activo
+        })
+        .then(function successCallback(response) {
+            $scope.pagoCero = response.data[0];
+                for (i in response.data) {
+                    if (response.data[i].activo == 0) {
+                        (response.data).splice(i,1);
+                    }
+                }
+                $scope.pagoTipos = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+        
+    }
 });
