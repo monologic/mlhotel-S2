@@ -43,15 +43,15 @@
               <div class="row">
                  <div class="col m4 s12">
                   <input name="group1" type="radio" id="test1" onchange="porcen()" />
-                  <label for="test1" style="color: #009688">Pago 0</label>
+                  <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
                 </div>
                 <div class="col m4 s12">
                   <input name="group1" type="radio" id="test2" onchange="paypal()" />
-                  <label for="test2" style="color: #009688">Paypal</label>
+                  <label for="test2" style="color: #009688"><img src="paypal.png" style="width: 60px;margin-top: -10px"></label>
                 </div>
                 <div class="col m4 s12">
                   <input name="group1" type="radio" id="test3" onchange="boucher()" />
-                  <label for="test3" style="color: #009688">Depósito bancario</label>
+                  <label for="test3" style="color: #009688"><img src="deposito.png"style="width: 70px;margin-top: 5px"></label>
                 </div>
               </div>
             </form>
@@ -78,12 +78,19 @@
           <input type="text" class="validate" ng-model="apellidos" required>
           <label for="last_name" style="color: #6C7A89">Apellidos</label>
         </div>
-         <div class="input-field col s12 centrar" >
+        <div class="input-field col s12 centrar" >
           <input type="text" class="validate" ng-model="dni" required>
           <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
         </div>
+        <div class="input-field col s12 centrar" >
+          <input type="text" class="validate" ng-model="telefono" required>
+          <label for="last_name" style="color: #6C7A89">Telefono (opcional)</label>
+        </div>
         <br><br>
-  
+        <div class="col m12 s12">
+                  <input type="checkbox" id="test5" />
+                  <label for="test5" style="color: black;font-size: 0.7rem">Acepto los terminos y condiciosnes. </label><a style="font-size: 0.7rem" class="modal-trigger"  href="#modal1"> Leer aquí</a>
+                </div>
         <div style="display:block;top:40px">
           <button type="submit" class="waves-effect waves-light btn centrar modal-trigger" href="#modal1">Reservar</button>
         </div>
@@ -139,6 +146,15 @@
     <div style="margin-top: 30px; margin-left: -40px; font-size: 20px">Enviando Datos</div>
   </div>
 </div>
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Termnos y condiciones</h4>
+      <p>Este es el texto de los terminos</p>
+    </div>
+    <div class="modal-footer">
+      <a href="" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
 <script>
   $(document).ready(function() {
     $('select').material_select();
@@ -158,4 +174,8 @@
       $('#sel-p').css('display','block');
     }
   }
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
 </script>
