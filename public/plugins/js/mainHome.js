@@ -23,6 +23,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/micarrito", {templateUrl: "index/carrito.html", controller: "PageCtrl"})
     .when("/mensajeenviado", {templateUrl: "index/mensaje.html", controller: "PageCtrl"})
     .when("/comprarealizada", {templateUrl: "index/endcompras.html", controller: "PageCtrl"})
+    .when("/operacionPagoCero", {templateUrl: "index/operacionpagocero.html", controller: "PageCtrl"})
+    .when("/operacionPagoDeposito", {templateUrl: "index/operacionpagodeposito.html", controller: "PageCtrl"})
+
     // Pages
     /*
         Rutas relacionadas a empleados

@@ -116,6 +116,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );
 
+	Route::get('admin/getTiposPago', 'PagotipoController@index');
 
 
 /*
@@ -187,7 +188,8 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'payment',
 		'uses' => 'PaypalController@postPayment',
 	));
-
+	Route::get('operacionPagoCero', 'PaypalController@operacionPagoCero');
+	Route::get('operacionPagoDeposito', 'PaypalController@operacionPagoDeposito');
 	// Después de realizar el pago Paypal redirecciona a esta ruta
 	Route::get('payment/status', array(
 		'as' => 'payment.status',

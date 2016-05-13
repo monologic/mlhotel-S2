@@ -223,4 +223,61 @@ class PaypalController extends BaseController
 		}
 		
 	}
+	public function operacionPagoCero()
+	{
+		$cart = \Session::get('cart');
+		$fechas = \Session::get('fechas');
+		$cliente = \Session::get('cliente');
+
+		$subtotal = 0;
+	    foreach($cart as $item){
+	        $subtotal += $item->precio * $item->quantity;
+	    }
+
+	    $hoteles = Hotel::orderBy('id', 'asc')->get();
+		$hotel = $hoteles[0];
+		$fechaInicio = $fechas['fecha_inicio'] . " " . $hotel->checkin;
+		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
+
+	    $reserva = Reserva::create([
+	        'total' => $subtotal,
+	        'reservaestado_id' => 3,
+	        'fecha_reserva' => date('Y-m-d'),
+	        'fecha_inicio' => $fechaInicio,
+	        'fecha_fin' => $fechaFin,
+	        'cliente_id' => $cliente['id']
+	    ]);
+	    
+	    foreach($cart as $item){
+	        $this->saveOrderItem($item, $reserva->id);
+	    }
+	}
+	public function operacionPagoDeposito()
+	{
+		$cart = \Session::get('cart');
+		$fechas = \Session::get('fechas');
+		$cliente = \Session::get('cliente');
+		$subtotal = 0;
+	    foreach($cart as $item){
+	        $subtotal += $item->precio * $item->quantity;
+	    }
+
+	    $hoteles = Hotel::orderBy('id', 'asc')->get();
+		$hotel = $hoteles[0];
+		$fechaInicio = $fechas['fecha_inicio'] . " " . $hotel->checkin;
+		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
+
+	    $reserva = Reserva::create([
+	        'total' => $subtotal,
+	        'reservaestado_id' => 3,
+	        'fecha_reserva' => date('Y-m-d'),
+	        'fecha_inicio' => $fechaInicio,
+	        'fecha_fin' => $fechaFin,
+	        'cliente_id' => $cliente['id']
+	    ]);
+	    
+	    foreach($cart as $item){
+	        $this->saveOrderItem($item, $reserva->id);
+	    }
+	}
 }
