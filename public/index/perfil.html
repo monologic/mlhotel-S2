@@ -24,11 +24,12 @@
                   <p class="center-align" style="font-size: 1.4rem">{{habfotos.0.precio}}</p>
                   <div class="input-field col s12 m12">
                       <p for="icon_prefix2"> <i class="fa fa-calendar"></i>Fecha Entrada</p>
-                      <input type="date" class="datepicker" id="fechaini" required>    
+                      <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+   
                   </div>
                   <div class="input-field col s12 m12">
                       <p for="icon_prefix2"><i class="fa fa-calendar"></i>Fecha Salida</p>
-                      <input type="date" class="datepicker" id="fechafin" required>
+                      <input type="text" style="height:20px;width:100%; padding: 5px;" id="fechafin">
                       
                   </div>
                   <div id="buscar">
@@ -116,4 +117,27 @@
         </div>
        </div>
       </div>
-
+  
+  <script>
+    $(function() {
+      $( "#fechaini" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1,
+        minDate: 0,
+        onClose: function( selectedDate ) {
+          $( "#fechafin" ).datepicker( "option", "minDate", selectedDate );
+        }
+      });
+      $( "#fechafin" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+          $( "#fechaini" ).datepicker( "option", "maxDate", selectedDate );
+        }
+      });
+    });
+  </script>

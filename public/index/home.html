@@ -193,7 +193,7 @@
       dateFormat: "yy-mm-dd",
       defaultDate: "+1w",
       changeMonth: true,
-      numberOfMonths: 2,
+      numberOfMonths: 1,
       minDate: 0,
       onClose: function( selectedDate ) {
         $( "#fechafin" ).datepicker( "option", "minDate", selectedDate );
@@ -201,9 +201,9 @@
     });
     $( "#fechafin" ).datepicker({
       dateFormat: "yy-mm-dd",
-      defaultDate: "+1w",
+      defaultDate: "+1d",
       changeMonth: true,
-      numberOfMonths: 2,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#fechaini" ).datepicker( "option", "maxDate", selectedDate );
       }
