@@ -19,6 +19,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/", {templateUrl: "partials/panelAdmin.html", controller: "PageCtrl"})
     .when("/user", {templateUrl: "partials/paneluser.html", controller: "PageCtrl"})
     .when("/root", {templateUrl: "partials/panelroot.html", controller: "PageCtrl"})
+    .when("/Aregistro", {templateUrl: "partials/registrarh.html", controller: "PageCtrl"})
     // Pages
     /*
         Rutas relacionadas a empleados

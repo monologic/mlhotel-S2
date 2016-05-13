@@ -3,6 +3,18 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 /* booking slider*/
+.btns{
+  position: absolute;
+  font-size: 0.8rem;
+  color:white;
+  padding: 8px;
+  border-radius: 5px;
+  border-width: 1px;
+  top:10px;
+  right: 10px;
+  background-color:#69f0ae;
+
+}
 .booking{
   position: relative;
   background-color:white;

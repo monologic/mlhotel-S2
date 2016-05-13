@@ -49,6 +49,7 @@
   <div class="navbar-fixed">
     <nav class="white" style="background: transparent;height: 110px">
       <div class="nav-wrapper white" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
+        <a  class="btns" href="/login">Sign in</a>
         <a href="#" class="brand-logo center" style="display: block;height:100%; padding:0px 25px 0 0px;margin:15px 10% 0px 5px;color:black;">Residencial Moquegua </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down" style="margin-top: 40px">

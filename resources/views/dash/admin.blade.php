@@ -62,7 +62,7 @@
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")
                     <li class="menu__item"><a class="menu__link" href="#/Reservas">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                 @endif
                     @if (Auth::user()->usuariotipo->nombre=="Root")
 
@@ -89,8 +89,8 @@
                 </ul>
                 <!-- Submenu 2 -->
                 <ul data-menu="submenu-2" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Buscar</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Registrados</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Buscar y registrar</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Habitaciones</a></li>
                 </ul>
             </div>
         </nav>

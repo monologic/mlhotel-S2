@@ -104,16 +104,21 @@
             </td>
             <td>{{o.precio}}</td>
             <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+            <td width="10px"><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
           </tr>
-          <tr>
+          <tr style="border-top: solid;border-width: 1px">
             <td></td>
             <td colspan="2">Total por Día:</td>
             <td ng-bind="totalq"></td>
           </tr>
+          <tr>
+            <td>{{ fechas.dias }} noches</td>
+            <td>--></td>
+            <td>Total</td>
+            <td>S/ {{Total}}</td>
+          </tr>
         </tbody>
       </table>
-      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
     </div>
       
       <div>
