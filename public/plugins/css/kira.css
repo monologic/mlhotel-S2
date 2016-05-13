@@ -6,7 +6,10 @@
 	list-style-type: none;
 	list-style: none;
 }
-
+.cont-pago{
+	width: 80%;
+	margin: 40px auto 20px auto;
+}
 /*Emergente de la vita detalle habitacion*/
 .separador{
 	display: block;
