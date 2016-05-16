@@ -8,7 +8,7 @@ class Categoria extends Model
 {
     public $timestamps = false;
 
-     protected $fillable = ['nombre', 'foto', 'descripcion'];
+     protected $fillable = ['nombre', 'foto', 'descripcion', 'activo'];
 
     public function servicios()
     {

@@ -97,6 +97,10 @@ class ReservaController extends Controller
         });
 
         $reservas->each(function($reservas){
+            $reservas->pagotipo;
+        });
+
+        $reservas->each(function($reservas){
             $reservas->habtiporeservas;
             $habReserva = $reservas->habtiporeservas;
             $reservas->habtiporeservas->each(function($habReserva){
@@ -147,6 +151,10 @@ class ReservaController extends Controller
         });
 
         $reservas->each(function($reservas){
+            $reservas->pagotipo;
+        });
+
+        $reservas->each(function($reservas){
             $reservas->habtiporeservas;
             $habReserva = $reservas->habtiporeservas;
             $reservas->habtiporeservas->each(function($habReserva){
@@ -183,6 +191,77 @@ class ReservaController extends Controller
             }
         }
         return response()->json( $reservas );
+    }
+    public function getReservasPorConfirmar()
+    {
+        $reservas = Reserva::where('reservaestado_id',3)
+                           ->get();
+
+        $reservas->each(function($reservas){
+            $reservas->cliente;
+        });
+
+        $reservas->each(function($reservas){
+            $reservas->pagotipo;
+        });
+        
+        $reservas->each(function($reservas){
+            $reservas->habtiporeservas;
+            $habReserva = $reservas->habtiporeservas;
+            $reservas->habtiporeservas->each(function($habReserva){
+                $habReserva->habtipo;
+            });
+        });
+
+        $reservas = $reservas->toArray();
+
+        foreach ($reservas as $j => $reserva) {
+            $habtipos = $reserva['habtiporeservas'];
+            $ht = array();
+            foreach ($habtipos as $key => $habtipo) {    
+                if (count($ht) > 0) {
+                    foreach ($ht as $k => $htt) {
+                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
+                            $ht[$k]['count']++;
+                        }
+                        else {
+                            $habtipo['habtipo']['count'] = 1;
+                            $ht[] = $habtipo['habtipo'];
+                        }
+
+                    }
+                }
+                else {
+                    $habtipo['habtipo']['count'] = 1;
+                    $ht[] = $habtipo['habtipo'];
+                    
+                }
+
+                $reservas[$j]['habtiposcount'] = $ht;
+
+            }
+        }
+        
+
+        return response()->json( $reservas );
+    }
+    public function confirmarReserva($id)
+    {
+        $reserva = Reserva::find($id);
+        $reserva->reservaestado_id = 2; // id 2 reserva por asignar;
+        $reserva->save();
+
+        return $this->getReservasPorConfirmar();
+    }
+    public function cancelarReserva($id)
+    {
+        $reserva = Reserva::find($id);
+        $reserva->fecha_inicio = null;
+        $reserva->fecha_fin = null;
+        $reserva->reservaestado_id = 4; // id 4 cancelar reserva;
+        $reserva->save();
+
+        //return $this->getReservasPorConfirmar();
     }
 }
                         

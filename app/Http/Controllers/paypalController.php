@@ -50,14 +50,14 @@ class PaypalController extends BaseController
 		$porcentaje = \Session::get('porcentaje');
 		$fechas = \Session::get('fechas');
 
-		//dd($cart);
+		//dd($porcentaje);
 
 		$currency = 'USD';
 
 		foreach($cart as $producto){
 			//dd($producto->nombre);
 
-			$precioProducto = $producto->precio * $porcentaje['porcentaje'] / 100 * $fechas['dias'];
+			$precioProducto = $producto->precio * $porcentaje['porcentaje'] * $fechas['dias'];
 			$precioDolar = round(($precioProducto / $moneda->tipocambio), 2);
 
 
@@ -173,10 +173,11 @@ class PaypalController extends BaseController
 			// Enviar correo a admin
 			// Redireccionar
 
-			$this->saveOrder(\Session::get('cart'),\Session::get('fechas'),\Session::get('cliente'));
+			$this->saveOrder(\Session::get('cart'),\Session::get('fechas'),\Session::get('cliente'),\Session::get('porcentaje'));
 
 			\Session::forget('cart');
 
+			return redirect('/#/comprarealizada');
 
 			
 		}
@@ -184,8 +185,9 @@ class PaypalController extends BaseController
 	}
 
 
-	private function saveOrder($cart, $fechas, $cliente)
+	private function saveOrder($cart, $fechas, $cliente, $porcentaje)
 	{
+
 	    $subtotal = 0;
 	    foreach($cart as $item){
 	        $subtotal += $item->precio * $item->quantity;
@@ -197,19 +199,20 @@ class PaypalController extends BaseController
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total' => $subtotal,
+	        'total' => $subtotal * $porcentaje['porcentaje'],
 	        'reservaestado_id' => 2,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
 	        'fecha_fin' => $fechaFin,
-	        'cliente_id' => $cliente['id']
+	        'cliente_id' => $cliente['id'],
+	        'pagotipo_id' => 2
 	    ]);
 	    
 	    foreach($cart as $item){
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
 
-	    return redirect('/#/comprarealizada');
+	    
 
 	}
 	
@@ -240,12 +243,13 @@ class PaypalController extends BaseController
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total' => $subtotal,
+	        'total' => 0.00,
 	        'reservaestado_id' => 3,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
 	        'fecha_fin' => $fechaFin,
-	        'cliente_id' => $cliente['id']
+	        'cliente_id' => $cliente['id'],
+	        'pagotipo_id' => 1
 	    ]);
 	    
 	    foreach($cart as $item){
@@ -254,6 +258,7 @@ class PaypalController extends BaseController
 	}
 	public function operacionPagoDeposito()
 	{
+		$porcentaje = \Session::get('porcentaje');
 		$cart = \Session::get('cart');
 		$fechas = \Session::get('fechas');
 		$cliente = \Session::get('cliente');
@@ -268,12 +273,13 @@ class PaypalController extends BaseController
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total' => $subtotal,
+	        'total' => $subtotal * $porcentaje['porcentaje'],
 	        'reservaestado_id' => 3,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
 	        'fecha_fin' => $fechaFin,
-	        'cliente_id' => $cliente['id']
+	        'cliente_id' => $cliente['id'],
+	        'pagotipo_id' => 3
 	    ]);
 	    
 	    foreach($cart as $item){

@@ -42,7 +42,7 @@ app.controller('carritoController', function($scope,$http) {
         {   'nombres':$scope.nombres,
             'apellidos':$scope.apellidos,
             'dni':$scope.dni,
-            'porcentaje':$('#porcentaje').val()
+            'porcentaje':$('#porcentajePago').val()
         }).then(function successCallback(response) {
              $scope.pagar();
         }, function errorCallback(response) { 

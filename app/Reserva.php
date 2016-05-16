@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['cliente_id', 'fecha_reserva', 'fecha_inicio','fecha_fin','total','reservaestado_id'];
+    protected $fillable = ['cliente_id', 'fecha_reserva', 'fecha_inicio','fecha_fin','total','reservaestado_id','pagotipo_id'];
     
     public function habtiporeservas()
     {
@@ -28,6 +28,10 @@ class Reserva extends Model
     public function usuario()
     {
     	return $this->belongsTo('App\Usuario');
+    }
+    public function pagotipo()
+    {
+        return $this->belongsTo('App\Pagotipo');
     }
 
 }

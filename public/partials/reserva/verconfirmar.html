@@ -1,14 +1,15 @@
-<div id="page-wrapper" ng-controller="reservaController" ng-init="getReservasPorAsignar();" style="width: 80%;margin: 20px auto 40px auto;">
+<div id="page-wrapper" ng-controller="reservaController" ng-init="getReservasPorConfirmar();" style="width: 80%;margin: 20px auto 40px auto;">
     <br><br><br>
-    <h3 class="tit2">Reservas</h3>
+    <h3 class="tit2">Reservas Por Confirmar</h3>
     <br><br>
     <div ng-repeat="y in reservas" class="row">
         <p>
-            <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
-                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }} Forma de Pago: {{ y.pagotipo.pagotipo }}
-            </button>
+          <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+             {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }} Forma de Pago: {{ y.pagotipo.pagotipo }}
+          </button>
         </p>
+
             <div class="collapse" id="{{y.id}}" style="padding: 20px;border-width:0.1px;border:solid;border-radius: 5px;margin-bottom:10px">
               <div class="card card-block row" style="color:black">
                 <div class="col-md-4">
@@ -28,10 +29,9 @@
                             </tr>
                         </tbody>
                     </table>
-                
-            </div>
+                </div>
             <div class="col-sm-4" style="bottom: 0;">
-                <p><a href="admin#/ReservaAsignar/{{y.id}}" class="btn btn-success">Asignar Habitaciones</a></p>
+                <p><a href="" ng-click="confirmar(y.id)" class="btn btn-success">Confirmar Reserva</a></p>
                 <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger">Cancelar Reserva</a></p>
             </div>
           </div>
