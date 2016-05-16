@@ -173,7 +173,7 @@
     <script src="plugins/js/controllers/serviciosController.js"></script>
     <script src="plugins/js/controllers/monedaController.js"></script>
     <script src="plugins/js/controllers/porcentajeController.js"></script>
-    
+    <script src="plugins/js/controllers/graficasController.js"></script>
 
     <script>
     (function() {

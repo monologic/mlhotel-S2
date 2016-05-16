@@ -77,6 +77,11 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::delete('regClienteEliminar/{id}', 'ClienteController@eliminarRegCliente');
 
 
+	Route::get('report', 'graficas@ghabitaciones');
+
+	Route::get('admin/report/{fechaini}/{fechafin}', ['uses' => 'graficas@buscar', function ($fechaini, $fechafin) {
+	}]);
+
 
 });
 
