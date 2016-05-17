@@ -6,6 +6,12 @@
 	list-style-type: none;
 	list-style: none;
 }
+#alertCambio{
+	display: none;
+	border-color: transparent;
+	color: green;
+	font-family: ubuntu;
+}
 .cont-pago{
 	width: 80%;
 	margin: 40px auto 20px auto;
