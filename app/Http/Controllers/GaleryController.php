@@ -89,8 +89,7 @@ class GaleryController extends Controller
     {
         Galeria::destroy($id);
 
-        $res = $this->getGaleriaFotos();
-        return redirect('#/LisGaleria');
+        return $this->getGaleriaFotos();
     }
 
     public function AddGaleryPhoto(Request $request)

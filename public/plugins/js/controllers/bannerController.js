@@ -43,18 +43,24 @@ app.controller('bannerController', function($scope,$http) {
                 'estado':$scope.mlestado,
                 'orden':$scope.mlorden,
             }).then(function successCallback(response) {
-                 $scope.banners2 = response.data;
+                $('#alertCambio').css('display','block');
+                $scope.banners2 = response.data;
             }, function errorCallback(response) {
                 
             });
     }
 
      $scope.eliminar = function (id) {
-        $http.delete( 'admin/banner/'+id ).then(function successCallback(response) {
-            $scope.banners2 = response.data;
-        }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-        });
+        r = confirm("¿Deseas eliminar este Banner?");
+
+        if (r) {
+            $http.delete( 'admin/banner/'+id ).then(function successCallback(response) {
+                $('#alertDelete').css('display','block');
+                $scope.banners2 = response.data;
+            }, function errorCallback(response) {
+                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            });
+        }
     }
 
 });

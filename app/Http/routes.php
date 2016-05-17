@@ -36,7 +36,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('servicio', 'ServicioController');
 	Route::resource('categoria', 'categoriaController');
 	Route::resource('galeria', 'galeryController');
-	Route::resource('noticia', 'noticiaController');
+	Route::resource('noticia', 'NoticiaController');
 	Route::resource('pago', 'PagotipoController');
 
 

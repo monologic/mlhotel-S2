@@ -25,17 +25,23 @@ app.controller('galeryController', function($scope,$http) {
                 'descripcion':$scope.mldescripcion,
                 'estado':$scope.mlestado,
             }).then(function successCallback(response) {
-                 $scope.getfoto = response.data;
+                $('#alertCambio').css('display','block');
+                $scope.fotos = response.data;
             }, function errorCallback(response) {
                 
             });
     }
 
      $scope.eliminar = function (id) {
-        $http.delete( 'admin/galeria/'+id ).then(function successCallback(response) {
-            $scope.getfoto = response.data;
-        }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-        });
+        r = confirm("¿Deseas eliminar esta foto de Galería?");
+
+        if (r) {
+            $http.delete( 'admin/galeria/'+id ).then(function successCallback(response) {
+                $('#alertDelete').css('display','block');
+                $scope.fotos = response.data;
+            }, function errorCallback(response) {
+                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            });
+        }
     }    
 });

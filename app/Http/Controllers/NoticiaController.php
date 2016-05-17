@@ -88,8 +88,8 @@ class NoticiaController extends Controller
     public function destroy($id)
     {
         Noticia::destroy($id);
-        $res = $this->getNoticias();
-        return redirect('#/LisNoticias');
+
+        return $this->getNoticias();
     }
     public function getNoticias()
     {

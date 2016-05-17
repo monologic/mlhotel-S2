@@ -32,21 +32,27 @@ app.controller('noticiaController', function($scope,$http) {
         $http.put('admin/noticia/'+idNot,
             {   'titulo':$scope.mltitulo,
                 'contenido':$scope.mlcontenido,
-                'fecha':$scope.fecha,
+                'fecha':$scope.mlfecha,
                 'fuente':$scope.fuente,
                 'estado':$scope.mlestado,
             }).then(function successCallback(response) {
-                 $scope.getNoticias = response.data;
+                $('#alertCambio').css('display','block');
+                 $scope.noticia = response.data;
             }, function errorCallback(response) {
                 
             });
     }
 
      $scope.eliminar = function (id) {
-        $http.delete( 'admin/noticia/'+id ).then(function successCallback(response) {
-            $scope.getNoticias = response.data;
-        }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-        });
+        r = confirm("¿Deseas eliminar esta foto de Galería?");
+
+        if (r) {
+            $http.delete( 'admin/noticia/'+id ).then(function successCallback(response) {
+                $('#alertDelete').css('display','block');
+                $scope.noticia = response.data;
+            }, function errorCallback(response) {
+                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            });
+        }
     }       
 });
