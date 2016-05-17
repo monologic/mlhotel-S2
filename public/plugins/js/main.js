@@ -24,8 +24,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     /*
         Rutas relacionadas a empleados
     */
-    .when("/Cargos/crear", {templateUrl: "partials/emptipo/crear.html", controller: "PageCtrl"})
-    .when("/Cargos/ver", {templateUrl: "partials/emptipo/ver.html", controller: "PageCtrl"})
+    //.when("/Cargos/crear", {templateUrl: "partials/emptipo/crear.html", controller: "PageCtrl"})
+    //.when("/Cargos/ver", {templateUrl: "partials/emptipo/ver.html", controller: "PageCtrl"})
     .when("/Perfil", {templateUrl: "partials/usuario/perfil.html", controller: "PageCtrl"})
 
     .when("/Empleados/ver", {templateUrl: "partials/empleado/ver.html", controller: "PageCtrl"})
@@ -45,15 +45,15 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Banner", {templateUrl: "partials/admin/slider/banner.html", controller: "PageCtrl"})
     .when("/LisBanner", {templateUrl: "partials/admin/slider/ver.html", controller: "PageCtrl"})
 
-     .when("/Galeria", {templateUrl: "partials/admin/Galeria/galeria.html", controller: "PageCtrl"})
-    .when("/LisGaleria", {templateUrl: "partials/admin/Galeria/ver.html", controller: "PageCtrl"})
+     .when("/Galeria", {templateUrl: "partials/admin/galeria/galeria.html", controller: "PageCtrl"})
+    .when("/LisGaleria", {templateUrl: "partials/admin/galeria/ver.html", controller: "PageCtrl"})
 
      .when("/Noticias", {templateUrl: "partials/admin/noticia/noticia.html", controller: "PageCtrl"})
     .when("/LisNoticias", {templateUrl: "partials/admin/noticia/ver.html", controller: "PageCtrl"})
 
-    .when("/tipoHab", {templateUrl: "partials/admin/TipoHab/crear.html", controller: "PageCtrl"})
-    .when("/LisHab", {templateUrl: "partials/admin/TipoHab/ver.html", controller: "PageCtrl"})
-    .when('/HabGalery/:habtipoId', {templateUrl: "partials/admin/TipoHab/galeria.html", controller: "PageCtrl"})
+    .when("/tipoHab", {templateUrl: "partials/admin/tipoHab/crear.html", controller: "PageCtrl"})
+    .when("/LisHab", {templateUrl: "partials/admin/tipoHab/ver.html", controller: "PageCtrl"})
+    .when('/HabGalery/:habtipoId', {templateUrl: "partials/admin/tipoHab/galeria.html", controller: "PageCtrl"})
 
     .when("/Hoteles", {templateUrl: "partials/admin/hotel/ver.html", controller: "PageCtrl"})
     .when("/Hoteles/crear", {templateUrl: "partials/admin/hotel/crear.html", controller: "PageCtrl"})
@@ -61,7 +61,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/BandejaEntrada", {templateUrl: "partials/admin/Bandeja Entrada/ver.html", controller: "PageCtrl"})
 
-    .when("/Empleados", {templateUrl: "partials/admin/personal/ver.html", controller: "PageCtrl"})
+    //.when("/Empleados", {templateUrl: "partials/admin/personal/ver.html", controller: "PageCtrl"})
 
     .when("/Habitacion", {templateUrl: "partials/habitacion/crear.html", controller: "PageCtrl"})
     .when("/Habitaciones", {templateUrl: "partials/habitacion/ver.html", controller: "PageCtrl"})

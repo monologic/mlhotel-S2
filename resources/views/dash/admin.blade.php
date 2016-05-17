@@ -50,7 +50,7 @@
                 <ul data-menu="main" class="menu__level">
 
                 @if (Auth::user()->usuariotipo->nombre == "Administrador")  
-                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" >Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" >Info. Habitaciones</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Empleados/ver">Empleado</a></li>
                     
@@ -61,7 +61,8 @@
 
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")
                     <li class="menu__item"><a class="menu__link" href="#/Reservas">Reservas</a></li>  
-                    <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar">Reservas Por Confirmar</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar">Reservas Por Confirmar</a></li> 
+                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Disponibilidad</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                 @endif
@@ -75,9 +76,6 @@
                         <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
                         <li class="menu__item"><a class="menu__link" href="#/Reporte">Reportes</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/Empleados">Empleados y Usuarios</a></li>
-
                     @endif
                 </ul>
                 <!-- Submenu 1 -->
@@ -175,7 +173,7 @@
     <script src="plugins/js/controllers/monedaController.js"></script>
     <script src="plugins/js/controllers/porcentajeController.js"></script>
     <script src="plugins/js/controllers/graficasController.js"></script>
-
+<script src="plugins/js/controllers/clienteController.js"></script>
     <script>
     (function() {
         var menuEl = document.getElementById('ml-menu'),

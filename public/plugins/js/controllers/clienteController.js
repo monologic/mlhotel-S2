@@ -1,7 +1,7 @@
 app.controller('clienteController', function($scope,$http) {
 
     $scope.getClientes = function () {
-        $http.get('admin/admin/getclientess').then(function successCallback(response) {
+        $http.get('admin/getclientess').then(function successCallback(response) {
             //console.log(response.data);
             $scope.cliente = response.data;
         }, function errorCallback(response) {

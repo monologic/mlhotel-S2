@@ -25,7 +25,6 @@ class RegistroController extends Controller {
     public $fechainicio;
     static $fechaInicio;
 
-    
     public function buscar($fechaini, $fechafin)
     {
         $this->fechainicio = $fechaini. " " . date('H:i:s');

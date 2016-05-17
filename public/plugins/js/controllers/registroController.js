@@ -4,7 +4,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         var f = new Date();
         $scope.fechaini = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +f.getDate();
         $scope.fechafin = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 1);
-        alert($scope.fechaini);
+        //alert($scope.fechaini);
         /*
         var fechaini1 = new Date($scope.fechaini);
         var fechafin1 = new Date($scope.fechafin);

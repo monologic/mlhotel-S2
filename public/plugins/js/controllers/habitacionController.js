@@ -52,7 +52,8 @@ app.controller('habitacionController', function($scope,$http) {
 
     $scope.editar = function () {
         $http.put('admin/habitacion/'+$scope.id,
-            {   'tipo':$scope.tipo,
+            {   'numero':$scope.numero,
+                'tipo':$scope.tipo,
                 'descripcion':$scope.descripcion
             }).then(function successCallback(response) {
                 $scope.habitaciones = response.data;
@@ -62,7 +63,7 @@ app.controller('habitacionController', function($scope,$http) {
             });
     }
     $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar este cargo?");
+        r = confirm("¿Deseas eliminar esta habitación?");
 
         if (r) {
             $http.delete( 'admin/habitacion/'+id ).then(function successCallback(response) {

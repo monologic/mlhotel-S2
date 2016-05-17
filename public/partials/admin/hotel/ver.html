@@ -1,6 +1,6 @@
 <div id="page-wrapper" ng-controller="hotelController" ng-init="getHoteles();">
     <br><br><br>
-    <h3 class="tit2">Hoteles</h3>
+    <h3 class="tit2">Hotel</h3>
     <br><br>
     
 
@@ -8,7 +8,7 @@
     	<thead>
             <tr>
                 <td colspan="4">
-                    <a href="#/Hoteles/crear" class="btn btn-primary hb"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>  Nuevo Hotel</a>
+                    <a ng-if='hoteles.lenght == 0' href="#/Hoteles/crear" class="btn btn-primary hb"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>  Nuevo Hotel</a>
                 </td>
             </tr>
     		<tr>
