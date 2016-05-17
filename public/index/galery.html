@@ -2,10 +2,9 @@
   document.title = "Galeria - Residencial Moquegua";
 </script>
 <div class="container" ng-controller="galeryController" ng-init="getfoto();">
-
-<h2 class="text-center" style="margin-top:120px">Galeria de Fotos</h2>
+<h2 class="text-center" style="font-size:2rem;margin-top:120px">Galeria de Fotos</h2>
 	<div class="row">
-		<div class='list-group gallery'>
+		<div class='list-group gallery' style="min-height: 25%">
             <div class='col m4 wow fadeInLeft' data-wow-delay="0.{{$index+5}}s" style="display:block;position:relative;visibility: visible; -webkit-animation-delay: 0.{{$index+5}}s; -moz-animation-delay: 0.{{$index+9}}s; animation-delay: 0.{{$index+5}}s;height:250px" ng-repeat="y in fotos">
                 <a class="thumbnail fancybox" rel="darkbox" href="imagen/galery/{{y.imagen}}">
                     <img class="img-responsive" alt="Hotel Moquegua {{y.titulo}}"  src="imagen/galery/{{y.imagen}}" style="width:100%" />

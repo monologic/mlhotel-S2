@@ -8012,8 +8012,12 @@ small {
 
 .tabs .tab a:hover {
   color: black;
-  font-size: 1.4rem;
-  transition: all 1s;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom:solid;
+  border-color: #4db6ac;
+  border-width: 3px;
+  transition: all 0.1s;
 }
 
 .tabs .tab.disabled a {

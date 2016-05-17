@@ -3,7 +3,7 @@
         <h3 class="tit2">Tipos de Pago</h3>
         <div class="cont-pago">
             
-            <p style="font-size: 18px;">Se aceptan reservas sin pago ({{ pagoCero.pagotipo }}): <label ng-if="pagoCero.activo == 1">Sí</label><label ng-if="pagoCero.activo == 0">No</label> <button ng-click="cambiarEstado(pagoCero);" class="btn btn-success"> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Cambiar</button></p>
+        <p class="bg-success" style="font-size: 18px;padding: 25px;color: green">Se aceptan reservas sin pago ({{ pagoCero.pagotipo }}): <label ng-if="pagoCero.activo == 1">Sí</label><label ng-if="pagoCero.activo == 0"> &nbsp;&nbsp; No &nbsp;&nbsp;</label> <button ng-click="cambiarEstado(pagoCero);" class="btn btn-primary"> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Cambiar</button></p>
         
         </div>
         <table class="table table-hover">
