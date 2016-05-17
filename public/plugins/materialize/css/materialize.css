@@ -7402,12 +7402,15 @@ nav ul li.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+nav ul {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 nav ul a {
-  transition: background-color .3s;
   font-size: 1rem;
   color:black;
   display: block;
-  padding: 0 15px;
+  padding-bottom: 4px;
   cursor: pointer;
 }
 
@@ -7417,9 +7420,11 @@ nav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul 
   margin-right: 15px;
 }
 
-nav ul a:hover {
-  font-size: 1.1rem;
-  transition: all 0.5s ease;
+nav ul a div:hover {
+  border-bottom: solid;
+  border-width: 3px;
+  border-color: #4db6ac;
+  transition: all 0.1s ease;
 }
 
 nav ul.left {

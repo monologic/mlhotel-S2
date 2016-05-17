@@ -1,10 +1,8 @@
 <div id="page-wrapper" ng-controller="habitacionController" ng-init="getHabtipos();getEstados();">
-    <label>{{mensaje}}</label>
-
     <h3 class="text-center tit2">Registro de Empleados</h3>
     <div class="formularios">
         <form ng-submit="enviar()">
-            <pre id="alertCambio" class="bg-success">Habitacion creada exitosamente...</pre>
+            <pre id="alertCambio" class="bg-success">Habitacion creada exitosamente. <button type="button" onclick="$('#alertCambio').css('display','none')" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></pre>
             <div class="form-group ">
                 <label for="numero">Número</label>
                 <input type="text" class="form-control" id="numero" placeholder="Número de Habitación" ng-model="numero" required>

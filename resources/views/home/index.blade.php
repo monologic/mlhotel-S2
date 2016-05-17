@@ -48,19 +48,17 @@
 <body ng-app="homeApp">
   <div class="navbar-fixed">
     <nav class="white" style="background: transparent;height: 110px">
-      <div class="nav-wrapper white" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
+      <div class="nav-wrapper" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
         <a  class="btns" href="/login">Sign in</a>
-        <a href="#" class="brand-logo center" style="display: block;height:100%; padding:0px 25px 0 0px;margin:15px 10% 0px 5px;color:black;">Residencial Moquegua </a>
+        <a href="#" class="brand-logo center" style="color: black;margin-top: 15px">Residencial Moquegua </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down" style="margin-top: 40px">
-          <li class="nav-txt"><a href="#/habitaciones">HABITACIONES</a></li>
-          <li class="nav-txt"><a href="#/galeria">GALERIA</a></li>
-        </ul>
-        <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-top: 40px">
-          <li class="nav-txt"><a href="#/servicios">SERVICIOS</a></li>
-          <li class="nav-txt"><a href="#/noticias"> NOTICIAS</a></li>
-          <li class="nav-txt"><a href="#/contacto"> CONTACTO</a></li>
-          <li  style="margin-top:20px"><a class="btn-floating tooltipped" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>
+        <ul id="nav-mobile" class=" row hide-on-med-and-down center">
+          <li class="nav-txt col m3 s2"><a href="#/habitaciones"><div>HABITACIONES</div></a></li>
+          <li class="nav-txt col m2 s2"><a href="#/galeria"><div>GALERIA</div></a></li>
+          <li class="nav-txt col m2 s2"><a href="#/servicios"><div>SERVICIOS</div></a></li>
+          <li class="nav-txt col m2 s2"><a href="#/noticias"><div>NOTICIAS</div> </a></li>
+          <li class="nav-txt col m2 s2"><a href="#/contacto"><div>CONTACTO</div> </a></li>
+          <li class="col m1" style="margin-top:65px"><a class="btn-floating tooltipped" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="#/">Inicio </a></li>

@@ -62,7 +62,7 @@
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")
                     <li class="menu__item"><a class="menu__link" href="#/Reservas">Reservas</a></li>  
                     <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar">Reservas Por Confirmar</a></li> 
-                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Disponibilidad</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/disponibilidad">Disponibilidad</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                 @endif
