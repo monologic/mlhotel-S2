@@ -162,11 +162,15 @@ class HotelController extends Controller
         $empleado->emptipo_id = $this->getIdCargoAdminHotel();
         $empleado->save();
 
-        return response()->json([
-            "id" => $empleado->id,
-            "hotel_id" => $empleado->hotel_id,
-            "emptipo_id" => $empleado->emptipo_id
-        ]);
+        $usuario = new Usuario();
+        $usuario->empleado_id = $empleado->id;
+        $usuario->usuario = $this->crearUsuario($empleado->nombres, $empleado->apellidos);
+        $usuario->password = bcrypt($empleado->dni);
+        $usuario->activo = 1;
+        $usuario->usuariotipo_id = 2;
+        $usuario->save();
+
+        return $this->getHoteles();
     }
 
     public function crearUsuario($nom, $ape)
@@ -176,7 +180,6 @@ class HotelController extends Controller
         $usuario = $n[0] . $a[0];
 
         return $usuario;
-
     }
 
     public function guardarAdminHotel(Request $request)
@@ -190,6 +193,7 @@ class HotelController extends Controller
         if ($u->count() > 0) {
             $user = Usuario::find($u[0]->id);
             $user->usuariotipo_id = 3;
+            $user->activo = 0;
             $user->save();
             //dd("Eliminando");
         }
@@ -197,17 +201,16 @@ class HotelController extends Controller
         $empleado = new Empleado($request->all());
         $empleado->emptipo_id = $this->getIdCargoAdminHotel();
         $empleado->save();
-        
+
         $usuario = new Usuario();
         $usuario->empleado_id = $empleado->id;
         $usuario->usuario = $this->crearUsuario($empleado->nombres, $empleado->apellidos);
         $usuario->password = bcrypt($empleado->dni);
         $usuario->activo = 1;
-        $usuario->usuariotipo_id = $this->getIdTipoUsuarioAdminHotel();
+        $usuario->usuariotipo_id = 2;
         $usuario->save();
-        
-        $res = $this->getHoteles();
-        return $res;
+
+        return $this->getHoteles();
     }
 
     public function dataEditar(Request $request)

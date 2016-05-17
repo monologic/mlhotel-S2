@@ -10,7 +10,7 @@ app.controller('hotelController', function($scope,$http) {
                 'telefono':$scope.telefono,
                 'correo':$scope.correo
             }).then(function successCallback(response) {
-                $scope.mensaje = response.data.mensaje;
+                $('#alertCambio').css('display','block');
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -37,13 +37,22 @@ app.controller('hotelController', function($scope,$http) {
     }
 
     var dataAdmin;
-    
-    $scope.crearAdminHotel = function (hotel_id) {
+    $scope.dataCrearAdmin = function (hotel_id) {
+        $scope.hotel_id = hotel_id;
+    }
+    $scope.crearAdminHotel = function () {
         $http.post('admin/crearAdminHotel',
-            {   
-                'hotel_id': hotel_id,
+            {   'nombres':$scope.nombre,
+                'apellidos':$scope.apellido,
+                'sexo':$('#sexo').val(),
+                'fecha_nac':$scope.nacimiento,
+                'dni':$scope.dni,
+                'direccion':$scope.direccion,
+                'celular':$scope.celular,
+                'emptipo_id':1,
+                'hotel_id':$scope.hotel_id
             }).then(function successCallback(response) {
-                dataAdmin = response.data;
+                $scope.hoteles = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -53,8 +62,8 @@ app.controller('hotelController', function($scope,$http) {
     /**
      * Al hacer click en Editar admin 
      */
-    $scope.dataEditarAdmin = function (data) {
-
+    $scope.dataEditarAdmin = function (data, hotel_id) {
+        $scope.hotel_id = hotel_id;
         dataAdmin = data;
 
         $scope.nombre = data.nombres;
@@ -74,8 +83,8 @@ app.controller('hotelController', function($scope,$http) {
                 'dni':$scope.dni,
                 'direccion':$scope.direccion,
                 'celular':$scope.celular,
-                'emptipo_id':dataAdmin.emptipo,
-                'hotel_id':dataAdmin.hotel_id,
+                'emptipo_id':2,
+                'hotel_id':$scope.hotel_id,
                 'empleado':dataAdmin.id 
             }).then(function successCallback(response) {
                 $scope.hoteles = response.data;

@@ -76,7 +76,7 @@ class bannerController extends Controller
         $banner = Slider::find($id);
         $banner->fill($request->all());
         $banner->save();
-        $res = $this->getBanners();
+        $res = $this->getBanners2();
 
         return $res;
 
