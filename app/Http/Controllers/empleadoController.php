@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Empleado;
 use App\Emptipo;
+use App\Usuario;
 
 class empleadoController extends Controller
 {
@@ -42,9 +43,11 @@ class empleadoController extends Controller
         $empleado->hotel_id = Auth::user()->empleado->hotel->id;
         $empleado->save();
 
-        return response()->json([
-            "mensaje" => 'Creado'
-        ]);
+        $usuario = new Usuario($request->all());
+        $usuario->empleado_id = $empleado->id;
+        $usuario->password = bcrypt($request->password);
+        $usuario->activo = 1;
+        $usuario->save();
         
     }
 
@@ -79,7 +82,11 @@ class empleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $empleado = Empleado::find($id);
+        $empleado->fill($request->all());
+        $empleado->save();
+
+        return $this->getEmpleadosFull();
     }
 
     /**
@@ -133,9 +140,9 @@ class empleadoController extends Controller
     public function getEmpleadosFull()
     {
         $empleados = \DB::table('empleados')
-            ->leftJoin('usuarios', 'usuarios.empleado_id', '=', 'empleados.id')
-            ->join('emptipos', 'emptipos.id', '=', 'empleados.emptipo_id')
-            ->select('empleados.*', 'usuarios.id as usuario_id', 'usuarios.usuario', 'usuarios.usuariotipo_id', 'usuarios.activo', 'emptipos.tipo as tipoempleado')
+            ->Join('usuarios', 'usuarios.empleado_id', '=', 'empleados.id')
+            ->join('usuariotipos', 'usuariotipos.id', '=', 'usuarios.usuariotipo_id')
+            ->select('empleados.*', 'usuarios.id as usuario_id', 'usuarios.usuario', 'usuarios.usuariotipo_id', 'usuarios.activo', 'usuariotipos.nombre as usuariotipo')
             ->where('empleados.hotel_id', Auth::user()->empleado->hotel->id)
             ->get();
 

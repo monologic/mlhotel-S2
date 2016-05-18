@@ -53,7 +53,7 @@ class UsuarioController extends Controller
         $usuario->save();
 
         $empController = new empleadoController();
-        return $empController->getEmpleadosFull();
+        return redirect('admin#//Empleados/ver');
     }
 
     /**
@@ -91,6 +91,7 @@ class UsuarioController extends Controller
         $req = $request->all();
         if (array_key_exists('usuario', $req)) {
             $usuario->usuario = $request->usuario;
+            $usuario->usuariotipo_id = $request->usuariotipo_id;
         }
         if (array_key_exists('password', $req)) {
             $usuario->password = bcrypt($request->password);
@@ -123,7 +124,8 @@ class UsuarioController extends Controller
 
         $usuario->save();
 
-        return $this->index();
+        $empController = new empleadoController();
+        return $empController->getEmpleadosFull();
     }
 
     public function getUsuario()

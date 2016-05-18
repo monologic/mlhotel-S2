@@ -44,7 +44,7 @@ app.controller('noticiaController', function($scope,$http) {
     }
 
      $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar esta foto de Galería?");
+        r = confirm("¿Deseas eliminar esta noticia?");
 
         if (r) {
             $http.delete( 'admin/noticia/'+id ).then(function successCallback(response) {

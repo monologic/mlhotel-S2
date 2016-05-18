@@ -1,10 +1,15 @@
 app.controller('empleadoController', function($scope,$http) {
 
     $scope.enviar = function () {
+        if ($scope.password == $scope.password2) {
         $http.post('admin/empleado',
-            {   'nombres':$scope.nombre,
+            {   
+                'usuario':$scope.usuario,
+                'password':$scope.password,
+                'usuariotipo_id':$('#usuariotipo_id').val(),
+                'nombres':$scope.nombre,
                 'apellidos':$scope.apellido,
-                'sexo':$('#sexo').val(),
+                'sexo':$('input[name="sexo"]:checked', '#myForm').val(),
                 'fecha_nac':$scope.nacimiento,
                 'dni':$scope.dni,
                 'direccion':$scope.direccion,
@@ -12,11 +17,16 @@ app.controller('empleadoController', function($scope,$http) {
                 'emptipo_id':$('#emptipo_id').val()
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-                alert(response.data.mensaje);
+                alert('Usuario Creado exitosamente');
+                window.location.href = 'admin#/Empleados/ver';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
+        }
+        else {
+            alert("El Password no coincide");
+        }
     }
 
     $scope.getEmptipos = function () {
@@ -54,6 +64,7 @@ app.controller('empleadoController', function($scope,$http) {
     }
     $scope.dataEditarUsuario = function (data) {
         $scope.usuarioEditar = data.usuario;
+        $('#usuariotipo_id').val(data.usuariotipo_id); 
         $scope.usuario_id = data.usuario_id;
     }
 
@@ -74,10 +85,11 @@ app.controller('empleadoController', function($scope,$http) {
     $scope.actualizarUsuario = function (id) {
         $http.put('admin/usuario/'+id,
         {
-            'usuario':$scope.usuarioEditar
+            'usuario':$scope.usuarioEditar,
+            'usuariotipo_id':$('#usuariotipo_id').val()
         })
         .then(function successCallback(response) {
-            alert('Se ha modificado tu nombre de Usuario')
+            alert('Se ha modificado información del Usuario')
             $scope.empleados = response.data;
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -104,4 +116,49 @@ app.controller('empleadoController', function($scope,$http) {
         }
         
     }
+    $scope.activarDesactivar = function (id) {
+        r = confirm("¿Deseas cambiar el estado a este Usuario?");
+        if (r) {
+            $http.get('admin/activarDesactivar/' + id)
+            .then(function successCallback(response) {
+                $scope.empleados = response.data;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
+    }
+
+    $scope.dataEditar = function (data) {
+        $scope.idEmpleado = data.id;
+        $scope.nombre = data.nombres;
+        $scope.apellido = data.apellidos;
+        $("#"+data.sexo).prop("checked", true);
+        $scope.nacimiento = data.fecha_nac;
+        $scope.dni = data.dni;
+        $scope.direccion = data.direccion;
+        $scope.celular = data.celular;
+    }
+
+    $scope.editarEmpleado = function () {
+        $http.put('admin/empleado/'+$scope.idEmpleado,
+            {   
+                'nombres':$scope.nombre,
+                'apellidos':$scope.apellido,
+                'sexo':$('input[name="sexo"]:checked', '#myForm').val(),
+                'fecha_nac':$scope.nacimiento,
+                'dni':$scope.dni,
+                'direccion':$scope.direccion,
+                'celular':$scope.celular,
+                
+                //'hotel_id':$('#hotel_id').text()
+            }).then(function successCallback(response) {
+                $('#alertCambio').css('display','block');
+                $scope.empleados = response.data;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+
 });
