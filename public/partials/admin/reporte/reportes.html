@@ -5,8 +5,8 @@
 			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 10px ">
 				<div class="col-md-6 " style="text-align: right;margin-top: 8px;font-size: 1.6rem">Reservas realizadas : </div>
 				<div class="col-md-6">
-					<select class="form-control" id="">
-					<option value="semana">Esta semana</option>
+					<select class="form-control" id="" ng-change="interval()"  ng-model="ve">
+					<option value="dia">Esta semana</option>
 					<option value="mes">Por meses</option>
 					<option value="año">Por años</option>
 				</select>

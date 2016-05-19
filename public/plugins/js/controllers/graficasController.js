@@ -42,4 +42,50 @@ app.controller('graficasController', function($scope,$http) {
         }, function errorCallback(response) {
         });
     }
+
+     $scope.interval=function(){
+            dias=$scope.ve;
+            dia='dia';
+            mes='meses';
+            año='años';
+            if ($scope.ve == dia)
+                $scope.dia(-5);
+            else
+                if ($scope.ve == mes)
+                    $scope.meses();
+                else
+                    $scope.años();
+
+
+
+    }
+    $scope.dia=function(days){
+            alert(days);
+            milisegundos=parseInt(35*24*60*60*1000);
+         
+            fecha=new Date();
+            day=fecha.getDate();
+            // el mes es devuelto entre 0 y 11
+            month=fecha.getMonth()+1;
+            year=fecha.getFullYear();
+            var fa=day+"/"+month+"/"+year;
+            //Obtenemos los milisegundos desde media noche del 1/1/1970
+            tiempo=fecha.getTime();
+            //Calculamos los milisegundos sobre la fecha que hay que sumar o restar...
+            milisegundos=parseInt(days*24*60*60*1000);
+            //Modificamos la fecha actual
+            total=fecha.setTime(tiempo+milisegundos);
+            day=fecha.getDate();
+            month=fecha.getMonth()+1;
+            year=fecha.getFullYear();
+            ff =day+"/"+month+"/"+year;
+            alert(fa);
+            alert(ff);
+    }
+    $scope.meses = function(){
+        alert('funcion de meses')
+    }
+    $scope.años = function(){
+        alert('funcion de años')
+    }
 });
