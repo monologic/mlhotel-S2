@@ -1,3 +1,4 @@
+
 <div ng-controller="serviciosController" ng-init="getServiciosD()" style="width: 80%;margin: 100px auto 200px auto;color:black">
     <h3 class="tit2">Servicios de {{infoser.nombre}}</h3>
     <br><br>
@@ -44,7 +45,7 @@
                     <form method="PUT" id="formulario" enctype="multipart/form-data" >
                         <div class="form-group ">
                             <label for="titulo">Servicio</label>
-                            <input type="text" class="form-control" id="titulo" placeholder="Titulo o nomnbre" ng-model="servicio">
+                            <input type="text" class="form-control" id="titulo" ng-model="servicio">
                         </div>
                         <div class="form-group ">
                             <label for="titulo">Descripción</label>
