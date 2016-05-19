@@ -13,6 +13,7 @@ use App\Registro;
 use App\Habitacion;
 use App\Habtipo;
 use App\Reserva;
+use App\Hotel;
 use App\Habtiporeserva;
 
 use App\Serviciointerno;
@@ -27,9 +28,11 @@ class RegistroController extends Controller {
 
     public function buscar($fechaini, $fechafin)
     {
+        $h = Hotel::all();
         $this->fechainicio = $fechaini. " " . date('H:i:s');
+        $fechafin = $fechafin . " " . $h[0]->checkout;
     	$r = Registro::select('habitacion_id')
-    				->whereBetween('fechaentrada', [$this->fechainicio, $fechafin. " 12:00:00"])
+    				->whereBetween('fechaentrada', [$this->fechainicio, $fechafin])
     				->orWhere(function($query){
                         $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
                         })
@@ -85,8 +88,8 @@ class RegistroController extends Controller {
             }
         }
         //dd($habtipos);
-        $reservas = Reserva::where('reservaestado_id', '2')
-                          ->whereBetween('fecha_inicio', [$fechaini, $fechafin])
+        $reservas = Reserva::whereBetween('reservaestado_id', array(2,3))
+                          ->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
                           ->orWhere(function($query){
                             $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
                             })

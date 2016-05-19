@@ -108,7 +108,6 @@ app.controller('usuarioController', function($scope,$http) {
         else {
             alert("El Password no coincide");
         }
-        
     }
     
 });

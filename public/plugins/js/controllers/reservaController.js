@@ -49,4 +49,19 @@ app.controller('reservaController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+    $scope.dataEditar = function (data) {
+        $scope.nom = data.cliente.nombres + " " + data.cliente.apellidos;
+        $scope.dni = data.cliente.dni;
+        $scope.pagotipo = data.pagotipo.pagotipo;
+        $scope.habtiposcount = data.habtiposcount;
+    }
+    $scope.disponibilidad = function () {
+        $http.post('admin/disponibilidadCambioReserva/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
+            $scope.tipoPerHabs = response.data;
+            //ordenarPorTipo(response.data);
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 });

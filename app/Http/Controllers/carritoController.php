@@ -15,6 +15,7 @@ use App\Habtipo;
 use App\Reserva;
 use App\Habtiporeserva;
 use App\Cliente;
+use App\Hotel;
 
 class carritoController extends Controller
 {
@@ -41,10 +42,13 @@ class carritoController extends Controller
         $fechas['fecha_fin'] = $fechafin;
         $fechas['dias'] = $dias;
         \Session::put('fechas', $fechas);   
+        
+        $h = Hotel::all();
+        $this->fechainicio = $fechaini. " " . $h[0]->checkin;
+        $fechafin = $fechafin . " " . $h[0]->checkout;
 
-        $this->fechainicio = $fechaini. " " . date('H:i:s');
         $r = Registro::select('habitacion_id')
-                    ->whereBetween('fechaentrada', [$this->fechainicio, $fechafin. " 12:00:00"])
+                    ->whereBetween('fechaentrada', [$this->fechainicio, $fechafin])
                     ->orWhere(function($query){
                         $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
                         })
@@ -101,7 +105,7 @@ class carritoController extends Controller
         }
         //dd($habtipos);
         $reservas = Reserva::where('reservaestado_id', '2')
-                          ->whereBetween('fecha_inicio', [$fechaini, $fechafin])
+                          ->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
                           ->orWhere(function($query){
                             $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
                             })
