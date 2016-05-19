@@ -76,6 +76,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::post('configHoraHotel', 'HotelController@configHoraHotel');
 	
+	Route::post('editarFechas', 'ReservaController@editarFechas');
+	
 	Route::get('finalizarRegistro/{idRegistro}', 'RegistroController@finalizar');
 
 	Route::delete('regClienteEliminar/{id}', 'ClienteController@eliminarRegCliente');
@@ -115,6 +117,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('admin/CategoriaServicio/{id}', ['uses' => 'categoriaController@getServicesompletoC', function ($id) {}]);
 	Route::get('admin/buscar/{fechaini}/{fechafin}', ['uses' => 'RegistroController@buscar', function ($fechaini, $fechafin) {
 	}]);
+
 
 	Route::get('admin/getNoticias', 'NoticiaController@getNoticias');
 	Route::post('admin/NoticiaCreate', 'NoticiaController@NoticiaCreateIndex');

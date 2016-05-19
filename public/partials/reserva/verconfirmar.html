@@ -45,7 +45,7 @@
                         <h2 class="modal-title" id="myModalLabel">Editar Reserva</h2>
                     </div>
                     <div class="modal-body">
-                        <form ng-submit='disponibilidad()'>
+                        <form>
                             <div class="form-group ">
                                 <label for="">Nombre de Cliente: </label>
                                 <label for="">{{nom}}</label>
@@ -78,12 +78,11 @@
                                 <label for="pais">Fecha Fin</label>
                                 <input type="date" class="form-control" id="fechafin" placeholder="fecha fin" ng-model="fechafin">
                             </div>
-                            <button type="submit" class="btn">Ver Disponibilidad</button>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <a href="" class="btn btn-primary" ng-click="editar();" data-dismiss="modal">Guardar</a>
+                        <a href="" class="btn btn-primary" ng-click="editar();">Guardar</a>
                     </div>
                 </div>
             </div>

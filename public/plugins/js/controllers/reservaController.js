@@ -50,15 +50,28 @@ app.controller('reservaController', function($scope,$http) {
         });
     }
     $scope.dataEditar = function (data) {
+        $scope.idReserva = data.id;
         $scope.nom = data.cliente.nombres + " " + data.cliente.apellidos;
         $scope.dni = data.cliente.dni;
         $scope.pagotipo = data.pagotipo.pagotipo;
         $scope.habtiposcount = data.habtiposcount;
+        $('#fechaini').val(data.fecha_inicio);
+        $('#fechafin').val(data.fecha_fin);
     }
-    $scope.disponibilidad = function () {
-        $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
-            $scope.tipoPerHabs = response.data;
-            //ordenarPorTipo(response.data);
+    $scope.editar = function () {
+        $http.post('admin/editarFechas', {
+            'fechaini': $('#fechaini').val(),
+            'fechafin': $('#fechafin').val(),
+            'idReserva': $scope.idReserva
+        }).then(function successCallback(response) {
+            if (response.data.mensaje == 1) {
+                alert("Se ha editado las fechas de la Reserva.")
+                window.location.reload();
+            }
+            else {
+                alert("No se puede editar las fechas de la Reserva para ese periodo de días.")
+            }
+
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

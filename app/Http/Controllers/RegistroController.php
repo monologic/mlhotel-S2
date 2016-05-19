@@ -162,8 +162,8 @@ class RegistroController extends Controller {
 
     public static function registrosDeHoy()
     {   self::$fechaInicio = date("Y-m-d H:i:s");
-        $fechafin = date("Y-m-d")." 11:59:59";
-        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." 11:59:59"])
+        $fechafin = date("Y-m-d")." 23:59:59";
+        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." 23:59:59"])
                      ->orWhere(function($query){
                         $query->whereRaw(DB::raw("'".self::$fechaInicio."' between fechaentrada and fechasalida"));
                         })
