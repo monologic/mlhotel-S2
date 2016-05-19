@@ -18,4 +18,22 @@ class graficas extends Controller
         	->get();
         return response()->json($cnt);
     }
+    public function diasReservas($fechaini, $fechafin)
+    {
+        $cnt = \DB::table('reservas')
+            ->select ( DB::raw('fecha_reserva,count(fecha_reserva) as cantidad' ))
+            ->whereBetween('fecha_reserva',[$fechaini, $fechafin])
+            ->groupBy('fecha_reserva')
+            ->get();
+        return response()->json($cnt);
+    }
+    public function mesesReservas($fechaini, $fechafin)
+    {
+        $cnt = \DB::table('reservas')
+            ->select ( DB::raw('MONTH(fecha_reserva)AS Mes , sum(total)AS  Total' ))
+            ->whereBetween('fecha_reserva',[$fechaini, $fechafin])
+            //->groupBy(DB::raw('MONTH(fecha_reserva')))
+            ->get();
+        return response()->json($cnt);
+    }
 }

@@ -22,23 +22,7 @@ app.controller('graficasController', function($scope,$http) {
      $scope.getgrafBarr1 = function () {
         $http.get('admin/report').then(function successCallback(response) {
             $scope.habit = response.data;
-            Morris.Bar({
-                element: 'reservas',
-                data: [
-                    {x: 'Lunes', y: 3},
-                    {x: 'Martes', y: 2},
-                    {x: 'Miercoles', y: 4},
-                    {x: 'Jueves', y: 6},
-                    {x: 'Viernes', y: 12},
-                    {x: 'Sabado', y: 4},
-                    {x: 'Domingo', y: 15},
-                ],
-                xkey: 'x',
-                ykeys: ['y'],
-                labels: ['Soles']
-            }).on('click', function(i, row){
-              console.log(i, row);
-            })
+            
         }, function errorCallback(response) {
         });
     }
@@ -46,21 +30,21 @@ app.controller('graficasController', function($scope,$http) {
      $scope.interval=function(){
             dias=$scope.ve;
             dia='dia';
-            mes='meses';
+            mes='mes';
             año='años';
             if ($scope.ve == dia)
-                $scope.dia(-5);
+                $scope.dia(-12);
             else
                 if ($scope.ve == mes)
-                    $scope.meses();
+                    $scope.meses(12);
                 else
-                    $scope.años();
+                    $scope.años(12);
 
 
 
     }
     $scope.dia=function(days){
-            alert(days);
+            
             milisegundos=parseInt(35*24*60*60*1000);
          
             fecha=new Date();
@@ -68,7 +52,7 @@ app.controller('graficasController', function($scope,$http) {
             // el mes es devuelto entre 0 y 11
             month=fecha.getMonth()+1;
             year=fecha.getFullYear();
-            var fa=day+"/"+month+"/"+year;
+            var fa=year+"-"+month+"-"+day;
             //Obtenemos los milisegundos desde media noche del 1/1/1970
             tiempo=fecha.getTime();
             //Calculamos los milisegundos sobre la fecha que hay que sumar o restar...
@@ -78,12 +62,69 @@ app.controller('graficasController', function($scope,$http) {
             day=fecha.getDate();
             month=fecha.getMonth()+1;
             year=fecha.getFullYear();
-            ff =day+"/"+month+"/"+year;
-            alert(fa);
-            alert(ff);
+            ff =year+"-"+month+"-"+day;
+
+
+            $http.get('admin/report/'+ ff +'/'+ fa).then(function successCallback(response) {
+                $scope.reservad = response.data;
+
+                for (var i = 0; i < $scope.reservad.length; i++) {
+                    $scope.reservad[i].x = $scope.reservad[i].fecha_reserva;
+                    $scope.reservad[i].y = $scope.reservad[i].cantidad;
+                }
+                Morris.Bar({
+                  element: 'reservas',
+                  data:$scope.reservad,
+                  xkey: 'x',
+                  ykeys: ['y'],
+                  labels: ['Soles']
+                }).on('click', function(i, row){
+                  console.log(i, row);
+                })
+        }, function errorCallback(response) {
+        });
+
     }
-    $scope.meses = function(){
-        alert('funcion de meses')
+    $scope.meses = function(mes){
+            milisegundos=parseInt(35*24*60*60*1000);
+         
+            fecha=new Date();
+            day=fecha.getDate();
+            // el mes es devuelto entre 0 y 11
+            month=fecha.getMonth()+1;
+            year=fecha.getFullYear();
+            var fa=year+"-"+month+"-"+day;
+            //Obtenemos los milisegundos desde media noche del 1/1/1970
+            day=fecha.getDate();
+            month =fecha.getMonth()-mes;
+            if (month < 0) {
+                year=fecha.getFullYear()-1;
+                month=month*(-1);
+            }
+            else{
+                year=fecha.getFullYear();
+            }
+            
+            ff =year+"-"+month+"-"+day;
+
+            alert(ff);
+            $http.get('admin/report/meses/'+ ff +'/'+ fa).then(function successCallback(response) {
+                $scope.reservaA = response.data;
+                for (var i = 0; i < $scope.reservaA.length; i++) {
+                    $scope.reservaA[i].e = $scope.reservaA[i].Mes;
+                    $scope.reservaA[i].t = $scope.reservaA[i].Total;
+                }
+                Morris.Bar({
+                  element: 'reservas',
+                  data:$scope.reservaA,
+                  xkey: 'e',
+                  ykeys: ['t'],
+                  labels: ['Soles']
+                }).on('click', function(i, row){
+                  console.log(i, row);
+                })
+        }, function errorCallback(response) {
+        });
     }
     $scope.años = function(){
         alert('funcion de años')

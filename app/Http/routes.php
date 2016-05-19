@@ -116,6 +116,11 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('admin/buscar/{fechaini}/{fechafin}', ['uses' => 'RegistroController@buscar', function ($fechaini, $fechafin) {
 	}]);
 
+	Route::get('admin/report/{fechaini}/{fechafin}', ['uses' => 'graficas@diasReservas', function ($fechaini, $fechafin) {
+	}]);
+	Route::get('admin/report/meses/{fechaini}/{fechafin}', ['uses' => 'graficas@mesesReservas', function ($fechaini, $fechafin) {
+	}]);
+
 	Route::get('admin/getNoticias', 'NoticiaController@getNoticias');
 	Route::post('admin/NoticiaCreate', 'NoticiaController@NoticiaCreateIndex');
 
