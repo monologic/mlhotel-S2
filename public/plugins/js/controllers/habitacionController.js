@@ -49,13 +49,22 @@ app.controller('habitacionController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+    $scope.dataEditar = function (data) {
 
+        $scope.id = data.id;
+
+        $scope.numero = data.numero;
+        $('#habtipo_id').val(data.habtipo_id);
+        $('#estado_id').val(data.estado_id);
+        
+    }
     $scope.editar = function () {
         $http.put('admin/habitacion/'+$scope.id,
             {   'numero':$scope.numero,
-                'tipo':$scope.tipo,
-                'descripcion':$scope.descripcion
+                'habtipo_id':$('#habtipo_id').val(),
+                'estado_id':$('#estado_id').val()
             }).then(function successCallback(response) {
+                $('#alertCambio').css('display','block');
                 $scope.habitaciones = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -74,17 +83,6 @@ app.controller('habitacionController', function($scope,$http) {
         }
     }
 
-    $scope.dataEditar = function (data) {
-
-        $scope.getEstados();
-        $scope.getHabtipos();
-
-        $scope.id = data.id;
-
-        $scope.numero = data.numero;
-        $scope.habtipo_id = data.habtipo_id;
-        $scope.estado_id = data.estado_id;
-        
-    }
+    
 
 });

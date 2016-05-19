@@ -56,7 +56,7 @@ app.controller('reservaController', function($scope,$http) {
         $scope.habtiposcount = data.habtiposcount;
     }
     $scope.disponibilidad = function () {
-        $http.post('admin/disponibilidadCambioReserva/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
+        $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             $scope.tipoPerHabs = response.data;
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
