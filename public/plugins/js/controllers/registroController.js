@@ -52,12 +52,13 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 'fechafin':$scope.fechafin,
                 'habitacion_id':habsSeleccionadas[i].id
             }).then(function successCallback(response) {
-                alert(response.data.mensaje);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             }); 
         }
+        alert('Se han creado los registros.');
+        window.location.href = 'admin#/DetalleHabitaciones';
     }
     $scope.getReservaInfo = function () {
         $scope.idReserva = $routeParams.idReserva;
