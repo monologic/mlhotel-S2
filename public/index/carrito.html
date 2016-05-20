@@ -43,6 +43,7 @@
             <div>
                   <p style="color: #00897b">Elija un método de pago</p>
                   <div class="row" style="margin-top: 40px">
+                    <br>
                      <div class="col m6 s12" id="pagoCeroDiv">
                       <input name="opciones" type="radio" id="test1" onchange="porcen()" />
                       <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
@@ -57,16 +58,15 @@
                     </div>
                   </div>
                 <div class="row" id="sel-p" style="display: none;">
-                  <div class="input-field col m6">
-                    <p style="color: #00897b">Elija un porcentaje de pago</p>
+                  <div class="input-field col m5">
                     <select id="porcentajePago" ng-model='porcentajePago' ng-change='calcularTotalR();'>
-                      <option value="" selected>Seleccione un porcentaje</option>
+                      <option value="" selected style="color: #00897b">Seleccione un porcentaje</option>
                       <option value="0.2">20%</option>
                       <option value="1">100%</option>
                     </select>
                   </div>
+                  <div class="col m6" style="margin-top: 40px" id="TotalR"></div>
                 </div>
-                <div id="TotalR"></div>
             </div>  
         </div>
         <div id="cliente" class="col m6">

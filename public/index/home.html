@@ -116,13 +116,16 @@
       </article>
       
     </div>  
- <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:65px;">
+ <div id="caja" ng-controller="habtipoController" ng-init="res();" style="top:75px;">
     <br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>
-    <br>
-    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
     <div  style=";width: 80%;margin:40px auto 20px auto">
     <div id="cont-table">
+      <div class="row">
+        <div class="col m8" style="padding-top: 10px">Estancia : {{ fechas.dias }} noches </div>
+      </div>
+      
+      <br>
       <table>
         <thead>
           <tr>
@@ -140,16 +143,30 @@
             </td>
             <td>{{o.precio}}</td>
             <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+            <td width="20px"><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
           </tr>
           <tr>
             <td></td>
             <td colspan="2">Total por Día:</td>
             <td ng-bind="totalq"></td>
           </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td> {{Total}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="col m4" ><a class="waves-effect waves-light btn tooltipped" ng-click="vaciarCarrito();"data-position="bottom" data-delay="50" data-tooltip="Vaciar Carrito"><i class="small material-icons">delete</i></a></div>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
+
     </div>
       
       <div>
@@ -202,5 +219,7 @@
       dayNamesMin: [ "Do", "Lu", "Mar", "Mi", "Ju", "Vi", "Sa" ],
       });
   });
-  
+    $(document).ready(function(){
+      $('.tooltipped').tooltip({delay: 50});
+    });
   </script>
