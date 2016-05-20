@@ -94,7 +94,7 @@ class UsuariotipoController extends Controller
 
     public function getUsuarioTipos()
     {
-        $usuarioTipos = Usuariotipo::all();
+        $usuarioTipos = Usuariotipo::where('id','!=',1)->get();
         
         return response()->json( $usuarioTipos->toArray() );
     }

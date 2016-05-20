@@ -14,7 +14,7 @@ app.controller('empleadoController', function($scope,$http) {
                 'dni':$scope.dni,
                 'direccion':$scope.direccion,
                 'celular':$scope.celular,
-                'emptipo_id':$('#emptipo_id').val()
+                'emptipo_id':2
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
                 alert('Usuario Creado exitosamente');
