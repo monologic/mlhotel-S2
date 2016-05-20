@@ -106,6 +106,7 @@ app.controller('carritoController', function($scope,$http) {
     });
 
     $('#porcentajePago').change(function() {
+        $('#TotalR').css('display','block');
         var porcentaje = $('#porcentajePago').val();
         totalR = $scope.Total * porcentaje;
         totalRDolares = totalR / $scope.tipoCambio;

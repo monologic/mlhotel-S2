@@ -163,16 +163,19 @@
     if(test1.checked == true){
       $('#TotalR').text('Total: S/0.00 ó $0.00') ;
       $('#sel-p').css('display','none');
+      
     }
   }
   function paypal(){
     if(test2.checked == true){
       $('#sel-p').css('display','block');
+      $('#TotalR').css('display','none');
     }
   }
   function boucher(){
     if(test3.checked == true){
       $('#sel-p').css('display','block');
+      $('#TotalR').css('display','none');
     }
   }
   $(document).ready(function(){
