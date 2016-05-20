@@ -95,7 +95,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         $http.get('admin/finalizarRegistro/' + id).then(function successCallback(response) {
             
             alert("Se ha finalizado la estadía...");
-            $location.url(response.data.mensaje);
+            window.location.href = 'admin#/DetalleHabitaciones';
             
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
