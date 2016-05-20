@@ -159,13 +159,12 @@ class HotelController extends Controller
     public function crearAdminHotel(Request $request)
     {
         $empleado = new Empleado($request->all());
-        $empleado->emptipo_id = $this->getIdCargoAdminHotel();
         $empleado->save();
 
         $usuario = new Usuario();
         $usuario->empleado_id = $empleado->id;
-        $usuario->usuario = $this->crearUsuario($empleado->nombres, $empleado->apellidos);
-        $usuario->password = bcrypt($empleado->dni);
+        $usuario->usuario = $request->usuario;
+        $usuario->password = bcrypt($request->password);
         $usuario->activo = 1;
         $usuario->usuariotipo_id = 2;
         $usuario->save();
@@ -199,13 +198,12 @@ class HotelController extends Controller
         }
 
         $empleado = new Empleado($request->all());
-        $empleado->emptipo_id = $this->getIdCargoAdminHotel();
         $empleado->save();
 
         $usuario = new Usuario();
         $usuario->empleado_id = $empleado->id;
-        $usuario->usuario = $this->crearUsuario($empleado->nombres, $empleado->apellidos);
-        $usuario->password = bcrypt($empleado->dni);
+        $usuario->usuario = $request->usuario;
+        $usuario->password = bcrypt($request->password);
         $usuario->activo = 1;
         $usuario->usuariotipo_id = 2;
         $usuario->save();

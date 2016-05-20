@@ -42,9 +42,11 @@ app.controller('hotelController', function($scope,$http) {
     }
     $scope.crearAdminHotel = function () {
         $http.post('admin/crearAdminHotel',
-            {   'nombres':$scope.nombre,
+            {   'usuario':$scope.usuario,
+                'password':$scope.password,
+                'nombres':$scope.nombre,
                 'apellidos':$scope.apellido,
-                'sexo':$('#sexo').val(),
+                'sexo':$('input[name="sexo"]:checked', '#myForm').val(),
                 'fecha_nac':$scope.nacimiento,
                 'dni':$scope.dni,
                 'direccion':$scope.direccion,
@@ -76,14 +78,16 @@ app.controller('hotelController', function($scope,$http) {
 
     $scope.guardarAdminHotel = function () {
         $http.post('admin/guardarAdminHotel',
-            {   'nombres':$scope.nombre,
+            {   'usuario':$scope.usuario,
+                'password':$scope.password,
+                'nombres':$scope.nombre,
                 'apellidos':$scope.apellido,
-                'sexo':$('#sexo').val(),
+                'sexo':$('input[name="sexo"]:checked', '#myForm2').val(),
                 'fecha_nac':$scope.nacimiento,
                 'dni':$scope.dni,
                 'direccion':$scope.direccion,
                 'celular':$scope.celular,
-                'emptipo_id':2,
+                'emptipo_id':1,
                 'hotel_id':$scope.hotel_id,
                 'empleado':dataAdmin.id 
             }).then(function successCallback(response) {

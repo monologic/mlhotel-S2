@@ -28,6 +28,9 @@ class RegistroController extends Controller {
 
     public function buscar($fechaini, $fechafin)
     {
+        /**
+         * Seleccionar los regitros q esten en el rango de fechas seleccionado.
+         */
         $h = Hotel::all();
         $this->fechainicio = $fechaini. " " . date('H:i:s');
         $fechafin = $fechafin . " " . $h[0]->checkout;
@@ -37,18 +40,23 @@ class RegistroController extends Controller {
                         $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
                         })
     				->get();
-
-        
     	$r = $r->toArray();
 
+        
         if (count($r) != 0) {
             $hab_id_array = array();
 
+            /**
+             * Si se obtienen registros formar array con los id de las habitaciones ocupadas.
+             */
             foreach ($r as $key => $regs) {
                 foreach ($regs as $k => $habitacion_id)
                     array_push($hab_id_array, $habitacion_id);
             }
-
+            /**
+             * Luego seleccionar Habitaciones que no esten en el array de habitaciones
+             * ocupadas y que su estado sea diferente a reparación.
+             */
             $habs = Habitacion::whereNotIn('id', $hab_id_array)
                               ->where('estado_id','!=', 3)
                               ->orderBy('habtipo_id', 'asc')
@@ -57,13 +65,19 @@ class RegistroController extends Controller {
             //dd($habs); 
         }
         else {
+            /**
+             * Si no se encuentran registros traer todas las habitaciones excepto 
+             * las de estado 'Reparación'.
+             */
             $habs = Habitacion::where('estado_id','!=', 3)
                               ->orderBy('habtipo_id', 'asc')
                               ->get();
             //                
         }
     	
-        
+        /**
+         * Relacionar estado y tipo de Habitación.
+         */
         $habs->each(function($habs){
             $habs->estado;
         });
@@ -72,7 +86,9 @@ class RegistroController extends Controller {
         });
 
         $habs = $habs->toArray();
-
+        /**
+         * Obtener Habtipos y relacionar con Servivios internos 
+         */
         $habtipos = Habtipo::where('activo', 1)->get();
 
         $habtipos->each(function($habtipos){
@@ -85,6 +101,9 @@ class RegistroController extends Controller {
 
         $habtipos = $habtipos->toArray();
 
+        /**
+         * Si no se encuentran registros traer todas las habitaciones excepto 
+         */
         foreach ($habs as $key => $hab) {
             foreach ($habtipos as $k => $habtipo) {
                 if ($habtipo['id'] == $hab['habtipo_id']) {
