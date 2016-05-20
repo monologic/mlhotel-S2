@@ -1,101 +1,102 @@
 <div class="title-reser teal lighten-2">Mis Reservas</div >
-  <div style=";width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();">
-  <form ng-submit="guardarCliente()" >
-  <div class="row">
-    <h2>Mis reservas</h2>
-    <div class="col m6" id="ventana" style="padding:20px 40px 20px 40px">
-      <div style="background-color: #b2dfdb;padding: 20px">
-        <table class="highlight">
-          <thead>
-            <tr>
-              <th>Habitacion</th>
-              <th>Cant.</th>
-              <th>Precio</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="o in car" on-finish-render="ngRepeatFinished">
-              <td>{{o.nombre}}</td>
-              <td>{{o.quantity}}</td>
-              <td>{{o.precio}}</td>
-              <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            </tr>
-            <tr class="border-top">
-              <td></td>
-              <td></td>
-              <td>Total por Noche:</td>
-              <td>{{totalq}}</td>
-            </tr>
-            <tr>
-              <td> Por noches {{ fechas.dias }} </td>
-              <td></td>
-              <td>Total :</td>
-              <td>S/ {{Total}}</td>
-            </tr>
-          </tbody>
-        </table>
+  <div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();">
+    <form ng-submit="guardarCliente()" >
+      <div class="row">
+        <h2>Mis reservas</h2>
+        <div class="col m12" id="ventana" style="padding:20px 40px 20px 40px">
+          <div style="background-color: #b2dfdb;padding: 20px">
+            <table class="highlight">
+              <thead>
+                <tr>
+                  <th>Habitacion</th>
+                  <th>Cant.</th>
+                  <th>Precio</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="o in car" on-finish-render="ngRepeatFinished">
+                  <td>{{o.nombre}}</td>
+                  <td>{{o.quantity}}</td>
+                  <td>{{o.precio}}</td>
+                  <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+                </tr>
+                <tr class="border-top">
+                  <td></td>
+                  <td></td>
+                  <td>Total por Noche:</td>
+                  <td>{{totalq}}</td>
+                </tr>
+                <tr>
+                  <td> Por noches {{ fechas.dias }} </td>
+                  <td></td>
+                  <td>Total :</td>
+                  <td>S/ {{Total}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div style="padding: 20x;margin-top: 20px">   
-        <div>
-              <p style="color: #00897b">Elija un método de pago para reservar</p>
-              <div class="row">
-                 <div class="col m4 s12" id="pagoCeroDiv">
-                  <input name="group1" type="radio" id="test1" onchange="porcen()" />
-                  <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
+      <div class="row">
+        <div class="col m6">   
+            <div>
+                  <p style="color: #00897b">Elija un método de pago</p>
+                  <div class="row" style="margin-top: 40px">
+                     <div class="col m6 s12" id="pagoCeroDiv">
+                      <input name="opciones" type="radio" id="test1" onchange="porcen()" />
+                      <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
+                    </div>
+                    <div class="col m4 s12" id="paypalDiv">
+                      <input name="opciones" type="radio" id="test2" onchange="paypal()" />
+                      <label for="test2" style="color: #009688"><img src="paypal.png" style="width: 60px;margin-top: -10px"></label>
+                    </div>
+                    <div class="col m4 s12" id="depositoDiv">
+                      <input name="opciones" type="radio" id="test3" onchange="boucher()" />
+                      <label for="test3" style="color: #009688"><img src="deposito.png"style="width: 70px;margin-top: 5px"></label>
+                    </div>
+                  </div>
+                <div class="row" id="sel-p" style="display: none;">
+                  <div class="input-field col m6">
+                    <p style="color: #00897b">Elija un porcentaje de pago</p>
+                    <select id="porcentajePago" ng-model='porcentajePago' ng-change='calcularTotalR();'>
+                      <option value="" selected>Seleccione un porcentaje</option>
+                      <option value="0.2">20%</option>
+                      <option value="1">100%</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="col m4 s12" id="paypalDiv">
-                  <input name="group1" type="radio" id="test2" onchange="paypal()" />
-                  <label for="test2" style="color: #009688"><img src="paypal.png" style="width: 60px;margin-top: -10px"></label>
-                </div>
-                <div class="col m4 s12" id="depositoDiv">
-                  <input name="group1" type="radio" id="test3" onchange="boucher()" />
-                  <label for="test3" style="color: #009688"><img src="deposito.png"style="width: 70px;margin-top: 5px"></label>
-                </div>
-              </div>
-            <div class="row" id="sel-p" style="display: none;">
-              <div class="input-field col m6">
-                <select id="porcentajePago" ng-model='porcentajePago' ng-change='calcularTotalR();'>
-                  <option value="" selected>Seleccione un porcentaje</option>
-                  <option value="0.2">20%</option>
-                  <option value="1">100%</option>
-                </select>
-                <label for="">Elija un porcentaje de pago</label>
-              </div>
+                <div id="TotalR"></div>
+            </div>  
+        </div>
+        <div id="cliente" class="col m6">
+            <p style="color: #00897b">Ingrese su información</p>
+            <div class="input-field col s12 centrar">
+              <input type="text" class="validate" ng-model="nombres" required>
+              <label for="last_name" style="color: #6C7A89">Nombres</label>
             </div>
-            <div id="TotalR"></div>
-        </div>  
-      </div>
-    </div>
-    <form ng-submit="guardarCliente()">
-    <div id="cliente" class="col m4" style="padding:0px 30px 20px 30px">
-        <div class="input-field col s12 centrar">
-          <input type="text" class="validate" ng-model="nombres" required>
-          <label for="last_name" style="color: #6C7A89">Nombres</label>
+            <div class="input-field col s12 centrar">
+              <input type="text" class="validate" ng-model="apellidos" required>
+              <label for="last_name" style="color: #6C7A89">Apellidos</label>
+            </div>
+            <div class="input-field col s12 centrar" >
+              <input type="text" class="validate" ng-model="dni" required>
+              <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
+            </div>
+            <div class="input-field col s12 centrar" >
+              <input type="text" class="validate" ng-model="telefono" required>
+              <label for="last_name" style="color: #6C7A89">Telefono (opcional)</label>
+            </div>
+            <br><br>
+            <div class="col m12 s12">
+                      <input type="checkbox" id="test5" />
+                      <label for="test5" style="color: black;font-size: 0.7rem">Acepto los términos y condiciones. </label><a style="font-size: 0.7rem" class="modal-trigger"  href="#modal1"> Leer aquí</a>
+                    </div>
+            <div style="display:block;top:40px">
+              <button type="submit" class="waves-effect waves-light btn centrar" href="#modal1">Reservar</button>
+            </div> 
         </div>
-        <div class="input-field col s12 centrar">
-          <input type="text" class="validate" ng-model="apellidos" required>
-          <label for="last_name" style="color: #6C7A89">Apellidos</label>
-        </div>
-        <div class="input-field col s12 centrar" >
-          <input type="text" class="validate" ng-model="dni" required>
-          <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
-        </div>
-        <div class="input-field col s12 centrar" >
-          <input type="text" class="validate" ng-model="telefono" required>
-          <label for="last_name" style="color: #6C7A89">Telefono (opcional)</label>
-        </div>
-        <br><br>
-        <div class="col m12 s12">
-                  <input type="checkbox" id="test5" />
-                  <label for="test5" style="color: black;font-size: 0.7rem">Acepto los términos y condiciones. </label><a style="font-size: 0.7rem" class="modal-trigger"  href="#modal1"> Leer aquí</a>
-                </div>
-        <div style="display:block;top:40px">
-          <button type="submit" class="waves-effect waves-light btn centrar" href="#modal1">Reservar</button>
-        </div>
-      
-    </div>
-    
+      </div>    
     </form>
   </div>   
 </div> 

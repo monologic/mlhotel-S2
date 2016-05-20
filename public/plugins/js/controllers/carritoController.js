@@ -36,19 +36,38 @@ app.controller('carritoController', function($scope,$http) {
 
     }
     $scope.guardarCliente = function () {
-        $('#modalBlanco').css( "display", "block" );
 
-        $http.post('cart/cliente',
-        {   'nombres':$scope.nombres,
-            'apellidos':$scope.apellidos,
-            'dni':$scope.dni,
-            'porcentaje':$('#porcentajePago').val()
-        }).then(function successCallback(response) {
-             $scope.pagar();
-        }, function errorCallback(response) { 
-        });
-        
-        
+        elemento = document.getElementById("test5");
+        opciones = document.getElementsByName("opciones");
+        var seleccionado = false;
+        for(var i=0; i<opciones.length; i++) {    
+          if(opciones[i].checked) {
+            seleccionado = true;
+            break;
+          }
+        }
+        if( !elemento.checked ) {
+          alert('tienes q aceptar los terminos de condicion')
+        }
+        else{
+            if(!seleccionado) {
+              alert('Debes seleccionar un metodode pago');
+            }
+            else{
+                $('#modalBlanco').css( "display", "block" );
+
+                $http.post('cart/cliente',
+                {   'nombres':$scope.nombres,
+                    'apellidos':$scope.apellidos,
+                    'dni':$scope.dni,
+                    'porcentaje':$('#porcentajePago').val()
+                }).then(function successCallback(response) {
+                     $scope.pagar();
+                }, function errorCallback(response) { 
+                });
+            }
+            
+        }  
     }
     
     $scope.pagar = function () {
