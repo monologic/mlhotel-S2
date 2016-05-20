@@ -97,7 +97,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::post('admin/SlidCreate', 'bannerController@sliderCreateIndex');
 	Route::post('admin/ServiceCreate', 'categoriaController@ServiceCreateIndex');
-	Route::post('admin/AddSubHab', 'HabTipoController@HabitacionesStore');
+	Route::post('admin/AddSubHab', 'HabtipoController@HabitacionesStore');
 	Route::get('admin/AddHab', 'HabtipoController@getHabtipo');
 	Route::post('admin/createhabgalery', 'habtipogaleryController@HabTipoFotoStore');
 	Route::get('admin/loadhabgalery/{habtipo_id}','habtipogaleryController@getFotoHabTipo');

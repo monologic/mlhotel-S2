@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Habtipo;
 use App\Serviciointerno;
-use App\Habtipo_serviciointerno;
+use App\habtipo_serviciointerno;
 
 class HabtipoController extends Controller
 {
@@ -118,7 +118,7 @@ class HabtipoController extends Controller
         $servicios= Serviciointerno::select('id')->get();
         $servicios=$servicios->toArray();
         foreach ($servicios as $key => $servicio) {
-             $htsi = new Habtipo_serviciointerno();
+             $htsi = new habtipo_serviciointerno();
              $htsi->estado = 'false';
              $htsi->habtipo_id=$idhab;
              $htsi->serviciointerno_id=$servicio['id'];
