@@ -55,7 +55,7 @@
 
 	MLMenu.prototype.options = {
 		// show breadcrumbs
-		breadcrumbsCtrl : true,
+		breadcrumbsCtrl : false,
 		// initial breadcrumb text
 		initialBreadcrumb : 'Panel',
 		// show back button
