@@ -36,7 +36,8 @@
         <div class="calendar">
           <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
           <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-          <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+          <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini" onchange="fe()">
+          <div id="fechaini2"></div>
         </div>
       </div>
       <div class="col m5">
@@ -161,17 +162,10 @@
    var cw = $('.h-w').width();
    var res= cw/1.9;
       $('.h-w').css({'height':res+'px'});
-
 </script>
  <script>
- $(document).ready(function() {
-    $('select').material_select();
-  }); 
-  $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-      });
-  
+
+ 
   var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
@@ -187,27 +181,26 @@
     });
     </script>
     <script>
-    
+    function fe(){
+      var f = new Date($( "#fechaini" ).val());
+      fec= f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 2);
+    }
   $(function() {
     $( "#fechaini" ).datepicker({
       dateFormat: "yy-mm-dd",
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 1,
+      monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Agos", "Sep", "Oct", "Nov", "Dic" ],
+      dayNamesMin: [ "Do", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" ],
+      defaultDate: "+1d",
       minDate: 0,
-      onClose: function( selectedDate ) {
-        $( "#fechafin" ).datepicker( "option", "minDate", selectedDate );
+      onClose: function() {
+        $( "#fechafin" ).datepicker( "option", "minDate", fec);
       }
     });
     $( "#fechafin" ).datepicker({
       dateFormat: "yy-mm-dd",
-      defaultDate: "+1d",
-      changeMonth: true,
-      numberOfMonths: 1,
-      onClose: function( selectedDate ) {
-        $( "#fechaini" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
+      monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Agos", "Sep", "Oct", "Nov", "Dic" ],
+      dayNamesMin: [ "Do", "Lu", "Mar", "Mi", "Ju", "Vi", "Sa" ],
+      });
   });
   
   </script>
