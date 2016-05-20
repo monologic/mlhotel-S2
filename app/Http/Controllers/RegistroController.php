@@ -50,12 +50,17 @@ class RegistroController extends Controller {
             }
 
             $habs = Habitacion::whereNotIn('id', $hab_id_array)
+                              ->where('estado_id','!=', 3)
                               ->orderBy('habtipo_id', 'asc')
                               ->get();
+
+            //dd($habs); 
         }
         else {
-            $habs = Habitacion::orderBy('habtipo_id', 'asc')
+            $habs = Habitacion::where('estado_id','!=', 3)
+                              ->orderBy('habtipo_id', 'asc')
                               ->get();
+            //                
         }
     	
         
@@ -94,9 +99,6 @@ class RegistroController extends Controller {
                             $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
                             })
                           ->get();
-
-
-        
 
         $reservas->each(function($reservas){
             $reservas->habtiporeservas;
