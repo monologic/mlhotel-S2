@@ -111,7 +111,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 
 	
-	Route::get('admin/gethabitaciones/{id}', ['uses' => 'habtipoController@getHabitaciones', function ($id) {}]);
+	Route::get('admin/gethabitaciones/{id}', ['uses' => 'HabtipoController@getHabitaciones', function ($id) {}]);
 	Route::get('admin/CategoriaServicio/{id}', ['uses' => 'categoriaController@getServicesompletoC', function ($id) {}]);
 	Route::get('admin/buscar/{fechaini}/{fechafin}', ['uses' => 'RegistroController@buscar', function ($fechaini, $fechafin) {
 	}]);
