@@ -7,7 +7,8 @@ app.controller('habitacionController', function($scope,$http) {
                 'estado_id':$('#estado_id').val(),
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-               $('#alertCambio').css('display','block');
+               alert('Se ha creado la Habitación');
+               window.location.href = 'admin#/Habitaciones';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
