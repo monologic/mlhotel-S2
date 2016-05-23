@@ -19,7 +19,7 @@
 |
 */
 
-require __DIR__.'/../../mlhotel_beta/bootstrap/autoload.php';
+require __DIR__.'/../bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +33,8 @@ require __DIR__.'/../../mlhotel_beta/bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../../mlhotel_beta/bootstrap/app.php';
-$app->bind('path.public', function() {
-    return __DIR__;
-});
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application

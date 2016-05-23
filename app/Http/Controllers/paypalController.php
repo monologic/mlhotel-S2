@@ -244,7 +244,7 @@ class PaypalController extends BaseController
 
 	    $reserva = Reserva::create([
 	        'total' => 0.00,
-	        'reservaestado_id' => 3,
+	        'reservaestado_id' => 2,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
 	        'fecha_fin' => $fechaFin,
@@ -255,6 +255,8 @@ class PaypalController extends BaseController
 	    foreach($cart as $item){
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
+
+	    \Session::forget('cart');
 	}
 	public function operacionPagoDeposito()
 	{
@@ -285,5 +287,7 @@ class PaypalController extends BaseController
 	    foreach($cart as $item){
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
+
+	    \Session::forget('cart');
 	}
 }
