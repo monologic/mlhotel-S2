@@ -172,10 +172,11 @@ class carritoController extends Controller
     }
 
     // Add item
-    public function add(Habtipo $Habtipo)
+    public function add(Habtipo $Habtipo, $max)
     {
         $cart = \Session::get('cart');
         $Habtipo->quantity = 1;
+        $Habtipo->max = $max;
         $cart[$Habtipo->id] = $Habtipo;
         \Session::put('cart', $cart);
 

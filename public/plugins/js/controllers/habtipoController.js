@@ -121,7 +121,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $('.hab').css({'display':'none'});
     }
     $scope.addCarrito = function (data) {
-        $http.get('cart/add/'+data.id,
+        max = data.habitacionescount-data.habtiporeservascount;
+        $http.get('cart/add/'+data.id+'/'+max,
             {
             }).then(function successCallback(response) {
                 $scope.res();
