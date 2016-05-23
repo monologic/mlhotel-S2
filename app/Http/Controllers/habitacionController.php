@@ -107,7 +107,7 @@ class HabitacionController extends Controller
     {
         $habitaciones =  Habitacion::where([
                             ['hotel_id', Auth::user()->empleado->hotel->id],
-                        ])->get();
+                        ])->orderBy('numero', 'asc')->get();
 
         $habitaciones->each(function($habitaciones){
             $habitaciones->estado;
@@ -122,7 +122,9 @@ class HabitacionController extends Controller
     {
         $habitaciones =  Habitacion::where([
                             ['hotel_id', Auth::user()->empleado->hotel->id],
-                        ])->get();
+                        ])
+                        ->orderBy('numero', 'asc')   
+                        ->get();
 
         $habitaciones->each(function($habitaciones){
             $habitaciones->estado;
