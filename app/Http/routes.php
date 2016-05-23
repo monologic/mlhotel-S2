@@ -167,7 +167,7 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' => 'carritoController@getDias'
 	]);
 
-	Route::get('cart/add/{habtipo}/{max}', [
+	Route::get('cart/add/{habtipo}', [
 		'as' => 'cart-add',
 		'uses' => 'carritoController@add'
 	]);

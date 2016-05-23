@@ -100,7 +100,7 @@
           <tr ng-repeat="o in car">
             <td>{{o.nombre}}</td>
             <td width="50px">
-              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
             </td>
             <td>{{o.precio}}</td>
             <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
