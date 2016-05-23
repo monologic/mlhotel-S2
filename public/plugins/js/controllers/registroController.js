@@ -57,7 +57,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             // or server returns response with an error status.
             }); 
         }
-        alert('Se han creado los registros.');
+        alert('Asignaci®Æn de habitaciones exitosa.');
         window.location.href = 'admin#/DetalleHabitaciones';
     }
     $scope.getReservaInfo = function () {
@@ -119,7 +119,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
 
             }
             else{
-                alert("No se encontr√≥ el Cliente")
+                $('#nom').focus();
                 $scope.huesped = 'false';
             }
 
