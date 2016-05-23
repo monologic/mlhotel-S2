@@ -43,16 +43,18 @@ class ClienteController extends Controller
         $cliente = new Cliente($request->all());
         $cliente->save();
 
-        $regClientes = $this->storeRegCliente($request->registro_id, $cliente->id);
+        $regClientes = $this->storeRegCliente($request->registro_id, $cliente->id, $request->procedencia, $request->destino);
 
         return response()->json( $regClientes );
     }
 
-    public function storeRegCliente($registro_id, $cliente_id)
+    public function storeRegCliente($registro_id, $cliente_id , $procedencia, $destino)
     {
         $regCliente = new Regcliente();
         $regCliente->registro_id = $registro_id;
         $regCliente->cliente_id = $cliente_id;
+        $regCliente->procedencia = $procedencia;
+        $regCliente->destino = $destino;
         $regCliente->save();
 
         return $this->getRegClientes($registro_id); 
@@ -103,7 +105,7 @@ class ClienteController extends Controller
         $cliente->fill($request->all());
         $cliente->save();
 
-        $regClientes = $this->storeRegCliente($request->registro_id, $cliente->id);
+        $regClientes = $this->storeRegCliente($request->registro_id, $cliente->id, $request->procedencia, $request->destino);
 
         return response()->json( $regClientes );
     }

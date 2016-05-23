@@ -26,6 +26,9 @@
 					<td>DNI</td>
 					<td>Nombre</td>
 					<td>Celular</td>
+					<th>Procedencia</th>
+					<th>Destino</th>
+					
 				</thead>
 				<tbody>
 					<tr ng-repeat="huesped in registro.regclientes">
@@ -33,6 +36,8 @@
 						<td>{{huesped.cliente.dni}} </td>
 						<td>{{huesped.cliente.nombres}} {{huesped.cliente.apellidos}}</td>
 						<td>{{huesped.cliente.celular}}</td>
+						<td>{{huesped.procedencia}}</td>
+						<td>{{huesped.destino}}</td>
 					</tr>
 				</tbody>
 				

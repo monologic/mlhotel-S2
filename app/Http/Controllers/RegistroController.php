@@ -240,4 +240,16 @@ class RegistroController extends Controller {
             "mensaje" => 'Admin#/Habitaciones'
         ]);
     }
+    public function getRegistros($fechaini, $fechafin)
+    {
+        $this->fechainicio = $fechaini;
+        $fechafin = $fechafin;
+        $r = Registro::select('habitacion_id')
+                    ->whereBetween('fechaentrada', [$this->fechainicio, $fechafin])
+                    ->orWhere(function($query){
+                        $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
+                        })
+                    ->get();
+        $r = $r->toArray();
+    }
 }

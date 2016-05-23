@@ -9,7 +9,7 @@ class Regcliente extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'registro_id', 'cliente_id',
+        'registro_id', 'cliente_id','procedencia', 'destino',
     ];
     
     public function cliente()
