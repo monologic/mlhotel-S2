@@ -26,7 +26,7 @@ app.controller('hotelController', function($scope,$http) {
         });
     }
 
-     $scope.getHotelesF = function () {
+     $scope.getHotelesF= function () {
         $http.get('/getHotelF').then(function successCallback(response) {
             $scope.infos = response.data;
             console.log($scope.infos);

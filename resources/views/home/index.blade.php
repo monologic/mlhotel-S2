@@ -87,7 +87,7 @@
                 <div >
                   <h5 class="white-text">Informacion</h5>
                   <p style="font-size:0.9rem;margin-top:5px;color:white;" >@{{infos.nombre}}</p>                 
-                  <p style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: @{{infos.correo}}</p>
+                  <p id="correo" style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: @{{infos.correo}}</p>
                   <p style="font-size:0.9rem;margin-top:5px;color:white;">Telf.: @{{infos.telefono}}</p>
                   <p style="font-size:0.9rem;margin-top:5px;color:white;">@{{infos.ciudad}}</p>
                 </div>
