@@ -35,6 +35,7 @@
     <!-- demo styles -->
      <link rel="stylesheet" href="plugins/Trumbowyg/ui/trumbowyg.min.css">
     <link rel="stylesheet" type="text/css" href="plugins/multilevel/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="plugins/Trumbowyg/ui/trumbowyg.min.css" />
     <!-- menu styles -->
     <link rel="stylesheet" type="text/css" href="plugins/multilevel/css/component.css" />
     <script src="plugins/multilevel/js/modernizr-custom.js"></script>
@@ -192,7 +193,7 @@
     <script src="plugins/js/controllers/monedaController.js"></script>
     <script src="plugins/js/controllers/porcentajeController.js"></script>
     <script src="plugins/js/controllers/graficasController.js"></script>
-<script src="plugins/js/controllers/clienteController.js"></script>
+    <script src="plugins/js/controllers/clienteController.js"></script>
     <script>
     (function() {
         var menuEl = document.getElementById('ml-menu'),
