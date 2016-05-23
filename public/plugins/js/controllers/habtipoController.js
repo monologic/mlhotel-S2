@@ -4,6 +4,10 @@ app.controller('habtipoController', function($scope,$http,$location) {
     var gdata;
     var fechas;
     var fechas2;
+
+    $scope.initial = function () {
+        
+    }
     $scope.getHabTipo = function () {
         $http.get('admin/AddHab').then(function successCallback(response) {
         	$scope.habtipos=response.data;
@@ -187,12 +191,20 @@ app.controller('habtipoController', function($scope,$http,$location) {
                 $('#fechaini').val(response.data.fecha_inicio);
                 $('#fechafin').val(response.data.fecha_fin);
                 if ((response.data).hasOwnProperty('dias')) {
+                    alert('asjfnjas')
                     $scope.buscarHab();
+                    $('.busquedas').css({'display':'block'});
+                    
                 }
+                else{
+                    $('.hab').css({'display':'block'});
+                    $scope.getHabTipo();
+                }
+
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
-            });
+            }); 
     }
     $scope.getDias = function () {
         $http.get('cart/getDias',
