@@ -17,11 +17,13 @@ body{
 }
 .booking{
   position: relative;
-  background-color:white;
-  top:-50px;
-  left: 60px;
-  max-width: 700px;
-  border-radius: 10px;
+  color: white;
+  background-color:rgba(50,50,50,0.8);
+  border-radius: 5px 5px 0 0;
+  top:-130px;
+  left: 0px;
+  padding-top: 5px;
+  max-width: 600px;
   z-index: 12;
 }
 .cont-book{

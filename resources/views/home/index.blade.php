@@ -54,8 +54,8 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" row hide-on-med-and-down center">
           <li class="nav-txt col m3 s2"><a href="#/habitaciones"><div>HABITACIONES</div></a></li>
-          <li class="nav-txt col m2 s2"><a href="#/galeria"><div>GALERIA</div></a></li>
           <li class="nav-txt col m2 s2"><a href="#/servicios"><div>SERVICIOS</div></a></li>
+          <li class="nav-txt col m2 s2"><a href="#/galeria"><div>GALERIA</div></a></li>  
           <li class="nav-txt col m2 s2"><a href="#/noticias"><div>NOTICIAS</div> </a></li>
           <li class="nav-txt col m2 s2"><a href="#/contacto"><div>CONTACTO</div> </a></li>
           <li class="col m1" style="margin-top:65px"><a class="btn-floating tooltipped" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>

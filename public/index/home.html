@@ -12,7 +12,7 @@
              <div class="wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="font-size: 3.5rem;max-width: 400px;color: white;position:absolute;right: 60px;margin-top: 0px">{{q.titulo}}</p></div>
           </div>
          
-          <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:600px">
+          <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:500px">
 
         </div>
        
@@ -29,13 +29,13 @@
     <div class="swiper-scrollbar"></div>
   </div>
 </div>
-<div class="booking hoverable center-block">
+<div class="booking center-block">
   <div ng-controller="reservaController">
     <div class=" cont-book  row" style="padding-top: 20px;">
       <div class="col m5">
         <div class="calendar">
           <p style="margin-bottom: 15px;text-align: left;">Fecha de Entrada</p>
-          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+          <img src="index/imgc2.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
           <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini" onchange="fe()">
           <div id="fechaini2"></div>
         </div>
@@ -43,12 +43,12 @@
       <div class="col m5">
         <div class="calendar">
           <p style="margin-bottom: 15px;text-align: left;">Fecha de Salida</p>
-          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+          <img src="index/imgc2.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
           <input type="text" style="height:20px;width:100%; padding: 5px;" id="fechafin">
         </div>
       </div>
       <div class="col m2">
-        <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;border-radius: 5px" ng-click='buscarHab();'> <i class="small material-icons">searcht</i></a>
+        <a class="waves-effect" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;padding-left:10px;font-size: 2rem" ng-click='buscarHab();'> <i class="small material-icons">searcht</i></a>
       </div>
       
     </div>
@@ -84,7 +84,7 @@
     </div>
   <div><br>
      <section class="row Cont-Hab " ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:800px;top:20px;">    
-      <div class=" wow fadeInUp" style="width:90%;margin-left:10%;" data-wow-duration="2s"  data-wow-delay="1.5s" ng-repeat="y in habtipos">
+      <div class=" wow fadeInUp" style="width:90%;margin-left:10%;" data-wow-duration="2s"  data-wow-delay="0.8s" ng-repeat="y in habtipos">
         <div class="col s12 m5 hoverable" style="margin-right:20px;margin-bottom:20px;min-width:250px">
           <div class="card small">
             <div class="card-image">
@@ -103,15 +103,15 @@
     </section>
     <div class="noticia" ng-controller="noticiaController" ng-init="getNoticiash();" style="width:100%;background-color:rgb(230,230,230);padding-top:80px;padding-bottom:30px;" >
       <article class="row" style="width:80%;margin:-30px auto 25px auto">
-        <div class="col m5 s12 wow fadeInLeft" data-wow-delay="1.5s" data-wow-duration="2s">
+        <div class="col m5 s12 wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1s">
           <img src="imagen/Noticia/{{noticias.imagen}}" style="width:100%">
         </div>
-        <div class="col m7 s12 wow fadeInRight noticia-cont" data-wow-delay="0.8s" data-wow-duration="2s">
+        <div class="col m7 s12 wow fadeInRight noticia-cont" data-wow-delay="0.8s" data-wow-duration="1s">
           <h3>{{noticias.titulo}}</h3>
           <div>Fecha: {{noticias.fecha}}</div>
           <div>Autor: {{noticias.fuente}}</div>
           <br>
-          <div>{{noticias.contenido}}</div>
+          <div id="contenidohtml"></div>
         </div>
       </article>
       

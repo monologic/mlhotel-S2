@@ -3,25 +3,86 @@
     <h3 class="tit2">Clientes</h3>
     <br><br>
     
+    <div class="" style="width: 70%;margin:20px auto 40px auto">
+        <div class="col-md-2" style="text-align: right;color:black">
+            Buscar por :
+        </div>
+        <div class="col-md-3">
+            <select name="" id="sel" class="form-control">
+            <option value="dni">Documento</option>
+            <option value="nombre">Nombre</option>
+            <option value="apellido">Apellido</option>
+        </select>
+        </div>
+        
+        <div class="col-md-5">
+            <input type="text" class="form-control" ng-model='buscando'>
+        </div>
+        <div class='col-md-2'>
+            <a href="" class="btn btn-primary" ng-click="buscar()">Buscar</a>
+        </div>
+        
+    </div>
+    <br>
+    <div id="resultado"></div>
+    <br>
     <table class="table table-hover">
+        <h3 style="margin-left:40px">Listado de clientes</h3>
     	<thead>
     		<tr>
     			<th>#</th>
-    			<th>Apellidos</th>
+    			<th>Apellidos2</th>
                 <th>Nombres</th>
                 <th>DNI</th>
-                <th>Telefono</th>
+                <th></th>
                 
     		</tr>
     	</thead>
     	<tbody>
-    		<tr ng-repeat="x in cliente">
-			    <td>{{$index+1}}</td>
-                <td>{{x.apellidos}}</td>
-                <td>{{x.nombres}}</td>
-                <td>{{x.dni}}</td>
-                <td>{{x.celular}}</td>
-			  </tr>
+               <tr ng-repeat="x in cliente">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.apellidos}}</td>
+                    <td>{{x.nombres}}</td>
+                    <td>{{x.dni}}</td>
+                    <td><a  class="btn btn-primary" href="" ng-click="verCliente(x);" data-toggle="modal" data-target="#vercliente"><i class="glyphicon glyphicon-plus"></i></a></td>
+              </tr> 
     	</tbody>
   	</table>
+    <div class="modal fade" id="vercliente" tabindex="-1" role="dialog" aria-labelledby="vercliente">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Informacion de cliente</h2>
+                </div>
+                <div class="modal-body" style="color:black">
+                <p>Nombre: </p>
+                <p ng-bind="nombre" style="margin-left:50px"></p>
+                <p>Apellidos: </p>
+                <p ng-bind="apellido" style="margin-left:50px"></p>
+                <p>Documento de Identidad: </p>
+                <p ng-bind="dni" style="margin-left:50px"></p>
+                <p>Sexo: </p>
+                <p ng-bind="sexo" style="margin-left:50px"></p>
+                <p>Fecha de nacimiento: </p>
+                <p ng-bind="nacimiento" style="margin-left:50px"></p>
+                <p>Ocupacion: </p>
+                <p ng-bind="prof_ocup" style="margin-left:50px"></p>
+                <p>Pais: </p>
+                <p>Dirección: </p>
+                <p ng-bind="direccion" style="margin-left:50px"></p>
+                <p>Pais: </p>
+                <p ng-bind="pais" style="margin-left:50px"></p>
+                <p>Ciudad: </p>
+                <p ng-bind="ciudad" style="margin-left:50px"></p>
+                <p>Telefono o celular: </p>
+                <p ng-bind="celular" style="margin-left:50px"></p>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

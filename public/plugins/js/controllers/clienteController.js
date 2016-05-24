@@ -9,5 +9,21 @@ app.controller('clienteController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
-    
+    $scope.verCliente = function (data) {
+        $scope.idcliente = data.id;
+        $scope.nombre = data.nombres;
+        $scope.apellido = data.apellidos;
+      	$scope.sexo = data.asexo;
+        $scope.nacimiento = data.fecha_nac;
+        $scope.dni = data.dni;
+        $scope.prof_ocup = data.prof_ocup;
+        $scope.direccion = data.direccion;
+        $scope.celular = data.celular;
+        $scope.ciudad = data.ciudad;
+        $scope.pais = data.pais;
+    }
+    $scope.buscar = function(){
+        var clienteB = $scope.buscando;
+        var por = $('#sel').val();
+    }
 });

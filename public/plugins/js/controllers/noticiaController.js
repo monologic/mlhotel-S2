@@ -6,11 +6,17 @@ app.controller('noticiaController', function($scope,$http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
-    }  
+    } 
+     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+        for (var i = 0; i < $scope.noticia.length; i++) {
+                $('#contenido'+i).html($scope.noticia[i].contenido);
+            }
+    }); 
      $scope.getNoticiash = function () {
         $http.get('admin/getNoticias').then(function successCallback(response) {
             $scope.noticias = response.data[0];
-            console.log( $scope.noticia);
+            var ultima =$scope.noticias.contenido;
+            $('#contenidohtml').html(ultima);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
