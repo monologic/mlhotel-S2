@@ -59,6 +59,11 @@ class ClienteController extends Controller
 
         return $this->getRegClientes($registro_id); 
     }
+    public function buscart($tipo, $valor)
+    {
+        $bcliente = Cliente::where($tipo, $valor)->get();
+        return response()->json( $bcliente );
+    }
     public function getRegClientes($registro_id)
     {
         $regClientes = Regcliente::where('registro_id', $registro_id)->get();

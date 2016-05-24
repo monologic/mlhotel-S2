@@ -3,35 +3,18 @@
     <h3 class="tit2">Clientes</h3>
     <br><br>
     
-    <div class="" style="width: 70%;margin:20px auto 40px auto">
-        <div class="col-md-2" style="text-align: right;color:black">
-            Buscar por :
-        </div>
-        <div class="col-md-3">
-            <select name="" id="sel" class="form-control">
-            <option value="dni">Documento</option>
-            <option value="nombre">Nombre</option>
-            <option value="apellido">Apellido</option>
-        </select>
-        </div>
-        
-        <div class="col-md-5">
-            <input type="text" class="form-control" ng-model='buscando'>
-        </div>
-        <div class='col-md-2'>
-            <a href="" class="btn btn-primary" ng-click="buscar()">Buscar</a>
-        </div>
-        
-    </div>
+   <div style="width: 300px;margin-left: 100px">
+       <input type="text" class="form-control" ng-model="buscar" style="width: 320px"><i class="glyphicon glyphicon-search" style="top:-25px;float: right;color: black"></i>
+   </div>
+   
     <br>
     <div id="resultado"></div>
     <br>
     <table class="table table-hover">
-        <h3 style="margin-left:40px">Listado de clientes</h3>
     	<thead>
     		<tr>
     			<th>#</th>
-    			<th>Apellidos2</th>
+    			<th>Apellidos</th>
                 <th>Nombres</th>
                 <th>DNI</th>
                 <th></th>
@@ -39,7 +22,7 @@
     		</tr>
     	</thead>
     	<tbody>
-               <tr ng-repeat="x in cliente">
+               <tr ng-repeat="x in cliente | filter:buscar">
                     <td>{{$index+1}}</td>
                     <td>{{x.apellidos}}</td>
                     <td>{{x.nombres}}</td>

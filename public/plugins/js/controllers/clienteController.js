@@ -22,8 +22,4 @@ app.controller('clienteController', function($scope,$http) {
         $scope.ciudad = data.ciudad;
         $scope.pais = data.pais;
     }
-    $scope.buscar = function(){
-        var clienteB = $scope.buscando;
-        var por = $('#sel').val();
-    }
 });
