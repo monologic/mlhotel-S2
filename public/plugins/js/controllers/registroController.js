@@ -205,4 +205,14 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
         });
     }
+
+    $scope.getRegistros = function () {
+        $http.get('admin/getRegistros/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
+            $scope.registros = response.data;
+            //ordenarPorTipo(response.data);
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 });

@@ -75,6 +75,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/DetalleHabitaciones", {templateUrl: "partials/habitacion/detalleHabitacion.html", controller: "PageCtrl"})
     .when("/detalleHabitacion/:idRegistro", {templateUrl: "partials/registro/detalle.html", controller: "PageCtrl"})
     .when("/terminarRegistro/:idRegistro", {templateUrl: "partials/registro/terminar.html", controller: "PageCtrl"})
+    .when("/LibroHuespedes", {templateUrl: "partials/registro/libroHuespedes.html", controller: "PageCtrl"})
 
     .when("/configChecks", {templateUrl: "partials/config/horas.html", controller: "PageCtrl"})
 

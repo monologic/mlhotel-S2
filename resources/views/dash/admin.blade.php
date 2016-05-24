@@ -69,7 +69,9 @@
                     <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver">Tipos de Cambio</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Config. Pagos</a></li> 
 
-                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li> 
+                    <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li>
+
+                    <li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Libro de Huéspedes</a></li>  
                 @endif
 
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")

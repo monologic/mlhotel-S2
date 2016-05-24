@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use App\Registro;
+use App\Regcliente;
 use App\Habitacion;
 use App\Habtipo;
 use App\Reserva;
@@ -164,6 +165,12 @@ class RegistroController extends Controller {
         $registro->fechaentrada = $request->fechaini . " " . date('H:i:s');
         $registro->fechasalida = $request->fechafin. " " . Auth::user()->empleado->hotel->checkout;
 
+        $dias = (strtotime($request->fechaini)-strtotime($request->fechafin))/86400;
+        $dias = abs($dias);
+        $dias = floor($dias);
+
+        $registro->total = $this->calcularTotal($dias, $request->habitacion_id);
+
         $registro->save();
 
         $this->cambiarEstadoHabs($registro->habitacion_id);
@@ -173,12 +180,21 @@ class RegistroController extends Controller {
         ]);
 
     }
+
+    public function calcularTotal($dias, $habitacion_id)
+    {
+        $hab = Habitacion::find($habitacion_id);
+        $hab->habtipo;
+        $total = $hab->habtipo->precio * $dias;
+
+        return $total;
+    }
+    
     public function cambiarEstadoHabs($id)
     {
         $hab = Habitacion::find($id);
         $hab->estado_id = 2;
         $hab->save();
-        
     }
 
     public static function registrosDeHoy()
@@ -242,14 +258,22 @@ class RegistroController extends Controller {
     }
     public function getRegistros($fechaini, $fechafin)
     {
-        $this->fechainicio = $fechaini;
-        $fechafin = $fechafin;
-        $r = Registro::select('habitacion_id')
-                    ->whereBetween('fechaentrada', [$this->fechainicio, $fechafin])
-                    ->orWhere(function($query){
-                        $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
-                        })
-                    ->get();
-        $r = $r->toArray();
+        $regs = Registro::select('id')->whereBetween('fechaentrada', [$fechaini, $fechafin])->get();
+        $regs_id = array();
+        foreach ($regs->toArray() as $key => $reg) {
+            foreach ($reg as $k => $id)
+                array_push($regs_id, $id);
+        }
+        
+        $regsClientes = Regcliente::whereIn('id', $regs_id)->get();
+
+        $regsClientes->each(function($regsClientes) {
+            $regsClientes->registro;
+            $regsClientes->registro->habitacion;
+            $regsClientes->cliente;
+        });
+        return response()->json( $regsClientes );
     }
+   
+
 }
