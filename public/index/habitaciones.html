@@ -76,7 +76,8 @@
         <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
         <p class="cart-precio">Desde</p>
         <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
-        <a class="waves-effect btn black" ng-click="addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservas', 4000)">reservar</a>
+
+        <a ng-if='(y.habitacionescount-y.habtiporeservascount)!=0' class="waves-effect btn black" ng-click="addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservas', 4000)">reservar</a>
       </div> 
     </div>
   </div>

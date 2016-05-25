@@ -54,6 +54,8 @@ class RegistroController extends Controller {
                 foreach ($regs as $k => $habitacion_id)
                     array_push($hab_id_array, $habitacion_id);
             }
+            //dd($hab_id_array);
+
             /**
              * Luego seleccionar Habitaciones que no esten en el array de habitaciones
              * ocupadas y que su estado sea diferente a reparación.
@@ -63,7 +65,7 @@ class RegistroController extends Controller {
                               ->orderBy('habtipo_id', 'asc')
                               ->get();
 
-            //dd($habs); 
+            
         }
         else {
             /**
@@ -75,86 +77,102 @@ class RegistroController extends Controller {
                               ->get();
             //                
         }
-    	
-        /**
-         * Relacionar estado y tipo de Habitación.
-         */
-        $habs->each(function($habs){
-            $habs->estado;
-        });
-        $habs->each(function($habs){
-            $habs->habtipo;
-        });
 
-        $habs = $habs->toArray();
-        /**
-         * Obtener Habtipos y relacionar con Servivios internos 
-         */
-        $habtipos = Habtipo::where('activo', 1)->get();
-
-        $habtipos->each(function($habtipos){
-            $iconos=$habtipos->habtipo_serviciointernos;
-            $habtipos->habtipo_serviciointernos->each(function($iconos){
-                $iconos->serviciointerno;
+        if (count($habs->toArray()) != 0) {
+            /**
+             * Relacionar estado y tipo de Habitación.
+             */
+            $habs->each(function($habs){
+                $habs->estado;
+            });
+            $habs->each(function($habs){
+                $habs->habtipo;
             });
 
-        });
+            $habs = $habs->toArray();
+            /**
+             * Obtener Habtipos y relacionar con Servivios internos 
+             */
+            $habtipos = Habtipo::where('activo', 1)->get();
 
-        $habtipos = $habtipos->toArray();
+            $habtipos->each(function($habtipos){
+                $iconos=$habtipos->habtipo_serviciointernos;
+                $habtipos->habtipo_serviciointernos->each(function($iconos){
+                    $iconos->serviciointerno;
+                });
 
-        /**
-         * Si no se encuentran registros traer todas las habitaciones excepto 
-         */
-        foreach ($habs as $key => $hab) {
-            foreach ($habtipos as $k => $habtipo) {
-                if ($habtipo['id'] == $hab['habtipo_id']) {
-                    $habtipos[$k]['habitaciones'][] = $hab;
-                }
-            }
-        }
-        //dd($habtipos);
-        $reservas = Reserva::whereBetween('reservaestado_id', array(2,3))
-                          ->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
-                          ->orWhere(function($query){
-                            $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
-                            })
-                          ->get();
+            });
 
-        $reservas->each(function($reservas){
-            $reservas->habtiporeservas;
-        });     
-        
-        $reservas = $reservas->toArray();
-        if (count($reservas) != 0) {
-            foreach ($reservas as $h => $reserva) {
-                foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
-                    foreach ($habtipos as $k => $ht) {
-                        if ( $ht['id'] == $habtipo['habtipo_id']) {
-                            $habtipos[$k]['habtiporeservas'][] = $habtipo;
-                        }
-                        if (!isset($habtipos[$k]['habtiporeservas'])) {
-                            $habtipos[$k]['habtiporeservas'] = null;
-                        }
-                        
+            $habtipos = $habtipos->toArray();
+
+            /**
+             * Si no se encuentran registros traer todas las habitaciones excepto 
+             */
+            foreach ($habs as $key => $hab) {
+                foreach ($habtipos as $k => $habtipo) {
+                    if ($habtipo['id'] == $hab['habtipo_id']) {
+                        $habtipos[$k]['habitaciones'][] = $hab;
+                    }
+                    if (!(array_key_exists('habitaciones', $habtipos[$k]))) {
+                        $habtipos[$k]['habitaciones'] = null;
                     }
                 }
             }
-        }
-        //dd($habtipos);
-        foreach ($habtipos as $k => $habtipo) {
-            if (count($reservas) != 0) {
-                $r = count($habtipo['habtiporeservas']);
-                $habtipos[$k]['habtiporeservascount'] = $r;
-            }
-            else
-                $habtipos[$k]['habtiporeservascount'] = 0   ;
-            
-            $r2 = count($habtipo['habitaciones']);
-            $habtipos[$k]['habitacionescount'] = $r2;
+            //dd($habtipos);
+            $reservas = Reserva::whereBetween('reservaestado_id', array(2,3))
+                              ->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
+                              ->orWhere(function($query){
+                                $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
+                                })
+                              ->get();
 
+            $reservas->each(function($reservas){
+                $reservas->habtiporeservas;
+            });     
+            
+            $reservas = $reservas->toArray();
+            if (count($reservas) != 0) {
+                foreach ($reservas as $h => $reserva) {
+                    foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
+                        foreach ($habtipos as $k => $ht) {
+                            if ( $ht['id'] == $habtipo['habtipo_id']) {
+                                $habtipos[$k]['habtiporeservas'][] = $habtipo;
+                            }
+                            if (!isset($habtipos[$k]['habtiporeservas'])) {
+                                $habtipos[$k]['habtiporeservas'] = null;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            //dd($habtipos);
+            foreach ($habtipos as $k => $habtipo) {
+                if (count($reservas) != 0) {
+                    $r = count($habtipo['habtiporeservas']);
+                    $habtipos[$k]['habtiporeservascount'] = $r;
+                }
+                else
+                    $habtipos[$k]['habtiporeservascount'] = 0   ;
+                
+                $r2 = count($habtipo['habitaciones']);
+                $habtipos[$k]['habitacionescount'] = $r2;
+
+                $disponibles = $habtipos[$k]['habitacionescount']-$habtipos[$k]['habtiporeservascount'];
+                if ($disponibles > 0) 
+                    $habtipos[$k]['disponibles'] = $disponibles;
+                else
+                    $habtipos[$k]['disponibles'] = 0;  
+
+            }
+            //dd($habtipos);
+            return response()->json($habtipos);
         }
-        //dd($habtipos);
-        return response()->json($habtipos);
+        else{
+            return response()->json([
+                "mensaje" => 'No se encontraron Habitaciones Disponibles'
+            ]);
+        }
     }
 
     public function store(Request $request)
@@ -272,7 +290,29 @@ class RegistroController extends Controller {
             $regsClientes->registro->habitacion;
             $regsClientes->cliente;
         });
+
         return response()->json( $regsClientes );
+    }
+
+    public function grillaDisponibilidad($fechaini, $fechafin)
+    {
+        $fechaInicio = strtotime($fechaini . " 00:00:00");
+        $fechaFin = strtotime($fechafin . " 23:59:59");
+
+        $disp = array();
+        for($i = $fechaInicio; $i <= $fechaFin; $i += 86400){
+            $fecha = date("d-m-Y", $i)." 06:00:00";
+            $r = Registro::select('habitacion_id')
+                    ->where(function($query)use($fecha){
+                        $query->whereRaw(DB::raw("'$fecha' between `fechaentrada` and `fechasalida`"));
+                        })
+                    ->get();
+            dd($r);
+            $r = $r->toArray();
+
+            $disp[] = $r;
+        }
+        dd($disp);
     }
    
 

@@ -28,6 +28,7 @@
             </form>
         </table>
     </div>
+    <pre id="alertCambio" class="bg-warning" style="color:black;">No se encontraron habitaciones disponibles. <button type="button" onclick="$('#alertCambio').css('display','none')" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></pre>
     <br>
     <div>
         <a href="" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); "style="display:none;position: fixed;bottom:50px;right: 50px">Guardar Cambios</a>
@@ -55,10 +56,7 @@
                         <td>{{p.habtipo.nombre}}</td>
                         <td>
                             
-                              
-                                <input type="checkbox" id="{{ p.numero }}" ng-change="clickOnCheck(p);" ng-model="checks" class="checks" style="left:45%">
-                              
-                            
+                            <input type="checkbox" id="{{ p.numero }}" ng-change="clickOnCheck(p);" ng-model="checks" class="checks" style="left:45%">
                         </td>
                       </tr>
                 </tbody>

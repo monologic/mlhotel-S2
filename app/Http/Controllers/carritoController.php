@@ -41,7 +41,8 @@ class carritoController extends Controller
         $fechas['fecha_inicio'] = $fechaini;
         $fechas['fecha_fin'] = $fechafin;
         $fechas['dias'] = $dias;
-        \Session::put('fechas', $fechas);   
+        \Session::put('fechas', $fechas);
+        \Session::forget('cart'); 
         
         $h = Hotel::all();
         $this->fechainicio = $fechaini. " " . $h[0]->checkin;
@@ -53,38 +54,44 @@ class carritoController extends Controller
                         $query->whereRaw(DB::raw("'$this->fechainicio' between `fechaentrada` and `fechasalida`"));
                         })
                     ->get();
-
-        
         $r = $r->toArray();
 
+        
         if (count($r) != 0) {
             $hab_id_array = array();
 
+            /**
+             * Si se obtienen registros formar array con los id de las habitaciones ocupadas.
+             */
             foreach ($r as $key => $regs) {
                 foreach ($regs as $k => $habitacion_id)
                     array_push($hab_id_array, $habitacion_id);
             }
+            //dd($hab_id_array);
 
+            /**
+             * Luego seleccionar Habitaciones que no esten en el array de habitaciones
+             * ocupadas y que su estado sea diferente a reparación.
+             */
             $habs = Habitacion::whereNotIn('id', $hab_id_array)
+                              ->where('estado_id','!=', 3)
                               ->orderBy('habtipo_id', 'asc')
                               ->get();
+
+            
         }
         else {
-            $habs = Habitacion::orderBy('habtipo_id', 'asc')
+            /**
+             * Si no se encuentran registros traer todas las habitaciones excepto 
+             * las de estado 'Reparación'.
+             */
+            $habs = Habitacion::where('estado_id','!=', 3)
+                              ->orderBy('habtipo_id', 'asc')
                               ->get();
+            //                
         }
-        
-        
-        $habs->each(function($habs){
-            $habs->estado;
-        });
-        $habs->each(function($habs){
-            $habs->habtipo;
-        });
 
-        $habs = $habs->toArray();
-
-        $habtipos = Habtipo::where('activo', 1)->get();;
+        $habtipos = Habtipo::where('activo', 1)->get();
 
         $habtipos->each(function($habtipos){
             $iconos=$habtipos->habtipo_serviciointernos;
@@ -94,25 +101,45 @@ class carritoController extends Controller
 
         });
 
-        $habtipos = $habtipos->toArray();
+        if (count($habs->toArray()) != 0) {
+            /**
+             * Relacionar estado y tipo de Habitación.
+             */
+            $habs->each(function($habs){
+                $habs->estado;
+            });
+            $habs->each(function($habs){
+                $habs->habtipo;
+            });
 
-        foreach ($habs as $key => $hab) {
-            foreach ($habtipos as $k => $habtipo) {
-                if ($habtipo['id'] == $hab['habtipo_id']) {
-                    $habtipos[$k]['habitaciones'][] = $hab;
+            $habs = $habs->toArray();
+            /**
+             * Obtener Habtipos y relacionar con Servivios internos 
+             */
+
+            $habtipos = $habtipos->toArray();
+
+            /**
+             * Si no se encuentran registros traer todas las habitaciones excepto 
+             */
+            foreach ($habs as $key => $hab) {
+                foreach ($habtipos as $k => $habtipo) {
+                    if ($habtipo['id'] == $hab['habtipo_id']) {
+                        $habtipos[$k]['habitaciones'][] = $hab;
+                    }
+                    if (!(array_key_exists('habitaciones', $habtipos[$k]))) {
+                        $habtipos[$k]['habitaciones'] = null;
+                    }
                 }
             }
         }
         //dd($habtipos);
-        $reservas = Reserva::where('reservaestado_id', '2')
+        $reservas = Reserva::whereBetween('reservaestado_id', array(2,3))
                           ->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
                           ->orWhere(function($query){
                             $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
                             })
                           ->get();
-
-
-        
 
         $reservas->each(function($reservas){
             $reservas->habtiporeservas;
@@ -133,20 +160,29 @@ class carritoController extends Controller
                 }
             }
         }
-        //dd($habtipos);
+            //dd($habtipos);
         foreach ($habtipos as $k => $habtipo) {
             if (count($reservas) != 0) {
                 $r = count($habtipo['habtiporeservas']);
                 $habtipos[$k]['habtiporeservascount'] = $r;
             }
             else
-                $habtipos[$k]['habtiporeservascount'] = 0   ;
-            
-            $r2 = count($habtipo['habitaciones']);
-            $habtipos[$k]['habitacionescount'] = $r2;
+                $habtipos[$k]['habtiporeservascount'] = 0;
 
+            if (count($habs) != 0) {
+                $r2 = count($habtipo['habitaciones']);
+                $habtipos[$k]['habitacionescount'] = $r2;
+            }
+            else{
+                $habtipos[$k]['habitacionescount'] = 0;
+            }
+
+            $disponibles = $habtipos[$k]['habitacionescount']-$habtipos[$k]['habtiporeservascount'];
+            if ($disponibles > 0) 
+                $habtipos[$k]['disponibles'] = $disponibles;
+            else
+                $habtipos[$k]['disponibles'] = 0;
         }
-        //dd($habtipos);
         return response()->json($habtipos);
     }
 
@@ -207,7 +243,9 @@ class carritoController extends Controller
     public function trash()
     {
         \Session::forget('cart');
-
+        \Session::forget('fechas');
+        \Session::forget('cleinte');
+        \Session::forget('porcentaje');
         //return redirect()->route('cart-show');
     }
 

@@ -14,7 +14,11 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     }
 	$scope.buscar = function () {
         $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
-            $scope.tipoPerHabs = response.data;
+            if ((response.data).hasOwnProperty('mensaje')) {
+                $('#alertCambio').css('display','block');
+            }
+            else
+                $scope.tipoPerHabs = response.data;
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs

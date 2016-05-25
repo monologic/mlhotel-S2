@@ -103,11 +103,19 @@ app.controller('habtipoController', function($scope,$http,$location) {
         var ffin = $('#fechafin').val()
 
         $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
-            $scope.tipoPerHabs = response.data;
-            fechas=$scope.fechaini;
-            fechas2=$scope.fechafin;
-            $scope.mayor
-            $scope.menor
+
+            if ((response.data).hasOwnProperty('mensaje')) {
+                //$('#alertCambio').css('display','block');
+                alert(response.data.mensaje);
+            }
+            else{
+                $scope.res();
+                $scope.tipoPerHabs = response.data;
+                fechas=$scope.fechaini;
+                fechas2=$scope.fechafin;
+                $scope.mayor;
+                $scope.menor;
+            }
 
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
