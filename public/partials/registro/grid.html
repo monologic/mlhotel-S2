@@ -1,0 +1,70 @@
+<div id="page-wrapper" ng-controller="registroController" ng-init="" style="width: 80%;margin:20px auto 100px auto">
+    <br><br><br>
+    <h3 class="tit2">Disponiblidad por dias</h3>
+    <br><br>
+    <div class="formularios">
+        <table>
+            <form>
+                <tr>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px "><label for="fechaini" >Fecha Inicio</label></td>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px "><label for="fechafin">Fecha Fin</label></td>
+                </tr>
+                <tr>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px " >
+                        <div class="form-group ">
+                            <input type="date" class="form-control" id="fechaini" ng-model="fechaini">
+                        </div>
+                    </td>
+                    <td style="min-width:200px;padding:0px 10px 0px 10px " >
+                        <div class="form-group">
+                            <input type="date" class="form-control" id="fechafin" ng-model="fechafin">
+                        </div>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary" ng-click="getRegistros();" style="margin-top:-20px">Buscar</a>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Hab. Asignada</th>
+                    <th>Fecha de Entrada</th>
+                    <th>Nombre y Apellidos</th>
+                    <th>Profesión</th>
+                    <th>Estado Civil</th>
+                    <th>Edad</th>
+                    <th>Documento de Identidad</th>
+                    <th>Lugar de Residencia</th>
+                    <th>Pais de Residencia</th>
+                    <th>Procedencia</th>
+                    <th>Destino</th>
+                    <th>Fecha Salida</th>
+                    <th>Total Pagado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat='r in registros'>
+                    <td>{{ r.registro.habitacion.numero }}</td>
+                    <td>{{ r.registro.fechaentrada }}</td>
+                    <td>{{ r.cliente.nombres }} {{ r.cliente.apellidos }}</td>
+                    <td>{{ r.cliente.prof_ocup }}</td>
+                    <td>{{ r.cliente.estado_civil }}</td>
+                    <td>{{ r.cliente.fecha_nac }}</td>
+                    <td>{{ r.cliente.dni }}</td>
+                    <td>{{ r.cliente.ciudad }}</td>
+                    <td>{{ r.cliente.pais }}</td>
+                    <td>{{ r.procedencia }}</td>
+                    <td>{{ r.destino }}</td>
+                    <td>{{ r.registro.fechasalida }}</td>
+                    <td>{{ r.registro.total }}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <br>
+</div>
