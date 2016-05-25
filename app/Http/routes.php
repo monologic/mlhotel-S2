@@ -38,8 +38,10 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('galeria', 'galeryController');
 	Route::resource('noticia', 'NoticiaController');
 	Route::resource('pago', 'PagotipoController');
+	Route::resource('mainservice', 'MainserviceController');
 
-
+	
+	Route::get('getmainservices', 'MainserviceController@getMain');
 	Route::get('getclientess', 'ClienteController@getclientes');
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
 	Route::get('getEmpForUsers', 'empleadoController@getEmpleadosParaUsuarios');
