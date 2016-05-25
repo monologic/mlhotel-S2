@@ -221,8 +221,12 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     }
 
     $scope.getDisponibilidad = function () {
-        $http.get('admin/grillaDisponibilidad/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
-            $scope.registros = response.data;
+        $http.get('admin/grillaDisponibilidad/'+$scope.desde+'/'+$scope.hasta).then(function successCallback(response) {
+            $('#grid').css('display','block');
+            $scope.grid = response.data;
+            $scope.tipohabs = response.data[$scope.desde];
+            //for(x in response.data)
+                //$scope.tipohabs = response.data[x];
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs

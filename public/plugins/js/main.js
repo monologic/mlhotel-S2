@@ -68,6 +68,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/Buscar", {templateUrl: "partials/registro/buscar.html", controller: "PageCtrl"})
     .when("/disponibilidad", {templateUrl: "partials/registro/disponibles.html", controller: "PageCtrl"})
+    .when("/grid", {templateUrl: "partials/registro/grid.html", controller: "PageCtrl"})
     
     .when("/Reservas", {templateUrl: "partials/reserva/ver.html", controller: "PageCtrl"})
     .when("/ReservasConfirmar", {templateUrl: "partials/reserva/verconfirmar.html", controller: "PageCtrl"})
