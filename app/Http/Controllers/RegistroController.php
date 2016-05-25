@@ -301,8 +301,9 @@ class RegistroController extends Controller {
 
         $disp = array();
         for($i = $fechaInicio; $i <= $fechaFin; $i += 86400){
+            $fechaN = date("Y-m-d", $i);
             $fecha = date("Y-m-d", $i)." 06:00:00";
-            $disp[] = $this->getDisp($fecha);
+            $disp[$fechaN] = $this->getDisp($fecha);
         }
         return response()->json( $disp );
     }
