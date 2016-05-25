@@ -219,4 +219,14 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+
+    $scope.getDisponibilidad = function () {
+        $http.get('admin/grillaDisponibilidad/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
+            $scope.registros = response.data;
+            //ordenarPorTipo(response.data);
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
 });
