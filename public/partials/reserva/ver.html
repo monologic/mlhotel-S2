@@ -6,7 +6,7 @@
         <p>
             <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
                 <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }} Forma de Pago: {{ y.pagotipo.pagotipo }}
+                {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }} | Forma de Pago: {{ y.pagotipo.pagotipo }} | Fecha Entrada: {{ y.fecha_inicio }}
             </button>
         </p>
             <div class="collapse" id="{{y.id}}" style="padding: 20px;border-width:0.1px;border:solid;border-radius: 5px;margin-bottom:10px">

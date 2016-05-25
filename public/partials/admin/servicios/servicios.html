@@ -12,8 +12,9 @@
             <tbody>
                 <tr>
                     <td>{{main.nombre}}</td>
+                    <td ><img src="imagen/Categoria/main/{{main.imagen}}" style="with:50px; height:50px "></td>
                     <td>{{main.contenido}}</td>
-                    <td><a href="" style="color:black"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                    <td><a href="" style="color:black" ng-click="dataMain();" data-toggle="modal" data-target="#editarMain"><i class="glyphicon glyphicon-pencil"></i></a></td>
                 </tr>
             </tbody>
         </table>
@@ -75,34 +76,45 @@
                         </div>
                     </form>
                 </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="" class="btn btn-primary" ng-click="editarCat();" data-dismiss="modal">Guardar</a>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a href="" class="btn btn-primary" ng-click="editarCat();" data-dismiss="modal">Guardar</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarModal">
+    <div class="modal fade" id="editarMain" tabindex="-1" role="dialog" aria-labelledby="editarModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h2 class="modal-title" id="myModalLabel">Editar Categoria de Servicio</h2>
+                    <h2 class="modal-title" id="myModalLabel">Editar Vista de Servicio</h2>
                 </div>
                 <div class="modal-body">     
-                    <form method="PUT" id="formulario" enctype="multipart/form-data" >
-                        <div class="form-group ">
-                            <label for="titulo">Nombre</label>
-                            <input type="text" class="form-control" id="titulo" ng-model="nombre">
+                    <form method="POST" action="admin/EditarMainService" accept-charset="UTF-8" enctype="multipart/form-data">
+                        <h2 class="tit2">Editar Vista de Servicio</h2>
+                        <br>
+                        <div class="form-group">
+                            <label for="tipo">Nombre</label>
+                            <input class="form-control" required="required" name="nombre" type="text" id="nombreE" ng-model="nombreE">
                         </div>
-                        <div class="form-group ">
-                            <label for="titulo">Descripcion</label>
-                            <textarea class="form-control" required="required" name="descripcion" ng-model="descripcion" cols="50" rows="6" id="descripcion"></textarea>
+                        <div class="form-group">
+                            <label for="imagen">Seleccione imagen</label>
+                            <input name="imagen" type="file" id="imagen" required>
                         </div>
-                    </form>
+                        <div class="form-group">
+                            <label for="contenido">Contenido</label>
+                            <textarea class="form-control trumbowyg-demo" required="required" name="contenido" cols="50" rows="5" id="contenidoE" ng-model="contenidoE"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="Guardar">
+                        </div>
+                    </form>  
                 </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="" class="btn btn-primary" ng-click="editarCat();" data-dismiss="modal">Guardar</a>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
+</div>

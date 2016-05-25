@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Categoria;
 use App\Servicio;
+use App\Mainservice;
 
 class categoriaController extends Controller
 {
@@ -144,6 +145,21 @@ class categoriaController extends Controller
         $servicioC->foto = $name;
         $servicioC->save();
          return redirect('admin#/Servicios/' . $servicioC->categoria_id);
+    }
+    public function editarMainService(Request $request)
+    {
+        if($request->file('imagen')){
+            $file = $request->file('imagen');
+            $name = 'servicio_main'. time() . '.' .$file->getClientOriginalExtension();
+            $path = public_path() . "/imagen/Categoria/main/";
+            $file->move($path,$name);
+        }
+        $sm = Mainservice::find(1);
+        $sm->nombre = $request->nombre;
+        $sm->contenido = $request->contenido;
+        $sm->imagen = $name;
+        $sm->save();
+        return redirect('admin#/LisServicios');
     }
 
 }

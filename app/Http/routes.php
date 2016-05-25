@@ -108,6 +108,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('admin/getGaleryPhoto', 'GaleryController@getGaleriaFotos');
 
 	Route::post('admin/ServiceCreate', 'categoriaController@ServiceCreateIndex');
+	Route::post('admin/EditarMainService', 'categoriaController@editarMainService');
 	Route::post('admin/ServiceCreateCategory', 'categoriaController@ServiceCreateforCategory');
 	Route::get('admin/getServicios', 'categoriaController@getServices');
 

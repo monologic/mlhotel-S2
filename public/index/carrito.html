@@ -99,6 +99,50 @@
       </div>    
     </form>
   </div>   
+  <section ng-controller="habtipoController" ng-init="res();" style="min-height:300px;margin-top:100px">
+
+  <div id="caja" style="top:65px;">
+  <br><br>
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
+    <br>
+    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
+    <div  style=";width: 80%;margin:40px auto 20px auto">
+    <div id="cont-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Habitacion</th>
+            <th>Cant.</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="o in car">
+            <td>{{o.nombre}}</td>
+            <td width="50px">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
+            </td>
+            <td>{{o.precio}}</td>
+            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">Total por Día:</td>
+            <td ng-bind="totalq"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
+    </div>
+      
+      <div>
+        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
+      </div>    
+    </div>
+  </div> 
+</section>
 </div> 
 <!-- Modal Blanco -->
 <div id="modalBlanco"> 

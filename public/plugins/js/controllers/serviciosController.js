@@ -102,4 +102,11 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
             });
         }
     }
+
+    $scope.dataMain = function () {
+        $scope.idMain = $scope.main.id;
+        $scope.nombreE = $scope.main.nombre;
+        $scope.contenidoE = $scope.main.contenido;
+    }
+    
 });

@@ -24,7 +24,7 @@
                   <p class="center-align" style="font-size: 1.4rem">S/ {{habfotos.0.precio}}</p>
                   <div class="input-field col s12 m12">
                       <p for="icon_prefix2"> <i class="fa fa-calendar"></i> Fecha Entrada</p>
-                      <input type="text" style="height:20px;width:100%;padding: 5px;" id="fechaini">
+                      <input type="text" style="height:20px;width:100%;padding: 5px;" onchange="fe()" id="fechaini">
    
                   </div>
                   <div class="input-field col s12 m12">
@@ -119,25 +119,34 @@
       </div>
   
   <script>
-    $(function() {
-      $( "#fechaini" ).datepicker({
-        dateFormat: "yy-mm-dd",
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-        minDate: 0,
-        onClose: function( selectedDate ) {
-          $( "#fechafin" ).datepicker( "option", "minDate", selectedDate );
-        }
-      });
-      $( "#fechafin" ).datepicker({
-        dateFormat: "yy-mm-dd",
-        defaultDate: "+1w",
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate ) {
-          $( "#fechaini" ).datepicker( "option", "maxDate", selectedDate );
-        }
-      });
+    function fe(){
+        var f = new Date($( "#fechaini" ).val());
+        d = f.getDate() + 2;
+        fec = f.getFullYear() + "-" + twoDigits(f.getMonth() + 1) + "-" + twoDigits(f.getDate() + 2);
+        $( "#fechafin" ).val(fec);
+    }
+    function twoDigits(d) {
+        if(0 <= d && d < 10) return "0" + d.toString();
+        if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+        return d.toString();
+    }
+
+  $(function() {
+    $( "#fechaini" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Agos", "Sep", "Oct", "Nov", "Dic" ],
+      dayNamesMin: [ "Do", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab" ],
+      defaultDate: "+1d",
+      minDate: 0,
+      onClose: function() {
+        $( "#fechafin" ).datepicker( "option", "minDate", fec);
+      }
     });
+    $( "#fechafin" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Agos", "Sep", "Oct", "Nov", "Dic" ],
+      dayNamesMin: [ "Do", "Lu", "Mar", "Mi", "Ju", "Vi", "Sa" ],
+      minDate: 1,
+      });
+  });
   </script>
