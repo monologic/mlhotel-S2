@@ -2,7 +2,11 @@
     <br><br><br>
     <h3 class="tit2">Reservas</h3>
     <br><br>
-    <div ng-repeat="y in reservas" class="row">
+    <div style="width: 310px;float: right">
+         <input type="text" class="form-control" ng-model="buscar" style="width: 320px"><i class="glyphicon glyphicon-search" style="top:-25px;float: right;color: black"></i>
+    </div>
+   
+    <div ng-repeat="y in reservas | filter:buscar" class="row">
         <p>
             <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
                 <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
