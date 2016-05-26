@@ -54,7 +54,7 @@
                     </div>
                     <div class="col m4 s12" id="depositoDiv">
                       <input name="opciones" type="radio" id="test3" onchange="boucher()" />
-                      <label for="test3" style="color: #009688"><img src="deposito.png"style="width: 70px;margin-top: 5px"></label>
+                      <label for="test3" style="color: #009688"><img src="deposito.png" style="width: 70px;margin-top: 5px"></label>
                     </div>
                   </div>
                 <div class="row" id="sel-p" style="display: none;">
@@ -63,16 +63,17 @@
                       Porcentaje de pago:
                     </div>
                     <div class="col m4">
-                      <input name="group2" type="radio" id="op1" value="0.2" />
-                      <label for="op1">20%</label>
+                      <input name="group1" type="radio" ng-model="porcentajeRadio.name" ng-change="calcularTotal()" id="radio1" value="0.2" />
+                      <label for="radio1">20%</label>
                     </div>
                     <div class="col m3">
-                      <input name="group2" type="radio" id="op2" value="1" />
-                      <label for="op2">100%</label>
+                      <input name="group1" type="radio" ng-model="porcentajeRadio.name" ng-change="calcularTotal()" id="radio2" value="1" />
+                      <label for="radio2">100%</label>
                     </div>
                   </div>
-                  <div class="col m6" style="margin-top: 40px" id="TotalR"></div>
                 </div>
+                <div class="col m6" style="margin-top: 40px" id="TotalR"></div>
+                <div class="col m6" style="margin-top: 40px" id="TotalRCero"></div>
             </div>  
         </div>
         <div id="cliente" class="col m6">
@@ -95,11 +96,11 @@
             </div>
             <br><br>
             <div class="col m12 s12">
-                      <input type="checkbox" id="test5" ng-model="terminos" ng-checked="open()" />
-                      <label for="test5" style="color: black;font-size: 0.7rem">Por favor <a style="font-size: 0.7rem" class="modal-trigger"  href="#modal1"> leer y aceptar </a>  los términos y condiciones. Gracias.</label>
-                    </div>
+              <input type="checkbox" id="test5" ng-model="terminos" ng-change="activarBtn()" class="validate" />
+                <label for="test5" style="color: black;font-size: 0.7rem">Por favor <a style="font-size: 0.7rem" class="modal-trigger"  href="#modal1"> leer y aceptar </a>  los términos y condiciones. Gracias.</label>
+              </div>
             <div style="display:block;top:40px">
-              <button type="submit" class="waves-effect waves-light btn centrar disabled" href="#modal1" id="btn-res">Reservar</button>
+              <button type="submit" class="waves-effect waves-light btn centrar" href="#modal1" disabled id="btn-res">Reservar</button>
             </div> 
         </div>
       </div>    
@@ -212,21 +213,25 @@
   });
   function porcen(){
     if(test1.checked == true){
-      $('#TotalR').text('Total: S/0.00 ó $0.00') ;
+      $('#TotalRCero').css('display','block');
+      $('#TotalR').css('display','none');
+      $('#TotalRCero').text('Total: S/0.00 ó $0.00') ;
+
       $('#sel-p').css('display','none');
-      
     }
   }
   function paypal(){
     if(test2.checked == true){
+      $('#TotalRCero').css('display','none');
+      $('#TotalR').css('display','block');
       $('#sel-p').css('display','block');
-      $('#TotalR').css('display','none');
     }
   }
   function boucher(){
     if(test3.checked == true){
+      $('#TotalRCero').css('display','none');
+      $('#TotalR').css('display','block');
       $('#sel-p').css('display','block');
-      $('#TotalR').css('display','none');
     }
   }
   $(document).ready(function(){

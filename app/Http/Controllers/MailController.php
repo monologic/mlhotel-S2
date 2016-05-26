@@ -28,4 +28,14 @@ class MailController extends Controller
 		return redirect('/#/mensajeenviado');
 
    }
+
+   public function sendMailPagos()
+   {
+        $user = User::findOrFail($id);
+
+        Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+            $m->from('hello@app.com', 'Your Application');
+            $m->to($user->email, $user->name)->subject('Your Reminder!');
+        });
+    }
 }

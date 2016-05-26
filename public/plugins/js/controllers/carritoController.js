@@ -60,7 +60,7 @@ app.controller('carritoController', function($scope,$http) {
                 {   'nombres':$scope.nombres,
                     'apellidos':$scope.apellidos,
                     'dni':$scope.dni,
-                    'porcentaje':$('#porcentajePago').val()
+                    'porcentaje':$scope.porcentajeRadio.name
                 }).then(function successCallback(response) {
                      $scope.pagar();
                 }, function errorCallback(response) { 
@@ -101,18 +101,6 @@ app.controller('carritoController', function($scope,$http) {
         });
     }
 
-
-    $scope.getPorcentajes = function () {
-        $http.get('admin/getPorcentajes').then(function successCallback(response) {
-                //
-                $scope.porcentajes = response.data;
-                
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
-    }
-
     $scope.getTipoCambio = function () {
         $http.get('admin/getTipoCambio').then(function successCallback(response) {
                 $scope.tipoCambio = response.data.tipocambio;
@@ -121,16 +109,7 @@ app.controller('carritoController', function($scope,$http) {
     }
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-        $('#porcentaje').material_select();
-    });
-
-    $('#porcentajePago').change(function() {
-        $('#TotalR').css('display','block');
-        var porcentaje = $('#porcentajePago').val();
-        totalR = $scope.Total * porcentaje;
-        totalRDolares = totalR / $scope.tipoCambio;
-        $('#TotalR').text('Total: S/' + totalR.toFixed(2) + ' ó $' + totalRDolares.toFixed(2)) ;
-
+        
     });
 
     $scope.getDias = function () {
@@ -166,7 +145,18 @@ app.controller('carritoController', function($scope,$http) {
             // or server returns response with an error status.
             });
     }
-    $scope.open = function (){
-            $("#btn-res").removeClass('disabled');
+    $scope.activarBtn = function () {
+        if ($scope.terminos)
+            $('#btn-res').prop("disabled",false);
+        else
+            $('#btn-res').prop("disabled",true);
     }
+
+    $scope.calcularTotal = function () {
+        totalR = $scope.Total * $scope.porcentajeRadio.name;
+        totalRDolares = totalR / $scope.tipoCambio;
+        $('#TotalR').text('Total: S/' + totalR.toFixed(2) + ' ó $' + totalRDolares.toFixed(2)) ;
+    }
+
+   
 });

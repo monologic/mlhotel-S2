@@ -286,6 +286,11 @@ class carritoController extends Controller
         $cliente['id'] = $cli->id;
         \Session::put('cliente', $cliente);
 
+        $cliente = \Session::get('cliente');
+        $cliente['id'] = $cli->id;
+        $cliente['email'] = $request->email;
+        \Session::put('cliente', $cliente);
+
         $porcentaje = \Session::get('porcentaje');
         $porcentaje['porcentaje'] = $request->porcentaje;
         \Session::put('porcentaje', $porcentaje);

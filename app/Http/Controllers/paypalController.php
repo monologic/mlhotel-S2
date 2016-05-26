@@ -199,7 +199,8 @@ class PaypalController extends BaseController
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total' => $subtotal * $porcentaje['porcentaje'],
+	    	'total_pagado' => $subtotal * $porcentaje['porcentaje'],
+	        'total' => $subtotal,
 	        'reservaestado_id' => 2,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
@@ -237,13 +238,16 @@ class PaypalController extends BaseController
 	        $subtotal += $item->precio * $item->quantity;
 	    }
 
+	    $subtotal = $subtotal * $fechas['dias'];
+
 	    $hoteles = Hotel::orderBy('id', 'asc')->get();
 		$hotel = $hoteles[0];
 		$fechaInicio = $fechas['fecha_inicio'] . " " . $hotel->checkin;
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total' => 0.00,
+	    	'total_pagado' => 0.00,
+	        'total' => $subtotal,
 	        'reservaestado_id' => 2,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
@@ -261,6 +265,7 @@ class PaypalController extends BaseController
 	public function operacionPagoDeposito()
 	{
 		$porcentaje = \Session::get('porcentaje');
+		//dd( $porcentaje['porcentaje'] );
 		$cart = \Session::get('cart');
 		$fechas = \Session::get('fechas');
 		$cliente = \Session::get('cliente');
@@ -269,13 +274,16 @@ class PaypalController extends BaseController
 	        $subtotal += $item->precio * $item->quantity;
 	    }
 
+	    $subtotal = $subtotal * $fechas['dias'];
+
 	    $hoteles = Hotel::orderBy('id', 'asc')->get();
 		$hotel = $hoteles[0];
 		$fechaInicio = $fechas['fecha_inicio'] . " " . $hotel->checkin;
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total' => $subtotal * $porcentaje['porcentaje'],
+	        'total_pagado' => $subtotal * $porcentaje['porcentaje'],
+	        'total' => $subtotal,
 	        'reservaestado_id' => 3,
 	        'fecha_reserva' => date('Y-m-d'),
 	        'fecha_inicio' => $fechaInicio,
@@ -290,4 +298,12 @@ class PaypalController extends BaseController
 
 	    \Session::forget('cart');
 	}
+
+	public function sendEmail()
+	{
+		$mailController = MailController();
+
+		$mailController->sendMailPagos();
+	}
+
 }
