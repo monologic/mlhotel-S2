@@ -166,4 +166,7 @@ app.controller('carritoController', function($scope,$http) {
             // or server returns response with an error status.
             });
     }
+    $scope.open = function (){
+            $("#btn-res").removeClass('disabled');
+    }
 });

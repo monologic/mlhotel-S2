@@ -67,7 +67,7 @@
 
                     <li class="menu__item"><a class="menu__link"  href="#/configChecks">Hora de E/S</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver">Tipos de Cambio</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Config. Pagos</a></li><li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Libro de Huéspedes</a></li> 
+                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Config. Pagos</a></li><li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Bitácora</a></li> 
 
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li>
 
@@ -80,6 +80,8 @@
                     <li class="menu__item"><a class="menu__link" href="#/grid">Disponibilidad</a></li>  
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#/">Registrar</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Buscar y registrar</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Habitaciones</a></li>
                 @endif
                     @if (Auth::user()->usuariotipo->nombre=="Root")
 

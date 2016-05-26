@@ -58,12 +58,18 @@
                     </div>
                   </div>
                 <div class="row" id="sel-p" style="display: none;">
-                  <div class="input-field col m5">
-                    <select id="porcentajePago" ng-model='porcentajePago' ng-change='calcularTotalR();'>
-                      <option value="" selected style="color: #00897b">Seleccione un porcentaje</option>
-                      <option value="0.2">20%</option>
-                      <option value="1">100%</option>
-                    </select>
+                  <div class="input-field porcentajePago" id="porcentajePago" >
+                    <div class="col m5" style="padding-top: 15px">
+                      Porcentaje de pago:
+                    </div>
+                    <div class="col m4">
+                      <input name="group2" type="radio" id="op1" value="0.2" />
+                      <label for="op1">20%</label>
+                    </div>
+                    <div class="col m3">
+                      <input name="group2" type="radio" id="op2" value="1" />
+                      <label for="op2">100%</label>
+                    </div>
                   </div>
                   <div class="col m6" style="margin-top: 40px" id="TotalR"></div>
                 </div>
@@ -89,11 +95,11 @@
             </div>
             <br><br>
             <div class="col m12 s12">
-                      <input type="checkbox" id="test5" />
+                      <input type="checkbox" id="test5" ng-model="terminos" ng-checked="open()" />
                       <label for="test5" style="color: black;font-size: 0.7rem">Por favor <a style="font-size: 0.7rem" class="modal-trigger"  href="#modal1"> leer y aceptar </a>  los términos y condiciones. Gracias.</label>
                     </div>
             <div style="display:block;top:40px">
-              <button type="submit" class="waves-effect waves-light btn centrar" href="#modal1">Reservar</button>
+              <button type="submit" class="waves-effect waves-light btn centrar disabled" href="#modal1" id="btn-res">Reservar</button>
             </div> 
         </div>
       </div>    
