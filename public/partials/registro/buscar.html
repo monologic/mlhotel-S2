@@ -50,7 +50,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="p in habtipo.habitaciones">
+                    <tr ng-repeat="p in habtipo.habitaciones | orderBy:'numero'"">
                         <td>{{p.numero}}</td>
                         <td>{{p.estado.nombre}}</td>
                         <td>{{p.habtipo.nombre}}</td>
