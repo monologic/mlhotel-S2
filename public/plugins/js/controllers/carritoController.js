@@ -18,13 +18,13 @@ app.controller('carritoController', function($scope,$http) {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
                 $scope.actualizarTotal(response.data);
-                $scope.getDias();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
     }
     $scope.actualizarTotal = function(data){
+        $scope.getDias();
         var total=0;
         for (x in data) {
             subp=data[x].precio*data[x].quantity;

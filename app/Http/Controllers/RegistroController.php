@@ -299,17 +299,31 @@ class RegistroController extends Controller {
         $fechaInicio = strtotime($fechaini . " 00:00:00");
         $fechaFin = strtotime($fechafin . " 23:59:59");
 
+        $h = Hotel::all();
+
+        //$hora = strtotime ( '+1 minute' , strtotime ( $h[0]->checkout ) ) ;
+        //$hora = date('H:i:s', $hora); 
+        $hora = $h[0]->checkin ;
+
+
         $disp = array();
+        
         for($i = $fechaInicio; $i <= $fechaFin; $i += 86400){
             $fechaN = date("Y-m-d", $i);
-            $fecha = date("Y-m-d", $i)." 06:00:00";
+            if ($i == $fechaInicio)
+                $fecha = date("Y-m-d", $i). " " . date('H:i:s');
+            else
+                $fecha = date("Y-m-d", $i). " " . $hora;
+                
             $disp[$fechaN] = $this->getDisp($fecha);
+            
         }
         return response()->json( $disp );
     }
     public function getDisp($fecha)
     {
-        $r = Registro::select('habitacion_id')
+            
+            $r = Registro::select('habitacion_id')
                     ->where(function($query)use($fecha){
                         $query->whereRaw(DB::raw("'$fecha' between `fechaentrada` and `fechasalida`"));
                         })
@@ -353,7 +367,7 @@ class RegistroController extends Controller {
             if (count($habs->toArray()) != 0) {
                 /**
                  * Relacionar estado y tipo de Habitación.
-                 */
+                 *
                 $habs->each(function($habs){
                     $habs->estado;
                 });
@@ -388,6 +402,7 @@ class RegistroController extends Controller {
                                 $query->whereRaw(DB::raw("'$fecha' between `fecha_inicio` and `fecha_fin`"));
                                 })
                               ->get();
+
 
             $reservas->each(function($reservas){
                 $reservas->habtiporeservas;
