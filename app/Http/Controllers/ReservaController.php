@@ -98,6 +98,7 @@ class ReservaController extends Controller
     public function getReservasNoAsignadas()
     {
         $reservas = Reserva::where('reservaestado_id',2)
+                            ->orderBy('fecha_inicio','desc')
                            ->get();
 
         $reservas->each(function($reservas){
@@ -152,6 +153,7 @@ class ReservaController extends Controller
     public function getReserva($id)
     {
         $reservas = Reserva::where('id', $id)
+                            ->orderBy('fecha_inicio','desc')
                            ->get();
 
         $reservas->each(function($reservas){
@@ -203,6 +205,7 @@ class ReservaController extends Controller
     public function getReservasPorConfirmar()
     {
         $reservas = Reserva::where('reservaestado_id',3)
+                            ->orderBy('fecha_inicio','desc')
                            ->get();
 
         $reservas->each(function($reservas){

@@ -1,4 +1,4 @@
-<div id="page-wrapper" ng-controller="registroController" ng-init="" style="width: 80%;margin:20px auto 100px auto">
+<div id="page-wrapper" ng-controller="registroController" ng-init="ponerFecha()" style="width: 80%;margin:20px auto 100px auto">
     <br><br><br>
     <h3 class="tit2">Libro de Huéspedes</h3>
     <br><br>
@@ -13,11 +13,13 @@
                     <td style="min-width:200px;padding:0px 10px 0px 10px " >
                         <div class="form-group ">
                             <input type="date" class="form-control" id="fechaini" ng-model="fechaini">
+                            <div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
                         </div>
                     </td>
                     <td style="min-width:200px;padding:0px 10px 0px 10px " >
                         <div class="form-group">
                             <input type="date" class="form-control" id="fechafin" ng-model="fechafin">
+                            <div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
                         </div>
                     </td>
                     <td>

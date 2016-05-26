@@ -12,6 +12,18 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         alert((fechafin1 - fechaini1)/86400000);
         */
     }
+    $scope.ponerFecha2 = function () {
+        var f = new Date();
+        $scope.desde = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +f.getDate();
+        $scope.hasta = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 1);
+        //alert($scope.fechaini);
+        /*
+        var fechaini1 = new Date($scope.fechaini);
+        var fechafin1 = new Date($scope.fechafin);
+
+        alert((fechafin1 - fechaini1)/86400000);
+        */
+    }
 	$scope.buscar = function () {
         $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             if ((response.data).hasOwnProperty('mensaje')) {
