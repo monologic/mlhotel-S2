@@ -139,7 +139,7 @@ app.controller('hotelController', function($scope,$http) {
             {   'checkin':$scope.checkin,
                 'checkout':$scope.checkout
             }).then(function successCallback(response) {
-                alert(response.data.mensaje);
+                alert('Se ha modificado horas Check in CHeck out exitosamente');
             }, function errorCallback(response) {
             });
     }
