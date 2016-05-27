@@ -2,6 +2,10 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.space{
+  margin-top: -30px;
+  font-size: 3rem;
+}
 .totales{
   display: block;
   background-color: #4db6ac;

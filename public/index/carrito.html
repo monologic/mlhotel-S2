@@ -36,11 +36,10 @@
               </tbody>
             </table>
           </div>
-          <div class="" style="margin-top: 20px">   
+          <div class="" style="margin-top: 15px">   
             <div>
                   <p style="color: #00897b">Elija un método de pago</p>
-                  <div class="row" style="margin-top: 40px">
-                    <br>
+                  <div class="row" style="margin-top: 0px">
                      <div class="col m6 s12" id="pagoCeroDiv">
                       <input name="opciones" type="radio" id="test1" onchange="porcen()" />
                       <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
@@ -79,25 +78,25 @@
         </div>
         <div id="cliente" class="col m6">
             <p style="color: #00897b">Ingrese su información</p>
-            <div class="input-field col s12 centrar">
-              <input type="text" class="validate" ng-model="nombres" required>
-              <label for="last_name" style="color: #6C7A89">Nombres</label>
+            <div class="input-field col s12" style="margin-top:5px">
+            <input id="nombre" type="text" class="validate" ng-model="nombres"  required>
+              <label for="nombre" style="color: #6C7A89">Nombres</label>
             </div>
-            <div class="input-field col s12 centrar">
-              <input type="text" class="validate" ng-model="apellidos" required>
-              <label for="last_name" style="color: #6C7A89">Apellidos</label>
+            <div class="input-field col s12" style="margin-top:5px">
+              <input id="apellido" type="text" class="validate" ng-model="apellidos" required>
+              <label for="apellido" style="color: #6C7A89;margin-bottom: 0px">Apellidos</label>
             </div>
-            <div class="input-field col s12 centrar" >
-              <input type="text" class="validate" ng-model="dni" required>
-              <label for="last_name" style="color: #6C7A89">Identificacion (DNI)</label>
+            <div class="input-field col s12" style="margin-top:5px">
+              <input id="dni" type="text" class="validate" ng-model="dni" required>
+              <label for="dni" style="color: #6C7A89;margin-bottom: 0px">Identificacion (DNI)</label>
             </div>
-            <div class="input-field col s12 centrar" >
-              <input type="text" class="validate" ng-model="telefono" >
-              <label for="last_name" style="color: #6C7A89">Telefono (opcional)</label>
+            <div class="input-field col s12" style="margin-top:5px">
+              <input id="tel" type="text" class="validate" ng-model="telefono" >
+              <label for="tel" style="color: #6C7A89;margin-bottom: 0px">Telefono (opcional)</label>
             </div>
-            <div class="input-field col s12 centrar">
+            <div class="input-field col s12" style="margin-top:5px" >
               <input id="email" type="email" class="validate" ng-model="email" required>
-              <label for="email" style="color: #6C7A89">Email</label>
+              <label for="email" style="color: #6C7A89;margin-bottom: 0px">Email</label>
             </div>
             <br><br>
             <div class="col m12 s12">
