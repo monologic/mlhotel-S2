@@ -198,6 +198,8 @@ class PaypalController extends BaseController
 		$fechaInicio = $fechas['fecha_inicio'] . " " . $hotel->checkin;
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
+		$subtotal = $subtotal * $fechas['dias'];
+
 	    $reserva = Reserva::create([
 	    	'total_pagado' => $subtotal * $porcentaje['porcentaje'],
 	        'total' => $subtotal,
@@ -213,7 +215,8 @@ class PaypalController extends BaseController
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
 
-	    
+	    $plantilla = 'emails.pagopaypalmail';
+	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
 
 	}
 	
@@ -260,7 +263,7 @@ class PaypalController extends BaseController
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
 
-	    $plantilla = 'emails.pagoceroemail';
+	    $plantilla = 'emails.pagoceromail';
 	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
 
 	    \Session::forget('cart');
@@ -299,12 +302,15 @@ class PaypalController extends BaseController
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
 
+	    $plantilla = 'emails.pagodepositomail';
+	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
+
 	    \Session::forget('cart');
 	}
 
 	public function sendEmail($id, $email, $plantilla)
 	{
-		$mailController = MailController();
+		$mailController = new MailController();
 		$mailController->sendMailPagos($id, $email, $plantilla);
 	}
 

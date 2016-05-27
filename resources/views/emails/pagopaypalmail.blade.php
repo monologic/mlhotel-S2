@@ -35,7 +35,8 @@
   	</p>
   	<p>El horario de Check-in es {{ $checkin }} y el Check-out es {{ $checkout }}.</p>
   	<p>
-  		El pago de la reserva, tal como lo solicitó será efectuada en la recepción del Hotel por un importe de S/ {{ $total }}.
+  		El pago de la reserva, tal como lo solicitó se efectuó debitando su cuenta Paypal el importe de {{ round(($total_pagado / $moneda['tipocambio']), 2) }} dólares.
+  		
   	</p>
 </div>
 </body>

@@ -36,7 +36,7 @@ app.controller('carritoController', function($scope,$http) {
 
     }
     $scope.guardarCliente = function () {
-
+        
         elemento = document.getElementById("test5");
         opciones = document.getElementsByName("opciones");
         var seleccionado = false;
@@ -49,6 +49,7 @@ app.controller('carritoController', function($scope,$http) {
         if( !elemento.checked ) {
           alert('tienes q aceptar los terminos de condicion')
         }
+
         else{
             if(!seleccionado) {
               alert('Debes seleccionar un metodode pago');
@@ -157,6 +158,10 @@ app.controller('carritoController', function($scope,$http) {
         totalR = $scope.Total * $scope.porcentajeRadio.name;
         totalRDolares = totalR / $scope.tipoCambio;
         $('#TotalR').text('Total: S/' + totalR.toFixed(2) + ' ó $' + totalRDolares.toFixed(2)) ;
+    }
+
+    $scope.porcentajeRadio = {
+        name:0
     }
 
    

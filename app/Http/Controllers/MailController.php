@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Mail;
 use App\Hotel;
 use App\Reserva;
+use App\Cambiomonedatipo;
 
 class MailController extends Controller
 {
@@ -32,25 +33,65 @@ class MailController extends Controller
 
    public function sendMailPagos($id, $email, $plantilla)
    {
-        $reserva = $this->getReserva($id);
+        $hotel = Hotel::all();
 
-        $user = User::findOrFail($id);
+        $reserva = $this->getReserva($id, $email);
+        
+        $cliente = $reserva['cliente'];
 
-        Mail::send($plantilla, ['user' => $user], function ($m) use ($user) {
-            $m->from('hello@app.com', 'Your Application');
-            $m->to($user->email, $user->name)->subject('Your Reminder!');
+        Mail::send($plantilla, $reserva, function ($m) use ($cliente) {
+            $m->from('chalex_777@hotmail.com', 'Your Application');
+            $m->to( $cliente['email'], $cliente['nombres'] . " " . $cliente['apellidos'] )->subject('Confirmación de Reserva');
         });
     }
-    public function getReserva($id)
+    public function getReserva($id, $email)
     {
-        $reserva = find($id);
+        $reserva = Reserva::find($id);
         $reserva->habtiporeservas;
         $reserva->cliente;
+        $reserva->cliente->email = $email;
+
+        $hotel = Hotel::all();
+        $reserva->checkin = $hotel[0]->checkin;
+        $reserva->checkout = $hotel[0]->checkout;
+        $monedas = Cambiomonedatipo::where('siglas','USD')->get();
+        $moneda = $monedas[0];
+        $reserva->moneda = $moneda;
+
+
         $habReserva = $reserva->habtiporeservas;
         $reserva->habtiporeservas->each(function($habReserva){
             $habReserva->habtipo;
         });
+        $reserva = $reserva->toArray();
+        $habtipos = $reserva['habtiporeservas'];
+            $ht = array();
+            foreach ($habtipos as $key => $habtipo) {    
+                if (count($ht) > 0) {
+                    foreach ($ht as $k => $htt) {
+                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
+                            $element = $ht[$k];
+                            $el = $element['count'];
+                            $el++;
+                            $element['count'] = $el;
+                            $ht[$k] = $element;
+                        }
+                        else {
+                            $habtipo['habtipo']['count'] = 1;
+                            $ht[] = $habtipo['habtipo'];
+                        }
 
+                    }
+                }
+                else {
+                    $habtipo['habtipo']['count'] = 1;
+                    $ht[] = $habtipo['habtipo'];
+                    
+                }
+                $reserva['habtiposcount'] = $ht;
+            }
+
+        return $reserva;
 
     }
 }
