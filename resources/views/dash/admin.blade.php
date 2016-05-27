@@ -67,6 +67,7 @@
 
                     <li class="menu__item"><a class="menu__link"  href="#/configChecks">Hora de E/S</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver">Tipos de Cambio</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Banco/ver">Bancos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Config. Pagos</a></li><li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Bitácora</a></li> 
 
 
