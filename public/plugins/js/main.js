@@ -84,6 +84,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Moneda/crear", {templateUrl: "partials/moneda/crear.html", controller: "PageCtrl"})
     .when("/Moneda/ver", {templateUrl: "partials/moneda/ver.html", controller: "PageCtrl"})
 
+    .when("/Banco/crear", {templateUrl: "partials/banco/crear.html", controller: "PageCtrl"})
+    .when("/Banco/ver", {templateUrl: "partials/banco/ver.html", controller: "PageCtrl"})
+
     .when("/Porcentaje/crear", {templateUrl: "partials/porcentaje/crear.html", controller: "PageCtrl"})
     .when("/Porcentaje/ver", {templateUrl: "partials/porcentaje/ver.html", controller: "PageCtrl"})
     .when("/Reporte", {templateUrl: "partials/admin/reporte/reportes.html", controller: "PageCtrl"})

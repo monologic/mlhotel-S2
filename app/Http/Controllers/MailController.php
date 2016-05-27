@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Mail;
 use App\Hotel;
 use App\Reserva;
+use App\Banco;
 use App\Cambiomonedatipo;
 
 class MailController extends Controller
@@ -31,11 +32,11 @@ class MailController extends Controller
 
    }
 
-   public function sendMailPagos($id, $email, $plantilla)
+   public function sendMailPagos($id, $cliente, $plantilla)
    {
         $hotel = Hotel::all();
 
-        $reserva = $this->getReserva($id, $email);
+        $reserva = $this->getReserva($id, $cliente);
         
         $cliente = $reserva['cliente'];
 
@@ -44,20 +45,21 @@ class MailController extends Controller
             $m->to( $cliente['email'], $cliente['nombres'] . " " . $cliente['apellidos'] )->subject('Confirmación de Reserva');
         });
     }
-    public function getReserva($id, $email)
+    public function getReserva($id, $cliente)
     {
         $reserva = Reserva::find($id);
         $reserva->habtiporeservas;
         $reserva->cliente;
-        $reserva->cliente->email = $email;
+        $reserva->cliente->email = $cliente['email'];
+
+        $banco = Banco::find($cliente['banco_id']);
+        $reserva->banco = $banco;
 
         $hotel = Hotel::all();
-        $reserva->checkin = $hotel[0]->checkin;
-        $reserva->checkout = $hotel[0]->checkout;
         $monedas = Cambiomonedatipo::where('siglas','USD')->get();
         $moneda = $monedas[0];
         $reserva->moneda = $moneda;
-
+        $reserva->hotel = $hotel[0];
 
         $habReserva = $reserva->habtiporeservas;
         $reserva->habtiporeservas->each(function($habReserva){

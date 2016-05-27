@@ -62,7 +62,8 @@ app.controller('carritoController', function($scope,$http) {
                     'apellidos':$scope.apellidos,
                     'dni':$scope.dni,
                     'porcentaje':$scope.porcentajeRadio.name,
-                    'email':$scope.email
+                    'email':$scope.email,
+                    'banco_id':$('#banco').val()
                 }).then(function successCallback(response) {
                      $scope.pagar();
                 }, function errorCallback(response) { 
@@ -111,7 +112,10 @@ app.controller('carritoController', function($scope,$http) {
     }
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-        
+
+       
+        $('#banco').material_select();
+
     });
 
     $scope.getDias = function () {
@@ -162,6 +166,15 @@ app.controller('carritoController', function($scope,$http) {
 
     $scope.porcentajeRadio = {
         name:0
+    }
+
+    $scope.getBancos = function () {
+        $http.get('admin/banco').then(function successCallback(response) {
+                $scope.bancos = response.data;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
     }
 
    

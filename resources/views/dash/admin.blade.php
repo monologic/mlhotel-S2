@@ -178,7 +178,7 @@
     <script src="plugins/Trumbowyg/trumbowyg.min.js"></script> 
 
     <!-- Controladrores de Angular -->
-
+    <script src="plugins/js/controllers/bancoController.js"></script> 
     <script src="plugins/js/controllers/cargoController.js"></script>  
     <script src="plugins/js/controllers/empleadoController.js"></script>  
     <script src="plugins/js/controllers/usuariotipoController.js"></script> 

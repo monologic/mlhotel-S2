@@ -216,7 +216,7 @@ class PaypalController extends BaseController
 	    }
 
 	    $plantilla = 'emails.pagopaypalmail';
-	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
+	    $this->sendEmail($reserva->id, $cliente, $plantilla);
 
 	}
 	
@@ -264,7 +264,7 @@ class PaypalController extends BaseController
 	    }
 
 	    $plantilla = 'emails.pagoceromail';
-	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
+	    $this->sendEmail($reserva->id, $cliente, $plantilla);
 
 	    \Session::forget('cart');
 	}
@@ -303,15 +303,15 @@ class PaypalController extends BaseController
 	    }
 
 	    $plantilla = 'emails.pagodepositomail';
-	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
+	    $this->sendEmail($reserva->id, $cliente, $plantilla);
 
 	    \Session::forget('cart');
 	}
 
-	public function sendEmail($id, $email, $plantilla)
+	public function sendEmail($id, $cliente, $plantilla)
 	{
 		$mailController = new MailController();
-		$mailController->sendMailPagos($id, $email, $plantilla);
+		$mailController->sendMailPagos($id, $cliente, $plantilla);
 	}
 
 }

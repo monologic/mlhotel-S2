@@ -1,5 +1,5 @@
 <div class="title-reser teal lighten-2">Mis Reservas</div >
-  <div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();">
+  <div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();getBancos();">
     <form ng-submit="guardarCliente()" >
       <div class="row">
         <h2 style="color: #00897b">Mis reservas</h2>
@@ -72,7 +72,13 @@
                   <div class="col m12" style="margin-top: 40px;word-spacing:20px;color:#00695c;" id="TotalR"></div>
                   <div class="col m12" style="margin-top: 40px;word-spacing:20px;color:#00695c;" id="TotalRCero"></div>
                 </div>
-                
+                <div class="input-field col s12 m6" id="bancoDiv" style="display: none;">
+                  <select class="icons" ng-model="banco" id="banco">
+                    <option value="" disabled selected>Banco</option>
+                    <option ng-repeat="banco in bancos" on-finish-render="ngRepeatFinished" value="{{banco.id}}" data-icon="banco/{{ banco.imagen }}" class="left circle">{{ banco.banco }}</option>
+                  </select>
+                  <label>Images in select</label>
+                </div>
             </div>  
           </div>
         </div>
@@ -226,6 +232,7 @@
       $('#TotalRCero').text('Total: S/0.00 ó $0.00') ;
 
       $('#sel-p').css('display','none');
+      $('#bancoDiv').css('display','none');
     }
   }
   function paypal(){
@@ -233,6 +240,7 @@
       $('#TotalRCero').css('display','none');
       $('#TotalR').css('display','block');
       $('#sel-p').css('display','block');
+      $('#bancoDiv').css('display','none');
     }
   }
   function boucher(){
@@ -240,6 +248,7 @@
       $('#TotalRCero').css('display','none');
       $('#TotalR').css('display','block');
       $('#sel-p').css('display','block');
+      $('#bancoDiv').css('display','block');
     }
   }
   $(document).ready(function(){

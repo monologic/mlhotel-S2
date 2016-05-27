@@ -244,7 +244,7 @@ class carritoController extends Controller
     {
         \Session::forget('cart');
         \Session::forget('fechas');
-        \Session::forget('cleinte');
+        \Session::forget('cliente');
         \Session::forget('porcentaje');
         //return redirect()->route('cart-show');
     }
@@ -289,6 +289,8 @@ class carritoController extends Controller
         $cliente = \Session::get('cliente');
         $cliente['id'] = $cli->id;
         $cliente['email'] = $request->email;
+        $cliente['banco_id'] = $request->banco_id;
+
         \Session::put('cliente', $cliente);
 
         $porcentaje = \Session::get('porcentaje');

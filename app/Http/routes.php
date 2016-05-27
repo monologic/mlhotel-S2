@@ -19,6 +19,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
     Route::get('/', 'PanelController@index');
 
 	Route::resource('emptipo', 'EmptipoController');
+	
 	Route::resource('empleado', 'empleadoController');
 	Route::resource('usuariotipo', 'UsuariotipoController');
 	Route::resource('usuario', 'UsuarioController');
@@ -137,6 +138,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::get('admin/getTiposPago', 'PagotipoController@index');
 
+	Route::resource('admin/banco', 'BancoController');
 
 /*
 |--------------------------------------------------------------------------
