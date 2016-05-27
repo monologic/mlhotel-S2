@@ -1,7 +1,7 @@
 <script>
   document.title = "Servicios - Residencial Moquegua";
 </script>
-<div class="row" ng-controller="serviciosController" ng-init="getServicios();" style="width: 90%;margin: 80px auto 20%  auto">
+<div class="row" ng-controller="serviciosController" ng-init="getServicios();main()" style="width: 90%;margin: 80px auto 20%  auto">
     <p class="titulo2">Servicios</p>
     
     <div class="row" style="margin-top: 80px">
@@ -13,16 +13,11 @@
       </div>
      
       <div class="col m9 s12" style="background-color: white;">
-          <div class="text-alter">
-                    <h3 class="titulo3" style="text-align: center">Nuestro Servicios</h3>
-                    <br>
-                    <br>
-                    <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="text-alter" style="display: block">
+                    <div class="" style="width: 300px;margin: 10px auto 10px auto">
+                      <img src="imagen/Categoria/main/{{main.imagen}}" width="300px" alt="Residencial Moquegua servicios hotel">
+                    </div>
+                    <p style="text-align: center;">{{main.contenido}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis numquam magnam quam. Voluptates nulla, nesciunt consequuntur soluta, esse ducimus nostrum velit sed veritatis tempora aliquam ab facilis perferendis odit molestias.</p>
                           
         </div>
 

@@ -71,6 +71,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/grid", {templateUrl: "partials/registro/grid.html", controller: "PageCtrl"})
     
     .when("/Reservas", {templateUrl: "partials/reserva/ver.html", controller: "PageCtrl"})
+    .when("/ReservasHistorial", {templateUrl: "partials/reserva/historial.html", controller: "PageCtrl"})
     .when("/ReservasConfirmar", {templateUrl: "partials/reserva/verconfirmar.html", controller: "PageCtrl"})
     .when("/ReservaAsignar/:idReserva", {templateUrl: "partials/reserva/asignar.html", controller: "PageCtrl"})
     .when("/DetalleHabitaciones", {templateUrl: "partials/habitacion/detalleHabitacion.html", controller: "PageCtrl"})

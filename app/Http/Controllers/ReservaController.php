@@ -95,6 +95,16 @@ class ReservaController extends Controller
         //
     }
 
+    public function getallreservas()
+    {
+        $all = Reserva::all();
+        $all->each(function($all){
+            $all->cliente;
+        });
+        $all = $all ->toArray();
+        return response()->json( $all );
+    }
+
     public function getReservasNoAsignadas()
     {
         $reservas = Reserva::where('reservaestado_id',2)
