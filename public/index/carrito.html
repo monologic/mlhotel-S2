@@ -2,8 +2,8 @@
   <div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();">
     <form ng-submit="guardarCliente()" >
       <div class="row">
-        <h2>Mis reservas</h2>
-        <div class="col m12" id="ventana" style="padding:20px 40px 20px 40px">
+        <h2 style="color: #00897b">Mis reservas</h2>
+        <div class="col m6" id="ventana" style="padding:20px 40px 20px 40px">
           <div style="background-color: #b2dfdb;padding: 20px">
             <table class="highlight">
               <thead>
@@ -36,10 +36,7 @@
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col m6">   
+          <div class="" style="margin-top: 20px">   
             <div>
                   <p style="color: #00897b">Elija un método de pago</p>
                   <div class="row" style="margin-top: 40px">
@@ -59,7 +56,7 @@
                   </div>
                 <div class="row" id="sel-p" style="display: none;">
                   <div class="input-field porcentajePago" id="porcentajePago" >
-                    <div class="col m5" style="padding-top: 15px">
+                    <div class="col m5" style="padding-top: 15px;color:#00695c">
                       Porcentaje de pago:
                     </div>
                     <div class="col m4">
@@ -72,9 +69,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="col m6" style="margin-top: 40px" id="TotalR"></div>
-                <div class="col m6" style="margin-top: 40px" id="TotalRCero"></div>
+                <div class="totales">
+                  <div class="col m12" style="margin-top: 40px;word-spacing:20px;color:#00695c;" id="TotalR"></div>
+                  <div class="col m12" style="margin-top: 40px;word-spacing:20px;color:#00695c;" id="TotalRCero"></div>
+                </div>
+                
             </div>  
+          </div>
         </div>
         <div id="cliente" class="col m6">
             <p style="color: #00897b">Ingrese su información</p>
@@ -107,7 +108,11 @@
               <button type="submit" class="waves-effect waves-light btn centrar" href="#modal1" disabled id="btn-res">Reservar</button>
             </div> 
         </div>
-      </div>    
+      </div>
+
+        
+        
+     
     </form>
   </div>   
   <section ng-controller="habtipoController" ng-init="res();" style="min-height:300px;margin-top:100px">

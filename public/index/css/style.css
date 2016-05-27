@@ -2,6 +2,11 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.totales{
+  display: block;
+  background-color: #4db6ac;
+  text-align: center;
+}
 /* booking slider*/
 .btns{
   position: absolute;
