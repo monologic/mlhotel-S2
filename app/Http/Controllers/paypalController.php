@@ -260,6 +260,9 @@ class PaypalController extends BaseController
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
 
+	    $plantilla = 'emails.pagoceroemail';
+	    $this->sendEmail($reserva->id, $cliente['email'], $plantilla);
+
 	    \Session::forget('cart');
 	}
 	public function operacionPagoDeposito()
@@ -299,11 +302,10 @@ class PaypalController extends BaseController
 	    \Session::forget('cart');
 	}
 
-	public function sendEmail()
+	public function sendEmail($id, $email, $plantilla)
 	{
 		$mailController = MailController();
-
-		$mailController->sendMailPagos();
+		$mailController->sendMailPagos($id, $email, $plantilla);
 	}
 
 }

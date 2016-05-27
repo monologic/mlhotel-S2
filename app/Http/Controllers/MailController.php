@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Mail;
 use App\Hotel;
+use App\Reserva;
 
 class MailController extends Controller
 {
@@ -29,13 +30,27 @@ class MailController extends Controller
 
    }
 
-   public function sendMailPagos()
+   public function sendMailPagos($id, $email, $plantilla)
    {
+        $reserva = $this->getReserva($id);
+
         $user = User::findOrFail($id);
 
-        Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+        Mail::send($plantilla, ['user' => $user], function ($m) use ($user) {
             $m->from('hello@app.com', 'Your Application');
             $m->to($user->email, $user->name)->subject('Your Reminder!');
         });
+    }
+    public function getReserva($id)
+    {
+        $reserva = find($id);
+        $reserva->habtiporeservas;
+        $reserva->cliente;
+        $habReserva = $reserva->habtiporeservas;
+        $reserva->habtiporeservas->each(function($habReserva){
+            $habReserva->habtipo;
+        });
+
+
     }
 }
