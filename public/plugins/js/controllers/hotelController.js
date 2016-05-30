@@ -74,6 +74,8 @@ app.controller('hotelController', function($scope,$http) {
         $scope.dni = data.dni;
         $scope.direccion = data.direccion;
         $scope.celular = data.celular;
+
+        $scope.idUsuario = data.usuario.id;
     }
 
     $scope.guardarAdminHotel = function () {
@@ -92,6 +94,25 @@ app.controller('hotelController', function($scope,$http) {
                 'empleado':dataAdmin.id 
             }).then(function successCallback(response) {
                 $scope.hoteles = response.data;
+            }, function errorCallback(response) {
+            });
+    }
+
+    $scope.actualizarAdministrador = function () {
+        $http.put('admin/updateAdminHotel/' + dataAdmin.id,
+            {
+                'nombres':$scope.nombre,
+                'apellidos':$scope.apellido,
+                'sexo':$('input[name="sexo"]:checked', '#myForm5').val(),
+                'fecha_nac':$scope.nacimiento,
+                'dni':$scope.dni,
+                'direccion':$scope.direccion,
+                'celular':$scope.celular,
+                'emptipo_id':1,
+                'hotel_id':$scope.hotel_id
+            }).then(function successCallback(response) {
+                $scope.hoteles = response.data;
+                alert("Se ha modificado la información de administrador.");
             }, function errorCallback(response) {
             });
     }
@@ -152,5 +173,43 @@ app.controller('hotelController', function($scope,$http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
-    } 
+    }
+
+    $scope.actualizarUsuario = function () {
+
+        $http.put('admin/updateAdmin/'+$scope.idUsuario,
+        {
+            'usuario':$scope.usuario,
+            'usuariotipo_id': 2
+        })
+        .then(function successCallback(response) {
+            alert('Se ha modificado tu nombre de Usuario')
+            $scope.idUsuario = response.data.id;
+            $scope.usuario = response.data.usuario;
+
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
+    $scope.actualizarPassword = function () {
+        if ($scope.password == $scope.password2) {
+            $http.put('admin/updateAdmin/'+$scope.idUsuario,
+            {
+                'password':$scope.password
+            })
+            .then(function successCallback(response) {
+                alert('Se ha modificado tu Password')
+                $scope.idUsuario = response.data.id;
+                $scope.usuario = response.data.usuario;
+
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
+        else {
+            alert("El Password no coincide");
+        }
+    }
 });

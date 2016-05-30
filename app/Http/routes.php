@@ -90,6 +90,10 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 
 	Route::get('admin/report/{fechaini}/{fechafin}', ['uses' => 'graficas@buscar', function ($fechaini, $fechafin) {
 	}]);
+
+	Route::put('updateAdmin/{id}', 'HotelController@updateAdmin');
+	Route::put('updateAdminHotel/{id}', 'HotelController@updateAdminHotel');
+
 });
 	Route::get('admin/getAllReservas', 'ReservaController@getallreservas');
 	Route::get('admin/buscarCliente/{tipo}/{valor}', ['uses' => 'ClienteController@buscart', function ($tipo, $valor) {

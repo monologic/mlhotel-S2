@@ -15,23 +15,26 @@
     		<tr>
     			<th>#</th>
     			<th>Nombre del Hotel</th>
+                <th>Acción</th>
     			<th>Administrador</th>
                 <th>Acción</th>
+                
     		</tr>
     	</thead>
     	<tbody>
     		<tr ng-repeat="x in hoteles">
 			    <td>{{$index+1}}</td>
                 <td>{{x.nombre}}</td>
+                <td>
+                    <a href="" ng-click="dataEditar(x);" data-toggle="modal" data-target="#editar" class="btn btn-success"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                </td>
+                <td>{{x.administrador.nombres}} {{x.administrador.apellidos}}</td>
                 <td ng-if="x.administrador != null">
-                    {{x.administrador.nombres}} {{x.administrador.apellidos}}
-                    <a href="" ng-click="dataEditarAdmin(x.administrador, x.id);" data-toggle="modal" data-target="#EditarAdmin" class="btn btn-success btn-sm">Cambiar Admin</a>
+                    <a href="" ng-click="dataEditarAdmin(x.administrador, x.id);" data-toggle="modal" data-target="#editarAdministrador" class="btn btn-success btn-sm">Editar</a>
+                    <a href="" data-toggle="modal" data-target="#EditarAdmin" class="btn btn-warning btn-sm">Cambiar</a>
                 </td>
                 <td ng-if="x.administrador == null">
                     <button class="btn btn-primary" data-toggle="modal" ng-click="dataCrearAdmin(x.id);" data-target="#myModal"><a href=""></a>Asignar Administrador</button>
-                </td>
-                <td>
-                	<a href="" ng-click="dataEditar(x);" data-toggle="modal" data-target="#editar" class="btn btn-success"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                 </td>
 			</tr>
     	</tbody>
@@ -222,6 +225,100 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editarAdministrador" tabindex="-1" role="dialog" aria-labelledby="editarModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="myModalLabel">Editar Administrador</h2>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active"><a data-target="#home" data-toggle="tab">Usuario</a></li>
+                        <li><a data-target="#profile" data-toggle="tab">Información</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <div class="formularios">
+                                <form ng-submit="actualizarUsuario(idUsuario)">
+                                    <h3>Editar Nombre de Usuario</h3>
+                                    <div class="form-group ">
+                                        <label for="usuario">Usuario</label>
+                                        <input type="text" class="form-control" id="usuario" ng-model="usuario" placeholder="Escriba su usuario al sistema" required>
+                                    </div>
+                                    <div class="inputs">
+                                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true">Guardar</button><br>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="formularios">
+                                <form ng-submit="actualizarPassword(idUsuario)">
+                                <h3>Editar Contraseña</h3>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" ng-model="password" placeholder="Ingrese una Contraseña" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Escriba nuevamente el Password</label>
+                                        <input type="password" class="form-control" id="password2" ng-model="password2" placeholder="Ingrese otra vez su contraseña" required>
+                                    </div>
+                                    <div class="inputs">
+                                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true">Guardar</button><br>
+                                    </div>
+                                </form>
+                            </div>        
+                        </div>
+                        <div class="tab-pane" id="profile">
+                            <form ng-submit="actualizarAdministrador()" id="myForm5">
+                                <div class="form-group ">
+                                    <label for="exampleInputEmail1">Nombres</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Nombres" ng-model="nombre" required>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="exampleInputEmail1">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellido" placeholder="Apellidos" ng-model="apellido" required>
+                                </div>
+                                <div class="radio">Sexo:
+                                    <label>
+                                        <input type="radio" name="sexo" id="sexo" value="Masculino" required>
+                                        Masculino
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="sexo" id="sexo" value="Femenino" required>
+                                        Femenino
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="nacimiento" ng-model="nacimiento" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">DNI</label>
+                                    <input type="text" class="form-control" id="dni" placeholder="Numero de DNI" ng-model="dni" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" placeholder="Dirección donde reside" ng-model="direccion" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Número telefónico</label>
+                                    <input type="text" class="form-control" id="celular" placeholder="Número telefónico o celular" ng-model="celular" required>
+                                </div>
+                                <div class="inputs">
+                                    <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true">Guardar</button><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function blurFunction() {
             if($('#password').val() == $('#password2').val()){

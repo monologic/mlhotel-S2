@@ -133,4 +133,8 @@ class UsuarioController extends Controller
         $usuario = Usuario::find(\Auth::user()->id);
         return response()->json( $usuario );
     }
+    public function disponibilidadUsuario($usuario)
+    {
+        $a = Usuario::count()->where('usuario', $usuario)->get();
+    }
 }

@@ -48,9 +48,7 @@ class HotelController extends Controller
         $hotel = new Hotel($request->all());
         $hotel->save();
 
-        return response()->json([
-            "mensaje" => 'Hotel Creado'
-        ]);
+        return $this->getHoteles();
     }
 
     /**
@@ -109,6 +107,7 @@ class HotelController extends Controller
     public function getHoteles()
     {
         $hoteles = Hotel::all();
+
         $hoteles = $hoteles->toArray();
 
         foreach ($hoteles as $key => $hotel) {
@@ -128,10 +127,11 @@ class HotelController extends Controller
                     ['hotel_id', $hotel_id],
                     ['emptipo_id', $id_adm],
                 ])->get();
-
-        $adm = $adm->toArray();
+        
     
         if (count($adm) > 0) {
+            $adm[0]->usuario; 
+            $adm = $adm->toArray();
             return $adm[0];
         }
         else {
@@ -248,5 +248,28 @@ class HotelController extends Controller
     {
         $hotel = Hotel::find(Auth::user()->empleado->hotel->id);
         return response()->json( $hotel );  
+    }
+    public function updateAdmin(Request $request, $id)
+    {
+        $usuario = Usuario::find($id);
+        $req = $request->all();
+        if (array_key_exists('usuario', $req)) {
+            $usuario->usuario = $request->usuario;
+            $usuario->usuariotipo_id = $request->usuariotipo_id;
+        }
+        if (array_key_exists('password', $req)) {
+            $usuario->password = bcrypt($request->password);
+        }
+        $usuario->save();
+        return $this->getHoteles();
+    }
+
+    public function updateAdminHotel(Request $request, $id)
+    {
+        $empleado = Empleado::find($id);
+        $empleado->fill($request->all());
+        $empleado->save();
+
+        return $this->getHoteles();
     }
 }
