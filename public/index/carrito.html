@@ -1,5 +1,4 @@
-<div class="title-reser teal lighten-2">Mis Reservas</div >
-  <div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();getBancos();">
+<div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getPorcentajes();getDias();res();getTipoCambio();getTiposPago();getBancos();">
     <form ng-submit="guardarCliente()" >
       <div class="row">
         <h2 style="color: #00897b">Mis reservas</h2>
@@ -40,7 +39,7 @@
             <div>
                   <p style="color: #00897b">Elija un método de pago</p>
                   <div class="row" style="margin-top: 0px">
-                     <div class="col m6 s12" id="pagoCeroDiv">
+                     <div class="col m4 s12" id="pagoCeroDiv">
                       <input name="opciones" type="radio" id="test1" onchange="porcen()" />
                       <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
                     </div>
@@ -53,6 +52,12 @@
                       <label for="test3" style="color: #009688"><img src="deposito.png" style="width: 70px;margin-top: 5px"></label>
                     </div>
                   </div>
+                <div class="row" id="bancoDiv" style="display: none;">
+                  <div class="col s5 m5" style="padding-top: 20px;color:#00695c" >Bancos Disponibles : </div>
+                  <select class="icons col s7 m7" ng-model="banco" id="banco">
+                    <option ng-repeat="banco in bancos" on-finish-render="ngRepeatFinished" value="{{banco.id}}" data-icon="banco/{{ banco.imagen }}" class="left circle">{{ banco.banco }}</option>
+                  </select>
+                </div>
                 <div class="row" id="sel-p" style="display: none;">
                   <div class="input-field porcentajePago" id="porcentajePago" >
                     <div class="col m5" style="padding-top: 15px;color:#00695c">
@@ -72,17 +77,10 @@
                   <div class="col m12" style="margin-top: 40px;word-spacing:20px;color:#00695c;" id="TotalR"></div>
                   <div class="col m12" style="margin-top: 40px;word-spacing:20px;color:#00695c;" id="TotalRCero"></div>
                 </div>
-                <div class="input-field col s12 m6" id="bancoDiv" style="display: none;">
-                  <select class="icons" ng-model="banco" id="banco">
-                    <option value="" disabled selected>Banco</option>
-                    <option ng-repeat="banco in bancos" on-finish-render="ngRepeatFinished" value="{{banco.id}}" data-icon="banco/{{ banco.imagen }}" class="left circle">{{ banco.banco }}</option>
-                  </select>
-                  <label>Images in select</label>
-                </div>
             </div>  
           </div>
         </div>
-        <div id="cliente" class="col m6">
+        <div id="cliente" class="col m6" style="margin-top: 20px">
             <p style="color: #00897b">Ingrese su información</p>
             <div class="input-field col s12" style="margin-top:5px">
             <input id="nombre" type="text" class="validate" ng-model="nombres"  required>
