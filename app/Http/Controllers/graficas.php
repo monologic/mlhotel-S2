@@ -18,37 +18,37 @@ class graficas extends Controller
         	->get();
 
         $diasReservas = \DB::table('reservas')
-                          ->select(DB::raw('DAY(fecha_inicio) , count(fecha_inicio)'))
+                          ->select(DB::raw('CONCAT(DAY(fecha_inicio),- MONTH(fecha_inicio)) as  fecha_inicio, count(fecha_inicio) as cantidad'))
                           ->whereRaw('fecha_inicio BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -7 DAY)) AND NOW()')
                           ->groupBy(DB::raw('DAY(fecha_inicio)'))
                           ->get();
 
         $mesesReservas = \DB::table('reservas')
-                          ->select(DB::raw('YEAR(fecha_inicio), MONTH(fecha_inicio) , count(fecha_inicio)'))
+                          ->select(DB::raw('CONCAT(MONTH(fecha_inicio),- YEAR(fecha_inicio)) as fecha_inicio, MONTH(fecha_inicio) , count(fecha_inicio) as cantidad'))
                           ->whereRaw('fecha_inicio BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -6 MONTH)) AND NOW()')
                           ->groupBy(DB::raw('YEAR(fecha_inicio), MONTH(fecha_inicio)'))
                           ->get();
 
         $yearsReservas = \DB::table('reservas')
-                          ->select(DB::raw('YEAR(fecha_inicio) , count(fecha_inicio)'))
+                          ->select(DB::raw('YEAR(fecha_inicio) as fecha_inicio , count(fecha_inicio) as cantidad'))
                           ->whereRaw('fecha_inicio BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -6 YEAR)) AND NOW()')
                           ->groupBy(DB::raw('YEAR(fecha_inicio)'))
                           ->get();
 
         $diasRegistros = \DB::table('registros')
-                          ->select(DB::raw('DAY(fechaentrada) , SUM(total)'))
+                          ->select(DB::raw('CONCAT(DAY(fechaentrada),- MONTH(fechaentrada)) as fecha , SUM(total) as total'))
                           ->whereRaw('fechaentrada BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -7 DAY)) AND NOW()')
                           ->groupBy(DB::raw('DAY(fechaentrada)'))
                           ->get();
 
         $mesesRegistros = \DB::table('registros')
-                          ->select(DB::raw('YEAR(fechaentrada), MONTH(fechaentrada) , SUM(total)'))
+                          ->select(DB::raw('CONCAT(MONTH(fechaentrada),- YEAR(fechaentrada)) as fecha , SUM(total) as total'))
                           ->whereRaw('fechaentrada BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -6 MONTH)) AND NOW()')
                           ->groupBy(DB::raw('YEAR(fechaentrada), MONTH(fechaentrada)'))
                           ->get();
 
         $yearsRegistros = \DB::table('registros')
-                          ->select(DB::raw('YEAR(fechaentrada) , SUM(total)'))
+                          ->select(DB::raw('YEAR(fechaentrada) as fecha , SUM(total) as total'))
                           ->whereRaw('fechaentrada BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -6 YEAR)) AND NOW()')
                           ->groupBy(DB::raw('YEAR(fechaentrada)'))
                           ->get();
@@ -65,7 +65,7 @@ class graficas extends Controller
 
         return response()->json($report);
     }
-    public function diasReservas($fechaini, $fechafin)
+    public function diasReservas($fechaini)
     {
         
     }
