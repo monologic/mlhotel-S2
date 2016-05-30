@@ -200,8 +200,11 @@
     <script>
     function fe(){
         var f = new Date($( "#fechaini" ).val());
-        d = f.getDate() + 2;
-        fec = f.getFullYear() + "-" + twoDigits(f.getMonth() + 1) + "-" + twoDigits(f.getDate() + 2);
+        f = f.getTime();
+        f = f + 2*24*60*60*1000;
+        f = new Date(f);
+        //alert(f);
+        fec = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
         $( "#fechafin" ).val(fec);
     }
     function twoDigits(d) {

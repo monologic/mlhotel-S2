@@ -35,13 +35,14 @@ class MailController extends Controller
    public function sendMailPagos($id, $cliente, $plantilla)
    {
         $hotel = Hotel::all();
-
+        $correo = $hotel[0]->correo;
+        //ddd($correo);
         $reserva = $this->getReserva($id, $cliente);
         
         $cliente = $reserva['cliente'];
 
-        Mail::send($plantilla, $reserva, function ($m) use ($cliente) {
-            $m->from('chalex_777@hotmail.com', 'Your Application');
+        Mail::send($plantilla, $reserva, function ($m) use ($cliente, $correo) {
+            $m->from($correo, 'Confirmación de Reserva');
             $m->to( $cliente['email'], $cliente['nombres'] . " " . $cliente['apellidos'] )->subject('Confirmación de Reserva');
         });
     }

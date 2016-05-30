@@ -33,7 +33,7 @@
 			@endforeach
   		</table>
   	</p>
-  	<p>El horario de Check-in es {{ $checkin }} y el Check-out es {{ $checkout }}.</p>
+  	<p>El horario de Check-in es {{ $hotel['checkin'] }} y el Check-out es {{ $hotel['checkout'] }}.</p>
   	<p>
   		El pago de la reserva, tal como lo solicitó será efectuada en la recepción del Hotel por un importe de S/ {{ $total }}.
   	</p>

@@ -1,16 +1,18 @@
 app.controller('registroController', function($scope,$http , $routeParams) {
-
+    
+    function twoDigits(d) {
+        if(0 <= d && d < 10) return "0" + d.toString();
+        if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+        return d.toString();
+    }
     $scope.ponerFecha = function () {
         var f = new Date();
-        $scope.fechaini = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +f.getDate();
-        $scope.fechafin = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 1);
-        //alert($scope.fechaini);
-        /*
-        var fechaini1 = new Date($scope.fechaini);
-        var fechafin1 = new Date($scope.fechafin);
-
-        alert((fechafin1 - fechaini1)/86400000);
-        */
+        $scope.fechaini = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+        f = f.getTime();
+        f = f + 1*24*60*60*1000;
+        f = new Date(f);
+        $scope.fechafin = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+    
     }
     $scope.ponerFecha2 = function () {
         var f = new Date();

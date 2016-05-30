@@ -33,7 +33,7 @@
 			@endforeach
   		</table>
   	</p>
-  	<p>El horario de Check-in es {{ $checkin }} y el Check-out es {{ $checkout }}.</p>
+  	<p>El horario de Check-in es {{ $hotel['checkin'] }} y el Check-out es {{ $hotel['checkout'] }}.</p>
   	<p>
   		El pago de la reserva, tal como lo solicitó se efectuó debitando su cuenta Paypal el importe de {{ round(($total_pagado / $moneda['tipocambio']), 2) }} dólares.
   		
