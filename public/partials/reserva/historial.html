@@ -40,26 +40,23 @@
                 <div class="modal-header">
                     <h2>Informacion de la reserva</h2>
                 </div>
-                <div class="modal-body" style="color:black">
-                    <div class="">
-                        <div class="col m3">Nombre: </div>
-                        <div style="width: 100px;background-color: red" ng-bind="nombre"></div>
-                        <div class="col m3">Apellidos: </div>
-                        <div class="col m3" ng-bind="apellido"></div>
-                        <div class="col m3">Documento de Identidad: </div>
-                        <div class="col m3" ng-bind="dni"></div>
-                        <div class="col m3">fecha de la reserva: </div>
-                        <div class="col m3" ng-bind="fecha_reserva"></div>
-                        <div class="col m3">fecha de para la reserve : </div>
-                        <div class="col m3" ng-bind="fecha_inicio"></div>
-                        <div class="col m3">Fecha de la salida : </div>
-                        <div class="col m3" ng-bind="fecha_fin"></div>
-                        <div class="col m3">Tipo de pago: </div>
-                        <div class="col m3" ng-bind="pagotipo"></div>
-                        <div class="col m3">Total: </div>
-                        <div class="col m3" ng-bind="total"></div>
-                        
-                    </div>
+                <div class="modal-body row" style="color:black;font-size: 1.5rem">
+                        <div class="col-md-6" style="text-align: right;">Nombre: </div>
+                        <div class="col-md-6" ng-bind="nombre"></div>
+                        <div class="col-md-6" style="text-align: right;">Apellidos: </div>
+                        <div class="col-md-6" ng-bind="apellido"></div>
+                        <div class="col-md-6" style="text-align: right;">Documento de Identidad: </div>
+                        <div class="col-md-6" ng-bind="dni"></div>
+                        <div class="col-md-6" style="text-align: right;">Fecha de la reserva: </div>
+                        <div class="col-md-6" ng-bind="fecha_reserva"></div>
+                        <div class="col-md-6" style="text-align: right;">fecha de entrada : </div>
+                        <div class="col-md-6" ng-bind="fecha_inicio"></div>
+                        <div class="col-md-6" style="text-align: right;">Fecha de la salida : </div>
+                        <div class="col-md-6" ng-bind="fecha_fin"></div>
+                        <div class="col-md-6" style="text-align: right;">Tipo de pago: </div>
+                        <div class="col-md-6" ng-bind="pagotipo"></div>
+                        <div class="col-md-6" style="text-align: right;">Total: </div>
+                        <div class="col-md-6" ng-bind="total"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
