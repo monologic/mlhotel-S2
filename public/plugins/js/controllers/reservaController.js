@@ -2,11 +2,24 @@ app.controller('reservaController', function($scope,$http) {
     $scope.getAllreserva = function (){
         $http.get('admin/getAllReservas').then(function successCallback(response) {
             $scope.allreservas = response.data;
+            $scope.nombre = data.nombre;
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+    }
+    $scope.verCliente = function (data) {
+        $scope.idcliente = data.id;
+        $scope.nombre = data.nombres;
+        $scope.apellido = data.apellidos;
+        $scope.dni = data.dni;
+        $scope.estado = data.estado;
+        $scope.fecha_reserva = data.fecha_reserva;
+        $scope.fecha_inicio = data.fecha_inicio;
+        $scope.fecha_fin = data.fecha_fin;
+        $scope.pagotipo = data.pagotipo;
+        $scope.total = data.total;
     }
 	$scope.getReservasPorAsignar = function () {
 		$http.get('admin/buscarReservasNoAsignadas').then(function successCallback(response) {
