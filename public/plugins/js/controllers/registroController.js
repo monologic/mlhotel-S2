@@ -75,7 +75,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             // or server returns response with an error status.
             }); 
         }
-        alert('Asignaci��n de habitaciones exitosa.');
+        alert('Asignaci¨®n de habitaciones exitosa.');
         window.location.href = 'admin#/DetalleHabitaciones';
     }
     $scope.getReservaInfo = function () {
@@ -112,7 +112,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.finalizar = function (id) {
         $http.get('admin/finalizarRegistro/' + id).then(function successCallback(response) {
             
-            alert("Se ha finalizado la estadía...");
+            alert("Se ha finalizado la estadÃ­a...");
             window.location.href = 'admin#/DetalleHabitaciones';
             
         }, function errorCallback(response) {
@@ -233,6 +233,24 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+
+    scope.dateDiff = function (birthMonth, birthDay, birthYear) {
+        var todayDate = new Date(),
+            todayYear = todayDate.getFullYear(),
+            todayMonth = todayDate.getMonth(),
+            todayDay = todayDate.getDate(),
+            age = todayYear - birthYear.date;
+
+        if (todayMonth < birthMonth.date - 1) {
+            age--;
+        }
+
+        if (birthMonth.date - 1 === todayMonth && todayDay < birthDay.date) {
+            age--;
+        }
+
+        return $scope.age = age;
+    };
 
     $scope.getDisponibilidad = function () {
         $http.get('admin/grillaDisponibilidad/'+$scope.desde+'/'+$scope.hasta).then(function successCallback(response) {
