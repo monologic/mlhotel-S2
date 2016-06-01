@@ -68,33 +68,42 @@ class MailController extends Controller
         });
         $reserva = $reserva->toArray();
         $habtipos = $reserva['habtiporeservas'];
-            $ht = array();
-            foreach ($habtipos as $key => $habtipo) {    
-                if (count($ht) > 0) {
-                    foreach ($ht as $k => $htt) {
-                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
-                            $element = $ht[$k];
-                            $el = $element['count'];
-                            $el++;
-                            $element['count'] = $el;
-                            $ht[$k] = $element;
-                        }
-                        else {
-                            $habtipo['habtipo']['count'] = 1;
-                            $ht[] = $habtipo['habtipo'];
-                        }
-
-                    }
-                }
-                else {
-                    $habtipo['habtipo']['count'] = 1;
+        $ht = array();
+        foreach ($habtipos as $key => $habtipo) {    
+            if (count($ht) > 0) {
+                if($this->countReservas($ht, $habtipo) == 0){
+                    $habtipo['habtipo']['count'] = 0;
                     $ht[] = $habtipo['habtipo'];
-                    
                 }
-                $reserva['habtiposcount'] = $ht;
             }
+            else {
+                $habtipo['habtipo']['count'] = 0;
+                $ht[] = $habtipo['habtipo'];
+            }
+        }
+        foreach ($habtipos as $key => $habtipo) {
+            foreach ($ht as $k => $htt) { 
+                if ( $habtipo['habtipo']['id'] == $htt['id'] ){
+                    $c = $ht[$k]['count'];
+                    $c++;
+                    $ht[$k]['count'] = $c;
+                }
+            }
+        }
+        $reserva['habtiposcount'] = $ht;
 
         return $reserva;
 
+    }
+
+    public function countReservas($ht, $habtipo)
+    {
+        $c = 0;
+        foreach ($ht as $k => $htt) {
+            if ( $habtipo['habtipo']['id'] == $htt['id']) {
+                $c = 1;
+            }
+        }
+        return $c;
     }
 }

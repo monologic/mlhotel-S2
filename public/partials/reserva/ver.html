@@ -35,7 +35,7 @@
                 
             </div>
             <div class="col-sm-4" style="bottom: 0;">
-                <p><a href="admin#/ReservaAsignar/{{y.id}}" class="btn btn-success">Asignar Habitaciones</a></p>
+                <p><a href="" ng-click="buscarHabs(y)" data-toggle="modal" data-target="#asignar" class="btn btn-success">Asignar Habitaciones</a></p>
                 <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger">Cancelar Reserva</a></p>
                 <p><a href="" ng-click="dataEditar(y)" class="btn btn-warning" data-toggle="modal" data-target="#editar">Editar Reserva</a></p>
             </div>
@@ -91,10 +91,94 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="asignar" tabindex="-1" role="dialog" aria-labelledby="editarModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2 class="modal-title" id="myModalLabel">Asignar Habitaciones</h2>
+                    </div>
+                    <div class="modal-body">
+                        <br><br>
+                    <div class="formularios">
+                            <div class="row" style="width: 100%" >
+                                <div class="col-md-4">
+                                     <p>Reservado para:  </p>
+                                    <p style="margin-left: 20px">{{ Reservas.cliente.nombres }} {{ Reservas.cliente.apellidos }}</p>
+                                </div>
+                               <div class="col-md-4">
+                                   <p>Fecha de Entrada: </p>
+                                    <p style="margin-left: 20px">{{ Reservas.fecha_inicio }}</p>
+                               </div>
+                                <div class="col-md-4">
+                                    <p>Fecha de Salida: </p>
+                                    <p style="margin-left: 20px">{{ Reservas.fecha_fin }}</p>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="static-reserva">
+                            <h4 class="text-center">Habitaciones</h4>
+                            <table class="table">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="z in Reservas.habtiposcount">
+                                        <td>{{ z.nombre }}</td>
+                                        <td>{{ z.count }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    <br>
+                    <div>
+                        
+                    </div>
+                    <div ng-repeat="habtipo in tipoPerHabs">
+                        <h3 style="color:black">{{habtipo.nombre}}</h3>
+                        <div class="row">
+                            <div class="col-md-6"> <div style="width: 60%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#1E8BC3;color:black;">Reservadas: {{habtipo.habtiporeservascount}}</div></div> 
+                            <div class="col-md-6"> <div style="width: 60%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#F9690E;color:black;">disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div></div>  
+                        </div>
+                        <div class="tabla-hab">
+                            <table class="table table-hover" style="margin: -10px 0px 30px 10px; box-shadow: 5px 5px 5px #888888;">
+                                <thead>
+                                    <tr>
+                                        <th>Número Habitación</th>
+                                        <th>Estado</th>
+                                        <th>Ocupar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="p in habtipo.habitaciones">
+                                        
+                                        <td>{{p.numero}}</td>
+                                        <td>{{p.estado.nombre}}</td>
+                                        <td>
+                                            <div class="checkbox">
+                                              <label>
+                                                <input type="checkbox" id="{{ p.numero }}" ng-change="clickOnCheck(p);" ng-model="checks" class="checks" style="left: 45%">
+                                              </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" data-dismiss="modal" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); " style="display:none;position: fixed;" >Guardar Cambios</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>    
 <script>
 $('#myCollapsible').collapse({
   toggle: false
 })
+
     
 </script>

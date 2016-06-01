@@ -40,6 +40,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::resource('noticia', 'NoticiaController');
 	Route::resource('pago', 'PagotipoController');
 	Route::resource('mainservice', 'MainserviceController');
+	Route::resource('reserva', 'ReservaController');
 
 	
 	Route::get('getmainservices', 'MainserviceController@getMain');

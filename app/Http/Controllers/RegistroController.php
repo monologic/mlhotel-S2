@@ -183,6 +183,9 @@ class RegistroController extends Controller {
         $registro->fechaentrada = $request->fechaini . " " . date('H:i:s');
         $registro->fechasalida = $request->fechafin. " " . Auth::user()->empleado->hotel->checkout;
 
+        if ($request->codigo_reserva)
+             $registro->codigo_reserva = $request->codigo_reserva;
+
         $dias = (strtotime($request->fechaini)-strtotime($request->fechafin))/86400;
         $dias = abs($dias);
         $dias = floor($dias);
@@ -304,7 +307,6 @@ class RegistroController extends Controller {
         //$hora = strtotime ( '+1 minute' , strtotime ( $h[0]->checkout ) ) ;
         //$hora = date('H:i:s', $hora); 
         $hora = $h[0]->checkin ;
-
 
         $disp = array();
         

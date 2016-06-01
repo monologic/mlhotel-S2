@@ -81,7 +81,9 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reserva = Reserva::find($id);
+        $reserva->fill($request->all());
+        $reserva->save();
     }
 
     /**
@@ -147,30 +149,39 @@ INNER JOIN clientes ON reservas.cliente_id = clientes.id*/
             $ht = array();
             foreach ($habtipos as $key => $habtipo) {    
                 if (count($ht) > 0) {
-                    foreach ($ht as $k => $htt) {
-                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
-                            $ht[$k]['count']++;
-                        }
-                        else {
-                            $habtipo['habtipo']['count'] = 1;
-                            $ht[] = $habtipo['habtipo'];
-                        }
-
+                    if($this->countReservas($ht, $habtipo) == 0){
+                        $habtipo['habtipo']['count'] = 0;
+                        $ht[] = $habtipo['habtipo'];
                     }
                 }
                 else {
-                    $habtipo['habtipo']['count'] = 1;
+                    $habtipo['habtipo']['count'] = 0;
                     $ht[] = $habtipo['habtipo'];
-                    
                 }
+            }
+            foreach ($habtipos as $key => $habtipo) {
+                foreach ($ht as $k => $htt) { 
+                    if ( $habtipo['habtipo']['id'] == $htt['id'] ){
+                        $c = $ht[$k]['count'];
+                        $c++;
+                        $ht[$k]['count'] = $c;
+                    }
+                }
+            }
+            $reservas[$j]['habtiposcount'] = $ht;
+        }
+        return response()->json( $reservas );
+    }
 
-                $reservas[$j]['habtiposcount'] = $ht;
-
+    public function countReservas($ht, $habtipo)
+    {
+        $c = 0;
+        foreach ($ht as $k => $htt) {
+            if ( $habtipo['habtipo']['id'] == $htt['id']) {
+                $c = 1;
             }
         }
-        
-
-        return response()->json( $reservas );
+        return $c;
     }
 
     public function getReserva($id)
@@ -254,27 +265,27 @@ INNER JOIN clientes ON reservas.cliente_id = clientes.id*/
             $ht = array();
             foreach ($habtipos as $key => $habtipo) {    
                 if (count($ht) > 0) {
-                    foreach ($ht as $k => $htt) {
-                        if ( $habtipo['habtipo']['id'] == $htt['id']) {
-                            $ht[$k]['count']++;
-                        }
-                        else {
-                            $habtipo['habtipo']['count'] = 1;
-                            $ht[] = $habtipo['habtipo'];
-                        }
-                        echo "<br>";
-                        print_r($ht);
+                    if($this->countReservas($ht, $habtipo) == 0){
+                        $habtipo['habtipo']['count'] = 0;
+                        $ht[] = $habtipo['habtipo'];
                     }
                 }
                 else {
-                    $habtipo['habtipo']['count'] = 1;
+                    $habtipo['habtipo']['count'] = 0;
                     $ht[] = $habtipo['habtipo'];
-                    
                 }
-
-                $reservas[$j]['habtiposcount'] = $ht;
-
             }
+            foreach ($habtipos as $key => $habtipo) {
+                foreach ($ht as $k => $htt) { 
+                    if ( $habtipo['habtipo']['id'] == $htt['id'] ){
+                        $c = $ht[$k]['count'];
+                        $c++;
+                        $ht[$k]['count'] = $c;
+                    }
+                }
+            }
+            $reservas[$j]['habtiposcount'] = $ht;
+
         }
         
 

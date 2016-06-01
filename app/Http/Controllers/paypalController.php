@@ -210,6 +210,9 @@ class PaypalController extends BaseController
 	        'cliente_id' => $cliente['id'],
 	        'pagotipo_id' => 2
 	    ]);
+
+	    $reserva->codigo_reserva = $this->codigoReserva($reserva->id);
+	    $reserva->save();
 	    
 	    foreach($cart as $item){
 	        $this->saveOrderItem($item, $reserva->id);
@@ -218,6 +221,13 @@ class PaypalController extends BaseController
 	    $plantilla = 'emails.pagopaypalmail';
 	    $this->sendEmail($reserva->id, $cliente, $plantilla);
 
+	}
+	public function codigoReserva($id)
+	{
+		$cod = crc32( $id );
+		$cod = dechex ( $cod );
+		
+		return strtoupper($cod);
 	}
 	
 	private function saveOrderItem($item, $reserva_id)
@@ -258,11 +268,15 @@ class PaypalController extends BaseController
 	        'cliente_id' => $cliente['id'],
 	        'pagotipo_id' => 1
 	    ]);
+
+	    $reserva->codigo_reserva = $this->codigoReserva($reserva->id);
+	    $reserva->save();
 	    
 	    foreach($cart as $item){
 	        $this->saveOrderItem($item, $reserva->id);
 	    }
-
+	    $this->codigoReserva($reserva->id);
+	    
 	    $plantilla = 'emails.pagoceromail';
 	    $this->sendEmail($reserva->id, $cliente, $plantilla);
 
@@ -297,6 +311,9 @@ class PaypalController extends BaseController
 	        'cliente_id' => $cliente['id'],
 	        'pagotipo_id' => 3
 	    ]);
+
+	    $reserva->codigo_reserva = $this->codigoReserva($reserva->id);
+	    $reserva->save();
 	    
 	    foreach($cart as $item){
 	        $this->saveOrderItem($item, $reserva->id);
