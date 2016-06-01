@@ -226,7 +226,13 @@ app.controller('registroController', function($scope,$http , $routeParams) {
 
     $scope.getRegistros = function () {
         $http.get('admin/getRegistros/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
-            $scope.registros = response.data;
+
+            data = response.data;
+            for(i in data){
+                data[i].cliente.edad = $scope.dateDiff(data[i].cliente.fecha_nac);
+            }
+            console.log(data);
+            $scope.registros = data;
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -234,23 +240,26 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         });
     }
 
-    scope.dateDiff = function (birthMonth, birthDay, birthYear) {
+    $scope.dateDiff = function (fecha) {
+        fecha = fecha.split("=");
+
         var todayDate = new Date(),
             todayYear = todayDate.getFullYear(),
             todayMonth = todayDate.getMonth(),
             todayDay = todayDate.getDate(),
-            age = todayYear - birthYear.date;
+            age = todayYear - parseInt(fecha[0]);
 
-        if (todayMonth < birthMonth.date - 1) {
+        if (todayMonth < parseInt(fecha[1]) - 1) {
             age--;
         }
 
-        if (birthMonth.date - 1 === todayMonth && todayDay < birthDay.date) {
+        if (parseInt(fecha[1] - 1 === todayMonth && todayDay < parseInt(fecha[2]))) {
             age--;
         }
 
         return $scope.age = age;
-    };
+    }
+
 
     $scope.getDisponibilidad = function () {
         $http.get('admin/grillaDisponibilidad/'+$scope.desde+'/'+$scope.hasta).then(function successCallback(response) {

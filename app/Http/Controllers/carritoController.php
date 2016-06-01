@@ -279,8 +279,11 @@ class carritoController extends Controller
             $cli = new Cliente($request->all());
             $cli->save();
         }
-        else
+        else{
             $cli = $c[0];
+            $cli->email = $request->email;
+            $cli->save();
+        }
 
         $cliente = \Session::get('cliente');
         $cliente['id'] = $cli->id;

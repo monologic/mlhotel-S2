@@ -262,7 +262,8 @@ INNER JOIN clientes ON reservas.cliente_id = clientes.id*/
                             $habtipo['habtipo']['count'] = 1;
                             $ht[] = $habtipo['habtipo'];
                         }
-
+                        echo "<br>";
+                        print_r($ht);
                     }
                 }
                 else {
