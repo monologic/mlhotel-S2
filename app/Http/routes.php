@@ -88,7 +88,9 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('report', 'graficas@ghabitaciones');
 	
 
-	Route::get('admin/report/{fechaini}/{fechafin}', ['uses' => 'graficas@buscar', function ($fechaini, $fechafin) {
+	Route::get('report/reservas/{fechaini}', ['uses' => 'graficas@Reservas', function ($fechaini) {
+	}]);
+	Route::get('report/ingreso/{fechaini}', ['uses' => 'graficas@Ingreso', function ($fechaini) {
 	}]);
 
 	Route::put('updateAdmin/{id}', 'HotelController@updateAdmin');

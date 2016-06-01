@@ -34,21 +34,93 @@
 	<div class="col-md-12" style="padding: 20px;border-radius: 10px;border:solid;border-width: 1px;margin: 20px">
 		<div >
 			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 10px ">
-				<div class="col-md-6 " style="text-align: right;margin-top: 8px;font-size: 1.6rem">Reservas realizadas : </div>
 				<div class="col-md-6">
-					<select class="form-control" id="" ng-change="interval()"  ng-model="ve">
-					<option value="dia">Esta semana</option>
-					<option value="mes">Por meses</option>
-					<option value="año">Por años</option>
-				</select>
-				</div>
+				
+					<div class="" style="font-size: 1.6rem">Reservas realizadas : </div>
+						<select class="form-control" id="Sreserva" onchange="cambioR()">
+							<option value="dia">Esta semana</option>
+							<option value="mes">Por meses</option>
+							<option value="año">Por años</option>
+						</select>
+					</div>
+					<div class="col-md-6" style="font-size: 1.6rem">
+						Fecha para detalles :
+						<input type="date"  id="dtime" class="form-control" style="max-width: 180px" onchange="limpiarReservas()" ng-model="fechainiR"  ng-change="getRervasE()" >
+						<div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
+					</div>
 			</div>
-			<div>
+				
+			<div class="col-md-12" id="dias1">
+				<p>Reservas en lo ultimos 6 dias</p>
 				<div class="col-md-8">
 					<div id="reservasdias"></div>
 				</div>
-				<div class="col-md-4">
-					<div ng-repeat="e in diasReservas">
+				<div class="col-md-4" style="padding: 20px">
+					<div >
+						<table class="table">
+							<thead>
+								<tr>
+									<th>
+										Fechas
+									</th>
+									<th>
+										Reservas
+									</th>
+								</tr>
+							</thead>	
+							<tbody>
+								<tr ng-repeat="e in diasReservas">
+									<td>
+										{{e.fecha_inicio}}
+									</td>
+									<td>
+										{{e.cantidad}}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12" id="meses1" style="">
+				<div class="col-md-8">
+					<p>Reservas en los ultimos meses</p>
+					<div id="reservasmeses" style="display: block;width: 100%"></div>
+				</div>
+				<div class="col-md-4" style="padding: 20px">
+						<div>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											Fechas
+										</th>
+										<th>
+											Reservas
+										</th>
+									</tr>
+								</thead>	
+								<tbody>
+									<tr ng-repeat="e in mesesReservas">
+										<td>
+											{{e.fecha_inicio}}
+										</td>
+										<td>
+											{{e.cantidad}}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				</div>
+			</div>
+			<div class="col-md-12" id="años1" style=" ">
+				<p>Reservas en años</p>
+				<div class="col-md-8">
+					<div id="reservasaños" style="display: block;width: 100%"></div>
+				</div>
+				<div class="col-md-4" style="padding: 20px">
+					<div ng-repeat="f in yearsReservas">
 						<table class="table">
 							<thead>
 								<tr>
@@ -63,10 +135,10 @@
 							<tbody>
 								<tr>
 									<td>
-										{{e.fecha_inicio}}
+										{{f.fecha_inicio}}
 									</td>
 									<td>
-										{{e.cantidad}}
+										{{f.cantidad}}
 									</td>
 								</tr>
 							</tbody>
@@ -75,177 +147,132 @@
 				</div>
 			</div>
 			
-			<div class="col-md-8">
-				<div id="reservasmeses" style="display: block;width: 100%"></div>
-			</div>
-			<div class="col-md-4">
-					<div ng-repeat="e in mesesReservas">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>
-										Fechas
-									</th>
-									<th>
-										Reservas
-									</th>
-								</tr>
-							</thead>	
-							<tbody>
-								<tr>
-									<td>
-										{{e.fecha_inicio}}
-									</td>
-									<td>
-										{{e.cantidad}}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-			</div>
-			<div class="col-md-8">
-				<div id="reservasaños" style="display: block;width: 100%"></div>
-			</div>
-			<div class="col-md-4">
-				<div ng-repeat="f in yearsReservas">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>
-									Fechas
-								</th>
-								<th>
-									Reservas
-								</th>
-							</tr>
-						</thead>	
-						<tbody>
-							<tr>
-								<td>
-									{{f.fecha_inicio}}
-								</td>
-								<td>
-									{{f.cantidad}}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
 
 			</div>
 			
 		</div>
-	</div>
-
-	
-
 	<div class="col-md-12" style="padding: 20px;border-radius: 10px;border:solid;border-width: 1px;margin: 20px">
 		<div >
 			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 10px ">
-				<div class="col-md-6 " style="text-align: right;margin-top: 5px;font-size: 1.6rem">Ingresos :</div>
+				<div class="col-md-6">
+					<div class="" style="font-size: 1.6rem">Ingresos : </div>
+						<select class="form-control" id="selI" onchange="cambioI()">
+						<option value="dia">Esta semana</option>
+						<option value="mes">Por meses</option>
+						<option value="año">Por años</option>
+					</select>
+
+				</div>
+				<div class="col-md-6" style="font-size: 1.6rem">
+					Fecha para detalles :
+					<input type="date" id="ftime" onchange="limpiarRegistro()" ng-model="fechainiR"  class="form-control"  ng-change="getIngresoE()" style="max-width: 180px">
+					<div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
+				</div>
+			</div>
+			</div>
+			<div class="col-md-12" id="dias2">
+				<p>Ingresos por dias</p>
 				<div class="col-md-8">
-					<select class="form-control" id="">
-					<option value="semana">Esta semana</option>
-					<option value="mes">Por meses</option>
-					<option value="año">Por años</option>
-				</select>
+					<div id="ganaciasdias" style="display: block;width: 100%"></div>
+				</div>
+				<div class="col-md-4" style="padding: 20px">
+					<div >
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Fechas</th>
+									<th>Ingresos</th>
+								</tr>
+							</thead>	
+							<tbody> 	
+								<tr ng-repeat="n in diasRegistros">
+									<td>
+										{{n.fecha}}
+									</td>
+									<td>
+										{{n.total}}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
-				<div id="ganaciasdias" style="display: block;width: 100%"></div>
-			</div>
-			<div class="col-md-4">
-				<div ng-repeat="r in diasRegistros">
+			<div class="col-md-12" id="meses2" style="">
+				<p>Ingresos por meses</p>
+				<div class="col-md-8">
+					<div id="ganaciasmeses" style="display: block;width: 100%"></div>
+				</div>
+				<div class="col-md-4" style="padding: 20px">
 					<table class="table">
 						<thead>
 							<tr>
-								<th>
-									Fechas
-								</th>
-								<th>
-									Registros
-								</th>
+								<th>Fechas</th>
+								<th>Ingresos</th>
 							</tr>
 						</thead>	
 						<tbody>
-							<tr>
-								<td>
-									{{r.fecha_inicio}}
-								</td>
-								<td>
-									{{r.cantidad}}
-								</td>
+							<tr ng-repeat="you in mesesRegistros">
+								<td>{{you.fecha}}</td>
+								<td>{{you.total}}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-			<div class="col-md-8">
-				<div id="ganaciasmeses" style="display: block;width: 100%"></div>
-			</div>
-			<div class="col-md-4">
-				<div ng-repeat="t in mesesRegistros">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>
-									Fechas
-								</th>
-								<th>
-									Registros
-								</th>
-							</tr>
-						</thead>	
-						<tbody>
-							<tr>
-								<td>
-									{{t.fecha_inicio}}
-								</td>
-								<td>
-									{{t.cantidad}}
-								</td>
-							</tr>
-						</tbody>
-					</table>
+			<div class="col-md-12" id="años2" style="">
+				<p>Ingresos por años</p>
+				<div class="col-md-8">
+					<div id="ganaciasaños" style="display: block;width: 100%"></div>
+				</div>
+				<div class="col-md-4" style="padding: 20px">
+					<div >
+						<table class="table">
+							<thead>
+								<tr>
+									<th>
+										Fechas
+									</th>
+									<th>
+										Ingresos
+									</th>
+								</tr>
+							</thead>	
+							<tbody>
+								<tr ng-repeat="y in yearsRegistros">
+									<td>
+										{{y.fecha}}
+									</td>
+									<td>
+										{{y.total}}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
-				<div id="ganaciasaños" style="display: block;width: 100%"></div>
-			</div>
-			<div class="col-md-4">
-				<div ng-repeat="y in yearsRegistros">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>
-									Fechas
-								</th>
-								<th>
-									Registros
-								</th>
-							</tr>
-						</thead>	
-						<tbody>
-							<tr>
-								<td>
-									{{y.fecha_inicio}}
-								</td>
-								<td>
-									{{y.cantidad}}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+			
 
 			
 		</div>
 	</div>
 <div>
 <script>
-
+jQuery(function () {
+    jQuery('#myTab a:last').tab('show')
+})
+function limpiarRegistro()
+{
+	   document.getElementById("ganaciasdias").innerHTML="";
+	   document.getElementById("ganaciasmeses").innerHTML="";
+	   document.getElementById("ganaciasaños").innerHTML="";
+}
+function limpiarReservas()
+{
+	   document.getElementById("reservasdias").innerHTML="";
+	   document.getElementById("reservasmeses").innerHTML="";
+	   document.getElementById("reservasaños").innerHTML="";
+}
 </script>
 

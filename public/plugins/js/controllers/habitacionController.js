@@ -1,5 +1,9 @@
 app.controller('habitacionController', function($scope,$http) {
 
+    $scope.ordenar = function (orden)
+    {
+        $scope.ordenarC = orden;
+    }
     $scope.enviar = function () {
         $http.post('admin/habitacion',
             {   'numero':$scope.numero,

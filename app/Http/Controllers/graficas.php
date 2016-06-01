@@ -65,13 +65,58 @@ class graficas extends Controller
 
         return response()->json($report);
     }
-    public function diasReservas($fechaini)
+    public function Reservas($fechaini)
     {
+        $diasReservas = \DB::table('reservas')
+                          ->select(DB::raw("CONCAT(DAY(fecha_inicio),- MONTH(fecha_inicio)) as  fecha_inicio, count(fecha_inicio) as cantidad"))
+                          ->whereRaw("fecha_inicio BETWEEN DATE(DATE_ADD('$fechaini', INTERVAL -7 DAY)) AND '$fechaini'")
+                          ->groupBy(DB::raw('DAY(fecha_inicio)'))
+                          ->get();
+
+        $mesesReservas = \DB::table('reservas')
+                          ->select(DB::raw("CONCAT(MONTH(fecha_inicio),- YEAR(fecha_inicio)) as fecha_inicio, MONTH(fecha_inicio) , count(fecha_inicio) as cantidad"))
+                          ->whereRaw("fecha_inicio BETWEEN DATE(DATE_ADD('$fechaini', INTERVAL -6 MONTH)) AND '$fechaini'")
+                          ->groupBy(DB::raw('YEAR(fecha_inicio), MONTH(fecha_inicio)'))
+                          ->get();
+
+        $yearsReservas = \DB::table('reservas')
+                          ->select(DB::raw("YEAR(fecha_inicio) as fecha_inicio , count(fecha_inicio) as cantidad"))
+                          ->whereRaw("fecha_inicio BETWEEN DATE(DATE_ADD('$fechaini', INTERVAL -6 YEAR)) AND '$fechaini'")
+                          ->groupBy(DB::raw('YEAR(fecha_inicio)'))
+                          ->get();
+        $report = array();
         
+        $report['diasReservas'] = $diasReservas;
+        $report['mesesReservas'] = $mesesReservas;
+        $report['yearsReservas'] = $yearsReservas;
+        return response()->json($report);
     }
-    public function mesesReservas($fechaini, $fechafin)
+    public function Ingreso($fechaini)
     {
-        
+         $diasRegistros = \DB::table('registros')
+                          ->select(DB::raw("CONCAT(DAY(fechaentrada),- MONTH(fechaentrada)) as fecha , SUM(total) as total"))
+                          ->whereRaw("fechaentrada BETWEEN DATE(DATE_ADD('$fechaini', INTERVAL -7 DAY)) AND '$fechaini'")
+                          ->groupBy(DB::raw('DAY(fechaentrada)'))
+                          ->get();
+
+        $mesesRegistros = \DB::table('registros')
+                          ->select(DB::raw("CONCAT(MONTH(fechaentrada),- YEAR(fechaentrada)) as fecha , SUM(total) as total"))
+                          ->whereRaw("fechaentrada BETWEEN DATE(DATE_ADD('$fechaini', INTERVAL -6 MONTH)) AND '$fechaini'")
+                          ->groupBy(DB::raw('YEAR(fechaentrada), MONTH(fechaentrada)'))
+                          ->get();
+
+        $yearsRegistros = \DB::table('registros')
+                          ->select(DB::raw('YEAR(fechaentrada) as fecha , SUM(total) as total'))
+                          ->whereRaw("fechaentrada BETWEEN DATE(DATE_ADD('$fechaini', INTERVAL -6 YEAR)) AND '$fechaini'")
+                          ->groupBy(DB::raw('YEAR(fechaentrada)'))
+                          ->get();
+
+        $report = array();
+        $report['diasRegistros'] = $diasRegistros;
+        $report['mesesRegistros'] = $mesesRegistros;
+        $report['yearsRegistros'] = $yearsRegistros;
+
+        return response()->json($report);
     }
 /*
 

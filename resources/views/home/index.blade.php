@@ -165,6 +165,14 @@
     <script>
     
       var clic = 1;
+
+      $('#caja').live('mouseout',function(){
+        $('#contenedorPrincipal').live("click",function(){
+        $('#contenedorPrincipal').fadeOut('slow');
+      });
+
+
+
       function divLogin(){ 
          if(clic==1){
          document.getElementById("caja").style.height = "100%";
