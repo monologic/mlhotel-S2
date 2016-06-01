@@ -13,7 +13,7 @@ app.controller('clienteController', function($scope,$http) {
         $scope.idcliente = data.id;
         $scope.nombre = data.nombres;
         $scope.apellido = data.apellidos;
-      	$scope.sexo = data.asexo;
+      	$scope.sexo = data.sexo;
         $scope.nacimiento = data.fecha_nac;
         $scope.dni = data.dni;
         $scope.prof_ocup = data.prof_ocup;

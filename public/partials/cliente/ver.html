@@ -35,31 +35,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>Informacion de cliente</h2>
+                    <h2>Información de cliente</h2>
                 </div>
-                <div class="modal-body" style="color:black">
-                <p>Nombre: </p>
-                <p ng-bind="nombre" style="margin-left:50px"></p>
-                <p>Apellidos: </p>
-                <p ng-bind="apellido" style="margin-left:50px"></p>
-                <p>Documento de Identidad: </p>
-                <p ng-bind="dni" style="margin-left:50px"></p>
-                <p>Sexo: </p>
-                <p ng-bind="sexo" style="margin-left:50px"></p>
-                <p>Fecha de nacimiento: </p>
-                <p ng-bind="nacimiento" style="margin-left:50px"></p>
-                <p>Ocupacion: </p>
-                <p ng-bind="prof_ocup" style="margin-left:50px"></p>
-                <p>Pais: </p>
-                <p>Dirección: </p>
-                <p ng-bind="direccion" style="margin-left:50px"></p>
-                <p>Pais: </p>
-                <p ng-bind="pais" style="margin-left:50px"></p>
-                <p>Ciudad: </p>
-                <p ng-bind="ciudad" style="margin-left:50px"></p>
-                <p>Telefono o celular: </p>
-                <p ng-bind="celular" style="margin-left:50px"></p>
+                <div class="modal-body row" style="color:black">
 
+                    <div class="col-md-6 text-right">Nombre: </div> <div class="col-md-6" ng-bind="nombre" style="min-width: 100px" ></div>
+                    <div class="col-md-6 text-right">Apellidos: </div><div class="col-md-6" ng-bind="apellido" style="min-width: 100px" ></div>
+                    <div class="col-md-6 text-right">Documento de Identidad: </div><div class="col-md-6" ng-bind="dni" style="min-width: 100px" ></div>                    
+                    <div class="col-md-6 text-right">Sexo: </div><div class="col-md-6" ng-bind="sexo" ></div>                   
+                    <div class="col-md-6 text-right">Fecha de nacimiento: </div> <div class="col-md-6" ng-bind="nacimiento" style="min-width: 100px" ></div>
+                    <div class="col-md-6 text-right">Ocupacion: </div><div class="col-md-6" ng-bind="prof_ocup" style="min-width: 100px" ></div>
+                    <div class="col-md-6 text-right">Ciudad: </div><div class="col-md-6" ng-bind="ciudad" style="min-width: 100px" ></div>
+                    <div class="col-md-6 text-right">Pais: </div><div class="col-md-6" ng-bind="pais"  style="min-width: 100px"></div>
+                    <div class="col-md-6 text-right">Telefono o celular: </div> <div class="col-md-6" ng-bind="celular"  style="min-width: 100px"></div>
                     
                 </div>
                 <div class="modal-footer">

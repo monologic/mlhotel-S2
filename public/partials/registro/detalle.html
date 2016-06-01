@@ -49,8 +49,7 @@
 			<div class="form-group">
 				<label for="exampleInputEmail1">DNI</label>
 				<div class="form-inline" style="width: 100%">
-					<input type="text" class="form-control" id="" placeholder="Documento de Indentidad" ng-model="dni">
-			    	<a class="btn btn-success" ng-click="buscarHuesped();"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></a>
+					<input type="text" class="form-control" id="" placeholder="Documento de Indentidad" ng-blur="buscarHuesped();" ng-model="dni">
 				</div>
 			    
 			</div>
@@ -65,25 +64,42 @@
 			</div>
 			<div class="radio">
 			  <label>
-			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+			    <input type="radio" name="optionsRadios" id="sexo" ng-model="sexo" value="Masculino" checked>
 			    Hombre
 			  </label>
 			   <label>
-			    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" >
+			    <input type="radio" name="optionsRadios" id="sexo" ng-model="sexo" value="Femenino" >
 			    Mujer
 			  </label>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Fecha de Nacimiento</label>
 			    <input type="date" class="form-control" id="" ng-model="fechanac">
+			    <div class="cl" style="margin-left: 120px"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Estado Civil</label>
-			    <input type="text" class="form-control" id="" placeholder="Estado civil" ng-model="estadoCivil">
+				<p style="font-weight: bold;">Estado Civil</p>
+				<select class="form-control" ng-model="estadoCivil" placeholder="Pais">
+					<option>Soltero</option>
+					<option>Casado</option>
+					<option>Viudo</option>
+					<option>Divorciado</option>
+				</select>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Pais</label>
-			    <input type="text" class="form-control" id="" placeholder="Pais" ng-model="pais">
+				<p style="font-weight: bold;">Pais</p>
+				<select for="pais" class="form-control"  ng-model="pais">
+					<option>Estados Unidos</option>
+					<option>Perú</option>
+					<option>Chile</option>
+					<option>Bolivia</option>
+					<option>Colombia</option>
+					<option>Uruguay</option>
+					<option>Mexico</option>
+					<option>Venezuela</option>
+					<option>Colombia</option>
+					<option>Otros</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Ciudad</label>
@@ -98,12 +114,12 @@
 			    <input type="text" class="form-control" id="" placeholder="Destino final" ng-model="destino">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Celular</label>
+				<label for="exampleInputEmail1">Telefono movil</label>
 			    <input type="text" class="form-control" id="" placeholder="Telefono movil" ng-model="celular">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Profesión u Ocupación</label>
-			    <input type="text" class="form-control" id="" placeholder="Telefono movil" ng-model="prof_ocup">
+			    <input type="text" class="form-control" id="" placeholder="" ng-model="prof_ocup">
 			</div>
 			<div class="form-group" ng-if="huesped == 'false'">
 				<a class="btn btn-primary center-block" ng-click="nuevoHuesped();">+ Agregar</a>

@@ -2,16 +2,6 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<style type="text/css">
-		.centrado-porcentual {
-			background-color: #ecf0f1;
-		    position: absolute;
-		    left: 50%;
-		    top: 50%;
-		    transform: translate(-50%, -50%);
-		    -webkit-transform: translate(-50%, -50%);
-		}
-	</style>
 </head>
 <body bgcolor="#7f8c8d">
 	<div class="centrado-porcentual">

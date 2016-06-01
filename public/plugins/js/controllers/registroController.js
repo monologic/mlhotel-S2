@@ -150,7 +150,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         $http.post('admin/cliente',
             {   'nombres':$scope.nombres,
                 'apellidos':$scope.apellidos,
-                'sexo':$('#sexo').val(),
+                'sexo':$scope.apellidos,
                 'fecha_nac':$scope.fechanac,
                 'dni':$scope.dni,
                 'pais':$scope.pais,
@@ -174,6 +174,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.celular = "";
                 $scope.prof_ocup = "";
                 $scope.procedencia = "";
+                $scope.estadoCivil = "";
                 $scope.destino = "";
 
             }, function errorCallback(response) {
