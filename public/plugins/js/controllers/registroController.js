@@ -29,7 +29,8 @@ app.controller('registroController', function($scope,$http , $routeParams) {
 	$scope.buscar = function () {
         $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             if ((response.data).hasOwnProperty('mensaje')) {
-                $('#alertCambio').css('display','block');
+                alert("No se encontraron habitaciones disponibles");
+                $scope.tipoPerHabs = null;
             }
             else
                 $scope.tipoPerHabs = response.data;
