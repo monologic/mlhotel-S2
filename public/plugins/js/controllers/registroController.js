@@ -62,6 +62,32 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             $("#guardarChecks").css("display","block");
         else
             $("#guardarChecks").css("display","none");
+
+        $scope.countChecked();
+        $scope.checkSoloDisponibles();
+    }
+
+    $scope.countChecked = function () {
+        count = $scope.tipoPerHabs;
+        for(j in count) {
+            c = 0
+            for(i in habsSeleccionadas) {
+                if (habsSeleccionadas[i].habtipo_id == count[j].id) {
+                    c++;
+                }
+            }
+            count[j].checkedCount = c;
+        }
+        $scope.countHabschecked = count;
+    }
+    $scope.checkSoloDisponibles = function () {
+
+        for( i in $scope.countHabschecked){
+            if ($scope.countHabschecked[i].checkedCount == $scope.countHabschecked[i].disponibles) {
+                $('.th'+$scope.countHabschecked[i].id).prop("disabled",true);
+            } 
+        }
+
     }
 
     $scope.guardarRegistros = function () {
@@ -276,4 +302,12 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+        for(i in $scope.tipoPerHabs){
+            if ($scope.tipoPerHabs[i].disponibles == 0) {
+                $('.th'+$scope.tipoPerHabs[i].id).prop("disabled",true);
+            } 
+        }
+    });
 });
