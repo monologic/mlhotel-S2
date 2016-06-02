@@ -5,7 +5,7 @@
 <h2 class="text-center" style="font-size:2rem;margin-top:120px">Galeria de Fotos</h2><br>
 	<div class="row" style="min-height: 25%">
 		<div class='list-group  gallery' style="width: 100%;">
-            <div class=' col s4 wow fadeInLeft' ng-repeat="y in fotos" data-wow-delay="0.{{$index+5}}s" style="display:inline-block;position:relative;visibility: visible; -webkit-animation-delay: 0.{{$index+5}}s; -moz-animation-delay: 0.{{$index+9}}s; animation-delay: 0.{{$index+5}}s;height:250px">
+            <div class='wow fadeInLeft' ng-repeat="y in fotos" data-wow-delay="0.{{$index+5}}s" style="display:inline-block;position:relative;visibility: visible; -webkit-animation-delay: 0.{{$index+5}}s; -moz-animation-delay: 0.{{$index+9}}s; animation-delay: 0.{{$index+5}}s;height:250px; padding-left: 20px;padding-right: 20px">
                 <a class="thumbnail fancybox" rel="darkbox" href="imagen/galery/{{y.imagen}}" title= {{y.descripcion}}>
                     <img class="img-responsive" alt="Hotel Moquegua {{y.titulo}}"  src="imagen/galery/{{y.imagen}}" style="width:300px;height:200px" />
                     <div class='text-center'>
