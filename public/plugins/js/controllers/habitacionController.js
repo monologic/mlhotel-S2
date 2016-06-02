@@ -1,8 +1,14 @@
 app.controller('habitacionController', function($scope,$http) {
-
-    $scope.ordenar = function (orden)
-    {
-        $scope.ordenarC = orden;
+    var fechaHoy
+    function twoDigits(d) {
+        if(0 <= d && d < 10) return "0" + d.toString();
+        if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+        return d.toString();
+    }
+    $scope.ponerFecha = function () {
+        var f = new Date();
+        fechaHoy = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+       
     }
     $scope.enviar = function () {
         $http.post('admin/habitacion',
@@ -48,7 +54,18 @@ app.controller('habitacionController', function($scope,$http) {
     $scope.getHabitacionesDetallado = function () {
         $http.get('admin/getHabitacionsDetallado').then(function successCallback(response) {
             console.log(response.data);
+            console.log(fechaHoy);
             $scope.habitaciones = response.data;
+            for(o in $scope.habitaciones)
+            {   
+                f = ($scope.habitaciones[o].registro.fechasalida).split(" ");
+                if (f[0] == fechaHoy){
+                    $scope.habitaciones[o].registro.hoy = 1;
+                }
+                else
+                    $scope.habitaciones[o].registro.hoy = 0;
+            }
+            console.log($scope.habitaciones);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

@@ -1,9 +1,7 @@
-<div id="page-wrapper" ng-controller="habitacionController" ng-init="getHabitacionesDetallado();">
+<div id="page-wrapper" ng-controller="habitacionController" ng-init="getHabitacionesDetallado();ponerFecha();">
     <br><br><br>
     <h3 class="tit2">Estado Actual de Habitaciones</h3>
     <br><br>
-    
-
     <table class="table table-hover">
     	<thead>
     		<tr>
@@ -19,7 +17,8 @@
                 <td>{{x.numero}}</td>
                 <td>{{x.estado.nombre}}</td>
                 <td>{{x.habtipo.nombre }}</td>
-                <td>{{x.registro.fechasalida }}</td>
+                <td ng-if="(x.registro.hoy == 1)"><span class="label label-info" style="font-size: 1.5rem">{{x.registro.fechasalida}}</span></td>
+                <td ng-if="(x.registro.hoy == 0)">{{x.registro.fechasalida}}</td>
                 <td ng-if="(x.registro).length == 0 ">
                 </td>
                 <td ng-if="(x.registro.regclientes).length > 0 ">
