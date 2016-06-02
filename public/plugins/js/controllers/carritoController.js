@@ -130,22 +130,7 @@ app.controller('carritoController', function($scope,$http) {
     }
     $scope.getTiposPago = function () {
         $http.get('admin/getTiposPago').then(function successCallback(response) {
-                $scope.pagoCero = response.data[0];
-                var j = false;
-                for (i in response.data) {
-                    /*
-                    if(response.data[i].id == 1)
-                        response.data[i].funcion = 'porcen()';
-                    if(response.data[i].id == 2)
-                        response.data[i].funcion = 'paypal()';
-                    if(response.data[i].id == 3)
-                        response.data[i].funcion = 'boucher()';
-                    */
-                    if (response.data[i].activo == 0){
-                        $('#pagoCeroDiv').css('display','none');
-                    }
-                        
-                }
+                $scope.pagoCero = response.data[0].activo;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

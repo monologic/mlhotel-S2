@@ -39,7 +39,7 @@
             <div>
                   <p style="color: #00897b">Elija un método de pago</p>
                   <div class="row" style="margin-top: 0px">
-                     <div class="col m4 s12" id="pagoCeroDiv">
+                     <div ng-if="pagoCero==1" class="col m4 s12" id="pagoCeroDiv">
                       <input name="opciones" type="radio" id="test1" onchange="porcen()" />
                       <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
                     </div>

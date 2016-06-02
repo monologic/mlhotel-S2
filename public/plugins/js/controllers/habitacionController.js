@@ -53,19 +53,16 @@ app.controller('habitacionController', function($scope,$http) {
     }
     $scope.getHabitacionesDetallado = function () {
         $http.get('admin/getHabitacionsDetallado').then(function successCallback(response) {
-            console.log(response.data);
-            console.log(fechaHoy);
             $scope.habitaciones = response.data;
             for(o in $scope.habitaciones)
-            {   
-                f = ($scope.habitaciones[o].registro.fechasalida).split(" ");
-                if (f[0] == fechaHoy){
-                    $scope.habitaciones[o].registro.hoy = 1;
-                }
-                else
-                    $scope.habitaciones[o].registro.hoy = 0;
+            {   if (($scope.habitaciones[o].registro).length == undefined) {
+                    f = ($scope.habitaciones[o].registro.fechasalida).split(" ");
+                    if (f[0] == fechaHoy)
+                        $scope.habitaciones[o].registro.hoy = 1;
+                    else
+                        $scope.habitaciones[o].registro.hoy = 0;
+                } 
             }
-            console.log($scope.habitaciones);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.

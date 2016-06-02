@@ -119,13 +119,15 @@ class RegistroController extends Controller {
                 }
             }
             //dd($habtipos);
-            $reservas = Reserva::whereBetween('reservaestado_id', array(2,3))
-                              ->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
-                              ->orWhere(function($query){
-                                $query->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
+            $reservas = Reserva::whereIn('reservaestado_id', [2, 3])
+                               ->where(function($query) use($fechafin){
+                                    $query->whereBetween('fecha_inicio', [$this->fechainicio, $fechafin])
+                                          ->orWhere(function ($q) {
+                                            $q->whereRaw(DB::raw("'$this->fechainicio' between `fecha_inicio` and `fecha_fin`"));
+                                          });
                                 })
-                              ->get();
-
+                                ->get();
+            //dd($reservas->toArray());
             $reservas->each(function($reservas){
                 $reservas->habtiporeservas;
             });     
@@ -399,12 +401,11 @@ class RegistroController extends Controller {
                 }
             }
             //dd($habtipos);
-            $reservas = Reserva::whereBetween('reservaestado_id', array(2,3))
+            $reservas = Reserva::whereIn('reservaestado_id', [2, 3])
                               ->where(function($query)use($fecha){
                                 $query->whereRaw(DB::raw("'$fecha' between `fecha_inicio` and `fecha_fin`"));
                                 })
                               ->get();
-
 
             $reservas->each(function($reservas){
                 $reservas->habtiporeservas;
