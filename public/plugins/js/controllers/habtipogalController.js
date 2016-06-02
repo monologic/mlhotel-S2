@@ -42,7 +42,8 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 });
-            }          
+            } 
+            alert('Se guardo los cambios exitosamente');         
         }
     $scope.eliminar = function (id) {
         $http.delete( 'admin/habtipoF/'+id ).then(function successCallback(response) {
