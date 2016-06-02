@@ -219,7 +219,7 @@ class RegistroController extends Controller {
     }
 
     public static function registrosDeHoy()
-    {   self::$fechaInicio = date("Y-m-d H:i:s");
+    {   self::$fechaInicio = date("Y-m-d")." 00:00:01";
         $fechafin = date("Y-m-d")." 23:59:59";
         $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." 23:59:59"])
                      ->orWhere(function($query){
