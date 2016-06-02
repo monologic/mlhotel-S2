@@ -16,9 +16,12 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     }
     $scope.ponerFecha2 = function () {
         var f = new Date();
-        $scope.desde = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +f.getDate();
-        $scope.hasta = f.getFullYear() + "-" + "0" + (f.getMonth() +1) + "-" +(f.getDate() + 1);
-        //alert($scope.fechaini);
+        $scope.desde = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+        f = f.getTime();
+        f = f + 1*24*60*60*1000;
+        f = new Date(f);
+        $scope.hasta = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+    
         /*
         var fechaini1 = new Date($scope.fechaini);
         var fechafin1 = new Date($scope.fechafin);

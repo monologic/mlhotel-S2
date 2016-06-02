@@ -1,91 +1,89 @@
-
-
-
-
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-<div class="booking hoverable center-block" style="margin-top:150px">
-  
-</div>
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
-  <div class=" cont-book  row" style="padding-top: 20px;">
-      <div class="col m5">
-        <div class="calendar">
-          <p style="margin-bottom: 15px;text-align: left;"> Fecha de Entrada</p>
-          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-          <input type="text" style="height:20px;width:100%;padding: 5px;" onchange="fe()" id="fechaini">
-        </div>
-      </div>
-      <div class="col m5">
-        <div class="calendar">
-          <p style="margin-bottom: 15px;text-align: left;"> Fecha de Salida</p>
-          <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
-          <input type="text" style="height:20px;width:100%; padding: 5px;" id="fechafin">
-        </div>
-      </div>
-      <div class="col m2">
-        <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
-      </div>
-      
-    </div>
-  <div  class="row wow fadeInUp card hab" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
-    <div class="col s12 m4 l4 " style="padding:10px">
-      <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
-      <a class="btn" href="" ng-click="goTo3(y);">+ info</a>
-    </div>
-    <div class="col s12 m6 l6 ">
-      <div class="black-text" style="padding-top:5px">
-        <p class="cart-titulo" id="nombre">{{y.nombre}}</p>
-        <p class="cart-contenido">{{y.descripcion}}</p>
-        <p class="cart-contenido"  style="display: none">{{y.nropersonas}}</p>
-      </div>
-      <div class="separador"></div>
-      <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
-        <div ng-if="servicio.estado=='true'">
-          <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
-      <div>
-        <p class="cart-precio">Desde</p>
-        <p class="cart-precio" id="precio"   style="font-size:1rem">S/. {{y.precio}} </p>
-        <a class="waves-effect btn black" onclick="Materialize.toast('Completa los datos y Busca :)', 4000)" ng-click="inicializarCombo();">reservar</a>
-      </div>
-    </div>
-  </div> 
-    <!-- Busqueda de habitaciones div none -->
-
-  <div  class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
-    <div class="col s12 m4 l4 " style="padding:10px">
-      <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
-    </div>
-    <div class="col s12 m6 l6 ">
-      <div class="black-text" style="padding-top:5px">
-        <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
-        <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
-        <p class="cart-contenido"  style="display: none"  id="capacidad" ng-model="capacidad">{{y.nropersonas}}</p>
-      </div>
-      <div class="separador"></div>
-      <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
-        <div ng-if="servicio.estado=='true'">
-          <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
-      <div>
-        <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
-        <p class="cart-precio">Desde</p>
-        <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
-
-        <a ng-if='(y.habitacionescount-y.habtiporeservascount)>0' class="waves-effect btn black" ng-click="addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservas', 4000)">reservar</a>
-      </div> 
-    </div>
+<div onclick="badCar();">
+  <div class="booking hoverable center-block" style="margin-top:150px"> 
   </div>
+  <section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
+    <div class=" cont-book  row" style="padding-top: 20px;">
+        <div class="col m5">
+          <div class="calendar">
+            <p style="margin-bottom: 15px;text-align: left;"> Fecha de Entrada</p>
+            <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+            <input type="text" style="height:20px;width:100%;padding: 5px;" onchange="fe()" id="fechaini">
+          </div>
+        </div>
+        <div class="col m5">
+          <div class="calendar">
+            <p style="margin-bottom: 15px;text-align: left;"> Fecha de Salida</p>
+            <img src="index/imgc.png" style="position:absolute;height:20px;width:20px;right:0;z-index:-1">
+            <input type="text" style="height:20px;width:100%; padding: 5px;" id="fechafin">
+          </div>
+        </div>
+        <div class="col m2">
+          <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
+        </div>
+        
+      </div>
+    <div  class="row wow fadeInUp card hab" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+      <div class="col s12 m4 l4 " style="padding:10px">
+        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+        <a class="btn" href="" ng-click="goTo3(y);">+ info</a>
+      </div>
+      <div class="col s12 m6 l6 ">
+        <div class="black-text" style="padding-top:5px">
+          <p class="cart-titulo" id="nombre">{{y.nombre}}</p>
+          <p class="cart-contenido">{{y.descripcion}}</p>
+          <p class="cart-contenido"  style="display: none">{{y.nropersonas}}</p>
+        </div>
+        <div class="separador"></div>
+        <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
+          <div ng-if="servicio.estado=='true'">
+            <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+        <div>
+          <p class="cart-precio">Desde</p>
+          <p class="cart-precio" id="precio"   style="font-size:1rem">S/. {{y.precio}} </p>
+          <a class="waves-effect btn black" onclick="Materialize.toast('Completa los datos y Busca :)', 4000)" ng-click="inicializarCombo();">reservar</a>
+        </div>
+      </div>
+    </div> 
+      <!-- Busqueda de habitaciones div none -->
+
+    <div  class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+      <div class="col s12 m4 l4 " style="padding:10px">
+        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+      </div>
+      <div class="col s12 m6 l6 ">
+        <div class="black-text" style="padding-top:5px">
+          <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
+          <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
+          <p class="cart-contenido"  style="display: none"  id="capacidad" ng-model="capacidad">{{y.nropersonas}}</p>
+        </div>
+        <div class="separador"></div>
+        <div ng-repeat="servicio in y.habtipo_serviciointernos" style="display: inline-block" >
+          <div ng-if="servicio.estado=='true'">
+            <div style="margin-left: 20px;margin-bottom: 15px;font-size: 1.6rem"><i class="fa {{servicio.serviciointerno.icono}}"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+        <div>
+          <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
+          <p class="cart-precio">Desde</p>
+          <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
+
+          <a ng-if='(y.habitacionescount-y.habtiporeservascount)>0' class="waves-effect btn black" ng-click="addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservas', 4000)">reservar</a>
+        </div> 
+      </div>
+    </div> 
+</div>
+
   <div id="caja" style="top:65px;">
     <br><br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>

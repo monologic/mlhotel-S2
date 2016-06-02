@@ -3,93 +3,96 @@
 </script>
 <br>
 <br>
-<div class="container2 row  contacto">
-	<form  method="POST" action="send"  class="con-form col m6 s12"  enctype="multipart/form-data">
-		<h3 class="text-center" style="font-size:2rem">Contacto</h3><br><br>
-	  	<div class="form-group">
-	        <label for="nombre">Asunto</label>
-	        <input class="form-control" placeholder="Asunto" required="required" name="subject" type="text" id="subject">
-	    </div>
-	    <br>
-		<div class="form-group">
-		    <label for="exampleInputEmail1">Correo</label>
-		    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-	  	</div>
-	  	<br>	
-	  	<div class="fomr-group">
-	  		 <label for="tipo">Mensaje</label>
-			 <textarea  class="materialize-textarea" rows="2" id="body" name="body"></textarea>
-	  	</div>
-	  	<br>
-	  	<input type="submit" class="btn btn-primary" onclick="confir()" style="width:150px" value="Enviar">
-      <div id="msj" class="card-panel teal lighten-3" style="display: none;color:white;text-align: center">Mensaje enviado</div>
+<div onclick="badCar()">
+  <div class="container2 row  contacto">
+    <form  method="POST" action="send"  class="con-form col m6 s12"  enctype="multipart/form-data">
+      <h3 class="text-center" style="font-size:2rem">Contacto</h3><br><br>
+        <div class="form-group">
+            <label for="nombre">Asunto</label>
+            <input class="form-control" placeholder="Asunto" required="required" name="subject" type="text" id="subject">
+        </div>
+        <br>
+      <div class="form-group">
+          <label for="exampleInputEmail1">Correo</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+        </div>
+        <br>  
+        <div class="fomr-group">
+           <label for="tipo">Mensaje</label>
+         <textarea  class="materialize-textarea" rows="2" id="body" name="body"></textarea>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" onclick="confir()" style="width:150px" value="Enviar">
+        <div id="msj" class="card-panel teal lighten-3" style="display: none;color:white;text-align: center">Mensaje enviado</div>
 
-	</form>
-	<div class="col m6 s12 cont-info " ng-controller="hotelController" ng-init="getHotelesF();">
-		<br>
-		<p style="font-size:2rem;margin-top:20px;marin-bottom:10px">Visitanos</p><br>
-		<p>{{infos.pais}}, {{infos.region_estado}}, {{infos.ciudad}}</p><br><br>
-		<p style="font-size:1.4rem">Buscanos en:</p><br>
-		<p><i class="fa fa-map-marker"></i> {{infos.direccion}}</p><br>
-		<p style="font-size:1.4rem">Escribenos a:</p><br>
-		<p><i class="fa fa-envelope-o"></i> {{infos.correo}}</p><br>
-		<p style="font-size:1.4rem">Llamanos al:</p><br>
-		<p><i class="fa fa-phone"></i> {{infos.telefono}}</p><br>
-		
-	</div>
-</div>
-<br><br>
-<h3 class="text-center" style="font-size:2rem">Nuestra Ubicacion</h3>
-<br>
-<div class="container2">
-	<div id="map" style="width:100%px; height:500px"></div>
-	
-</div>
-
-<section ng-controller="habtipoController" ng-init="res();" style="min-height:300px;margin-top:100px">
-
-	<div id="caja" style="top:65px;">
-  <br><br>
-    <div class="title-reser teal lighten-2">Mis Reservas</div>
-    <br>
-    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
-    <div  style=";width: 80%;margin:40px auto 20px auto">
-    <div id="cont-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Habitacion</th>
-            <th>Cant.</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="o in car">
-            <td>{{o.nombre}}</td>
-            <td width="50px">
-              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
-            </td>
-            <td>{{o.precio}}</td>
-            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td colspan="2">Total por Día:</td>
-            <td ng-bind="totalq"></td>
-          </tr>
-        </tbody>
-      </table>
-      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
-    </div>
+    </form>
+    <div class="col m6 s12 cont-info " ng-controller="hotelController" ng-init="getHotelesF();">
+      <br>
+      <p style="font-size:2rem;margin-top:20px;marin-bottom:10px">Visitanos</p><br>
+      <p>{{infos.pais}}, {{infos.region_estado}}, {{infos.ciudad}}</p><br><br>
+      <p style="font-size:1.4rem">Buscanos en:</p><br>
+      <p><i class="fa fa-map-marker"></i> {{infos.direccion}}</p><br>
+      <p style="font-size:1.4rem">Escribenos a:</p><br>
+      <p><i class="fa fa-envelope-o"></i> {{infos.correo}}</p><br>
+      <p style="font-size:1.4rem">Llamanos al:</p><br>
+      <p><i class="fa fa-phone"></i> {{infos.telefono}}</p><br>
       
-      <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
-      </div>    
     </div>
-  </div> 
-</section>
+  </div>
+  <br><br>
+  <h3 class="text-center" style="font-size:2rem">Nuestra Ubicacion</h3>
+  <br>
+  <div class="container2">
+    <div id="map" style="width:100%px; height:500px"></div>
+    
+  </div>
+</div>
+  <section ng-controller="habtipoController" ng-init="res();" style="min-height:300px;margin-top:100px">
+
+    <div id="caja" style="top:65px;">
+    <br><br>
+      <div class="title-reser teal lighten-2">Mis Reservas</div>
+      <br>
+      <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
+      <div  style=";width: 80%;margin:40px auto 20px auto">
+      <div id="cont-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Habitacion</th>
+              <th>Cant.</th>
+              <th>Precio</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="o in car">
+              <td>{{o.nombre}}</td>
+              <td width="50px">
+                <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
+              </td>
+              <td>{{o.precio}}</td>
+              <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+              <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="2">Total por Día:</td>
+              <td ng-bind="totalq"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
+      </div>
+        
+        <div>
+          <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
+        </div>    
+      </div>
+    </div> 
+  </section>
+
+
 
 <script src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"></script>
 

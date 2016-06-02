@@ -2,7 +2,7 @@
   document.title = "Noticias - Residencial Moquegua";
 </script>
 <br>
-<div class="noticia" ng-controller="noticiaController" ng-init="getNoticias();" style="width:80%;margin:80px auto 80px auto">
+<div class="noticia" ng-controller="noticiaController" ng-init="getNoticias();" style="width:80%;margin:80px auto 80px auto" onclick="badCar();">
 	<h2 class="text-center" style="font-size:2rem;margin-bottom:60px">Noticias</h2>
 	<br>
 		<article ng-repeat="x in noticia" on-finish-render="ngRepeatFinished" class="row conteiner2 not">		

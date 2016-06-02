@@ -1,7 +1,7 @@
 <script>
   document.title = "Residencial Moquegua";
 </script> 
-  <div ng-controller="bannerController" ng-init="getBanners2();" style="min-height:300px">
+  <div ng-controller="bannerController" ng-init="getBanners2();" onclick="badCar()" style="min-height:300px">
               
     <div class="swiper-container">
     <!-- Additional required wrapper -->
@@ -29,7 +29,7 @@
     <div class="swiper-scrollbar"></div>
   </div>
 </div>
-<div class="booking center-block">
+<div class="booking center-block" onclick="badCar()">
   <div ng-controller="reservaController">
     <div class=" cont-book  row" style="padding-top: 20px;">
       <div class="col m5">
@@ -54,7 +54,7 @@
     </div>
   </div>
 </div>
-  <div class="row container" style="width:70%;margin-left:15%; margin-right:15%">
+  <div class="row container" onclick="badCar()" style="width:70%;margin-left:15%; margin-right:15%">
       <h4 class="center-align titulo1" style="font-family: 'Niconne', cursive;" >Bienvenido a Residencial Moquegua</h4><br><br>
       <div class="col s4 ser-cont">
         <div class="center-align"><i class="fa fa-cutlery ser-ico"></i></div>
@@ -83,7 +83,7 @@
 
     </div>
   <div><br>
-     <section class="row Cont-Hab " ng-controller="habtipoController" ng-init="descrip();getHabTipo();" style="min-height:800px;top:20px;">    
+     <section class="row Cont-Hab " ng-controller="habtipoController" onclick="badCar()" ng-init="descrip();getHabTipo();" style="min-height:800px;top:20px;">    
       <div class=" wow fadeInUp" style="width:90%;margin-left:10%;" data-wow-duration="2s"  data-wow-delay="0.8s" ng-repeat="y in habtipos">
         <div class="col s12 m5 hoverable" style="margin-right:20px;margin-bottom:20px;min-width:250px">
           <div class="card small">
@@ -101,7 +101,7 @@
         </div>
       </div>
     </section>
-    <div class="noticia" ng-controller="noticiaController" ng-init="getNoticiash();" style="width:100%;background-color:rgb(230,230,230);padding-top:80px;padding-bottom:30px;" >
+    <div class="noticia" ng-controller="noticiaController" onclick="badCar()" ng-init="getNoticiash();" style="width:100%;background-color:rgb(230,230,230);padding-top:80px;padding-bottom:30px;" >
       <article class="row" style="width:80%;margin:-30px auto 25px auto">
         <div class="col m5 s12 wow fadeInLeft" data-wow-delay="0.8s" data-wow-duration="1s">
           <img src="imagen/Noticia/{{noticias.imagen}}" style="width:100%">
@@ -122,17 +122,17 @@
     <div  style=";width: 80%;margin:40px auto 20px auto">
     <div id="cont-table">
       <div class="row">
-        <div class="col m8" style="padding-top: 10px">Estancia : {{ fechas.dias }} noches </div>
+        <div class="col m8" style="padding-top: 10px">Estancia : {{ fechas.dias }} noche(s). </div>
       </div>
       
       <br>
       <table>
         <thead>
           <tr>
-            <th>Habitacion</th>
-            <th>Cant.</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
+            <th class="table-tit"> Habitación </th>
+            <th class="table-tit"> Cant. </th>
+            <th class="table-tit"> Precio </th>
+            <th class="table-tit"> Subtotal </th>
           </tr>
         </thead>
         <tbody>
@@ -141,9 +141,9 @@
             <td width="50px">
               <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
             </td>
-            <td>{{o.precio}}</td>
-            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            <td width="20px"><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+            <td style="text-align: center">{{o.precio}}</td>
+            <td id="{{$index+1}}s" style="text-align: center">{{o.precio*o.quantity}}.00</td>
+            <td><a class="btn-floating  waves-effect" style="width: 30px;height: 30px" ng-click="eliminarItem(o.id);"><i class="small material-icons " style="font-size: 20px;top: -120px">delete</i></a></td>
           </tr>
           <tr>
             <td></td>
@@ -155,14 +155,6 @@
             <td></td>
             <td>Total:</td>
             <td> {{Total}}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <div class="col m4" ><a class="waves-effect waves-light btn tooltipped" ng-click="vaciarCarrito();"data-position="bottom" data-delay="50" data-tooltip="Vaciar Carrito"><i class="small material-icons">delete</i></a></div>
-            </td>
           </tr>
         </tbody>
       </table>

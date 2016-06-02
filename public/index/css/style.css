@@ -2,6 +2,11 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.table-tit{
+  padding-left: 10px;
+  padding-right:10px;
+  font-size: 0.8rem;
+}
 .space{
   margin-top: -30px;
   font-size: 3rem;
