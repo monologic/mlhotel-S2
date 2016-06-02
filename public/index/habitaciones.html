@@ -23,8 +23,7 @@
         <div class="col m2">
           <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
         </div>
-        
-      </div>
+    </div>
     <div  class="row wow fadeInUp card hab" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
@@ -82,22 +81,25 @@
         </div> 
       </div>
     </div> 
-</div>
 
-  <div id="caja" style="top:65px;">
-    <br><br>
-    <div class="title-reser teal lighten-2">Mis Reservas</div>
+
+<div id="caja" style="top:75px;">
     <br>
-    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
     <div  style=";width: 80%;margin:40px auto 20px auto">
     <div id="cont-table">
+      <div class="row">
+        <div class="col m8" style="padding-top: 10px">Estancia : {{ fechas.dias }} noche(s). </div>
+      </div>
+      
+      <br>
       <table>
         <thead>
           <tr>
-            <th>Habitacion</th>
-            <th>Cant.</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
+            <th class="table-tit"> Habitación </th>
+            <th class="table-tit"> Cant. </th>
+            <th class="table-tit"> Precio </th>
+            <th class="table-tit"> Subtotal </th>
           </tr>
         </thead>
         <tbody>
@@ -106,23 +108,24 @@
             <td width="50px">
               <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
             </td>
-            <td>{{o.precio}}</td>
-            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            <td width="10px"><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+            <td style="text-align: center">{{o.precio}}</td>
+            <td id="{{$index+1}}s" style="text-align: center">{{o.precio*o.quantity}}.00</td>
+            <td><a class="btn-floating  waves-effect" style="width: 30px;height: 30px" ng-click="eliminarItem(o.id);"><i class="small material-icons " style="font-size: 20px;top: -120px">delete</i></a></td>
           </tr>
-          <tr style="border-top: solid;border-width: 1px">
+          <tr>
             <td></td>
             <td colspan="2">Total por Día:</td>
             <td ng-bind="totalq"></td>
           </tr>
           <tr>
-            <td>{{ fechas.dias }} noches</td>
-            <td>--></td>
-            <td>Total</td>
-            <td>S/ {{Total}}</td>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td> {{Total}}</td>
           </tr>
         </tbody>
       </table>
+
     </div>
       
       <div>
@@ -130,8 +133,11 @@
       </div>    
     </div>
   </div> 
-</section>   <!-- Termino -->
+  </div>
 
+
+</section>   <!-- Termino -->
+</div>
 <script>
   $(document).ready(function() {
     $('select').material_select();

@@ -141,7 +141,6 @@ app.controller('habtipoController', function($scope,$http,$location) {
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
-
                 $scope.actualizarTotal(response.data);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
