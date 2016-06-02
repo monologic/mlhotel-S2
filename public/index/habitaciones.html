@@ -1,10 +1,11 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
+<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
 <div onclick="badCar();">
   <div class="booking hoverable center-block" style="margin-top:150px"> 
   </div>
-  <section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
+  
     <div class=" cont-book  row" style="padding-top: 20px;">
         <div class="col m5">
           <div class="calendar">
@@ -82,8 +83,8 @@
       </div>
     </div> 
 
-
-<div id="caja" style="top:75px;">
+</div>
+  <div id="caja" style="top:75px;">
     <br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>
     <div  style=";width: 80%;margin:40px auto 20px auto">
@@ -133,11 +134,9 @@
       </div>    
     </div>
   </div> 
-  </div>
-
 
 </section>   <!-- Termino -->
-</div>
+
 <script>
   $(document).ready(function() {
     $('select').material_select();
