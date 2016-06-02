@@ -199,12 +199,14 @@
     </script>
     <script>
     function fe(){
-        var f = new Date($( "#fechaini" ).val());
+        fecha = $( "#fechaini" ).val();
+        fecha = fecha.split("-")
+        var f = new Date(fecha[2] + "-" + fecha[1] + "-" + fecha[0]);
         f = f.getTime();
         f = f + 2*24*60*60*1000;
         f = new Date(f);
         //alert(f);
-        fec = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+        fec = twoDigits(f.getDate()) + "-" + twoDigits(f.getMonth()+1) + "-" + f.getFullYear();
         $( "#fechafin" ).val(fec);
     }
     function twoDigits(d) {

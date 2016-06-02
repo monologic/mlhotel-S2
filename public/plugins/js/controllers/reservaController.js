@@ -42,9 +42,13 @@ app.controller('reservaController', function($scope,$http) {
     }
 
 	$scope.buscarHab = function () {
-    
         var fini = $('#fechaini').val();
+        fini = fini.split("-");
+        fini = fini[2] + "-" + fini[1] + "-" + fini[0];
+
         var ffin = $('#fechafin').val();
+        ffin = ffin.split("-");
+        ffin = ffin[2] + "-" + ffin[1] + "-" + ffin[0];
 
         $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
         	window.location.href = '#/habitaciones';

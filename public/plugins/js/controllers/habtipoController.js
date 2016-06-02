@@ -99,8 +99,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
         });
     }
     $scope.buscarHab = function () {
-        var fini = $('#fechaini').val()
-        var ffin = $('#fechafin').val()
+        var fini = $scope.formatDate($('#fechaini').val());
+        var ffin = $scope.formatDate($('#fechafin').val());
 
         $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
 
@@ -192,8 +192,9 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
-                $('#fechaini').val(response.data.fecha_inicio);
-                $('#fechafin').val(response.data.fecha_fin);
+
+                $('#fechaini').val($scope.formatDate(response.data.fecha_inicio));
+                $('#fechafin').val($scope.formatDate(response.data.fecha_fin));
                 if ((response.data).hasOwnProperty('dias')) {
                     $scope.buscarHab();
                 }
@@ -233,5 +234,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
+    }
+    $scope.formatDate = function (date) {
+        date = date.split("-");
+        date = date[2] + "-" + date[1] + "-" + date[0];
+
+        return date;
     }
 });
