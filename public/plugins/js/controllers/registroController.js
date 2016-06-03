@@ -105,7 +105,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             // or server returns response with an error status.
             }); 
         }
-        alert('Asignaci¨®n de habitaciones exitosa.');
+        alert('Asignación de habitaciones exitosa.');
         window.location.href = 'admin#/DetalleHabitaciones';
     }
     $scope.getReservaInfo = function () {
@@ -142,7 +142,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.finalizar = function (id) {
         $http.get('admin/finalizarRegistro/' + id).then(function successCallback(response) {
             
-            alert("Se ha finalizado la estadÃ­a...");
+            alert("Se ha finalizado la estadia...");
             window.location.href = 'admin#/DetalleHabitaciones';
             
         }, function errorCallback(response) {

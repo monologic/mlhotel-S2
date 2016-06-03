@@ -83,6 +83,7 @@
                     <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Buscar">Registro sin reser.</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasHistorial">Historial reservas</a></li>
                 @endif
                     @if (Auth::user()->usuariotipo->nombre=="Root")
 
@@ -112,6 +113,7 @@
 
                     <li class="menu__item"><a class="menu__link" href="#/Buscar">Registro sin reser.</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasHistorial">Historial reservas</a></li>
                 </ul>
                 <!-- Submenu 2 -->
                 <ul data-menu="submenu-2" class="menu__level">
