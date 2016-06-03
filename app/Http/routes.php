@@ -81,6 +81,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::post('buscarPersonal', 'PersonalController@buscar');
 
 	Route::post('configHoraHotel', 'HotelController@configHoraHotel');
+	Route::post('editarFechas', 'ReservaController@editarFechas');
 	
 	Route::get('finalizarRegistro/{idRegistro}', 'RegistroController@finalizar');
 

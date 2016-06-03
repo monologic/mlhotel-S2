@@ -143,7 +143,6 @@ class RegistroController extends Controller {
                             if (!isset($habtipos[$k]['habtiporeservas'])) {
                                 $habtipos[$k]['habtiporeservas'] = null;
                             }
-                            
                         }
                     }
                 }
