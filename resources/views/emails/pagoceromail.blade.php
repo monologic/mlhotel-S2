@@ -3,16 +3,18 @@
 <head>
 	<meta charset="utf-8">
 </head>
-<body bgcolor="#7f8c8d">
+<body>
 	<div class="centrado-porcentual">
   	<h2>Confirmación de Reserva</h2>
   	<p>
   		Estimado Cliente:
   	</p>
   	<p>Le agradecemos su preferencia!</p>
-	<p>Ud. ha realizado la siguiente reserva:</p>
-	<p>Fecha Ingreso o Check in : {{ $fecha_inicio }}</p>
-	<p>Fecha Salida o Check out: {{ $fecha_fin }}</p>
+  	<p>Ud. ha realizado la siguiente reserva:</p>
+    <p>Código de Reserva: {{ $codigo_reserva }}</p>
+  	<p>Fecha Ingreso o Check in : {{ $fecha_inicio }}</p>
+  	<p>Fecha Salida o Check out: {{ $fecha_fin }}</p>
+
   	<p>
   		<table>
   			@foreach ($habtiposcount as $habtipo)
