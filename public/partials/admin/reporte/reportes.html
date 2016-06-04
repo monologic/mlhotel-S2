@@ -1,6 +1,6 @@
 <div ng-controller="graficasController" ng-init="getgrafCircle();" class="row" style="display: block;width: 100%;height: 100%;color:black">
-	<div class="row" style="padding: 20px;border-radius: 10px;border:solid;border-width: 1px;margin: 20px;max-width:500px">
-		<div >
+	<div class="row" style="padding: 20px;border-radius: 10px;border:solid;border-width: 1px;margin: 20px;max-width:700px">
+		<div>
 			<div style="text-align: center;border-bottom: solid;border-width:1px;height: 25px ;color: black">Estadisticas de Habitaciones</div>
 			<div class="col-md-6">
 				<div class="" style="width: 200px;height: 300px">
@@ -33,18 +33,14 @@
 	</div>
 	<div class="col-md-12" style="padding: 20px;border-radius: 10px;border:solid;border-width: 1px;margin: 20px">
 		<div >
-			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 10px ">
-				<div class="col-md-6">
+			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 30px ">
+				<div class="col-md-1">
 				
-					<div class="" style="font-size: 1.6rem">Reservas realizadas : </div>
-						<select class="form-control" id="Sreserva" onchange="cambioR()">
-							<option value="dia">Esta semana</option>
-							<option value="mes">Por meses</option>
-							<option value="año">Por años</option>
-						</select>
+					<div class="" style="font-size: 1.6rem;margin-top: 5px">Fecha : </div>
+						
 					</div>
-					<div class="col-md-6" style="font-size: 1.6rem">
-						Fecha para detalles :
+					<div class="col-md-3" style="font-size: 1.6rem">
+						
 						<input type="date"  id="dtime" class="form-control" style="max-width: 180px" onchange="limpiarReservas()" ng-model="fechainiR"  ng-change="getRervasE()" >
 						<div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
 					</div>
@@ -153,18 +149,11 @@
 		</div>
 	<div class="col-md-12" style="padding: 20px;border-radius: 10px;border:solid;border-width: 1px;margin: 20px">
 		<div >
-			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 10px ">
-				<div class="col-md-6">
-					<div class="" style="font-size: 1.6rem">Ingresos : </div>
-						<select class="form-control" id="selI" onchange="cambioI()">
-						<option value="dia">Esta semana</option>
-						<option value="mes">Por meses</option>
-						<option value="año">Por años</option>
-					</select>
-
+			<div class="row" style="color: black;border-bottom: solid;border-width: 1px;border-color:rgb(200,200,200);padding-bottom: 30px ">
+				<div class="col-md-1">
+					<div class="" style="font-size: 1.6rem;margin-top: 5px">Fecha : </div>
 				</div>
-				<div class="col-md-6" style="font-size: 1.6rem">
-					Fecha para detalles :
+				<div class="col-md-3" style="font-size: 1.6rem">
 					<input type="date" id="ftime" onchange="limpiarRegistro()" ng-model="fechainiR"  class="form-control"  ng-change="getIngresoE()" style="max-width: 180px">
 					<div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
 				</div>

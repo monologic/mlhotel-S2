@@ -171,17 +171,30 @@ app.controller('habtipoController', function($scope,$http,$location) {
 
     }
     $scope.actualizarCarrito = function (data) {
-        
-        for (x in data) {
-            $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
-            {
-            }).then(function successCallback(response) {
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
+        var v = 0;
+        for(y in data){
+            if (data[y].quantity > data[y].max || data[y].quantity <= 0)
+                    v = 1;
         }
-        window.location.href = '#/micarrito';
+
+        if (v == 1) {
+            $('#alerta-dis').css('display','block');
+        }
+        else
+        {
+            for (x in data) {
+                $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
+                {
+                }).then(function successCallback(response) {
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+            } 
+            window.location.href = '#/micarrito';
+        }
+        
+       
     }
     $scope.onDateSet = function(){
        console.log($scope.fechaini.timer);
