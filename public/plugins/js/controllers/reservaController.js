@@ -114,7 +114,7 @@ app.controller('reservaController', function($scope,$http) {
         var ff = data.fecha_fin;
         ff = ff.split(" ");
 
-        $http.get('admin/buscar/'+fi[0]+'/'+ff[0]).then(function successCallback(response) {
+        $http.get('admin/registrosBusqueda/'+fi[0]+'/'+ff[0]).then(function successCallback(response) {
             if ((response.data).hasOwnProperty('mensaje')) {
                 $('#alertCambio').css('display','block');
             }
@@ -137,11 +137,23 @@ app.controller('reservaController', function($scope,$http) {
         else
             habsSeleccionadas.splice(habsSeleccionadas.indexOf(habitacion),1);
 
+        $scope.paraAsignar();
         $scope.countChecked();
         $scope.buttonAsignar();
     }
+    $scope.paraAsignar = function () {
+        for(i in $scope.tipoPerHabs){
+            $scope.tipoPerHabs[i].paraAsignar = 0;
+            for(j in $scope.Reservas.habtiposcount){
+                if ($scope.tipoPerHabs[i].id == $scope.Reservas.habtiposcount[j].id) {
+                    $scope.tipoPerHabs[i].paraAsignar = $scope.Reservas.habtiposcount[j].count;
+                }
+            }
+        }
+    }
     $scope.countChecked = function () {
-        count = $scope.Reservas.habtiposcount;
+
+        count = $scope.tipoPerHabs;
         for(j in count) {
             c = 0
             for(i in habsSeleccionadas) {
@@ -154,11 +166,14 @@ app.controller('reservaController', function($scope,$http) {
         $scope.countHabschecked = count;
     }
     $scope.buttonAsignar = function () {
+        //console.log($scope.countHabschecked);
         ct = ($scope.countHabschecked).length; //total de elementos (tipos de habitaciones)
         c = 0;
         for(j in $scope.countHabschecked) {
-            if ($scope.countHabschecked[j].count == $scope.countHabschecked[j].checkedCount) 
-                c++
+            if ($scope.countHabschecked[j].paraAsignar == $scope.countHabschecked[j].checkedCount)
+                c++;
+            else
+                c--;
         }
         if (ct == c) 
             $("#guardarChecks").css("display","block");
