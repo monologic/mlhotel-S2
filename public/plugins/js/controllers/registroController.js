@@ -12,7 +12,8 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         f = f + 1*24*60*60*1000;
         f = new Date(f);
         $scope.fechafin = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
-    
+        $scope.tomorrow = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+        
     }
     $scope.ponerFecha2 = function () {
         var f = new Date();
@@ -29,6 +30,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         alert((fechafin1 - fechaini1)/86400000);
         */
     }
+    /*
 	$scope.buscar = function () {
         $http.get('admin/buscar/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             if ((response.data).hasOwnProperty('mensaje')) {
@@ -37,6 +39,21 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             }
             else
                 $scope.tipoPerHabs = response.data;
+            //ordenarPorTipo(response.data);
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }*/
+    $scope.buscar = function () {
+        $http.get('admin/registrosBusqueda/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
+            if ((response.data).hasOwnProperty('mensaje')) {
+                alert("No se encontraron habitaciones disponibles");
+                $scope.tipoPerHabs = null;
+            }
+            else{
+                $scope.tipoPerHabs = response.data;
+            }
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs

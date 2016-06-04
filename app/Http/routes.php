@@ -85,6 +85,9 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	
 	Route::get('finalizarRegistro/{idRegistro}', 'RegistroController@finalizar');
 
+	Route::get('optimized/{fecha}', 'RegistroController@searchOptimized');
+	Route::get('registrosBusqueda/{fechaini}/{fechafin}', 'RegistroController@registrosBusqueda');
+	
 	Route::delete('regClienteEliminar/{id}', 'ClienteController@eliminarRegCliente');
 
 	Route::get('report', 'graficas@ghabitaciones');

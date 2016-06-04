@@ -19,7 +19,7 @@
                     </td>
                     <td style="min-width:200px;padding:0px 10px 0px 10px " >
                         <div class="form-group">
-                            <input type="date" class="form-control" id="fechafin" ng-model="fechafin" min="{{fechafin}}">
+                            <input type="date" class="form-control" id="fechafin" ng-model="fechafin" min="{{tomorrow}}">
                             <div class="cl"><img class="cld" src="plugins/css/imgc.png" alt=""></div>
                         </div>
                     </td>
@@ -55,7 +55,7 @@
                     <tr ng-repeat="p in habtipo.habitaciones | orderBy:'numero' " on-finish-render="ngRepeatFinished">
                         <td>{{p.numero}}</td>
                         <td>{{p.estado.nombre}}</td>
-                        <td>{{p.habtipo.nombre}}</td>
+                        <td>{{habtipo.nombre}}</td>
                         <td>
                             
                             <input type="checkbox" id="{{ p.numero }}" ng-change="clickOnCheck(p);" ng-model="checks" class="checks th{{ habtipo.id }}" style="left:45%">

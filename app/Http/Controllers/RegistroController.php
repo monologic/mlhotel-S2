@@ -175,6 +175,182 @@ class RegistroController extends Controller {
             ]);
         }
     }
+    public function registrosBusqueda($fechaini, $fechafin)
+    {
+        return $this->separadorDeFechas($fechaini, $fechafin, date('H:i:s'));
+    }
+    public function separadorDeFechas($fechaini, $fechafin, $initHour)
+    {
+        $fechaini = strtotime($fechaini . " 00:00:00");
+        $fechafin = strtotime($fechafin . " 23:59:59");
+
+        $h = Hotel::all();
+        $hora = $h[0]->checkin ;
+
+        $disp = array();
+        
+        for($i = $fechaini; $i <= $fechafin; $i += 86400){
+            $fechaN = date("Y-m-d", $i);
+            if ($i == $fechaini)
+                $fecha = date("Y-m-d", $i). " " . $initHour;
+            else
+                $fecha = date("Y-m-d", $i). " " . $hora;
+                
+            $disp[] = $this->searchOptimized($fecha);
+            
+        }
+        return $this->unionDisponibiidad($disp);
+    }
+    public function separadorDeFechas2($fechaini, $fechafin, $initHour)
+    {
+        $fechaini = strtotime($fechaini . " 00:00:00");
+        $fechafin = strtotime($fechafin . " 00:00:00");
+
+        $h = Hotel::all();
+        $hora = $h[0]->checkin ;
+
+        $disp = array();
+        
+        for($i = $fechaini; $i <= $fechafin; $i += 86400){
+            //echo $i;
+            $fechaN = date("Y-m-d", $i);
+            if ($i == $fechaini)
+                $fecha = date("Y-m-d", $i). " " . $initHour;
+            else {
+                if ($i == $fechafin){
+                    //echo $i;
+                    $fecha = date("Y-m-d", $i). " " . $h[0]->checkout;
+                }
+                else
+                    $fecha = date("Y-m-d", $i). " " . $hora;
+            }
+            $disp[] = $this->searchOptimized($fecha);
+        }
+        return $this->unionDisponibiidad($disp);
+    }
+    public function unionDisponibiidad($disp)
+    {
+        $cantPTH = array();
+        foreach ($disp as $i => $habtipos) {
+            foreach ($habtipos as $j => $habtipo) {
+                $cantPTH[$j][$i] = $disp[$i][$j];
+            }
+        }
+        $THmin = array();
+        foreach ($cantPTH  as $j => $habtipos) {
+            $menor = 999999999;
+            $key = -1;
+            foreach ($habtipos as $k => $habtipo) {
+                $d = $habtipo['disponibles'];
+                if ($d < $menor) {
+                    $key = $k;
+                    $menor = $d;
+                }
+            }
+            $THmin[] = $habtipos[$key];
+        }
+        
+        
+        return response()->json($THmin);
+    }
+    public function searchOptimized($fecha)
+    {
+        $r = Registro::select('habitacion_id')
+                    ->where(function($query)use($fecha){
+                        $query->whereRaw(DB::raw("'$fecha' between `fechaentrada` and `fechasalida`"));
+                        })
+                    ->get();
+        $r = $r->toArray();
+
+        if (count($r) != 0) {
+            $hab_id_array = array();
+            foreach ($r as $key => $regs)
+                array_push($hab_id_array, $regs['habitacion_id']);
+            
+            $habs = Habitacion::whereNotIn('id', $hab_id_array)
+                              ->where('estado_id','!=', 3)
+                              ->orderBy('habtipo_id', 'asc')
+                              ->get();
+        }
+        else {
+
+            $habs = Habitacion::where('estado_id','!=', 3)
+                              ->orderBy('habtipo_id', 'asc')
+                              ->get();           
+        }
+
+        $habtipos = Habtipo::where('activo', 1)->get();
+
+        if (count($habs->toArray()) != 0) {
+
+            $habs->each(function($habs){
+                $habs->estado;
+            });
+
+            $habtipos = $habtipos->toArray();
+            foreach ($habs as $key => $hab) {
+                foreach ($habtipos as $k => $habtipo) {
+                    if ($habtipo['id'] == $hab['habtipo_id']) {
+                        $habtipos[$k]['habitaciones'][] = $hab;
+                    }
+                    if (!(array_key_exists('habitaciones', $habtipos[$k]))) {
+                        $habtipos[$k]['habitaciones'] = null;
+                    }
+                }
+            }
+        }
+
+        $reservas = Reserva::whereIn('reservaestado_id', [2, 3])
+                           ->where(function($query)use($fecha){
+                                $query->whereRaw(DB::raw("'$fecha' between `fecha_inicio` and `fecha_fin`"));
+                            })
+                           ->get();
+
+        $reservas->each(function($reservas){
+            $reservas->habtiporeservas;
+        });
+        $reservas = $reservas->toArray();
+        if (count($reservas) != 0) {
+            foreach ($reservas as $h => $reserva) {
+                foreach ($reserva['habtiporeservas'] as $i => $habtipo) {
+                    foreach ($habtipos as $k => $ht) {
+                        if ( $ht['id'] == $habtipo['habtipo_id']) {
+                            $habtipos[$k]['habtiporeservas'][] = $habtipo;
+                        }
+                        if (!isset($habtipos[$k]['habtiporeservas'])) {
+                            $habtipos[$k]['habtiporeservas'] = null;
+                        }
+                    }
+                }
+            }
+        }
+            //dd($habtipos);
+        foreach ($habtipos as $k => $habtipo) {
+            if (count($reservas) != 0) {
+                $r = count($habtipo['habtiporeservas']);
+                $habtipos[$k]['habtiporeservascount'] = $r;
+            }
+            else
+                $habtipos[$k]['habtiporeservascount'] = 0;
+
+            if (count($habs) != 0) {
+                $r2 = count($habtipo['habitaciones']);
+                $habtipos[$k]['habitacionescount'] = $r2;
+            }
+            else{
+                $habtipos[$k]['habitacionescount'] = 0;
+            }
+            $disponibles = $habtipos[$k]['habitacionescount']-$habtipos[$k]['habtiporeservascount'];
+            
+            $habtipos[$k]['disponibles'] = $disponibles;
+            
+
+            //unset($habtipos[$k]['habitaciones']);
+        }
+
+        return $habtipos;
+
+    }
 
     public function store(Request $request)
     {
@@ -200,7 +376,6 @@ class RegistroController extends Controller {
         return response()->json([
             "mensaje" => 'Registro Creado'
         ]);
-
     }
 
     public function calcularTotal($dias, $habitacion_id)
@@ -368,17 +543,6 @@ class RegistroController extends Controller {
             $habtipos = Habtipo::where('activo', 1)->get();
 
             if (count($habs->toArray()) != 0) {
-                /**
-                 * Relacionar estado y tipo de Habitación.
-                 *
-                $habs->each(function($habs){
-                    $habs->estado;
-                });
-                $habs->each(function($habs){
-                    $habs->habtipo;
-                });
-
-                $habs = $habs->toArray();
                 /**
                  * Obtener Habtipos y relacionar con Servivios internos 
                  */
