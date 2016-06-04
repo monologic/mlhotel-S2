@@ -8,9 +8,21 @@
    
     <div ng-repeat="y in reservas | filter:buscar" class="row">
         <p>
-            <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
-                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }} | Forma de Pago: {{ y.pagotipo.pagotipo }} | Fecha Entrada: {{ y.fecha_inicio }} | Código de Reserva: {{ y.codigo_reserva }}
+            <button class="btn reserva-item row" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
+                <div class="col-md-3">
+                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                    {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
+                </div>
+                <div class="col-md-4">
+                    Entrada: {{ y.fecha_inicio }}
+                </div>
+                <div class="col-md-2">
+                     Código : {{ y.codigo_reserva }} 
+                </div>
+                <div class="col-md-3" style="text-align: right">
+                    {{ y.pagotipo.pagotipo }}
+                </div>
+                   
             </button>
         </p>
             <div class="collapse" id="{{y.id}}" style="padding: 20px;border-width:0.1px;border:solid;border-radius: 5px;margin-bottom:10px">
@@ -23,8 +35,16 @@
                 </div >    
                 
                 <div class="col-md-4">
-                    <table class="table">
-                        <p class="text-center">Habitaciones</p>
+                    <table class="table table-bordered" style="text-align: center">
+                        <thead>
+                            <tr>
+                                <th colspan="2" style="text-align: center">Reserva</th>
+                            </tr>      
+                            <tr>
+                                <th style="text-align: center">Habitaciones</th>
+                                <th style="text-align: center">Cant.</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr ng-repeat="z in y.habtiposcount">
                                 <td>{{ z.nombre }}</td>
@@ -34,10 +54,10 @@
                     </table>
                 
             </div>
-            <div class="col-sm-4" style="bottom: 0;">
-                <p><a href="" ng-click="buscarHabs(y)" data-toggle="modal" data-target="#asignar" class="btn btn-success">Asignar Habitaciones</a></p>
-                <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger">Cancelar Reserva</a></p>
-                <p><a href="" ng-click="dataEditar(y)" class="btn btn-warning" data-toggle="modal" data-target="#editar">Editar Reserva</a></p>
+            <div class="col-sm-3" style="bottom: 0;">
+                <a href="" ng-click="buscarHabs(y)" data-toggle="modal" data-target="#asignar" class="btn btn-success col-md-12" style="margin-bottom: 10px">Asignar Habitaciones</a>
+                <a href="" ng-click="cancelar(y.id)" class="btn btn-danger col-md-12" style="margin-bottom: 10px">Cancelar Reserva</a>
+                <a href="" ng-click="dataEditar(y)" class="btn btn-warning col-md-12" data-toggle="modal" data-target="#editar" style="margin-bottom: 10px">Editar Reserva</a>
             </div>
           </div>
         </div>
