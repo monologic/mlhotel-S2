@@ -36,10 +36,18 @@ app.controller('carritoController', function($scope,$http) {
 
     }
     $scope.guardarCliente = function () {
-        
         elemento = document.getElementById("test5");
         opciones = document.getElementsByName("opciones");
+        porcen = document.getElementsByName("group1");
         var seleccionado = false;
+        var cobro = false;
+
+        for(var i=0; i<porcen.length; i++) {    
+          if(porcen[i].checked) {
+            cobro = true;
+            break;
+          }
+        }
         for(var i=0; i<opciones.length; i++) {    
           if(opciones[i].checked) {
             seleccionado = true;
@@ -54,21 +62,28 @@ app.controller('carritoController', function($scope,$http) {
             if(!seleccionado) {
               alert('Debes seleccionar un metodode pago');
             }
-            else{
-                $('#modalBlanco').css( "display", "block" );
+            else
+            {
+               if (!cobro) {
+                 alert('Debes seleccionar un porcentaje de pago');   
+                }
+                else{
+                    $('#modalBlanco').css( "display", "block" );
 
-                $http.post('cart/cliente',
-                {   'nombres':$scope.nombres,
-                    'apellidos':$scope.apellidos,
-                    'dni':$scope.dni,
-                    'porcentaje':$scope.porcentajeRadio.name,
-                    'email':$scope.email,
-                    'banco_id':$('#banco').val()
-                }).then(function successCallback(response) {
-                     $scope.pagar();
-                }, function errorCallback(response) { 
-                });
+                    $http.post('cart/cliente',
+                    {   'nombres':$scope.nombres,
+                        'apellidos':$scope.apellidos,
+                        'dni':$scope.dni,
+                        'porcentaje':$scope.porcentajeRadio.name,
+                        'email':$scope.email,
+                        'banco_id':$('#banco').val()
+                    }).then(function successCallback(response) {
+                         $scope.pagar();
+                    }, function errorCallback(response) { 
+                    });
+                } 
             }
+                
             
         }  
     }
