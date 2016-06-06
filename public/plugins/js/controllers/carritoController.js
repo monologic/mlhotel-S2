@@ -12,19 +12,20 @@ app.controller('carritoController', function($scope,$http) {
             // or server returns response with an error status.
             });
     }
-    $scope.res = function () {
+    $scope.res = function (fechas) {
+        
         $http.get('cart/show',
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
-                $scope.actualizarTotal(response.data);
+                $scope.actualizarTotal($scope.car, fechas);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
+        
     }
-    $scope.actualizarTotal = function(data){
-        $scope.getDias();
+    $scope.actualizarTotal = function(data, fechas){
         var total=0;
         for (x in data) {
             subp=data[x].precio*data[x].quantity;
@@ -32,7 +33,7 @@ app.controller('carritoController', function($scope,$http) {
         }
         $scope.totalN = total.toFixed(2);
         $scope.totalq = 'S/' + total + '.00';
-        $scope.Total = ($scope.totalN * $scope.fechas.dias).toFixed(2);
+        $scope.Total = ($scope.totalN * fechas.dias).toFixed(2);
 
     }
     $scope.guardarCliente = function () {
@@ -132,12 +133,13 @@ app.controller('carritoController', function($scope,$http) {
         $('#banco').material_select();
 
     });
-
+    var Fechas;
     $scope.getDias = function () {
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
-                $scope.fechas = response.data;
+                $scope.dias = response.data.dias;
+                $scope.res(response.data);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

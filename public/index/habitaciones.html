@@ -1,7 +1,7 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-<section class="container" ng-controller="habtipoController" ng-init="descrip();getTipoCambio();getHabTipo();res();buscarAuto();" style="min-height:300px">
+<section class="container" ng-controller="habtipoController" ng-init="getHabTipo();res();buscarAuto();" style="min-height:300px">
 <div onclick="badCar();">
   <div class="booking hoverable center-block" style="margin-top:150px"> 
   </div>
@@ -130,7 +130,7 @@
     </div>
       <div id="alerta-dis" class=" yellow lighten-3" style="color: #f57f17;padding: 10px;margin-top: 15px;text-align: center;display: none"> Exceso de disponibilidad. </div>
       <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito(car)">Continuar</a>
+        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito()">Continuar</a>
       </div>    
     </div>
   </div> 
