@@ -300,7 +300,11 @@ class ReservaController extends Controller
     }
     public function editarFechas(Request $request)
     {
-        $b = $this->busqueda($request->fechaini, $request->fechafin);
+        //$b = $this->busqueda($request->fechaini, $request->fechafin);
+        $h = Hotel::all();
+        $cregistro = new RegistroController();
+        $b = $cregistro->separadorDeFechas2($request->fechaini, $request->fechafin, $h[0]->checkin);
+
         $reserva = Reserva::find($request->idReserva);
         $reservaObj = $reserva;
         $reserva->habtiporeservas;
@@ -338,7 +342,7 @@ class ReservaController extends Controller
             $reserva['habtiposcount'] = $ht;
 
         }
-       // dd($reserva['habtiposcount']);
+        // dd($reserva['habtiposcount']);
 
         $c = count($reserva['habtiposcount']);
         $c2 = 0;

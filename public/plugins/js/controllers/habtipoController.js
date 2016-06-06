@@ -7,14 +7,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
     $scope.getHabTipo = function () {
         $http.get('admin/AddHab').then(function successCallback(response) {
         	$scope.habtipos=response.data;
-
             gdata=response.data;
-            
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
-       
     } 
 
     var details = Array();
@@ -141,11 +138,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
-                $scope.actualizarTotal(response.data);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
+        $scope.actualizarTotal($scope.car);
     }
     /**
      * Actualiza la cantidad en el carrito
@@ -153,8 +150,15 @@ app.controller('habtipoController', function($scope,$http,$location) {
     $scope.actualizar = function(id, idObjeto, data){
         cantidad = $('#'+id).val();
         for (x in data) {
-            if (x == idObjeto)
+            if (x == idObjeto){
                 data[x].quantity = cantidad;
+                $http.get('cart/update/'+ idObjeto + '/' + cantidad ).then(
+                function successCallback(response) {
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+            }
         }
         $scope.car = data;
     }
@@ -170,13 +174,13 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $scope.Total = ($scope.totalN * $scope.fechas.dias).toFixed(2);
 
     }
-    $scope.actualizarCarrito = function (data) {
+    $scope.actualizarCarrito = function () {
+        data = $scope.car;
         var v = 0;
         for(y in data){
-            if (data[y].quantity > data[y].max || data[y].quantity <= 0)
-                    v = 1;
+            if (parseInt(data[y].quantity) > parseInt(data[y].max) || parseInt(data[y].quantity) <= 0)
+                v = 1;
         }
-
         if (v == 1) {
             $('#alerta-dis').css('display','block');
         }
@@ -190,12 +194,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 });
-            } 
+            }
             window.location.href = '#/micarrito';
         }
-        
-       
     }
+
     $scope.onDateSet = function(){
        console.log($scope.fechaini.timer);
        //outputs '10 Sep' , where i expect to find the date object

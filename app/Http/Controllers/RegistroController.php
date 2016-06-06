@@ -177,7 +177,7 @@ class RegistroController extends Controller {
     }
     public function registrosBusqueda($fechaini, $fechafin)
     {
-        return $this->separadorDeFechas($fechaini, $fechafin, date('H:i:s'));
+        return response()->json($this->separadorDeFechas($fechaini, $fechafin, date('H:i:s')));
     }
     public function separadorDeFechas($fechaini, $fechafin, $initHour)
     {
@@ -251,7 +251,7 @@ class RegistroController extends Controller {
         }
         
         
-        return response()->json($THmin);
+        return $THmin;
     }
     public function searchOptimized($fecha)
     {
