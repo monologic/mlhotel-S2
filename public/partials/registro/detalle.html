@@ -126,12 +126,18 @@
 				<label for="exampleInputEmail1">Profesión u Ocupación</label>
 			    <input type="text" class="form-control" id="" placeholder="" ng-model="prof_ocup">
 			</div>
-			<div class="form-group" ng-if="huesped == 'false'">
-				<a class="btn btn-primary center-block" ng-click="nuevoHuesped();">+ Agregar</a>
+			<div ng-if="cantHuesped < registro.habitacion.habtipo.nropersonas">
+				<div class="form-group" ng-if="huesped == 'false'">
+					<a class="btn btn-primary center-block" ng-click="nuevoHuesped();">+ Agregar</a>
+				</div>
+				<div class="form-group" ng-if="huesped == 'true'">
+					<a class="btn btn-primary center-block" ng-click="editarHuesped();">+ Agregar</a>
+				</div>
 			</div>
-			<div class="form-group" ng-if="huesped == 'true'">
-				<a class="btn btn-primary center-block" ng-click="editarHuesped();">+ Agregar</a>
+			<div ng-if="cantHuesped >= registro.habitacion.habtipo.nropersonas">
+				<p>Esta habitación está llena</p>
 			</div>
+
 		</object>
 
 	

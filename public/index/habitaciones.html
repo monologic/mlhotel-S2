@@ -1,12 +1,12 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
-<section class="container" ng-controller="habtipoController" ng-init="getHabTipo();res();buscarAuto();" style="min-height:300px">
+<section class="container" ng-controller="habtipoController" ng-init="buscarAuto();getHabTipo()" style="min-height:300px">
 <div onclick="badCar();">
   <div class="booking hoverable center-block" style="margin-top:150px"> 
   </div>
   
-    <div class=" cont-book  row" style="padding-top: 20px;">
+    <div class="cont-book row" style="padding-top: 20px;">
         <div class="col m5">
           <div class="calendar">
             <p style="margin-bottom: 15px;text-align: left;"> Fecha de Entrada</p>
@@ -25,7 +25,7 @@
           <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
         </div>
     </div>
-    <div  class="row wow fadeInUp card hab" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+    <div ng-if="dias == null" class="row wow fadeInUp card hab" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px;">
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
         <a class="btn" href="" ng-click="goTo3(y);">+ info</a>
@@ -54,9 +54,9 @@
     </div> 
       <!-- Busqueda de habitaciones div none -->
 
-    <div  class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+    <div ng-if="dias != null" class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
       <div class="col s12 m4 l4 " style="padding:10px">
-        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
+        <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}" style="width:100%">
       </div>
       <div class="col s12 m6 l6 ">
         <div class="black-text" style="padding-top:5px">
@@ -90,7 +90,7 @@
     <div  style=";width: 80%;margin:40px auto 20px auto">
     <div id="cont-table">
       <div class="row">
-        <div class="col m8" style="padding-top: 10px">Estancia : {{ fechas.dias }} noche(s). </div>
+        <div class="col m8" style="padding-top: 10px">Estancia : {{ dias }} noche(s). </div>
       </div>
       
       <br>
@@ -107,7 +107,7 @@
           <tr ng-repeat="o in car">
             <td>{{o.nombre}}</td>
             <td width="50px">
-              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car, dias)">
             </td>
             <td style="text-align: center">{{o.precio}}</td>
             <td id="{{$index+1}}s" style="text-align: center">{{o.precio*o.quantity}}.00</td>

@@ -100,13 +100,12 @@ app.controller('habtipoController', function($scope,$http,$location) {
         var ffin = $scope.formatDate($('#fechafin').val());
 
         $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
-
+            $scope.getDias();
             if ((response.data).hasOwnProperty('mensaje')) {
                 //$('#alertCambio').css('display','block');
                 alert(response.data.mensaje);
             }
             else{
-                $scope.res();
                 $scope.tipoPerHabs = response.data;
                 fechas=$scope.fechaini;
                 fechas2=$scope.fechafin;
@@ -119,30 +118,41 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
 
-        $('.hab').css({'display':'none'});
     }
     $scope.addCarrito = function (data) {
         max = data.habitacionescount-data.habtiporeservascount;
         $http.get('cart/add/'+data.id+'/'+max,
             {
             }).then(function successCallback(response) {
-                $scope.res();
+                $scope.res($scope.dias);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
     }
-    $scope.res = function () {
-        $scope.getDias();
+    $scope.res = function (fechas) {
+        
         $http.get('cart/show',
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
+                $scope.actualizarTotal($scope.car, fechas);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
-        $scope.actualizarTotal($scope.car);
+        
+    }
+    $scope.actualizarTotal = function(data, fechas){
+        var total=0;
+        for (x in data) {
+            subp=data[x].precio*data[x].quantity;
+            total+=subp;
+        }
+        $scope.totalN = total.toFixed(2);
+        $scope.totalq = 'S/' + total + '.00';
+        $scope.Total = ($scope.totalN * fechas).toFixed(2);
+
     }
     /**
      * Actualiza la cantidad en el carrito
@@ -161,18 +171,6 @@ app.controller('habtipoController', function($scope,$http,$location) {
             }
         }
         $scope.car = data;
-    }
-    $scope.actualizarTotal = function(data){
-        
-        var total=0;
-        for (x in data) {
-            subp=data[x].precio*data[x].quantity;
-            total+=subp;
-        }
-        $scope.totalN = total.toFixed(2);
-        $scope.totalq = 'S/' + total + '.00';
-        $scope.Total = ($scope.totalN * $scope.fechas.dias).toFixed(2);
-
     }
     $scope.actualizarCarrito = function () {
         data = $scope.car;
@@ -207,11 +205,16 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
-
+                //alert($scope.formatDate(response.data.fecha_inicio));
                 $('#fechaini').val($scope.formatDate(response.data.fecha_inicio));
                 $('#fechafin').val($scope.formatDate(response.data.fecha_fin));
                 if ((response.data).hasOwnProperty('dias')) {
+                    $scope.dias = response.data.dias;
                     $scope.buscarHab();
+                    $scope.res(response.data);
+                }
+                else{
+                    $scope.dias = null;
                 }
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -222,7 +225,18 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
-                $scope.fechas = response.data;
+                $scope.dias = response.data.dias;
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+    $scope.getDias2 = function () {
+        $http.get('cart/getDias',
+            {
+            }).then(function successCallback(response) {
+                $scope.dias = response.data.dias;
+                $scope.res(response.data);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

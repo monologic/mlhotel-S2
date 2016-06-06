@@ -200,6 +200,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+    $scope.cantHuesped = 0;
     $scope.nuevoHuesped = function () {
         $http.post('admin/cliente',
             {   'nombres':$scope.nombres,
@@ -219,6 +220,9 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             }).then(function successCallback(response) {
                 
                 $scope.regClientes = response.data;
+                
+                c = $scope.cantHuesped;
+                $scope.cantHuesped = c + 1;
 
                 $scope.nombres = "";
                 $scope.apellidos = "";
@@ -236,6 +240,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             // or server returns response with an error status.
             }); 
     }
+    
     $scope.editarHuesped = function () {
         $http.put('admin/cliente/' + $scope.idHuesped,
             {   'nombres':$scope.nombres,
@@ -255,6 +260,8 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             }).then(function successCallback(response) {
                 
                 $scope.regClientes = response.data;
+                c = $scope.cantHuesped;
+                $scope.cantHuesped = c + 1;
 
                 $scope.nombres = "";
                 $scope.apellidos = "";
