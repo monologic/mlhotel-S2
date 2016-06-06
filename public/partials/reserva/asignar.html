@@ -4,17 +4,18 @@
     <br><br>
     <div class="formularios ">
             <div class="row"style="width: 100%" >
-                <div class="col-md-4">
-                     <p>Reservado para:  </p>
-                    <p style="margin-left: 20px">{{ Reservas.cliente.nombres }} {{ Reservas.cliente.apellidos }}</p>
+                <div class="col-md-3">
+                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>  &nbsp;
+                     Código : {{ y.codigo_reserva }} 
                 </div>
-               <div class="col-md-4">
-                   <p>Fecha de Entrada: </p>
-                    <p style="margin-left: 20px">{{ Reservas.fecha_inicio }}</p>
-               </div>
-                <div class="col-md-4">
-                    <p>Fecha de Salida: </p>
-                    <p style="margin-left: 20px">{{ Reservas.fecha_fin }}</p>
+                <div class="col-md-3">
+                    {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
+                </div>
+                <div class="col-md-3">
+                    Entrada: {{ y.fecha_inicio }}
+                </div>
+                <div class="col-md-3" style="text-align: right">
+                    {{ y.pagotipo.pagotipo }}
                 </div>
                 
             </div>

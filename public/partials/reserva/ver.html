@@ -10,14 +10,14 @@
         <p>
             <button class="btn reserva-item row" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
                 <div class="col-md-3">
-                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>  &nbsp;
+                     Código : {{ y.codigo_reserva }} 
+                </div>
+                <div class="col-md-3">
                     {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     Entrada: {{ y.fecha_inicio }}
-                </div>
-                <div class="col-md-2">
-                     Código : {{ y.codigo_reserva }} 
                 </div>
                 <div class="col-md-3" style="text-align: right">
                     {{ y.pagotipo.pagotipo }}

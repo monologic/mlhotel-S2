@@ -8,8 +8,19 @@
     <div ng-repeat="y in reservas | filter:buscar" class="row">
         <p>
           <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
-            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-             {{ y.cliente.nombres }} {{ y.cliente.apellidos }} - {{ y.cliente.dni }} | Forma de Pago: {{ y.pagotipo.pagotipo }} | Fecha Entrada: {{ y.fecha_inicio }} | Código de Reserva: {{ y.codigo_reserva }}
+          <div class="col-md-3">
+                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                     Código : {{ y.codigo_reserva }} 
+                </div>
+                <div class="col-md-3">
+                    {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
+                </div>
+                <div class="col-md-4">
+                    Entrada: {{ y.fecha_inicio }}
+                </div>
+                <div class="col-md-2" style="text-align: right">
+                    {{ y.pagotipo.pagotipo }}
+                </div>
           </button>
         </p>
 

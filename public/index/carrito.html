@@ -53,10 +53,11 @@
                     </div>
                   </div>
                 <div class="row" id="bancoDiv" style="display: none;">
-                  <div class="col s5 m5" style="padding-top: 20px;color:#00695c" >Bancos Disponibles : </div>
+                  <div class="col s4 m2" style="padding-top: 20px;color:#00695c" >Banco: </div>
                   <select class="icons col s7 m7" ng-model="banco" id="banco">
                     <option ng-repeat="banco in bancos" on-finish-render="ngRepeatFinished" value="{{banco.id}}" data-icon="banco/{{ banco.imagen }}" class="left circle">{{ banco.banco }}</option>
                   </select>
+                  <i class="fa fa-angle-down" aria-hidden="true" style="position: relative;font-size: 2rem;left: -30px;top: 15px;z-index: -20"></i>
                 </div>
                 <div class="row" id="sel-p" style="display: none;">
                   <div class="input-field porcentajePago" id="porcentajePago" >
@@ -64,7 +65,7 @@
                       Porcentaje de pago:
                     </div>
                     <div class="col m4">
-                      <input name="group1" type="radio" ng-model="porcentajeRadio.name" ng-change="calcularTotal()" id="radio1" value="0.2" />
+                      <input name="group1" type="radio" ng-model="porcentajeRadio.name" ng-change="calcularTotal()" id="radio1" value="0.2"/>
                       <label for="radio1">20%</label>
                     </div>
                     <div class="col m3">
