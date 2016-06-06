@@ -17,7 +17,7 @@
                     {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
                 </div>
                 <div class="col-md-3">
-                    Entrada: {{ y.fecha_inicio }}
+                    Entrada: {{ y.soloFecha | date:'d MMM yyyy' }}
                 </div>
                 <div class="col-md-3" style="text-align: right">
                     {{ y.pagotipo.pagotipo }}
@@ -29,9 +29,9 @@
               <div class="card card-block row" style="color:black">
                 <div class="col-md-4">
                     <p>Fecha de Entrada:</p>
-                    <p style="margin-left: 30px">{{ y.fecha_inicio }}</p>
+                    <p style="margin-left: 30px">{{ y.soloFecha | date:'d MMM yyyy' }} a las {{ y.soloHora }} horas.</p>
                     <p>Fecha de Salida: </p>
-                    <p style="margin-left: 30px">{{ y.fecha_fin }}</p>
+                    <p style="margin-left: 30px">{{ y.soloFecha2 | date:'d MMM yyyy' }} a las {{ y.soloHora2 }} horas.</p>
                 </div >    
                 
                 <div class="col-md-4">

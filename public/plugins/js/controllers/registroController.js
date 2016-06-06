@@ -150,6 +150,13 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         $http.get('admin/buscarRegistro/' + $scope.idRegistro).then(function successCallback(response) {
             
             $scope.registro = response.data[0];
+            $scope.f = $scope.registro.fechaentrada.split(" ");
+            $scope.registro.fe = $scope.f[0];
+            $scope.registro.he = $scope.f[1];
+
+            $scope.f2 = $scope.registro.fechasalida.split(" ");
+            $scope.registro.fe2 = $scope.f2[0];
+            $scope.registro.he2 = $scope.f2[1];
             
         }, function errorCallback(response) {
         // called asynchronously if an error occurs

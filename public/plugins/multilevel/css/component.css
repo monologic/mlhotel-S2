@@ -10,12 +10,13 @@
 
 .icon {
 	font-family: 'feather';
-	font-weight: normal;
+	font-weight: bold;
 	font-style: normal;
 	font-variant: normal;
 	line-height: 1;
 	text-transform: none;
-	color: black;ç
+	color: black;
+
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -32,6 +33,7 @@
 
 .icon--cross:before {
 	content: '\e117';
+	color: white;
 }
 
 
@@ -332,11 +334,12 @@
 }
 
 .action--close {
-	font-size: 1.1em;
+	font-size: 1.5em;
 	top: 1.25em;
+	color: white;
 	right: 1em;
 	display: none;
-	color: #45464e;
+	z-index: 100;
 }
 
 @media screen and (max-width: 40em) {

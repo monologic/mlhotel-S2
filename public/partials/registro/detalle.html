@@ -6,11 +6,11 @@
 		<div style="margin-left: 20px;">Numero habitación : {{ registro.habitacion.numero }}</div><br>
 		<div class="col-sm-12 col-md-4 infos">
 			<p>Fecha Entrada :</p>
-			<p style="margin-left: 35px">{{ registro.fechaentrada }}</p>
+			<p style="margin-left: 35px">{{ registro.fe | date:'d MMM yyyy' }} a las {{ registro.he }}</p>
 		</div>
 		<div class="col-sm-12 col-md-4 infos">
 			<p>Fecha Salida :</p>
-			<p style="margin-left: 35px">{{ registro.fechasalida }}</p>
+			<p style="margin-left: 35px">{{ registro.fe2 | date:'d MMM yyyy' }} a las {{ registro.he2 }}</p>
 		</div>
 		<div class="col-sm-12 col-md-4 infos">
 			<p>Código de Reserva :</p>

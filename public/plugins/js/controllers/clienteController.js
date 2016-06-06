@@ -21,5 +21,6 @@ app.controller('clienteController', function($scope,$http) {
         $scope.celular = data.celular;
         $scope.ciudad = data.ciudad;
         $scope.pais = data.pais;
+        $scope.correo= data.email;
     }
 });

@@ -2,7 +2,11 @@ app.controller('reservaController', function($scope,$http) {
     $scope.getAllreserva = function (){
         $http.get('admin/getAllReservas').then(function successCallback(response) {
             $scope.allreservas = response.data;
-            $scope.nombre = data.nombre;
+            for (var i = 0; i < $scope.allreservas.length; i++) {
+                $scope.fe = $scope.allreservas[i].fecha_inicio.split(" ");
+             $scope.allreservas[i].soloFecha = $scope.fe[0];
+            }
+
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -11,6 +15,7 @@ app.controller('reservaController', function($scope,$http) {
     }
     $scope.verCliente = function (data) {
         $scope.idcliente = data.id;
+        $scope.codigo_reserva = data.codigo_reserva;
         $scope.nombre = data.nombres;
         $scope.apellido = data.apellidos;
         $scope.dni = data.dni;
@@ -24,6 +29,16 @@ app.controller('reservaController', function($scope,$http) {
 	$scope.getReservasPorAsignar = function () {
 		$http.get('admin/buscarReservasNoAsignadas').then(function successCallback(response) {
             $scope.reservas = response.data;
+            for (var i = 0; i < $scope.reservas.length; i++) {
+                $scope.fe = $scope.reservas[i].fecha_inicio.split(" ");
+                $scope.fe2 = $scope.reservas[i].fecha_fin.split(" ");
+                $scope.reservas[i].soloFecha2 = $scope.fe2[0];
+                $scope.reservas[i].soloFecha = $scope.fe[0];
+
+                $scope.reservas[i].soloHora2 = $scope.fe2[1];
+                $scope.reservas[i].soloHora = $scope.fe[1];
+            }
+
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -34,6 +49,15 @@ app.controller('reservaController', function($scope,$http) {
     $scope.getReservasPorConfirmar = function (){
         $http.get('admin/getReservasPorConfirmar').then(function successCallback(response) {
             $scope.reservas = response.data;
+            for (var i = 0; i < $scope.reservas.length; i++) {
+                $scope.fe = $scope.reservas[i].fecha_inicio.split(" ");
+                $scope.fe2 = $scope.reservas[i].fecha_fin.split(" ");
+                $scope.reservas[i].soloFecha = $scope.fe[0];
+                $scope.reservas[i].soloFecha2 = $scope.fe2[0];
+
+                $scope.reservas[i].soloHora = $scope.fe[1];
+                $scope.reservas[i].soloHora2 = $scope.fe2[1];
+            }
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
