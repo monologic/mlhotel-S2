@@ -47,7 +47,7 @@ class carritoController extends Controller
         $h = Hotel::all();
         
         $cregistro = new RegistroController();
-        return $cregistro->separadorDeFechas2($fechaini, $fechafin, $h[0]->checkin);
+        return response()->json($cregistro->separadorDeFechas2($fechaini, $fechafin, $h[0]->checkin));
         
     }
 

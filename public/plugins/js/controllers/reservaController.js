@@ -67,14 +67,18 @@ app.controller('reservaController', function($scope,$http) {
         });
     }
     $scope.cancelar = function (id) {
-        $http.get('admin/cancelarReserva/' + id).then(function successCallback(response) {
-            window.location.reload();
-        }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        });
+        r = confirm("¿Deseas cancelar la Reserva?");
+        if (r) {
+            $http.get('admin/cancelarReserva/' + id).then(function successCallback(response) {
+                window.location.reload();
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
     }
     $scope.dataEditar = function (data) {
+        alert("Verifique Disponibilidad antes de Editar");
         $scope.idReserva = data.id;
         $scope.nom = data.cliente.nombres + " " + data.cliente.apellidos;
         $scope.dni = data.cliente.dni;
