@@ -295,7 +295,10 @@ app.controller('registroController', function($scope,$http , $routeParams) {
 
             data = response.data;
             for(i in data){
-                data[i].cliente.edad = $scope.dateDiff(data[i].cliente.fecha_nac);
+                if (data[i].cliente.fecha_nac != null)
+                    data[i].cliente.edad = $scope.dateDiff(data[i].cliente.fecha_nac);
+                else
+                    data[i].cliente.edad = null;
             }
             console.log(data);
             $scope.registros = data;

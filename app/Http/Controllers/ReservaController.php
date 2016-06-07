@@ -99,13 +99,23 @@ class ReservaController extends Controller
 
     public function getallreservas()
     {
-        $all = DB::table('reservas')
-                    ->join('reservaestados', 'reservas.reservaestado_id', '=', 'reservaestados.id')
+        $reservas = Reserva::join('reservaestados', 'reservas.reservaestado_id', '=', 'reservaestados.id')
                     ->join('clientes', 'reservas.cliente_id', '=', 'clientes.id')
                     ->join('pagotipos', 'reservas.pagotipo_id', '=', 'pagotipos.id')
                     ->select('clientes.nombres', 'clientes.apellidos', 'clientes.dni','reservaestados.estado','reservas.fecha_inicio','reservas.fecha_reserva','reservas.fecha_inicio','reservas.fecha_fin','pagotipos.pagotipo','reservas.total','reservas.codigo_reserva')
                     ->get();
-        return response()->json($all);
+
+        $reservas->each(function($reservas){
+            $reservas->habtiporeservas;
+            $habReserva = $reservas->habtiporeservas;
+            $reservas->habtiporeservas->each(function($habReserva){
+                $habReserva->habtipo;
+            });
+        });
+
+        dd($reservas);
+
+        return response()->json($reservas);
 
     }
 

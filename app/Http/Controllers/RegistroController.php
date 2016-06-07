@@ -191,13 +191,15 @@ class RegistroController extends Controller {
         
         for($i = $fechaini; $i <= $fechafin; $i += 86400){
             $fechaN = date("Y-m-d", $i);
-            if ($i == $fechaini)
-                $fecha = date("Y-m-d", $i). " " . $initHour;
-            else
-                $fecha = date("Y-m-d", $i). " " . $hora;
-                
-            $disp[] = $this->searchOptimized($fecha);
-            
+            if ($i == $fechaini){
+                $fecha = date("Y-m-d", $i);
+                $disp[] = $this->searchOptimized($fecha, $initHour, $hora);
+            }
+            else{
+                $fecha = date("Y-m-d", $i);
+                $disp[] = $this->searchOptimized($fecha, $hora, $hora);
+            }
+    
         }
         return $this->unionDisponibiidad($disp);
     }
@@ -214,17 +216,20 @@ class RegistroController extends Controller {
         for($i = $fechaini; $i <= $fechafin; $i += 86400){
             //echo $i;
             $fechaN = date("Y-m-d", $i);
-            if ($i == $fechaini)
-                $fecha = date("Y-m-d", $i). " " . $initHour;
+            if ($i == $fechaini){
+                $fecha = date("Y-m-d", $i);
+                $disp[] = $this->searchOptimized($fecha, $initHour, $hora);
+            }
             else {
                 if ($i == $fechafin){
-                    //echo $i;
-                    $fecha = date("Y-m-d", $i). " " . $h[0]->checkout;
+                    $fecha = date("Y-m-d", $i);
+                    $disp[] = $this->searchOptimized($fecha, $h[0]->checkout, $hora);
                 }
-                else
-                    $fecha = date("Y-m-d", $i). " " . $hora;
+                else{
+                    $fecha = date("Y-m-d", $i);
+                    $disp[] = $this->searchOptimized($fecha, $hora, $hora);
+                }
             }
-            $disp[] = $this->searchOptimized($fecha);
         }
         return $this->unionDisponibiidad($disp);
     }
@@ -249,17 +254,16 @@ class RegistroController extends Controller {
             }
             $THmin[] = $habtipos[$key];
         }
-        
-        
         return $THmin;
     }
-    public function searchOptimized($fecha)
+    public function searchOptimized($fecha, $hora, $checkin)
     {
+        $fechab = $fecha . " " . $hora;
         $r = Registro::select('habitacion_id')
-                    ->where(function($query)use($fecha){
-                        $query->whereRaw(DB::raw("'$fecha' between `fechaentrada` and `fechasalida`"));
+                     ->where(function($query)use($fechab){
+                        $query->whereRaw(DB::raw("'$fechab' between `fechaentrada` and `fechasalida`"));
                         })
-                    ->get();
+                     ->get();
         $r = $r->toArray();
 
         if (count($r) != 0) {
@@ -299,10 +303,10 @@ class RegistroController extends Controller {
                 }
             }
         }
-
+        $fechaBR = $fecha . " " . $checkin;
         $reservas = Reserva::whereIn('reservaestado_id', [2, 3])
-                           ->where(function($query)use($fecha){
-                                $query->whereRaw(DB::raw("'$fecha' between `fecha_inicio` and `fecha_fin`"));
+                           ->where(function($query)use($fechaBR){
+                                $query->whereRaw(DB::raw("'$fechaBR' between `fecha_inicio` and `fecha_fin`"));
                             })
                            ->get();
 
@@ -463,7 +467,7 @@ class RegistroController extends Controller {
         }
         
         $regsClientes = Regcliente::whereIn('id', $regs_id)->get();
-
+        
         $regsClientes->each(function($regsClientes) {
             $regsClientes->registro;
             $regsClientes->registro->habitacion;
@@ -488,22 +492,23 @@ class RegistroController extends Controller {
         
         for($i = $fechaInicio; $i <= $fechaFin; $i += 86400){
             $fechaN = date("Y-m-d", $i);
-            if ($i == $fechaInicio)
-                $fecha = date("Y-m-d", $i). " " . date('H:i:s');
-            else
-                $fecha = date("Y-m-d", $i). " " . $hora;
-                
-            $disp[$fechaN] = $this->getDisp($fecha);
-            
+            if ($i == $fechaInicio){
+                $fecha = date("Y-m-d", $i);
+                $disp[$fechaN] = $this->getDisp($fecha, date('H:i:s'), $hora);
+            }
+            else{
+                $fecha = date("Y-m-d", $i);
+                $disp[$fechaN] = $this->getDisp($fecha, $hora, $hora);
+            }
         }
         return response()->json( $disp );
     }
-    public function getDisp($fecha)
+    public function getDisp($fecha, $hora, $checkin)
     {
-            
+            $fechab = $fecha . " " . $hora;
             $r = Registro::select('habitacion_id')
-                    ->where(function($query)use($fecha){
-                        $query->whereRaw(DB::raw("'$fecha' between `fechaentrada` and `fechasalida`"));
+                    ->where(function($query)use($fechab){
+                        $query->whereRaw(DB::raw("'$fechab' between `fechaentrada` and `fechasalida`"));
                         })
                     ->get();
             $r = $r->toArray();
@@ -563,10 +568,12 @@ class RegistroController extends Controller {
                     }
                 }
             }
+            
             //dd($habtipos);
+            $fechaBR = $fecha . " " . $checkin;
             $reservas = Reserva::whereIn('reservaestado_id', [2, 3])
-                              ->where(function($query)use($fecha){
-                                $query->whereRaw(DB::raw("'$fecha' between `fecha_inicio` and `fecha_fin`"));
+                              ->where(function($query)use($fechaBR){
+                                $query->whereRaw(DB::raw("'$fechaBR' between `fecha_inicio` and `fecha_fin`"));
                                 })
                               ->get();
 
@@ -613,7 +620,6 @@ class RegistroController extends Controller {
 
                 unset($habtipos[$k]['habitaciones']);
             }
-
             return $habtipos;
     }
 }
