@@ -4,8 +4,12 @@ app.controller('reservaController', function($scope,$http) {
             $scope.allreservas = response.data;
             for (var i = 0; i < $scope.allreservas.length; i++) {
                 $scope.fe = $scope.allreservas[i].fecha_inicio.split(" ");
-             $scope.allreservas[i].soloFecha = $scope.fe[0];
+                $scope.allreservas[i].soloFecha = $scope.fe[0];
+
+                $scope.fe2 = $scope.allreservas[i].fecha_fin.split(" ");
+                $scope.allreservas[i].soloFecha2 = $scope.fe2[0];
             }
+
 
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {

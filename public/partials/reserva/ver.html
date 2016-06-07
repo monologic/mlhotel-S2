@@ -130,11 +130,11 @@
                                 </div>
                                <div class="col-md-4">
                                    <p>Fecha de Entrada: </p>
-                                    <p style="margin-left: 20px">{{ Reservas.fecha_inicio }}</p>
+                                    <p style="margin-left: 20px">{{ y.soloFecha | date:'d MMM yyyy' }}</p>
                                </div>
                                 <div class="col-md-4">
                                     <p>Fecha de Salida: </p>
-                                    <p style="margin-left: 20px">{{ Reservas.fecha_fin }}</p>
+                                    <p style="margin-left: 20px">{{ y.soloFecha2 | date:'d MMM yyyy' }}</p>
                                 </div>
                                 
                             </div>
@@ -165,8 +165,8 @@
                     <div ng-repeat="habtipo in tipoPerHabs">
                         <h3 style="color:black">{{habtipo.nombre}}</h3>
                         <div style="width: 80% ;margin:10px auto 10px auto">
-                            <div class="col-md-6"> <div style="width: 100%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#1E8BC3;color:black;">Reservadas: {{habtipo.habtiporeservascount}}</div></div> 
-                            <div class="col-md-6"> <div style="width: 100%;left: 0;height: 25px;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#F9690E;color:black;">disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div></div>  
+                            <div class="col-md-6"> <div style="width: 100%;left: 0;height: 30px;font-size: 1.5rem;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#1E8BC3;padding-top: 3px;color:black;">Reservadas: {{habtipo.habtiporeservascount}}</div></div> 
+                            <div class="col-md-6"> <div style="width: 100%;left: 0;height: 30px;font-size: 1.5rem;text-align: center; border-radius: 5px 5px 0px 0px; background-color:#F9690E;padding-top: 3px;color:black;">Disponibles: {{habtipo.habitacionescount - habtipo.habtiporeservascount}}</div></div>  
                         </div>
                         <div class="">
                             <table class="table table-hover" style="box-shadow: 5px 5px 5px #888888">

@@ -41,15 +41,51 @@
                 </div>
                 <div class="modal-body row" style="color:black">
 
-                    <div class="col-md-6 text-right">Nombre: </div> <div class="col-md-6" ng-bind="nombre" style="min-width: 100px" ></div>
-                    <div class="col-md-6 text-right">Apellidos: </div><div class="col-md-6" ng-bind="apellido" style="min-width: 100px" ></div>
-                    <div class="col-md-6 text-right">Documento de Identidad: </div><div class="col-md-6" ng-bind="dni" style="min-width: 100px" ></div>                    
-                    <div class="col-md-6 text-right">Sexo: </div><div class="col-md-6" ng-bind="sexo" ></div>                   
-                    <div class="col-md-6 text-right">Fecha de nacimiento: </div> <div class="col-md-6" ng-bind="nacimiento" style="min-width: 100px" ></div>
-                    <div class="col-md-6 text-right">Ocupacion: </div><div class="col-md-6" ng-bind="prof_ocup" style="min-width: 100px" ></div>
-                    <div class="col-md-6 text-right">Ciudad: </div><div class="col-md-6" ng-bind="ciudad" style="min-width: 100px" ></div>
-                    <div class="col-md-6 text-right">Pais: </div><div class="col-md-6" ng-bind="pais"  style="min-width: 100px"></div>
-                    <div class="col-md-6 text-right">Telefono o celular: </div> <div class="col-md-6" ng-bind="celular"  style="min-width: 100px"></div>
+                    <table class="" style="width: 80%;margin: 10px auto 10px auto">
+                        <tbody>
+                            <tr>
+                                <td class="text-right" width="200">Nombre :&nbsp;</td>
+                                <td ng-bind="nombre"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Apellidos :&nbsp;</td>
+                                <td ng-bind="apellido"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Sexo :&nbsp;</td>
+                                <td ng-bind="sexo"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Edad :&nbsp;</td>
+                                <td ng-bind="nacimiento"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Docmuento de Identidad :&nbsp;</td>
+                                <td ng-bind="dni"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Ocupación :&nbsp;</td>
+                                <td ng-bind="prof_ocup"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Teléfono :&nbsp;</td>
+                                <td ng-bind="celular"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Ciudad :&nbsp;</td>
+                                <td ng-bind="ciudad"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Pais :&nbsp;</td>
+                                <td ng-bind="pais"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Email :&nbsp;</td>
+                                <td ng-bind="correo"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                     
                 </div>
                 <div class="modal-footer">

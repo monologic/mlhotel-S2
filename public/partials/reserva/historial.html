@@ -14,20 +14,19 @@
     	<thead>
     		<tr>
     			<th>Codigo</th>
-                <th>Checkin</th>
-    			<th>Apellidos y nombre</th>
-                <th>Estado de la reserva</th>
-                <th>Total</th>
-                <th>Detalles</th>
+    			<th>Check in</th>
+                <th>Check out</th>
+                <th>Nombre</th>
+                <th>Estado</th>
     		</tr>
     	</thead>
     	<tbody>
                <tr ng-repeat="x in allreservas | filter:buscar | orderBy:'fecha_inicio':true">
                     <td>{{x.codigo_reserva}}</td>
                     <td>{{x.soloFecha |  date:'d MMM yyyy'}}</td>
-                    <td>{{x.apellidos}}, {{x.nombres}}</td>
+                    <td>{{x.soloFecha2 |  date:'d MMM yyyy'}}</td>
+                    <td>{{x.nombres}}</td>
                     <td>{{x.estado}}</td>
-                    <td>{{x.total}}</td>
                     <td><a  class="btn btn-primary" href="" ng-click="verCliente(x);" data-toggle="modal" data-target="#vercliente"><i class="glyphicon glyphicon-plus"></i></a></td>
               </tr> 
     	</tbody>
