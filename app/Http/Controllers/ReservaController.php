@@ -328,8 +328,6 @@ class ReservaController extends Controller
     public function cancelarReserva($id)
     {
         $reserva = Reserva::find($id);
-        $reserva->fecha_inicio = null;
-        $reserva->fecha_fin = null;
         $reserva->reservaestado_id = 4; // id 4 cancelar reserva;
         $reserva->save();
 
