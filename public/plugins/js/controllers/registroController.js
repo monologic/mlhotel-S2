@@ -157,6 +157,11 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             $scope.f2 = $scope.registro.fechasalida.split(" ");
             $scope.registro.fe2 = $scope.f2[0];
             $scope.registro.he2 = $scope.f2[1];
+
+            $scope.regClientes =  $scope.registro.regclientes
+
+            $scope.cantHuesped = ($scope.regClientes).length;
+            $scope.btnAdd();
             
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -200,7 +205,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
-    $scope.cantHuesped = 0;
+    
     $scope.nuevoHuesped = function () {
         $http.post('admin/cliente',
             {   'nombres':$scope.nombres,
@@ -223,6 +228,8 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 
                 c = $scope.cantHuesped;
                 $scope.cantHuesped = c + 1;
+                $scope.btnAdd();
+
                 $scope.dni = "";
                 $scope.nombres = "";
                 $scope.apellidos = "";
@@ -241,6 +248,12 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             }); 
+    }
+    $scope.btnAdd = function () {
+        if ($scope.cantHuesped < $scope.registro.habitacion.habtipo.nropersonas) 
+            $('#btnAdd').prop("disabled", false);
+        else
+            $('#btnAdd').prop("disabled", true);
     }
     
     $scope.editarHuesped = function () {
@@ -264,6 +277,8 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.regClientes = response.data;
                 c = $scope.cantHuesped;
                 $scope.cantHuesped = c + 1;
+                $scope.btnAdd();
+
                 $scope.dni = "";
                 $scope.nombres = "";
                 $scope.apellidos = "";
@@ -285,6 +300,10 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.eliminarHuesped = function (id) {
         $http.delete( 'admin/regClienteEliminar/'+id ).then(function successCallback(response) {
             $scope.regClientes = response.data;
+            c = $scope.cantHuesped;
+            $scope.cantHuesped = c - 1;
+            $scope.btnAdd();
+
         }, function errorCallback(response) {
             alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
         });

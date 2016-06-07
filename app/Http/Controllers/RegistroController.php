@@ -407,8 +407,6 @@ class RegistroController extends Controller {
                         })
                      ->get();
 
-                     
-
         $r->each(function($r){
             $r->regclientes;
             $regclientes = $r->regclientes;

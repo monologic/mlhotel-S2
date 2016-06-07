@@ -128,11 +128,8 @@ class HabitacionController extends Controller
 
         $habitaciones->each(function($habitaciones){
             $habitaciones->estado;
-        });
-        $habitaciones->each(function($habitaciones){
             $habitaciones->habtipo;
         });
-        
         $habitaciones = $habitaciones->toArray();
         
         $registros = RegistroController::registrosDeHoy();
@@ -144,11 +141,8 @@ class HabitacionController extends Controller
                     $habitaciones[$key]['registro'] = $registro;
                 }
             }
-            
         }
         
-        
-
         return response()->json( $habitaciones );   
     }
 }
