@@ -99,11 +99,15 @@ class ReservaController extends Controller
 
     public function getallreservas()
     {
-        $reservas = Reserva::join('reservaestados', 'reservas.reservaestado_id', '=', 'reservaestados.id')
-                    ->join('clientes', 'reservas.cliente_id', '=', 'clientes.id')
-                    ->join('pagotipos', 'reservas.pagotipo_id', '=', 'pagotipos.id')
-                    ->select('clientes.nombres', 'clientes.apellidos', 'clientes.dni','reservaestados.estado','reservas.fecha_inicio','reservas.fecha_reserva','reservas.fecha_inicio','reservas.fecha_fin','pagotipos.pagotipo','reservas.total','reservas.codigo_reserva')
-                    ->get();
+        $reservas = Reserva::all();
+
+        $reservas->each(function($reservas){
+            $reservas->cliente;
+        });
+
+        $reservas->each(function($reservas){
+            $reservas->pagotipo;
+        });
 
         $reservas->each(function($reservas){
             $reservas->habtiporeservas;
@@ -113,9 +117,36 @@ class ReservaController extends Controller
             });
         });
 
-        dd($reservas);
+        $reservas = $reservas->toArray();
 
-        return response()->json($reservas);
+        foreach ($reservas as $j => $reserva) {
+            $habtipos = $reserva['habtiporeservas'];
+            $ht = array();
+            foreach ($habtipos as $key => $habtipo) {    
+                if (count($ht) > 0) {
+                    if($this->countReservas($ht, $habtipo) == 0){
+                        $habtipo['habtipo']['count'] = 0;
+                        $ht[] = $habtipo['habtipo'];
+                    }
+                }
+                else {
+                    $habtipo['habtipo']['count'] = 0;
+                    $ht[] = $habtipo['habtipo'];
+                }
+            }
+            foreach ($habtipos as $key => $habtipo) {
+                foreach ($ht as $k => $htt) { 
+                    if ( $habtipo['habtipo']['id'] == $htt['id'] ){
+                        $c = $ht[$k]['count'];
+                        $c++;
+                        $ht[$k]['count'] = $c;
+                    }
+                }
+            }
+            $reservas[$j]['habtiposcount'] = $ht;
+            unset($reservas[$j]['habtiporeservas']);
+        }
+        return response()->json( $reservas );
 
     }
 
@@ -284,6 +315,7 @@ class ReservaController extends Controller
                 }
             }
             $reservas[$j]['habtiposcount'] = $ht;
+
 
         }
         
