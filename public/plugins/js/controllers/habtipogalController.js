@@ -101,40 +101,30 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             }
     }
     $scope.addCarrito = function (data) {
-        $http.get('cart/add/'+data.id,
+        max = data.habitacionescount-data.habtiporeservascount;
+        $http.get('cart/add/'+data.id+'/'+max,
             {
             }).then(function successCallback(response) {
-                $scope.res();
+                $scope.res($scope.dias);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
     }
-    $scope.res = function () {
-        $scope.getDias();
+    $scope.res = function (fechas) {
+        
         $http.get('cart/show',
             {
             }).then(function successCallback(response) {
                 $scope.car = response.data;
-                $scope.actualizarTotal(response.data);
-                
+                $scope.actualizarTotal($scope.car, fechas);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
+        
     }
-    /**
-     * Actualiza la cantidad en el carrito
-     */
-    $scope.actualizar = function(id, idObjeto, data){
-        cantidad = $('#'+id).val();
-        for (x in data) {
-            if (x == idObjeto)
-                data[x].quantity = cantidad;
-        }
-        $scope.car = data;
-    }
-    $scope.actualizarTotal = function(data){
+    $scope.actualizarTotal = function(data, fechas){
         var total=0;
         for (x in data) {
             subp=data[x].precio*data[x].quantity;
@@ -142,33 +132,93 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
         }
         $scope.totalN = total.toFixed(2);
         $scope.totalq = 'S/' + total + '.00';
-        $scope.Total = ($scope.totalN * $scope.fechas.dias).toFixed(2);
+        $scope.Total = ($scope.totalN * fechas).toFixed(2);
 
     }
-    $scope.actualizarCarrito = function (data) {
-        
+    /**
+     * Actualiza la cantidad en el carrito
+     */
+    $scope.actualizar = function(id, idObjeto, data){
+        cantidad = $('#'+id).val();
         for (x in data) {
-            $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
-            {
-            }).then(function successCallback(response) {
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
+            if (x == idObjeto){
+                data[x].quantity = cantidad;
+                $http.get('cart/update/'+ idObjeto + '/' + cantidad ).then(
+                function successCallback(response) {
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+            }
         }
-        window.location.href = '#/micarrito';
+        $scope.car = data;
     }
+    $scope.actualizarCarrito = function () {
+        data = $scope.car;
+        var v = 0;
+        for(y in data){
+            if (parseInt(data[y].quantity) > parseInt(data[y].max) || parseInt(data[y].quantity) <= 0)
+                v = 1;
+        }
+        if (v == 1) {
+            $('#alerta-dis').css('display','block');
+        }
+        else
+        {
+            for (x in data) {
+                $http.get('cart/update/'+data[x].id + '/' + data[x].quantity,
+                {
+                }).then(function successCallback(response) {
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+            }
+            window.location.href = '#/micarrito';
+        }
+    }
+
     $scope.onDateSet = function(){
        console.log($scope.fechaini.timer);
        //outputs '10 Sep' , where i expect to find the date object
     }
-
+    $scope.buscarAuto = function () {
+        $http.get('cart/getDias',
+            {
+            }).then(function successCallback(response) {
+                //alert($scope.formatDate(response.data.fecha_inicio));
+                $('#fechaini').val($scope.formatDate(response.data.fecha_inicio));
+                $('#fechafin').val($scope.formatDate(response.data.fecha_fin));
+                if ((response.data).hasOwnProperty('dias')) {
+                    $scope.dias = response.data.dias;
+                    $scope.buscarHab();
+                    $scope.res(response.data);
+                }
+                else{
+                    $scope.dias = null;
+                }
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
     $scope.getDias = function () {
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
-                $scope.fechas = response.data;
-
+                $scope.dias = response.data.dias;
+                $scope.res($scope.dias);
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+    }
+    $scope.getDias2 = function () {
+        $http.get('cart/getDias',
+            {
+            }).then(function successCallback(response) {
+                $scope.dias = response.data.dias;
+                $scope.res(response.data);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -195,17 +245,12 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
-    }   
+    }
     $scope.formatDate = function (date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
+        date = date.split("-");
+        date = date[2] + "-" + date[1] + "-" + date[0];
 
-        if (month.length < 2) month = '0' + month;
-        if (day.length < 2) day = '0' + day;
-
-        return [year, month, day].join('-');
+        return date;
     }
 
 });

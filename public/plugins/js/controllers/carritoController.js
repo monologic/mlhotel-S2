@@ -58,34 +58,36 @@ app.controller('carritoController', function($scope,$http) {
         if( !elemento.checked ) {
           alert('tienes q aceptar los terminos de condicion')
         }
-
         else{
             if(!seleccionado) {
               alert('Debes seleccionar un metodode pago');
             }
             else
             {
-               if (!cobro) {
+               if (!cobro && !(test1.checked) ) {
                  alert('Debes seleccionar un porcentaje de pago');   
                 }
                 else{
-                    $('#modalBlanco').css( "display", "block" );
-
-                    $http.post('cart/cliente',
-                    {   'nombres':$scope.nombres,
-                        'apellidos':$scope.apellidos,
-                        'dni':$scope.dni,
-                        'porcentaje':$scope.porcentajeRadio.name,
-                        'email':$scope.email,
-                        'banco_id':$('#banco').val()
-                    }).then(function successCallback(response) {
-                         $scope.pagar();
-                    }, function errorCallback(response) { 
-                    });
+                    if ( test3.checked && $('#banco').val() == null) {
+                        alert('Debes seleccionar un banco.'); 
+                    }
+                    else {
+                        $('#modalBlanco').css( "display", "block" );
+                        
+                        $http.post('cart/cliente',
+                        {   'nombres':$scope.nombres,
+                            'apellidos':$scope.apellidos,
+                            'dni':$scope.dni,
+                            'porcentaje':$scope.porcentajeRadio.name,
+                            'email':$scope.email,
+                            'banco_id':$('#banco').val()
+                        }).then(function successCallback(response) {
+                             $scope.pagar();
+                        }, function errorCallback(response) { 
+                        });
+                    }
                 } 
-            }
-                
-            
+            }    
         }  
     }
     

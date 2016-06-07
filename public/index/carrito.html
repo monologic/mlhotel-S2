@@ -55,6 +55,7 @@
                 <div class="row" id="bancoDiv" style="display: none;">
                   <div class="col s4 m2" style="padding-top: 20px;color:#00695c" >Banco: </div>
                   <select class="icons col s7 m7" ng-model="banco" id="banco">
+                    <option value="" disabled selected></option>
                     <option ng-repeat="banco in bancos" on-finish-render="ngRepeatFinished" value="{{banco.id}}" data-icon="banco/{{ banco.imagen }}" class="left circle">{{ banco.banco }}</option>
                   </select>
                   <i class="fa fa-angle-down" aria-hidden="true" style="position: relative;font-size: 2rem;left: -30px;top: 15px;z-index: -20"></i>
