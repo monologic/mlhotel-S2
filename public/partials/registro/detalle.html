@@ -2,8 +2,23 @@
 	<br><br><br>
 	<div class="row" style="top: 20px">
 		<h1 class="tit2">Detalles de Habitación</h1><br>
-		<div style="margin-left: 20px;">Tipo de habitación : {{ registro.habitacion.habtipo.nombre }}</div><br>
-		<div style="margin-left: 20px;">Numero habitación : {{ registro.habitacion.numero }}</div><br>
+		<table>
+			<tbody>
+				<tr style="height: 30px">
+					<td class="text-right" width="150">Tipo de habitación :</td>
+					<td style="padding-left: 20px">{{ registro.habitacion.habtipo.nombre }}</td>
+				</tr>
+				<tr style="height: 30px">
+					<td class="text-right" width="150">Numero habitación :</td>
+					<td style="padding-left: 20px">{{ registro.habitacion.numero }}</td>
+				</tr>
+				<tr style="height: 30px">
+					<td class="text-right" width="150">Capacidad :</td>
+					<td style="padding-left: 20px" id="cantidadp" >{{ registro.habitacion.habtipo.nropersonas }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
 		<div class="col-sm-12 col-md-4 infos">
 			<p>Fecha Entrada :</p>
 			<p style="margin-left: 35px">{{ registro.fe | date:'d MMM yyyy' }} a las {{ registro.he }}</p>

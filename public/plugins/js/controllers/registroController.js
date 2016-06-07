@@ -223,7 +223,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 
                 c = $scope.cantHuesped;
                 $scope.cantHuesped = c + 1;
-
+                $scope.dni = "";
                 $scope.nombres = "";
                 $scope.apellidos = "";
                 $scope.fechanac = "";
@@ -234,6 +234,8 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.procedencia = "";
                 $scope.estadoCivil = "";
                 $scope.destino = "";
+                document.getElementById("caja").style.width = "0px"; 
+                document.getElementById("caja").style.transition = "all 1s"; 
 
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -262,7 +264,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.regClientes = response.data;
                 c = $scope.cantHuesped;
                 $scope.cantHuesped = c + 1;
-
+                $scope.dni = "";
                 $scope.nombres = "";
                 $scope.apellidos = "";
                 $scope.fechanac = "";
@@ -272,7 +274,9 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.prof_ocup = "";
                 $scope.procedencia = "";
                 $scope.destino = "";
-
+                document.getElementById("caja").style.width = "0px"; 
+                document.getElementById("caja").style.transition = "all 1s"; 
+                cnt = $('#cantidadp').html();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
