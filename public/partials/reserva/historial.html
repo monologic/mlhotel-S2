@@ -13,7 +13,7 @@
     <table class="table table-hover">
     	<thead>
     		<tr>
-    			<th>Codigo</th>
+    			<th>Código</th>
     			<th>Check in</th>
                 <th>Check out</th>
                 <th>Nombre</th>
@@ -25,8 +25,8 @@
                     <td>{{x.codigo_reserva}}</td>
                     <td>{{x.soloFecha |  date:'d MMM yyyy'}}</td>
                     <td>{{x.soloFecha2 |  date:'d MMM yyyy'}}</td>
-                    <td>{{x.nombres}}</td>
-                    <td>{{x.estado}}</td>
+                    <td>{{x.cliente.nombres}}</td>
+                    <td>{{x.reservaestado.estado}}</td>
                     <td><a  class="btn btn-primary" href="" ng-click="verCliente(x);" data-toggle="modal" data-target="#vercliente"><i class="glyphicon glyphicon-plus"></i></a></td>
               </tr> 
     	</tbody>
@@ -61,11 +61,11 @@
                                 <td ng-bind="fecha_reserva" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
-                                <td class="text-right">Fecha de Entrada: </td>
+                                <td class="text-right">Check in: </td>
                                 <td ng-bind="fecha_inicio" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
-                                <td class="text-right">Fecha de salida :</td>
+                                <td class="text-right">Check out :</td>
                                 <td ng-bind="fecha_fin" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
@@ -75,6 +75,20 @@
                             <tr>
                                 <td class="text-right">Total</td>
                                 <td ng-bind="total" style="padding-left: 20px"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table " style="width: 60%;margin: 30px auto 40px auto;">
+                        <thead> 
+                            <tr>
+                                <th class="text-center">Tipo de habitación</th>
+                                <th class="text-center">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" ng-repeat="q in grupo">
+                                <td>{{q.nombre}}</td>
+                               <td>{{q.count}}</td>
                             </tr>
                         </tbody>
                     </table>

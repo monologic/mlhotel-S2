@@ -20,15 +20,16 @@ app.controller('reservaController', function($scope,$http) {
     $scope.verCliente = function (data) {
         $scope.idcliente = data.id;
         $scope.codigo_reserva = data.codigo_reserva;
-        $scope.nombre = data.nombres;
-        $scope.apellido = data.apellidos;
-        $scope.dni = data.dni;
-        $scope.estado = data.estado;
+        $scope.nombre = data.cliente.nombres;
+        $scope.apellido = data.cliente.apellidos;
+        $scope.dni = data.cliente.dni;
+        $scope.estado = data.reservaestado.estado;
         $scope.fecha_reserva = data.fecha_reserva;
-        $scope.fecha_inicio = data.fecha_inicio;
-        $scope.fecha_fin = data.fecha_fin;
-        $scope.pagotipo = data.pagotipo;
+        $scope.fecha_inicio = data.soloFecha;
+        $scope.fecha_fin = data.soloFecha2;
+        $scope.pagotipo = data.pagotipo.pagotipo;
         $scope.total = data.total;
+        $scope.grupo = data.habtiposcount;
     }
 	$scope.getReservasPorAsignar = function () {
 		$http.get('admin/buscarReservasNoAsignadas').then(function successCallback(response) {
@@ -217,11 +218,11 @@ app.controller('reservaController', function($scope,$http) {
         $http.put('admin/reserva/' + $scope.Reservas.id,
             {   'reservaestado_id': 1
             }).then(function successCallback(response) {
+
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             }); 
-
         fi = $scope.Reservas.fecha_inicio;
         fi = fi.split(" ");
         var ff = $scope.Reservas.fecha_fin;
@@ -240,5 +241,6 @@ app.controller('reservaController', function($scope,$http) {
             }); 
         }
         window.location.href = 'admin#/DetalleHabitaciones';
+        $('#asignar').modal(toggle);
     }
 });

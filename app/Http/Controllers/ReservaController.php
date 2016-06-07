@@ -103,14 +103,9 @@ class ReservaController extends Controller
 
         $reservas->each(function($reservas){
             $reservas->cliente;
-        });
-
-        $reservas->each(function($reservas){
-            $reservas->pagotipo;
-        });
-
-        $reservas->each(function($reservas){
             $reservas->habtiporeservas;
+            $reservas->pagotipo;
+            $reservas->reservaestado;
             $habReserva = $reservas->habtiporeservas;
             $reservas->habtiporeservas->each(function($habReserva){
                 $habReserva->habtipo;

@@ -33,5 +33,9 @@ class Reserva extends Model
     {
         return $this->belongsTo('App\Pagotipo');
     }
+    public function reservaestado()
+    {
+        return $this->belongsTo('App\Reservaestado');
+    }
 
 }
