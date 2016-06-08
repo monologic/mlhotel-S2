@@ -35,6 +35,7 @@ app.controller('bancoController', function($scope,$http) {
                 'cuenta':$scope.cuenta,
                 'cci':$scope.cci
             }).then(function successCallback(response) {
+                swal("Excelente!", "Se ha editado la información bancaria.", "success");
                 $scope.bancos = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -42,8 +43,8 @@ app.controller('bancoController', function($scope,$http) {
             });
     }
     $scope.eliminar = function (id) {
-        r = swal({   title: "¿ Estas seguro ?",
-            text: "Este banco se eliminara indefinidamente",
+        r = swal({   title: "¿ Estás seguro ?",
+            text: "Este banco se eliminará.",
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   

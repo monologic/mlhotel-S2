@@ -17,7 +17,7 @@ app.controller('habitacionController', function($scope,$http) {
                 'estado_id':$('#estado_id').val(),
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-                swal("Excelente!", "Se ha creado lahabitación", "success")
+                swal("Excelente!", "Se ha creado la habitación", "success")
                window.location.href = 'admin#/Habitaciones';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -92,7 +92,7 @@ app.controller('habitacionController', function($scope,$http) {
     }
     $scope.eliminar = function (id) {
         swal({   title: "¿ Estas seguro ?",
-            text: "La habitación se eliminar indefinidamente",
+            text: "La habitación se eliminará.",
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   

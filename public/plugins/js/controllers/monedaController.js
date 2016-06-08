@@ -35,6 +35,7 @@ app.controller('monedaController', function($scope,$http) {
                 'siglas':$scope.siglas,
                 'tipocambio':$scope.tipocambio
             }).then(function successCallback(response) {
+                swal("Excelente!", "Se ha editado la moneda.", "success");
                 $scope.monedas = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs

@@ -17,7 +17,7 @@ app.controller('empleadoController', function($scope,$http) {
                 'emptipo_id':2
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-                swal("Excelente!", "Usuario Creado exitosamente.", "success");
+                swal("Excelente!", "El usuario se ha creado.", "success");
                 window.location.href = 'admin#/Empleados/ver';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -118,8 +118,8 @@ app.controller('empleadoController', function($scope,$http) {
     }
     $scope.activarDesactivar = function (id) {
         swal({   
-            title: "¿ Estas seguro ?",
-            text: "Este usuario sera cambiado.",
+            title: "¿Estás seguro?",
+            text: "Se cambiará el estado de este usuario.",
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
@@ -129,9 +129,8 @@ app.controller('empleadoController', function($scope,$http) {
         }, 
             function(){
                 swal("Excelente!", 
-                    "Se ha cambiado el usuario.", 
-                    "success"); 
-
+                    "Se ha cambiado el estado del usuario.", 
+                    "success");
                 $http.get('admin/activarDesactivar/' + id)
                 .then(function successCallback(response) {
                     $scope.empleados = response.data;
@@ -139,7 +138,6 @@ app.controller('empleadoController', function($scope,$http) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 });
-
             });
     }
 
@@ -167,7 +165,7 @@ app.controller('empleadoController', function($scope,$http) {
                 
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-                $('#alertCambio').css('display','block');
+                swal("Excelente!", "Se ha editado la información del usuario.", "success");
                 $scope.empleados = response.data;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs

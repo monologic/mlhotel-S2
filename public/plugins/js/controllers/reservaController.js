@@ -106,15 +106,28 @@ app.controller('reservaController', function($scope,$http) {
         });
     }
     $scope.cancelar = function (id) {
-        r = confirm("¿Deseas cancelar la Reserva?");
-        if (r) {
-            $http.get('admin/cancelarReserva/' + id).then(function successCallback(response) {
-                window.location.reload();
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            });
-        }
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se cacelará esta reserva.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
+
+                swal("Eliminado!", 
+                    "La reserva se ha cancelado.", 
+                    "success"); 
+
+                $http.get('admin/cancelarReserva/' + id).then(function successCallback(response) {
+                    window.location.reload();
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+            }
+        );
     }
     $scope.dataEditar = function (data) {
         swal("", "Verifique disponibilidad antes de editar", "warning");
@@ -250,6 +263,7 @@ app.controller('reservaController', function($scope,$http) {
             // or server returns response with an error status.
             }); 
         }
+        swal("Excelente!", "Se han asignado las habitaciones.", "success");
         window.location.href = 'admin#/DetalleHabitaciones';
         $('#asignar').modal('toggle');
     }
