@@ -42,8 +42,8 @@ app.controller('noticiaController', function($scope,$http) {
                 'fuente':$scope.fuente,
                 'estado':$scope.mlestado,
             }).then(function successCallback(response) {
-                $('#alertCambio').css('display','block');
                 $scope.noticia = response.data;
+                swal("Excelente!", "Se a editado la noticia", "success")
             }, function errorCallback(response) {
                 
             });
@@ -65,7 +65,6 @@ app.controller('noticiaController', function($scope,$http) {
                     "success"); 
 
                 $http.delete( 'admin/noticia/'+id ).then(function successCallback(response) {
-                    $('#alertDelete').css('display','block');
                     $scope.noticia = response.data;
                 }, function errorCallback(response) {
                     swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");

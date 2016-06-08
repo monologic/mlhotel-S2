@@ -51,7 +51,6 @@ app.controller('galeryController', function($scope,$http) {
                     "success"); 
 
                 $http.delete( 'admin/galeria/'+id ).then(function successCallback(response) {
-                    $('#alertDelete').css('display','block');
                     $scope.fotos = response.data;
                 }, function errorCallback(response) {
                     swal({   

@@ -63,7 +63,7 @@
 
                         <div class="form-group ">
                             <label for="titulo">Contenido</label>
-                            <input type="textarea"  class="form-control" id="contenido" cols="50" rows="5" ng-model="mlcontenido">
+                            <textarea  class="form-control" id="contenido" cols="6" rows="7" ng-model="mlcontenido"> </textarea>
                         </div>
                         <div class="form-group ">
                             <label for="orden">Fecha</label>
@@ -84,19 +84,3 @@
                 </div>
             </div>
         </div>
-
-
-<script>
-    $('#contenido').trumbowyg({
-    lang: 'es',
-    fullscreenable: false,
-    closable: true,
-    btns: [
-        ['formatting'],
-        'btnGrp-semantic',
-        'btnGrp-justify',
-        'btnGrp-lists',
-    ]
-    
-});
-</script>

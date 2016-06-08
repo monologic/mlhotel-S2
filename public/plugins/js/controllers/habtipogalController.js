@@ -46,11 +46,29 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             swal("Excelente!", "Se guardaron los cambios!", "success");   
         }
     $scope.eliminar = function (id) {
-        $http.delete( 'admin/habtipoF/'+id ).then(function successCallback(response) {
-            window.location.reload()
-        }, function errorCallback(response) {
-            swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
-        });
+
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminara la imagen de la galeria",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",   
+            closeOnConfirm: false,
+            cancelButtonText:"Cancelar",
+        }, 
+            function(){
+
+                swal("Eliminado!", 
+                    "Imagen eliminada.", 
+                    "success"); 
+
+                 $http.delete( 'admin/habtipoF/'+id ).then(function successCallback(response) {
+                    window.location.reload()
+                }, function errorCallback(response) {
+                    swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
+                });
+
+            });
     }
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
          var galleryTop = new Swiper('.gallery-top', {

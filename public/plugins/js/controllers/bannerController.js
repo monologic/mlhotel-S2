@@ -52,7 +52,7 @@ app.controller('bannerController', function($scope,$http) {
 
      $scope.eliminar = function (id) {
         swal({   title: "¿ Estas seguro ?",
-            text: "Este banner se eliminara indefinidamente",
+            text: "Se eliminara este banner",
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
