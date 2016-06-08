@@ -33,6 +33,8 @@
 
     <link rel="stylesheet" href="plugins/datepicker/jquery-ui.css">
     <link rel="stylesheet" href="plugins/datepicker/jquery-ui.theme.css">
+    <script src="plugins/SweetAlert/sweetalert.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="plugins/SweetAlert/sweetalert.css">
   
 </head>
 <style>
