@@ -56,20 +56,20 @@ app.controller('carritoController', function($scope,$http) {
           }
         }
         if( !elemento.checked ) {
-            swal("Faltan datos", "Tienes q aceptar los terminos de condicion");
+            swal("Faltan datos", "Tienes que aceptar los terminos de condiciones", "warning");
         }
         else{
             if(!seleccionado) {
-                swal("Faltan datos", "Debes seleccionar un metodode pago");
+                swal("Faltan datos", "Debes seleccionar un método de pago", "warning");
             }
             else
             {
                if (!cobro && !(test1.checked) ) {
-                    swal("Faltan datos", "Debes seleccionar un porcentaje de pago");   
+                    swal("Faltan datos", "Debes seleccionar un porcentaje de pago", "warning");   
                 }
                 else{
                     if ( test3.checked && $('#banco').val() == null) {
-                        swal("Faltan datos", "Debes seleccionar un banco.");
+                        swal("Faltan datos", "Debes seleccionar un banco.", "warning");
                     }
                     else {
                         $('#modalBlanco').css( "display", "block" );
