@@ -28,7 +28,12 @@ app.controller('contactoController', function($scope,$http) {
         $http.delete( 'admin/banner/'+id ).then(function successCallback(response) {
             $scope.banners = response.data;
         }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            swal({   
+                title: "Ha ocurrido un error!",   
+                text: "No se puede borrar datos utilizados para otros registros.",   
+                timer: 3000,   
+                showConfirmButton: false 
+            });
         });
     }
 

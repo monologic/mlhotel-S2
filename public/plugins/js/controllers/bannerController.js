@@ -51,16 +51,33 @@ app.controller('bannerController', function($scope,$http) {
     }
 
      $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar este Banner?");
+        swal({   title: "¿ Estas seguro ?",
+            text: "Este banner se eliminara indefinidamente",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",   
+            closeOnConfirm: false,
+            cancelButtonText:"Cancelar",
+        }, 
+            function(){
 
-        if (r) {
-            $http.delete( 'admin/banner/'+id ).then(function successCallback(response) {
-                $('#alertDelete').css('display','block');
-                $scope.banners2 = response.data;
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+                swal("Eliminado!", 
+                    "El banco se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/banner/'+id ).then(function successCallback(response) {
+                    $scope.banners2 = response.data;
+                }, function errorCallback(response) {
+                    swal({   
+                            title: "Ha ocurrido un error!",   
+                            text: "No se puede borrar datos utilizados para otros registros.",   
+                            timer: 3000,   
+                            showConfirmButton: false 
+                        });
+                });
+
             });
-        }
     }
 
 });

@@ -17,7 +17,7 @@ app.controller('empleadoController', function($scope,$http) {
                 'emptipo_id':2
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-                alert('Usuario Creado exitosamente');
+                swal("Excelente!", "Usuario Creado exitosamente.", "success");
                 window.location.href = 'admin#/Empleados/ver';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -25,7 +25,7 @@ app.controller('empleadoController', function($scope,$http) {
             });
         }
         else {
-            alert("El Password no coincide");
+            swal("Error!", "El Password no coincide", "error");
         }
     }
 
@@ -89,7 +89,7 @@ app.controller('empleadoController', function($scope,$http) {
             'usuariotipo_id':$('#usuariotipo_id').val()
         })
         .then(function successCallback(response) {
-            alert('Se ha modificado información del Usuario')
+            swal("Excelente!", "Se ha modificado información del Usuario.", "success");
             $scope.empleados = response.data;
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
@@ -103,7 +103,7 @@ app.controller('empleadoController', function($scope,$http) {
                 'password':$scope.passwordE
             })
             .then(function successCallback(response) {
-                alert('Se ha modificado tu Password')
+                swal("Excelente!", "Se ha modificado tu Password.", "success");
                 $scope.empleados = response.data;
 
             }, function errorCallback(response) {
@@ -112,21 +112,35 @@ app.controller('empleadoController', function($scope,$http) {
             });
         }
         else {
-            alert("El Password no coincide");
+            swal("Error!", "El Password no coincide", "error");
         }
         
     }
     $scope.activarDesactivar = function (id) {
-        r = confirm("¿Deseas cambiar el estado a este Usuario?");
-        if (r) {
-            $http.get('admin/activarDesactivar/' + id)
-            .then(function successCallback(response) {
-                $scope.empleados = response.data;
-            }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
+        swal({   
+            title: "¿ Estas seguro ?",
+            text: "Este usuario sera cambiado.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",   
+            closeOnConfirm: false, 
+            cancelButtonText:"Cancelar",
+        }, 
+            function(){
+                swal("Excelente!", 
+                    "Se ha cambiado el usuario.", 
+                    "success"); 
+
+                $http.get('admin/activarDesactivar/' + id)
+                .then(function successCallback(response) {
+                    $scope.empleados = response.data;
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+
             });
-        }
     }
 
     $scope.dataEditar = function (data) {

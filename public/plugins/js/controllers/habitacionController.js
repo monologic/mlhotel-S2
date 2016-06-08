@@ -17,7 +17,7 @@ app.controller('habitacionController', function($scope,$http) {
                 'estado_id':$('#estado_id').val(),
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
-               alert('Se ha creado la Habitación');
+                swal("Excelente!", "Se ha creado lahabitación", "success")
                window.location.href = 'admin#/Habitaciones';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -91,17 +91,31 @@ app.controller('habitacionController', function($scope,$http) {
             });
     }
     $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar esta habitación?");
+        swal({   title: "¿ Estas seguro ?",
+            text: "La habitación se eliminar indefinidamente",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",   
+            closeOnConfirm: false,
+            cancelButtonText:"Cancelar",    
+            }, 
 
-        if (r) {
-            $http.delete( 'admin/habitacion/'+id ).then(function successCallback(response) {
-                $scope.habitaciones = response.data;
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            function(){
+
+                swal("Eliminado!", 
+                    "La habitación se ha eliminado.", 
+                    "success"); 
+                $http.delete( 'admin/habitacion/'+id ).then(function successCallback(response) {
+                    $scope.habitaciones = response.data;
+                }, function errorCallback(response) {
+                    swal({   
+                        title: "Ha ocurrido un error!",   
+                        text: "No se puede borrar datos utilizados para otros registros.",   
+                        timer: 3000,   
+                        showConfirmButton: false 
+                        });
+                });
             });
-        }
     }
-
-    
-
 });

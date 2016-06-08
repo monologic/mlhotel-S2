@@ -33,15 +33,36 @@ app.controller('galeryController', function($scope,$http) {
     }
 
      $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar esta foto de Galería?");
 
-        if (r) {
-            $http.delete( 'admin/galeria/'+id ).then(function successCallback(response) {
-                $('#alertDelete').css('display','block');
-                $scope.fotos = response.data;
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminara esta foto de la galeria",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",   
+            closeOnConfirm: false,
+            cancelButtonText:"Cancelar", 
+        }, 
+
+            function(){
+
+                swal("Eliminado!", 
+                    "El ha eliminado la foto de la galeria.", 
+                    "success"); 
+
+                $http.delete( 'admin/galeria/'+id ).then(function successCallback(response) {
+                    $('#alertDelete').css('display','block');
+                    $scope.fotos = response.data;
+                }, function errorCallback(response) {
+                    swal({   
+                        title: "Ha ocurrido un error!",   
+                        text: "No se puede borrar datos utilizados para otros registros.",   
+                        timer: 3000,   
+                        showConfirmButton: false 
+                    });
+                });
+
             });
-        }
+
     }    
 });

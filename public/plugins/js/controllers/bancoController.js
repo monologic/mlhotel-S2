@@ -48,7 +48,8 @@ app.controller('bancoController', function($scope,$http) {
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
             confirmButtonText: "Sí, estoy seguro!",   
-            closeOnConfirm: false }, 
+            closeOnConfirm: false,
+            cancelButtonText:"Cancelar", }, 
             function(){
 
                 swal("Eliminado!", 

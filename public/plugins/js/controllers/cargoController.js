@@ -5,7 +5,6 @@ app.controller('cargoController', function($scope,$http) {
             {   'tipo':$scope.tipo,
                 'descripcion':$scope.descripcion
             }).then(function successCallback(response) {
-                alert(response.data.mensaje);
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -46,7 +45,12 @@ app.controller('cargoController', function($scope,$http) {
             $http.delete( 'admin/emptipo/'+id ).then(function successCallback(response) {
                 $scope.cargos = response.data;
             }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+                swal({   
+                        title: "Ha ocurrido un error!",   
+                        text: "No se puede borrar datos utilizados para otros registros.",   
+                        timer: 3000,   
+                        showConfirmButton: false 
+                    });
             });
         }
     }

@@ -56,20 +56,20 @@ app.controller('carritoController', function($scope,$http) {
           }
         }
         if( !elemento.checked ) {
-          alert('tienes q aceptar los terminos de condicion')
+            swal("Faltan datos", "Tienes q aceptar los terminos de condicion");
         }
         else{
             if(!seleccionado) {
-              alert('Debes seleccionar un metodode pago');
+                swal("Faltan datos", "Debes seleccionar un metodode pago");
             }
             else
             {
                if (!cobro && !(test1.checked) ) {
-                 alert('Debes seleccionar un porcentaje de pago');   
+                    swal("Faltan datos", "Debes seleccionar un porcentaje de pago");   
                 }
                 else{
                     if ( test3.checked && $('#banco').val() == null) {
-                        alert('Debes seleccionar un banco.'); 
+                        swal("Faltan datos", "Debes seleccionar un banco.");
                     }
                     else {
                         $('#modalBlanco').css( "display", "block" );

@@ -183,7 +183,6 @@ app.controller('graficasController', function($scope,$http) {
     }
     $scope.getIngresoE = function () {
         fecha = $('#ftime').val();
-        alert(fecha);
         $http.get('admin/report/ingreso/' + fecha).then(function successCallback(response) {
 
             $scope.diasRegistros = response.data['diasRegistros'];
