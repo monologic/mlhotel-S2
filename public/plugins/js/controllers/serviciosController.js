@@ -63,15 +63,28 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
             });
     }
     $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar este Servicio?");
+       
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminará esta servicio.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
 
-        if (r) {
-            $http.delete( 'admin/servicio/'+id ).then(function successCallback(response) {
-                window.location.reload();
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-            });
-        }
+                swal("Eliminado!", 
+                    "El servicio se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/servicio/'+id ).then(function successCallback(response) {
+                    window.location.reload();
+                }, function errorCallback(response) {
+                    swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
+                });
+            }
+        );
     }
     $scope.dataEditarCat = function (data) {
 
@@ -92,15 +105,28 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
             });
     }
     $scope.eliminarCat = function (id) {
-        r = confirm("¿Deseas eliminar este Servicio?");
 
-        if (r) {
-            $http.delete( 'admin/categoria/'+id ).then(function successCallback(response) {
-                window.location.reload();
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-            });
-        }
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminará esta categoria.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
+
+                swal("Eliminado!", 
+                    "La categoria se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/categoria/'+id ).then(function successCallback(response) {
+                    window.location.reload();
+                }, function errorCallback(response) {
+                    swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
+                });
+            }
+        );
     }
 
     $scope.dataMain = function () {
