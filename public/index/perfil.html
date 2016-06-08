@@ -1,11 +1,11 @@
-<div class="cont-perfil" style="margin-top: 100px" onclick="badCar();">
-  <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();getDias();res();">
+<div class="cont-perfil" style="margin-top: 100px" >
+  <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();getDias()" >
+    <div onclick="badCar();">
     <div class="col m7 s12 gal"  >
       <div style="  position: relative;width:100%;height:400px;margin-top:150px">
         <div class="swiper-container gallery-top">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" ng-repeat="s in galeria" style="background-image:url('imagen/habitaciones/galeria/{{s.foto}}')"></div>
-                
             </div>
             <!-- Add Arrows -->
             <div class="swiper-button-next swiper-button-white"></div>
@@ -37,48 +37,59 @@
                   <div id="buscar">
                     <button type='submit' class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto "><i class="material-icons left">search</i>Buscar</button>
                   </div>
-                  
         </form>
         <div id="reservar" style="display: none;" style="background-color: red">
                     <div class="teal lighten-2 dispo" ><p>Disp. : {{busqueda.habitacionescount-busqueda.habtiporeservascount}} hab.</p></div>
                     <br>
-                    <a class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto " ng-click='addCarrito(busqueda);' onclick="Materialize.toast('Añadido a tus reservar :)', 4000)"><i class="material-icons left">search</i>Reservar</a>
-                  </div>
-      </div>
+                    <a class="waves-effect black btn" style="width: 70%;margin:20px auto 20px auto " ng-click='addCarrito(busqueda);' onclick="Materialize.toast('Añadido a tus reservas', 4000)"><i class="material-icons left">search</i>Reservar</a>
+       </div>
+    </div>
+  </div>
 
-      <div id="caja" style="top:65px;">
-    <div class="title-reser teal lighten-2">Mis Reservas</div>
+  <div id="caja" style="top:65px;">
+    
     <br>
-    <div><a class="waves-effect waves-light btn" ng-click="vaciarCarrito();"><i class="small material-icons">delete</i>Vaciar Carrito</a></div>
+    <div class="title-reser teal lighten-2">Mis Reservas</div>
     <div  style=";width: 80%;margin:40px auto 20px auto">
     <div id="cont-table">
+      <div class="row">
+        <div class="col m8" style="padding-top: 10px">Estancia : {{ dias }} noche(s). </div>
+      </div>
+      
+      <br>
       <table>
         <thead>
           <tr>
-            <th>Habitacion</th>
-            <th>Cant.</th>
-            <th>Precio</th>
-            <th>Subtotal</th>
+            <th class="table-tit"> Habitación </th>
+            <th class="table-tit"> Cant. </th>
+            <th class="table-tit"> Precio </th>
+            <th class="table-tit"> Subtotal </th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="o in car">
             <td>{{o.nombre}}</td>
             <td width="50px">
-              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="20" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car)">
+              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car, dias)">
             </td>
-            <td>{{o.precio}}</td>
-            <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
-            <td><a class="waves-effect waves-light btn" ng-click="eliminarItem(o.id);"><i class="small material-icons">delete</i></a></td>
+            <td style="text-align: center">{{o.precio}}</td>
+            <td id="{{$index+1}}s" style="text-align: center">{{o.precio*o.quantity}}.00</td>
+            <td><a class="btn-floating  waves-effect" style="width: 30px;height: 30px" ng-click="eliminarItem(o.id);"><i class="small material-icons " style="font-size: 20px;top: -120px">delete</i></a></td>
           </tr>
           <tr>
             <td></td>
             <td colspan="2">Total por Día:</td>
             <td ng-bind="totalq"></td>
           </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td> {{Total}}</td>
+          </tr>
         </tbody>
       </table>
-      <div>Noches: {{ fechas.dias }} Total: {{Total}}</div>
+
     </div>
       
       <div>

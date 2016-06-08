@@ -361,7 +361,7 @@ class RegistroController extends Controller {
         $registro = new Registro();
         $registro->usuario_id = Auth::user()->id;
         $registro->habitacion_id = $request->habitacion_id;
-        $registro->fechaentrada = $request->fechaini . " " . date('H:i:s');
+        $registro->fechaentrada = date('Y-m-d H:i:s');
         $registro->fechasalida = $request->fechafin. " " . Auth::user()->empleado->hotel->checkout;
 
         if ($request->codigo_reserva)
@@ -406,8 +406,6 @@ class RegistroController extends Controller {
                         $query->whereRaw(DB::raw("'".self::$fechaInicio."' between fechaentrada and fechasalida"));
                         })
                      ->get();
-
-                     
 
         $r->each(function($r){
             $r->regclientes;

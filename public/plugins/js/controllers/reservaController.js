@@ -3,6 +3,7 @@ app.controller('reservaController', function($scope,$http) {
         $http.get('admin/getAllReservas').then(function successCallback(response) {
             $scope.allreservas = response.data;
             for (var i = 0; i < $scope.allreservas.length; i++) {
+<<<<<<< HEAD
                 $scope.fe = $scope.allreservas[i].fecha_inicio.split(" ");
                 $scope.allreservas[i].soloFecha = $scope.fe[0];
 
@@ -11,6 +12,22 @@ app.controller('reservaController', function($scope,$http) {
 
                 $scope.fs = $scope.allreservas[i].fecha_fin.split(" ");
                 $scope.allreservas[i].soloFecha2 = $scope.fs[0];
+=======
+                if ($scope.allreservas[i].fecha_inicio != null) {
+                    $scope.fe = $scope.allreservas[i].fecha_inicio.split(" ");
+                    $scope.allreservas[i].soloFecha = $scope.fe[0];
+                }
+                else{
+                    $scope.allreservas[i].soloFecha = null;
+                }
+                if ($scope.allreservas[i].fecha_fin != null) {
+                    $scope.fe2 = $scope.allreservas[i].fecha_fin.split(" ");
+                    $scope.allreservas[i].soloFecha2 = $scope.fe2[0];
+                }
+                else{
+                    $scope.allreservas[i].soloFecha = null;
+                }
+>>>>>>> origin/master
             }
 
 
