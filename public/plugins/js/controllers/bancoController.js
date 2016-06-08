@@ -42,15 +42,31 @@ app.controller('bancoController', function($scope,$http) {
             });
     }
     $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar esta banco?");
+        r = swal({   title: "¿ Estas seguro ?",
+            text: "Este banco se eliminara indefinidamente",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",   
+            closeOnConfirm: false }, 
+            function(){
 
-        if (r) {
-            $http.delete( 'admin/banco/'+id ).then(function successCallback(response) {
-                $scope.bancos = response.data;
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+                swal("Eliminado!", 
+                    "El banco se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/banco/'+id ).then(function successCallback(response) {
+                    $scope.bancos = response.data;
+                }, function errorCallback(response) {
+                    swal({   
+                        title: "Ha ocurrido un error!",   
+                        text: "No se puede borrar datos utilizados para otros registros.",   
+                        timer: 3000,   
+                        showConfirmButton: false 
+                    });
+                });
+
             });
-        }
     }
 
 });
