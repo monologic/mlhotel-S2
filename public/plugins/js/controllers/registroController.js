@@ -299,8 +299,15 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                     data[i].cliente.edad = $scope.dateDiff(data[i].cliente.fecha_nac);
                 else
                     data[i].cliente.edad = null;
+
+                $scope.fe = data[i].registro.fechaentrada.split(" ");
+                data[i].registro.solofe = $scope.fe[0];
+                data[i].registro.solohe = $scope.fe[1];
+
+                $scope.fs = data[i].registro.fechasalida.split(" ");
+                data[i].registro.solofs = $scope.fs[0];
+                data[i].registro.solohs = $scope.fs[1];
             }
-            console.log(data);
             $scope.registros = data;
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {

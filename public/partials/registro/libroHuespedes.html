@@ -1,6 +1,6 @@
 <div id="page-wrapper" ng-controller="registroController" ng-init="ponerFecha()" style="width: 80%;margin:20px auto 100px auto">
     <br><br><br>
-    <h3 class="tit2">Libro de Huéspedes</h3>
+    <h3 class="tit2">Bitácora</h3>
     <br><br>
     <div class="formularios">
         <table>
@@ -34,8 +34,8 @@
             <thead>
                 <tr>
                     <th>Hab. Asignada</th>
-                    <th>Fecha de Entrada</th>
-                    <th>Nombre y Apellidos</th>
+                    <th style="min-width: 170px">Fecha de Entrada</th>
+                    <th style="min-width: 200px">Nombre y Apellidos</th>
                     <th>Profesión</th>
                     <th>Estado Civil</th>
                     <th>Edad</th>
@@ -44,14 +44,14 @@
                     <th>Pais de Residencia</th>
                     <th>Procedencia</th>
                     <th>Destino</th>
-                    <th>Fecha Salida</th>
+                    <th style="min-width: 170px">Fecha Salida</th>
                     <th>Total Pagado</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat='r in registros'>
                     <td>{{ r.registro.habitacion.numero }}</td>
-                    <td>{{ r.registro.fechaentrada }}</td>
+                    <td>{{ r.registro.solofe | date:'d MMM yyyy' }} | {{ r.registro.solohe }}</td>
                     <td>{{ r.cliente.nombres }} {{ r.cliente.apellidos }}</td>
                     <td>{{ r.cliente.prof_ocup }}</td>
                     <td>{{ r.cliente.estado_civil }}</td>
@@ -61,7 +61,7 @@
                     <td>{{ r.cliente.pais }}</td>
                     <td>{{ r.procedencia }}</td>
                     <td>{{ r.destino }}</td>
-                    <td>{{ r.registro.fechasalida }}</td>
+                    <td>{{ r.registro.solofs | date:'d MMM yyyy' }} | {{ r.registro.solohs }}</td>
                     <td>{{ r.registro.total }}</td>
                 </tr>
             </tbody>

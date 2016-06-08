@@ -8,6 +8,9 @@ app.controller('reservaController', function($scope,$http) {
 
                 $scope.fe2 = $scope.allreservas[i].fecha_fin.split(" ");
                 $scope.allreservas[i].soloFecha2 = $scope.fe2[0];
+
+                $scope.fs = $scope.allreservas[i].fecha_fin.split(" ");
+                $scope.allreservas[i].soloFecha2 = $scope.fs[0];
             }
 
 

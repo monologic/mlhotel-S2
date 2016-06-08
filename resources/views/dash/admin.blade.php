@@ -62,7 +62,6 @@
 
                 @if (Auth::user()->usuariotipo->nombre == "Administrador")  
                     <li class="menu__item"><a class="menu__link" href="#/Habitaciones" >Info. Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Empleados/ver">Usuarios</a></li>
 
                     <li class="menu__item"><a class="menu__link"  href="#/configChecks">Hora de E/S</a></li>

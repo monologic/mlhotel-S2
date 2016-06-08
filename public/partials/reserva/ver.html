@@ -11,7 +11,7 @@
             <button class="btn reserva-item row" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
                 <div class="col-md-3">
                     <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>  &nbsp;
-                     Código : {{ y.codigo_reserva }} 
+                     F : {{ y.codigo_reserva }} 
                 </div>
                 <div class="col-md-3">
                     {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
@@ -130,11 +130,11 @@
                                 </div>
                                <div class="col-md-4">
                                    <p>Fecha de Entrada: </p>
-                                    <p style="margin-left: 20px">{{ y.soloFecha | date:'d MMM yyyy' }}</p>
+                                    <p style="margin-left: 20px">{{ Reservas.soloFecha | date:'d MMM yyyy' }}</p>
                                </div>
                                 <div class="col-md-4">
                                     <p>Fecha de Salida: </p>
-                                    <p style="margin-left: 20px">{{ y.soloFecha2 | date:'d MMM yyyy' }}</p>
+                                    <p style="margin-left: 20px">{{ Reservas.soloFecha2 | date:'d MMM yyyy' }}</p>
                                 </div>
                                 
                             </div>
@@ -196,7 +196,7 @@
                     </div>
                     <br>
                     <div class="modal-footer">
-                        <a href="" data-dismiss="modal" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); " style="display:none;position: fixed;" >Guardar Cambios</a>
+                        <a href="" data-dismiss="modal" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); " style="display:none;max-width: 100px" >Guardar Cambios</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -207,6 +207,4 @@
 $('#myCollapsible').collapse({
   toggle: false
 })
-
-    
 </script>
