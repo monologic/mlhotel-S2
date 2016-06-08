@@ -112,7 +112,7 @@ app.controller('hotelController', function($scope,$http) {
                 'hotel_id':$scope.hotel_id
             }).then(function successCallback(response) {
                 $scope.hoteles = response.data;
-                alert("Se ha modificado la información de administrador.");
+                swal("Excelente!", "Se ha modificado la información de Administrador.", "success");
             }, function errorCallback(response) {
             });
     }
@@ -183,14 +183,15 @@ app.controller('hotelController', function($scope,$http) {
             'usuariotipo_id': 2
         })
         .then(function successCallback(response) {
-            alert('Se ha modificado tu nombre de Usuario')
+            swal("Excelente!", "Se ha modificado tu nombre de usuario.", "success");
             $scope.idUsuario = response.data.id;
             $scope.usuario = response.data.usuario;
-
+            $('#editarAdministrador').modal('toggle');
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+
     }
     $scope.actualizarPassword = function () {
         if ($scope.password == $scope.password2) {

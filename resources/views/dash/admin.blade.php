@@ -43,6 +43,9 @@
     <link rel="stylesheet" href="plugins/morris/morris.css">
     <script src="plugins/morris/raphael-min.js"></script>
     <script src="plugins/morris/morris.js"></script>
+
+    <script src="plugins/SweetAlert/sweetalert.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="plugins/SweetAlert/sweetalert.css">
 </head>
 
 <body ng-app="tutorialWebApp">

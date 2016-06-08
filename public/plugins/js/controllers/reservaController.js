@@ -251,6 +251,6 @@ app.controller('reservaController', function($scope,$http) {
             }); 
         }
         window.location.href = 'admin#/DetalleHabitaciones';
-        $('#asignar').modal(toggle);
+        $('#asignar').modal('toggle');
     }
 });
