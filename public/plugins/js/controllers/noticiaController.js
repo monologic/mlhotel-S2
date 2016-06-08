@@ -43,22 +43,34 @@ app.controller('noticiaController', function($scope,$http) {
                 'estado':$scope.mlestado,
             }).then(function successCallback(response) {
                 $('#alertCambio').css('display','block');
-                 $scope.noticia = response.data;
+                $scope.noticia = response.data;
             }, function errorCallback(response) {
                 
             });
     }
 
      $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar esta noticia?");
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminará esta noticia.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
 
-        if (r) {
-            $http.delete( 'admin/noticia/'+id ).then(function successCallback(response) {
-                $('#alertDelete').css('display','block');
-                $scope.noticia = response.data;
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-            });
-        }
+                swal("Eliminado!", 
+                    "La noticia se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/noticia/'+id ).then(function successCallback(response) {
+                    $('#alertDelete').css('display','block');
+                    $scope.noticia = response.data;
+                }, function errorCallback(response) {
+                    swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
+                });
+            }
+        );
     }       
 });

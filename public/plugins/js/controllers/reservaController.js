@@ -117,7 +117,7 @@ app.controller('reservaController', function($scope,$http) {
         }
     }
     $scope.dataEditar = function (data) {
-        alert("Verifique Disponibilidad antes de Editar");
+        swal("", "Verifique disponibilidad antes de editar", "warning");
         $scope.idReserva = data.id;
         $scope.nom = data.cliente.nombres + " " + data.cliente.apellidos;
         $scope.dni = data.cliente.dni;
@@ -133,11 +133,11 @@ app.controller('reservaController', function($scope,$http) {
             'idReserva': $scope.idReserva
         }).then(function successCallback(response) {
             if (response.data.mensaje == 1) {
-                alert("Se ha editado las fechas de la Reserva.")
+                swal("Excelente!", "Se han editado las fechas de la Reserva.", "success");
                 window.location.reload();
             }
             else {
-                alert("No se puede editar las fechas de la Reserva para ese periodo de días.")
+                swal("", "No se puede editar las fechas de la Reserva para ese periodo de días.", "error");
             }
 
         }, function errorCallback(response) {

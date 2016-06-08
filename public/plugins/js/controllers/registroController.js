@@ -48,7 +48,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.buscar = function () {
         $http.get('admin/registrosBusqueda/'+$scope.fechaini+'/'+$scope.fechafin).then(function successCallback(response) {
             if ((response.data).hasOwnProperty('mensaje')) {
-                alert("No se encontraron habitaciones disponibles");
+                swal("", "No se encontraron habitaciones disponibles.", "error");
                 $scope.tipoPerHabs = null;
             }
             else{
@@ -122,7 +122,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             // or server returns response with an error status.
             }); 
         }
-        alert('Asignación de habitaciones exitosa.');
+        swal("Excelente!", "Se han asignado las habitaciones.", "success");
         window.location.href = 'admin#/DetalleHabitaciones';
     }
     $scope.getReservaInfo = function () {
@@ -171,7 +171,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.finalizar = function (id) {
         $http.get('admin/finalizarRegistro/' + id).then(function successCallback(response) {
             
-            alert("Se ha finalizado la estadia...");
+            swal("Excelente!", "Se ha finalizado la estadía.", "success");
             window.location.href = 'admin#/DetalleHabitaciones';
             
         }, function errorCallback(response) {
@@ -298,6 +298,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             });   
     }
     $scope.eliminarHuesped = function (id) {
+        
         $http.delete( 'admin/regClienteEliminar/'+id ).then(function successCallback(response) {
             $scope.regClientes = response.data;
             c = $scope.cantHuesped;
@@ -305,7 +306,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             $scope.btnAdd();
 
         }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
         });
     }
 

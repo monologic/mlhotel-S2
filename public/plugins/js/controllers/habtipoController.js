@@ -52,11 +52,26 @@ app.controller('habtipoController', function($scope,$http,$location) {
             });
     }
     $scope.eliminar = function (id) {
-        $http.delete( 'admin/habtipo/'+id ).then(function successCallback(response) {
-            $scope.habtipos = response.data;
-        }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-        });
+            swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminará este tipo de habitación.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
+
+                swal("Eliminado!", 
+                    "El tipo de habitación se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/habtipo/'+id ).then(function successCallback(response) {
+                    $scope.habtipos = response.data;
+                }, function errorCallback(response) {
+                    swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
+                });
+            });
     }
 
     $scope.goTo2 = function(data) {

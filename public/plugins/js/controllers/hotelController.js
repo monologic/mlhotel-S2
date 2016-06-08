@@ -151,7 +151,7 @@ app.controller('hotelController', function($scope,$http) {
         $http.delete( 'admin/hotel/'+id ).then(function successCallback(response) {
             $scope.hoteles = response.data;
         }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
         });
     }
     
@@ -160,7 +160,7 @@ app.controller('hotelController', function($scope,$http) {
             {   'checkin':$scope.checkin,
                 'checkout':$scope.checkout
             }).then(function successCallback(response) {
-                alert('Se ha modificado horas Check in CHeck out exitosamente');
+                swal("Excelente!", "Se han modificado las horas Check-in Check-out", "success");  
             }, function errorCallback(response) {
             });
     }
@@ -200,17 +200,17 @@ app.controller('hotelController', function($scope,$http) {
                 'password':$scope.password
             })
             .then(function successCallback(response) {
-                alert('Se ha modificado tu Password')
+                swal("Excelente!", "Se ha modificado tu password.", "success");
                 $scope.idUsuario = response.data.id;
                 $scope.usuario = response.data.usuario;
-
+                $('#editarAdministrador').modal('toggle');
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             });
         }
         else {
-            alert("El Password no coincide");
+            swal("", "El password no coincide.", "warning");
         }
     }
 });

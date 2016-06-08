@@ -43,13 +43,13 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
                 // or server returns response with an error status.
                 });
             } 
-            alert('Se guardo los cambios exitosamente');         
+            swal("Excelente!", "Se guardaron los cambios!", "success");   
         }
     $scope.eliminar = function (id) {
         $http.delete( 'admin/habtipoF/'+id ).then(function successCallback(response) {
             window.location.reload()
         }, function errorCallback(response) {
-            alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
+            swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
         });
     }
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
@@ -78,7 +78,7 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
 
     $scope.buscarHab = function () {
         if ($('#fechaini').val() == '' || $('#fechaini').val() == '') {
-            alert('Debes seleccionar 2 fechas');
+            swal("", "Debes seleccionar 2 fechas.", "warning");
         }
         else
         {   var fini = $scope.formatDate($('#fechaini').val());

@@ -5,7 +5,7 @@ app.controller('monedaController', function($scope,$http) {
                 'siglas':$scope.siglas,
                 'tipocambio':$scope.tipocambio
             }).then(function successCallback(response) {
-                alert(response.data.mensaje);
+                swal("Excelente!", "Se ha registrado la moneda.", "success");
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -42,15 +42,28 @@ app.controller('monedaController', function($scope,$http) {
             });
     }
     $scope.eliminar = function (id) {
-        r = confirm("¿Deseas eliminar esta Moneda?");
 
-        if (r) {
-            $http.delete( 'admin/moneda/'+id ).then(function successCallback(response) {
-                $scope.monedas = response.data;
-            }, function errorCallback(response) {
-                alert("Ha ocurrido un error, No se puede borrar datos utilizados para otros registros");
-            });
-        }
+        swal({   title: "¿ Estas seguro ?",
+            text: "Se eliminará esta moneda.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
+
+                swal("Eliminado!", 
+                    "La moneda se ha eliminado.", 
+                    "success"); 
+
+                $http.delete( 'admin/moneda/'+id ).then(function successCallback(response) {
+                    $scope.monedas = response.data;
+                }, function errorCallback(response) {
+                    swal("Ha ocurrido un error!", "No se puede borrar datos utilizados para otros registros.", "error");
+                });
+            }
+        );
     }
     
 });
