@@ -157,6 +157,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fecha de Nacimiento</label>
                             <input type="date" class="form-control" id="nacimiento" ng-model="nacimiento" required>
+                            <div class="cl"><img class="cld" style="margin-left: 230px" src="plugins/css/imgc.png" alt=""></div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">DNI</label>
@@ -292,6 +293,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Fecha de Nacimiento</label>
                                     <input type="date" class="form-control" id="nacimiento" ng-model="nacimiento" required>
+                                    <div class="cl"><img class="cld" style="margin-left: 230px" src="plugins/css/imgc.png" alt=""></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">DNI</label>
@@ -326,7 +328,7 @@
                 $('#divp2').removeClass( "has-error" ).addClass( "has-success" );
             }
             else{
-                alert('Las contraseñas no coinciden');
+                swal("Alerta!", "Las contraseñas no coinciden!", "warning")
                 $('#divp').removeClass( "has-success" ).addClass( "has-error" );
                 $('#divp2').removeClass( "has-success" ).addClass( "has-error" );
             }

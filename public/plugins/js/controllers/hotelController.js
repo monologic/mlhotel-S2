@@ -94,6 +94,7 @@ app.controller('hotelController', function($scope,$http) {
                 'empleado':dataAdmin.id 
             }).then(function successCallback(response) {
                 $scope.hoteles = response.data;
+                swal("Excelente!", "Se edito la información del Administrador", "success");
             }, function errorCallback(response) {
             });
     }
@@ -141,6 +142,7 @@ app.controller('hotelController', function($scope,$http) {
                 'telefono':$scope.fonoHotel,
                 'correo':$scope.correo
             }).then(function successCallback(response) {
+                swal("Excelente!", "Se edito la información del hotel", "success");
                  $scope.hoteles = response.data;
             }, function errorCallback(response) {
                 
