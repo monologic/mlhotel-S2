@@ -258,14 +258,14 @@ app.controller('reservaController', function($scope,$http) {
                 'habitacion_id':habsSeleccionadas[i].id,
                 'codigo_reserva': $scope.Reservas.codigo_reserva
             }).then(function successCallback(response) {
+              $('#asignar').modal('toggle');
+              $('.modal-backdrop').removeClass('in');
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             }); 
         }
         swal("Excelente!", "Se han asignado las habitaciones.", "success");
-        $('#asignar').modal('toggle');
         window.location.href = 'admin#/DetalleHabitaciones';
-        
     }
 });
