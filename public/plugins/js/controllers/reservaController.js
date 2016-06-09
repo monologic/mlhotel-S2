@@ -264,7 +264,8 @@ app.controller('reservaController', function($scope,$http) {
             }); 
         }
         swal("Excelente!", "Se han asignado las habitaciones.", "success");
-        window.location.href = 'admin#/DetalleHabitaciones';
         $('#asignar').modal('toggle');
+        window.location.href = 'admin#/DetalleHabitaciones';
+        
     }
 });
