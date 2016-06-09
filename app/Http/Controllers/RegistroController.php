@@ -508,6 +508,9 @@ class RegistroController extends Controller {
                     ->where(function($query)use($fechab){
                         $query->whereRaw(DB::raw("'$fechab' between `fechaentrada` and `fechasalida`"));
                         })
+                    ->where(function($query)use($fechab){
+                        $query->whereRaw(DB::raw("'$fechab' between DATE_FORMAT(fechasalida,'%Y-%m-%d 00:00:00') and `fechasalida`"));
+                        })
                     ->get();
             $r = $r->toArray();
 

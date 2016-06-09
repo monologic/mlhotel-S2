@@ -25,6 +25,17 @@ app.controller('carritoController', function($scope,$http) {
             });
         
     }
+    $scope.cambioFormaPago = function () {
+        if ($scope.formaPago.name != 'pagoCero'){
+            $('#divPorcenBan').css('display','block');
+            if ($scope.formaPago.name == 'pagoDeposito')
+                $('#divBanco').css('display','block');
+            else
+                $('#divBanco').css('display','none');
+        }
+        else
+            $('#divPorcenBan').css('display','none');
+    }
     $scope.actualizarTotal = function(data, fechas){
         var total=0;
         for (x in data) {
@@ -170,6 +181,9 @@ app.controller('carritoController', function($scope,$http) {
 
     $scope.porcentajeRadio = {
         name:0
+    }
+    $scope.formaPago = {
+        name:'pagoCero'
     }
 
     $scope.getBancos = function () {
