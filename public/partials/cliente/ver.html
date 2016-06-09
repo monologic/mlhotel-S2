@@ -14,8 +14,7 @@
     	<thead>
     		<tr>
     			<th>#</th>
-    			<th>Apellidos</th>
-                <th>Nombres</th>
+                <th>Nombres y Apellidos</th>
                 <th>DNI</th>
                 <th>Email</th>
                 <th></th>
@@ -25,8 +24,7 @@
     	<tbody>
                <tr ng-repeat="x in cliente | filter:buscar">
                     <td>{{$index+1}}</td>
-                    <td>{{x.apellidos}}</td>
-                    <td>{{x.nombres}}</td>
+                    <td>{{x.nombres}} {{x.apellidos}}</td>
                     <td>{{x.dni}}</td>
                     <td>{{x.email}}</td>
                     <td><a  class="btn btn-primary" href="" ng-click="verCliente(x);" data-toggle="modal" data-target="#vercliente"><i class="glyphicon glyphicon-plus"></i></a></td>
@@ -56,7 +54,7 @@
                                 <td ng-bind="sexo"></td>
                             </tr>
                             <tr>
-                                <td class="text-right">Edad :&nbsp;</td>
+                                <td class="text-right">Fecha de nacimiento :&nbsp;</td>
                                 <td ng-bind="nacimiento"></td>
                             </tr>
                             <tr>
