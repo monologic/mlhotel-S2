@@ -19,9 +19,9 @@
                 <td>{{x.habtipo.nombre }}</td>
                 <td ng-if="x.registro.hoy == 1 && x.estado.nombre == 'Ocupado'"><span class="label label-info" style="font-size: 1.5rem">{{x.registro.fechasalida}}</span></td>
                 <td ng-if="x.registro.hoy == 0 && x.estado.nombre == 'Ocupado'">{{x.registro.fechasalida}}</td>
-               
-                <td ng-if="(x.registro).length == 0 && x.estado.nombre == 'Ocupado'">
-                    <a href="admin#/detalleHabitacion/{{x.registro.id}}" class="btn btn-error">Ver (Completar Datos)</a>
+                <td ng-if="(x.registro).length == 0"></td>
+                <td ng-if="x.outdated == 1">
+                    <a class="btn btn-danger" ng-click="getRegistroHab(x.id)">Check-out</a>
                 </td>
                 <td ng-if="(x.registro.regclientes).length > 0 && x.estado.nombre == 'Ocupado'">
                     <a href="admin#/terminarRegistro/{{x.registro.id}}" class="btn btn-success">Ver</a>

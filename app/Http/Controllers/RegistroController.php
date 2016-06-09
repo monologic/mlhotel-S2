@@ -623,4 +623,12 @@ class RegistroController extends Controller {
             }
             return $habtipos;
     }
+    public function getRegistroHab($id)
+    {
+        $registros = Registro::select('id')
+                             ->where('habitacion_id', $id)
+                             ->orderBy('id', 'desc')
+                             ->get();
+        return response()->json( $registros );
+    }
 }

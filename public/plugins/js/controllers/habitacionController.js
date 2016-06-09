@@ -53,16 +53,25 @@ app.controller('habitacionController', function($scope,$http) {
     }
     $scope.getHabitacionesDetallado = function () {
         $http.get('admin/getHabitacionsDetallado').then(function successCallback(response) {
-            $scope.habitaciones = response.data;
-            for(o in $scope.habitaciones)
-            {   if (($scope.habitaciones[o].registro).length == undefined) {
-                    f = ($scope.habitaciones[o].registro.fechasalida).split(" ");
+            for(o in response.data)
+            {   
+                if ((response.data[o].registro).length == 0 && response.data[o].estado_id == 2 )
+                    response.data[o].outdated = 1;
+                else
+                    response.data[o].outdated = 0;
+
+                if ((response.data[o].registro).length == undefined) {
+                    f = (response.data[o].registro.fechasalida).split(" ");
                     if (f[0] == fechaHoy)
-                        $scope.habitaciones[o].registro.hoy = 1;
+                        response.data[o].registro.hoy = 1;
                     else
-                        $scope.habitaciones[o].registro.hoy = 0;
+                        response.data[o].registro.hoy = 0;
                 } 
+
+
             }
+            $scope.habitaciones = response.data;
+            console.log($scope.habitaciones);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
@@ -117,5 +126,13 @@ app.controller('habitacionController', function($scope,$http) {
                         });
                 });
             });
+    }
+    $scope.getRegistroHab = function (id) {
+        $http.get('admin/getRegistroHab/' + id).then(function successCallback(response) {
+            window.location.href = 'admin#/terminarRegistro/' + response.data[0].id;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
     }
 });

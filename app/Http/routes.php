@@ -66,6 +66,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
 	Route::get('getRegistros/{fechaini}/{fechafin}', 'RegistroController@getRegistros');
 	Route::get('grillaDisponibilidad/{fechaini}/{fechafin}', 'RegistroController@grillaDisponibilidad');
 
+	Route::get('getRegistroHab/{id}', 'RegistroController@getRegistroHab');
+
 	Route::get('getReservasPorConfirmar', 'ReservaController@getReservasPorConfirmar');
 	Route::get('confirmarReserva/{idReserva}', 'ReservaController@confirmarReserva');
 	Route::get('cancelarReserva/{idReserva}', 'ReservaController@cancelarReserva');
