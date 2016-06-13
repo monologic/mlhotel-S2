@@ -259,7 +259,7 @@ app.controller('reservaController', function($scope,$http) {
                 'codigo_reserva': $scope.Reservas.codigo_reserva
             }).then(function successCallback(response) {
               $('#asignar').modal('toggle');
-              $('.modal-backdrop').removeClass('in');
+              $('.modal-backdrop').css('display','none');
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

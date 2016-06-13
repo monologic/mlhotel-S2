@@ -17,19 +17,19 @@
                 <tr ng-repeat="o in car">
                   <td>{{o.nombre}}</td>
                   <td>{{o.quantity}}</td>
-                  <td>{{o.precio}}</td>
-                  <td id="{{$index+1}}s">{{o.precio*o.quantity}}.00</td>
+                  <td>S/ {{o.precio}}</td>
+                  <td id="{{$index+1}}s">S/ {{o.precio*o.quantity}}.00</td>
                 </tr>
                 <tr class="border-top">
                   <td></td>
                   <td></td>
-                  <td>Total por Noche:</td>
+                  <td style="text-align: right;padding-right: 15px">Total por Noche: </td>
                   <td>{{totalq}}</td>
                 </tr>
                 <tr>
                   <td> Por noches {{ dias }} </td>
                   <td></td>
-                  <td>Total :</td>
+                  <td style="text-align: right;padding-right: 15px">Total :</td>
                   <td>S/ {{Total}}</td>
                 </tr>
               </tbody>

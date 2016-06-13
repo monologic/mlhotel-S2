@@ -43,7 +43,7 @@ app.controller('carritoController', function($scope,$http) {
             total+=subp;
         }
         $scope.totalN = total.toFixed(2);
-        $scope.totalq = 'S/' + total + '.00';
+        $scope.totalq = 'S/ ' + total + '.00';
         $scope.Total = ($scope.totalN * fechas.dias).toFixed(2);
 
     }
