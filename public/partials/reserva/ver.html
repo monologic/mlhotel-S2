@@ -2,7 +2,8 @@
     <br><br><br>
     <h3 class="tit2">Reservas</h3>
     <br><br>
-    <div style="width: 310px;float: right">
+    <div id="nh" style="font-weight: bold;font-size: 4rem;text-align: center;margin-top: 100px;display: none">NO HAY RESERVAS POR CONFIRMAR</div>
+    <div style="width: 310px;float: right" id="bsq">
          <input type="text" class="form-control" ng-model="buscar" style="width: 320px"><i class="glyphicon glyphicon-search" style="top:-25px;float: right;color: black"></i>
     </div>
    
@@ -204,7 +205,7 @@
                     </div>
                     <br>
                     <div class="modal-footer">
-                        <a href="" data-dismiss="modal" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); " style="display:none;min-width: 200px" >Guardar Cambios</a>
+                        <a href="" data-dismiss="modal" class="btn btn-success" id="guardarChecks" ng-click="guardarRegistros(); " style="display:none;max-width: 200px" >Guardar Cambios</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>

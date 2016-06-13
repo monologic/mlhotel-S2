@@ -2,7 +2,8 @@
     <br><br><br>
     <h3 class="tit2">Reservas Por Confirmar</h3>
     <br><br>
-    <div style="width: 310px;float: right">
+    <div id="nh" style="font-weight: bold;font-size: 4rem;text-align: center;margin-top: 100px;display: none">NO HAY RESERVAS</div>
+    <div style="width: 310px;float: right" id="bs">
          <input type="text" class="form-control" ng-model="buscar" style="width: 320px"><i class="glyphicon glyphicon-search" style="top:-25px;float: right;color: black"></i>
     </div>
     <div ng-repeat="y in reservas | filter:buscar" class="row">

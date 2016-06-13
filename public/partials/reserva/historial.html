@@ -35,50 +35,44 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>Informacion de la reserva</h2>
+                    <h2>Información de la reserva</h2>
                 </div>
                 <div class="modal-body row" style="color:black;font-size: 1.5rem">
-                    <table class="center_block">
+                    <table class="">
                         <tbody>
                             <tr>
-                                <td class="text-right" width="280">Codigo:</td>
-                                <td ng-bind="codigo_reserva" style="padding-left: 20px"></td>
+                                <td class="text-right" width="200">Codigo:</td>
+                                <td ng-bind="codigo_reserva" style="padding-left: 20px;padding-right: 20px"></td>
+                                <td class="text-right" style="border-left: solid;border-width:1px ">Tipo de pago:</td>
+                                <td ng-bind="pagotipo" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
                                 <td class="text-right">Nombre:</td>
                                 <td ng-bind="nombre" style="padding-left: 20px"></td>
+                                <td class="text-right" style="border-left: solid;border-width:1px ">Check out :</td>
+                                <td ng-bind="fecha_fin" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
                                 <td class="text-right">Apellidos: </td>
                                 <td ng-bind="apellido" style="padding-left: 20px"></td>
+                                <td class="text-right" style="border-left: solid;border-width:1px ">Check in: </td>
+                                <td ng-bind="fecha_inicio" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
                                 <td class="text-right">Documento de Identidad:</td>
                                 <td ng-bind="dni" style="padding-left: 20px"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">Fecha de reservas:</td>
+                                <td class="text-right" style="border-left: solid;border-width:1px;padding-left: 20px ">Fecha de reservas:</td>
                                 <td ng-bind="fecha_reserva" style="padding-left: 20px"></td>
                             </tr>
                             <tr>
-                                <td class="text-right">Check in: </td>
-                                <td ng-bind="fecha_inicio" style="padding-left: 20px"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">Check out :</td>
-                                <td ng-bind="fecha_fin" style="padding-left: 20px"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">Tipo de pago:</td>
-                                <td ng-bind="pagotipo" style="padding-left: 20px"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">Total</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right">Total :</td>
                                 <td ng-bind="total" style="padding-left: 20px"></td>
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table " style="width: 60%;margin: 30px auto 40px auto;">
+                    <table class="table table-bordered " style="width: 60%;margin: 30px auto 40px auto;">
                         <thead> 
                             <tr>
                                 <th class="text-center">Tipo de habitación</th>
@@ -92,6 +86,19 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div style="width: 80%;margin:20px auto 20px 100px">
+                        <div class="form-group">
+                            <div class="col-xs-10">
+                                <label for="coment">Comentario</label>
+                                <textarea name="" id="co" cols="30" rows="5" class="form-control cos" ng-model="comentario"></textarea>
+                            </div>
+                            <div class="col-xs-2">
+                                <button class="glyphicon glyphicon-ok-sign btn btn-success" style="top:25px;margin-bottom: 5px"  ng-click="editarComentario(idcliente,comentario)"></button>
+                                <button class="glyphicon glyphicon-remove-sign btn btn-danger" style="top:25px" ng-click="eliminarComentario(idcliente,comentario)"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

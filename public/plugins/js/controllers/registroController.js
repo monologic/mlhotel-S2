@@ -189,10 +189,13 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.idHuesped = response.data[0].id; 
                 $scope.nombres = response.data[0].nombres;
                 $scope.apellidos = response.data[0].apellidos;
+                $scope.sexo = response.data[0].sexo;
+                $scope.estadoCivil = response.data[0].estado_civil;
                 $scope.fechanac = response.data[0].fecha_nac;
                 $scope.pais = response.data[0].pais;
                 $scope.ciudad = response.data[0].ciudad;
                 $scope.celular = response.data[0].celular;
+                $scope.email = response.data[0].email;
                 $scope.prof_ocup = response.data[0].prof_ocup;
 
             }
@@ -221,6 +224,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 'destino':$scope.destino,
                 'prof_ocup':$scope.prof_ocup,
                 'celular':$scope.celular,
+                'email':$scope.email,
                 'registro_id':$scope.registro.id,
                 
             }).then(function successCallback(response) {

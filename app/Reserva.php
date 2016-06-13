@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['cliente_id', 'fecha_reserva', 'fecha_inicio','fecha_fin', 'total_pagado','total','reservaestado_id','pagotipo_id', 'codigo_reserva'];
+    protected $fillable = ['cliente_id', 'fecha_reserva', 'fecha_inicio','fecha_fin', 'total_pagado','total','reservaestado_id','pagotipo_id', 'codigo_reserva','comentario'];
     
     public function habtiporeservas()
     {

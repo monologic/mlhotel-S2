@@ -38,6 +38,7 @@ app.controller('reservaController', function($scope,$http) {
         $scope.fecha_inicio = data.soloFecha;
         $scope.fecha_fin = data.soloFecha2;
         $scope.pagotipo = data.pagotipo.pagotipo;
+        $scope.comentario = data.comentario;
         $scope.total = data.total;
         $scope.grupo = data.habtiposcount;
     }
@@ -287,5 +288,43 @@ app.controller('reservaController', function($scope,$http) {
         }
         swal("Excelente!", "Se han asignado las habitaciones.", "success");
         window.location.href = 'admin#/DetalleHabitaciones';
+    }
+    $scope.editarComentario = function (id,coment){
+        
+        $http.put('admin/reserva/' + id,
+            {   'comentario': coment
+            }).then(function successCallback(response) {
+                swal("Excelente!", "Se han guardado el comentario.", "success");
+                $scope.getAllreserva();
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            }); 
+    }
+    $scope.eliminarComentario = function (id,coment){
+        $scope.comentario = "";
+        swal({   title: "¿ Estas seguro ?",
+            text: "El comentario se eliminara.",
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Sí, estoy seguro!",
+            cancelButtonText: "Cancelar",   
+            closeOnConfirm: false }, 
+            function(){
+
+                swal("Eliminado!", 
+                    "El comentario se ha eliminado.", 
+                    "success");
+                 $http.put('admin/reserva/' + id,
+                {   'comentario': $scope.comentario
+                }).then(function successCallback(response) {
+                    $scope.getAllreserva();
+                }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });  
+            }
+        );
     }
 });
