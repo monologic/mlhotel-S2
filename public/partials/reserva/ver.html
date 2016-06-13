@@ -10,9 +10,9 @@
     <div ng-repeat="y in reservas | filter:buscar" class="row">
         <p>
             <button class="btn reserva-item row" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>  &nbsp;
-                     F : {{ y.codigo_reserva }} 
+                     C : {{ y.codigo_reserva }} 
                 </div>
                 <div class="col-md-3">
                     {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
@@ -20,7 +20,7 @@
                 <div class="col-md-3">
                     Entrada: {{ y.soloFecha | date:'d MMM yyyy' }}
                 </div>
-                <div class="col-md-3" style="text-align: right">
+                <div class="col-md-2" style="text-align: right;padding-top: 3px">
                     
                     <span ng-if="(y.total - y.total_pagado) == y.total" class="label label-danger" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
                     <span ng-if="(y.total - y.total_pagado) > 0 && (y.total - y.total_pagado) < y.total" class="label label-warning" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
@@ -29,6 +29,7 @@
                 </div>
                    
             </button>
+            <div style="position: relative;float:right;color:white;font-size: 1.8rem;z-index: 10;top:-47px;"><i class="glyphicon glyphicon-paperclip coments" style=""></i></div>
         </p>
             <div class="collapse" id="{{y.id}}" style="padding: 20px;border-width:0.1px;border:solid;border-radius: 5px;margin-bottom:10px">
               <div class="card card-block row" style="color:black">

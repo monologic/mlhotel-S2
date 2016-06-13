@@ -6,6 +6,15 @@
 	list-style-type: none;
 	list-style: none;
 }
+.coments{
+	left: -50px;
+	background-color:#1BBC9B;
+	padding: 7px;
+	border-radius: 50%;
+}
+.coments:hover{
+	cursor: pointer;
+}
 .menu__wrap{
 	margin-top: -40px
 }
