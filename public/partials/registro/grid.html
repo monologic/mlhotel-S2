@@ -52,7 +52,8 @@
                         <table class="table table-bordered" style="width: 100%">
                             <tbody>
                                 <tr ng-repeat="j in r">
-                                    <td style="text-align: center">{{j.disponibles}}</td>
+                                    <td ng-if="j.outdated == 1" style=" background-color: #bdc3c7;text-align: center">{{j.disponibles}}</td>
+                                    <td ng-if="j.outdated == 0" style="text-align: center">{{j.disponibles}}</td>
                                 </tr>
                             </tbody>
                         </table>

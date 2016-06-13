@@ -18,6 +18,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.ponerFecha2 = function () {
         var f = new Date();
         $scope.desde = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
+        $scope.hoy = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate());
         f = f.getTime();
         f = f + 1*24*60*60*1000;
         f = new Date(f);
@@ -360,7 +361,21 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     $scope.getDisponibilidad = function () {
         $http.get('admin/grillaDisponibilidad/'+$scope.desde+'/'+$scope.hasta).then(function successCallback(response) {
             $('#grid').css('display','block');
+
             $scope.grid = response.data;
+            for( i in $scope.grid) {
+                var f = new Date(i);
+                f = f.getTime();
+                var fa = new Date($scope.hoy);
+                fa = fa.getTime();
+
+                for( j in $scope.grid[i]) {
+                    if (f < fa)
+                        $scope.grid[i][j].outdated = 1;
+                    else
+                        $scope.grid[i][j].outdated = 0;
+                }
+            }
             $scope.tipohabs = response.data[$scope.desde];
             //for(x in response.data)
                 //$scope.tipohabs = response.data[x];
@@ -378,4 +393,14 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             } 
         }
     });
+    $scope.fechasAnteriores = function (fecha, fechaini) {
+        var f = new Date(fecha);
+        f = f.getTime();
+        var fa = new Date(fechaini);
+        fa = fa.getTime();
+        if (f == fa) {
+
+        }
+        
+    }
 });
