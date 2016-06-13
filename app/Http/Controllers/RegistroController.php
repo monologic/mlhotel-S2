@@ -457,15 +457,15 @@ class RegistroController extends Controller {
     }
     public function getRegistros($fechaini, $fechafin)
     {
-        $regs = Registro::select('id')->whereBetween('fechaentrada', [$fechaini, $fechafin])->get();
+        $regs = Registro::select('id')->whereBetween('fechaentrada', [$fechaini . " 00:00:00", $fechafin . " 23:59:59"])->get();
         $regs_id = array();
         foreach ($regs->toArray() as $key => $reg) {
             foreach ($reg as $k => $id)
                 array_push($regs_id, $id);
         }
         
-        $regsClientes = Regcliente::whereIn('id', $regs_id)->get();
-        
+        $regsClientes = Regcliente::whereIn('registro_id', $regs_id)->get();
+    
         $regsClientes->each(function($regsClientes) {
             $regsClientes->registro;
             $regsClientes->registro->habitacion;
@@ -509,7 +509,7 @@ class RegistroController extends Controller {
                         $query->whereRaw(DB::raw("'$fechab' between `fechaentrada` and `fechasalida`"));
                         })
                     ->where(function($query)use($fechab){
-                        $query->whereRaw(DB::raw("'$fechab' between DATE_FORMAT(fechasalida,'%Y-%m-%d 00:00:00') and `fechasalida`"));
+                        $query->whereRaw(DB::raw("'$fechab' not between DATE_FORMAT(fechasalida,'%Y-%m-%d 00:00:00') and `fechasalida`"));
                         })
                     ->get();
             $r = $r->toArray();
