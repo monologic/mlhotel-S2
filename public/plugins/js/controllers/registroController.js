@@ -393,14 +393,4 @@ app.controller('registroController', function($scope,$http , $routeParams) {
             } 
         }
     });
-    $scope.fechasAnteriores = function (fecha, fechaini) {
-        var f = new Date(fecha);
-        f = f.getTime();
-        var fa = new Date(fechaini);
-        fa = fa.getTime();
-        if (f == fa) {
-
-        }
-        
-    }
 });

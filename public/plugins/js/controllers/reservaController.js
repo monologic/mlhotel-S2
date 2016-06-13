@@ -167,10 +167,13 @@ app.controller('reservaController', function($scope,$http) {
 
         fi = data.fecha_inicio;
         fi = fi.split(" ");
+        $scope.hallarFechaHoy();
+        $scope.reservaFutura(fi[0]);
         var ff = data.fecha_fin;
         ff = ff.split(" ");
 
-        $http.get('admin/registrosBusqueda/'+fi[0]+'/'+ff[0]).then(function successCallback(response) {
+
+        $http.get('admin/registrosBusqueda/'+$scope.hoy+'/'+ff[0]).then(function successCallback(response) {
             if ((response.data).hasOwnProperty('mensaje')) {
                 $('#alertCambio').css('display','block');
             }
@@ -183,6 +186,23 @@ app.controller('reservaController', function($scope,$http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+    }
+    $scope.reservaFutura = function (fechaReserva) {
+        var f = new Date(fechaReserva);
+        f = f.getTime();
+        var fa = new Date($scope.hoy);
+        fa = fa.getTime();
+        if (f > fa)
+            swal("Cuidado!", "Está intentando asignar habitaciones a una reserva de fecha futura.", "warning");
+    }
+    function twoDigits(d) {
+        if(0 <= d && d < 10) return "0" + d.toString();
+        if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+        return d.toString();
+    }
+    $scope.hallarFechaHoy = function () {
+        var f = new Date();
+        $scope.hoy = f.getFullYear() + "-" + twoDigits(f.getMonth()+1) + "-" + twoDigits(f.getDate())
     }
 
     
