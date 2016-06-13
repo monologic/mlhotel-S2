@@ -54,6 +54,10 @@ app.controller('reservaController', function($scope,$http) {
                 $scope.reservas[i].soloHora2 = $scope.fe2[1];
                 $scope.reservas[i].soloHora = $scope.fe[1];
             }
+            if ($scope.reservas.length == 0) {
+                $('#nh').css('display','block');
+                $('#bsq').css('display','none');
+            }
 
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
@@ -73,6 +77,10 @@ app.controller('reservaController', function($scope,$http) {
 
                 $scope.reservas[i].soloHora = $scope.fe[1];
                 $scope.reservas[i].soloHora2 = $scope.fe2[1];
+            }
+            if ($scope.reservas.length == 0) {
+                $('#nh').css('display','block');
+                $('#bs').css('display','none');
             }
             //ordenarPorTipo(response.data);
         }, function errorCallback(response) {
