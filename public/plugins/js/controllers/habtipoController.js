@@ -111,6 +111,9 @@ app.controller('habtipoController', function($scope,$http,$location) {
         });
     }
     $scope.buscarHab = function () {
+        $scope.car = null;
+        $scope.totalq = null;
+        $scope.Total = null;
         var fini = $scope.formatDate($('#fechaini').val());
         var ffin = $scope.formatDate($('#fechafin').val());
 
@@ -146,7 +149,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
             });
     }
     $scope.res = function (fechas) {
-        
+        $scope.car = null;
         $http.get('cart/show',
             {
             }).then(function successCallback(response) {
@@ -217,6 +220,7 @@ app.controller('habtipoController', function($scope,$http,$location) {
        //outputs '10 Sep' , where i expect to find the date object
     }
     $scope.buscarAuto = function () {
+
         $http.get('cart/getDias',
             {
             }).then(function successCallback(response) {
