@@ -21,7 +21,11 @@
                     Entrada: {{ y.soloFecha | date:'d MMM yyyy' }}
                 </div>
                 <div class="col-md-3" style="text-align: right">
-                    Saldo: S/ {{ y.total - y.total_pagado }}
+                    
+                    <span ng-if="(y.total - y.total_pagado) == y.total" class="label label-danger" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
+                    <span ng-if="(y.total - y.total_pagado) > 0 && (y.total - y.total_pagado) < y.total" class="label label-warning" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
+                    <span ng-if="(y.total - y.total_pagado) == 0" class="label label-success" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
+
                 </div>
                    
             </button>
