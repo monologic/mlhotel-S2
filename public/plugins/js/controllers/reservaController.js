@@ -106,8 +106,17 @@ app.controller('reservaController', function($scope,$http) {
         });
 
     }
-    $scope.confirmar = function (id) {
-        $http.get('admin/confirmarReserva/' + id).then(function successCallback(response) {
+
+    $scope.ReservaAConfirmar = function (id) {
+        $scope.reservaIdConf = id;
+    }
+
+    $scope.confirmar = function () {
+
+        $http.put('admin/reserva/' + $scope.reservaIdConf, {
+            'reservaestado_id' : 2,
+            'total_pagado' : $('#total_pagado').val()
+        }).then(function successCallback(response) {
             $scope.reservas = response.data;
         }, function errorCallback(response) {
         // called asynchronously if an error occurs

@@ -46,7 +46,7 @@
                     </table>
                 </div>
             <div class="col-sm-4" style="bottom: 0;">
-                <p><a href="" ng-click="confirmar(y.id)" class="btn btn-success">Confirmar Reserva</a></p>
+                <p><a href="" ng-click="ReservaAConfirmar(y.id)" class="btn btn-success" data-toggle="modal" data-target="#confirmar">Confirmar Reserva</a></p>
                 <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger">Cancelar Reserva</a></p>
                 <p><a href="" ng-click="dataEditar(y)" class="btn btn-warning" data-toggle="modal" data-target="#editar">Editar Reserva</a></p>
             </div>
@@ -101,6 +101,29 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <a href="" class="btn btn-primary" ng-click="editar();">Guardar</a>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="editarModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2 class="modal-title" id="myModalLabel">Confirmar Reserva</h2>
+                    </div>
+                    <form ng-submit="confirmar()">
+                    <div class="modal-body">
+                        
+                            <div class="form-group ">
+                                <label for="">Pago recibido: </label>
+                                <input type="text" class="form-control" id="total_pagado" ng-model="total_pagado" placeholder="Monto recibido en depósito bancario" required>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>

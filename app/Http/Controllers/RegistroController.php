@@ -182,7 +182,7 @@ class RegistroController extends Controller {
     public function separadorDeFechas($fechaini, $fechafin, $initHour)
     {
         $fechaini = strtotime($fechaini . " 00:00:00");
-        $fechafin = strtotime($fechafin . " 23:59:59");
+        $fechafin = strtotime($fechafin . " 00:00:00");
 
         $h = Hotel::all();
         $hora = $h[0]->checkin ;
@@ -190,16 +190,22 @@ class RegistroController extends Controller {
         $disp = array();
         
         for($i = $fechaini; $i <= $fechafin; $i += 86400){
+            //echo $i;
             $fechaN = date("Y-m-d", $i);
             if ($i == $fechaini){
                 $fecha = date("Y-m-d", $i);
                 $disp[] = $this->searchOptimized($fecha, $initHour, $hora);
             }
-            else{
-                $fecha = date("Y-m-d", $i);
-                $disp[] = $this->searchOptimized($fecha, $hora, $hora);
+            else {
+                if ($i == $fechafin){
+                    $fecha = date("Y-m-d", $i);
+                    $disp[] = $this->searchOptimized($fecha, $h[0]->checkout, $h[0]->checkout);
+                }
+                else{
+                    $fecha = date("Y-m-d", $i);
+                    $disp[] = $this->searchOptimized($fecha, $hora, $hora);
+                }
             }
-    
         }
         return $this->unionDisponibiidad($disp);
     }
@@ -223,7 +229,7 @@ class RegistroController extends Controller {
             else {
                 if ($i == $fechafin){
                     $fecha = date("Y-m-d", $i);
-                    $disp[] = $this->searchOptimized($fecha, $h[0]->checkout, $hora);
+                    $disp[] = $this->searchOptimized($fecha, $h[0]->checkout, $h[0]->checkout);
                 }
                 else{
                     $fecha = date("Y-m-d", $i);
