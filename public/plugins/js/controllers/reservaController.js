@@ -40,6 +40,7 @@ app.controller('reservaController', function($scope,$http) {
         $scope.pagotipo = data.pagotipo.pagotipo;
         $scope.comentario = data.comentario;
         $scope.total = data.total;
+        $scope.total_pagado = data.total_pagado;
         $scope.grupo = data.habtiposcount;
     }
 	$scope.getReservasPorAsignar = function () {
@@ -112,17 +113,22 @@ app.controller('reservaController', function($scope,$http) {
     }
 
     $scope.confirmar = function () {
-
+        $scope.cerrarModal();
         $http.put('admin/reserva/' + $scope.reservaIdConf, {
             'reservaestado_id' : 2,
             'total_pagado' : $('#total_pagado').val()
         }).then(function successCallback(response) {
-            $scope.reservas = response.data;
+            window.location.href = 'admin#/Reservas'
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
     }
+
+    $scope.cerrarModal = function () {
+        $('#confirmar').modal('toggle');
+    }
+
     $scope.cancelar = function (id) {
         swal({   title: "¿ Estas seguro ?",
             text: "Se cacelará esta reserva.",
@@ -319,9 +325,9 @@ app.controller('reservaController', function($scope,$http) {
             }); 
     }
     $scope.eliminarComentario = function (id,coment){
-        $scope.comentario = "";
+        
         swal({   title: "¿ Estas seguro ?",
-            text: "El comentario se eliminara.",
+            text: "El comentario se eliminará.",
             type: "warning",   
             showCancelButton: true,   
             confirmButtonColor: "#DD6B55",   
@@ -329,7 +335,7 @@ app.controller('reservaController', function($scope,$http) {
             cancelButtonText: "Cancelar",   
             closeOnConfirm: false }, 
             function(){
-
+                $scope.comentario = "";
                 swal("Eliminado!", 
                     "El comentario se ha eliminado.", 
                     "success");
