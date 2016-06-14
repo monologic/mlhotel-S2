@@ -16,6 +16,6 @@ class PanelController extends Controller
      */
     public function index()
     {
-        return view('dash.admin');
+        return view('dash.admin2');
     }
 }
