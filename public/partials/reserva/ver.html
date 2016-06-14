@@ -11,16 +11,15 @@
         <p>
             <button class="btn reserva-item row" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
                 <div class="col-md-2">
-                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>  &nbsp;
-                     C : {{ y.codigo_reserva }} 
+                     <i class="glyphicon glyphicon-qrcode"></i>&nbsp; {{ y.codigo_reserva }} 
                 </div>
                 <div class="col-md-3">
-                    {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
+                    <i class="glyphicon glyphicon-user"></i>&nbsp; {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
                 </div>
                 <div class="col-md-3">
-                    Entrada: {{ y.soloFecha | date:'d MMM yyyy' }}
+                    <i class="glyphicon glyphicon-calendar"> </i>&nbsp; {{ y.soloFecha | date:'d MMM yyyy' }}
                 </div>
-                <div class="col-md-2" style="text-align: right;padding-top: 3px">
+                <div class="col-md-2" style="padding-top: 3px">
                     
                     <span ng-if="(y.total - y.total_pagado) == y.total" class="label label-danger" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
                     <span ng-if="(y.total - y.total_pagado) > 0 && (y.total - y.total_pagado) < y.total" class="label label-warning" style="font-size: 1.5rem">Saldo: S/ {{ y.total - y.total_pagado }}</span>
@@ -60,10 +59,10 @@
                     </table>
                 
             </div>
-            <div class="col-sm-3" style="bottom: 0;">
-                <a href="" ng-click="buscarHabs(y)" data-toggle="modal" data-target="#asignar" class="btn btn-success col-md-12" style="margin-bottom: 10px">Asignar Habitaciones</a>
-                <a href="" ng-click="cancelar(y.id)" class="btn btn-danger col-md-12" style="margin-bottom: 10px">Cancelar Reserva</a>
-                <a href="" ng-click="dataEditar(y)" class="btn btn-warning col-md-12" data-toggle="modal" data-target="#editar" style="margin-bottom: 10px">Editar Reserva</a>
+            <div class="col-sm-3" style="bottom: 0;margin-top: 15px;background-color: red">
+                <a href="" ng-click="buscarHabs(y)" data-toggle="modal" data-target="#asignar" class="btn btn-success col-md-12 col-xs-4" style="margin-bottom: 10px;min-width: 150px">Asignar Habitaciones</a>
+                <a href="" ng-click="cancelar(y.id)" class="btn btn-danger col-md-12 col-xs-4" style="margin-bottom: 10px;min-width: 150px">Cancelar Reserva</a>
+                <a href="" ng-click="dataEditar(y)" class="btn btn-warning col-md-12 col-xs-4" data-toggle="modal" data-target="#editar" style="margin-bottom: 10px;min-width: 150px">Editar Reserva</a>
             </div>
           </div>
         </div>

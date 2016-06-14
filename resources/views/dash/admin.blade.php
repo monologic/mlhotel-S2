@@ -64,13 +64,13 @@
                 <ul data-menu="main" class="menu__level">
 
                 @if (Auth::user()->usuariotipo->nombre == "Administrador")  
-                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" >Info. Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Empleados/ver">Usuarios</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Habitaciones" onclick="closes()" >Info. Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Empleados/ver" onclick="closes()">Usuarios</a></li>
 
-                    <li class="menu__item"><a class="menu__link"  href="#/configChecks">Hora de E/S</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver">Tipos de Cambio</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Banco/ver">Bancos</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver">Config. Pagos</a></li><li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Bitácora</a></li> 
+                    <li class="menu__item"><a class="menu__link"  href="#/configChecks" onclick="closes()">Hora de E/S</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver"onclick="closes()">Tipos de Cambio</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Banco/ver" onclick="closes()">Bancos</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver" onclick="closes()">Config. Pagos</a></li><li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Bitácora</a></li> 
 
 
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li>
@@ -79,43 +79,43 @@
                 @endif
 
                 @if (Auth::user()->usuariotipo->nombre != "Administrador" && Auth::user()->usuariotipo->nombre != "Root")
-                    <li class="menu__item"><a class="menu__link" href="#/Reservas">Reservas</a></li>  
-                    <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar">Confirmar reserva</a></li> 
-                    <li class="menu__item"><a class="menu__link" href="#/grid">Disponibilidad</a></li>  
-                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Registro sin reser.</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/ReservasHistorial">Historial reservas</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Reservas" onclick="closes()" >Reservas</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar" onclick="closes()" >Confirmar reserva</a></li> 
+                    <li class="menu__item"><a class="menu__link" href="#/grid" onclick="closes()" >Disponibilidad</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver" onclick="closes()" >Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Buscar" onclick="closes()" >Registro sin reser.</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones" onclick="closes()" >Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasHistorial" onclick="closes()" >Historial reservas</a></li>
                 @endif
                     @if (Auth::user()->usuariotipo->nombre=="Root")
 
-                        <li class="menu__item"><a class="menu__link" href="#/LisBanner">Banners</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/LisHab">Tipos de Habitaciones</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/LisGaleria">Galeria de Fotos</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/LisNoticias">Noticias</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/LisServicios">Servicios</a></li>
-                        <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/Reporte">Reportes</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/Hoteles">Hotel</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisBanner" onclick="closes()" >Banners</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisHab" onclick="closes()" >Tipos de Habitaciones</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisGaleria" onclick="closes()" >Galeria de Fotos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisNoticias" onclick="closes()" >Noticias</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisServicios" onclick="closes()" >Servicios</a></li>
+                        <li role="separador" class="menu__item"><a class="menu__separador" href="#" onclick="closes()" ></a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/Reporte" onclick="closes()" >Reportes</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/Hoteles" onclick="closes()" >Hotel</a></li>
                     @endif
                 </ul>
                 <!-- Submenu 1 -->
                 <ul data-menu="submenu-1" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#">Ver Empleados</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Empleados/crear">Crear Empleado</a></li>
-                    <li role="separador" class="menu__item"><a class="menu__separador" href="#"></a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Ver Cargos</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Cargos/ver">Cargos del Hotel</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#" onclick="closes()" >Ver Empleados</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Empleados/crear" onclick="closes()" >Crear Empleado</a></li>
+                    <li role="separador" class="menu__item"><a class="menu__separador" href="#" onclick="closes()" ></a></li>
+                    <li class="menu__item"><a class="menu__link" href="#" onclick="closes()" >Ver Cargos</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Cargos/ver" onclick="closes()" >Cargos del Hotel</a></li>
                 </ul>
                 <ul data-menu="submenu-9" class="menu__level">
-                    <li class="menu__item"><a class="menu__link" href="#/Reservas">Reservas</a></li>  
-                    <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar">Confirmar reserva</a></li> 
-                    <li class="menu__item"><a class="menu__link" href="#/grid">Disponibilidad</a></li>  
-                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver">Clientes</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Reservas" onclick="closes()" >Reservas</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasConfirmar" onclick="closes()" >Confirmar reserva</a></li> 
+                    <li class="menu__item"><a class="menu__link" href="#/grid" onclick="closes()" >Disponibilidad</a></li>  
+                    <li class="menu__item"><a class="menu__link" href="#/Clientes/ver" onclick="closes()" >Clientes</a></li>
 
-                    <li class="menu__item"><a class="menu__link" href="#/Buscar">Registro sin reser.</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones">Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/ReservasHistorial">Historial reservas</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/Buscar" onclick="closes()" >Registro sin reser.</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/DetalleHabitaciones" onclick="closes()" >Habitaciones</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/ReservasHistorial" onclick="closes()">Historial reservas</a></li>
                 </ul>
                 <!-- Submenu 2 -->
                 <ul data-menu="submenu-2" class="menu__level">
@@ -235,6 +235,12 @@
         
         
     })();
+    </script>
+    <script>
+        function closes()
+        {
+            $('.menu').removeClass('menu--open');
+        }
     </script>
 </body>
 
