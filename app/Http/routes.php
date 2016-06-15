@@ -14,7 +14,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix'=> 'admin', 'middleware' => ['web', 'auth']], function(){
+Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], function(){
 
     Route::get('/', 'PanelController@index');
 
