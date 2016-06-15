@@ -1,5 +1,6 @@
 <div id="page-wrapper" ng-controller="registroController" ng-init="ponerFecha2()" style="width: 90%;margin:20px auto 100px auto">
     <br><br><br>
+    <div>
     <h3 class="tit2">Disponibilidad por días</h3>
     <div class="center-block" style="color: black;width: 400px;margin-top: 80px">
         <table>
@@ -28,7 +29,7 @@
             </form>
         </table>
     </div>
-    <div>
+    <div id="Disponibilidad">
         <table class="table" id="grid" style="display: none;margin-top: 50px;right: 30px;left: 0;">
             <thead>
                 <tr>
@@ -63,5 +64,7 @@
 
         </table>
     </div>
+    </div>
     <br>
+    <button class="btn" ng-click="printDiv('Disponibilidad');">Print Div</button>
 </div>
