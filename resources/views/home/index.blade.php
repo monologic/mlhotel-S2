@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="homeApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <meta name="description" content="Residencial moquegua, uno de los mejores hoteles de la cuidad de Moquegua">
     <meta name="author" content="Javier Coaila">
 
-    <title>Residencial Moquegua</title>
+    <title>@{{infos.nombre}}</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -47,12 +47,14 @@
 
 
 
-<body ng-app="homeApp">
+<body ng-controller="hotelController" ng-init="getHotelesF();">
   <div class="navbar-fixed">
     <nav class="white" style="background: transparent;height: 110px">
       <div class="nav-wrapper" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
         <a  class="btns" href="/login">Sign in</a>
-        <a href="#" class="brand-logo center" style="color: black;margin-top: 15px">Residencial Moquegua </a>
+        <a class="btn-floating tooltipped btns2" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a>
+
+        <a href="#" class="brand-logo center" style="color: black;margin-top: 15px">@{{infos.nombre}} </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" row hide-on-med-and-down center">
           <li class="nav-txt col m3 s2"><a href="#/habitaciones"><div>HABITACIONES</div></a></li>
@@ -60,7 +62,6 @@
           <li class="nav-txt col m2 s2"><a href="#/galeria"><div>GALERIA</div></a></li>  
           <li class="nav-txt col m2 s2"><a href="#/noticias"><div>NOTICIAS</div> </a></li>
           <li class="nav-txt col m2 s2"><a href="#/contacto"><div>CONTACTO</div> </a></li>
-          <li class="col m1" style="margin-top:65px"><a class="btn-floating tooltipped" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="#/">Inicio </a></li>
@@ -85,7 +86,7 @@
                  <a class="btn-floating btn-large waves-effect waves-light blue" style="margin-right:20px"><i class="fa fa-twitter"></i></a>
                  <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
               </div>
-              <div class="col l4 offset-l2 s12 white-text" ng-controller="hotelController" ng-init="getHotelesF();">
+              <div class="col l4 offset-l2 s12 white-text">
                 <div >
                   <h5 class="white-text">Informacion</h5>
                   <p style="font-size:0.9rem;margin-top:5px;color:white;" >@{{infos.nombre}}</p>                 

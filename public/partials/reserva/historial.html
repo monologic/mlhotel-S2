@@ -38,43 +38,43 @@
                     <h2>Información de la reserva</h2>
                 </div>
                 <div class="modal-body row" style="color:black;font-size: 1.5rem">
-                    <table class="">
+                    <table class="table-striped" style="width: 80%; margin: 20px auto 20px auto">
                         <tbody>
                             <tr>
-                                <td class="text-right" width="200">Codigo:</td>
-                                <td ng-bind="codigo_reserva" style="padding-left: 20px;padding-right: 20px"></td>
-                                <td class="text-right" style="border-left: solid;border-width:1px ">Tipo de pago:</td>
-                                <td ng-bind="pagotipo" style="padding-left: 20px"></td>
+                                <td class="text-right">Codigo:</td>
+                                <td ng-bind="codigo_reserva" style="width: 25%;padding-left: 10px;padding-right: 10px"></td>
+                                <td class="text-right" style="width: 25%;border-left: solid;border-width:1px ">Tipo de pago:</td>
+                                <td ng-bind="pagotipo" style="width: 25%;padding-left: 10px"></td>
                             </tr>
                             <tr>
                                 <td class="text-right">Nombre:</td>
-                                <td ng-bind="nombre" style="padding-left: 20px"></td>
+                                <td ng-bind="nombre" style="padding-left: 10px"></td>
                                 <td class="text-right" style="border-left: solid;border-width:1px ">Check out :</td>
-                                <td ng-bind="fecha_fin" style="padding-left: 20px"></td>
+                                <td ng-bind="fecha_fin" style="padding-left: 10px"></td>
                             </tr>
                             <tr>
                                 <td class="text-right">Apellidos: </td>
-                                <td ng-bind="apellido" style="padding-left: 20px"></td>
+                                <td ng-bind="apellido" style="padding-left: 10px"></td>
                                 <td class="text-right" style="border-left: solid;border-width:1px ">Check in: </td>
-                                <td ng-bind="fecha_inicio" style="padding-left: 20px"></td>
+                                <td ng-bind="fecha_inicio" style="padding-left: 10px"></td>
                             </tr>
                             <tr>
                                 <td class="text-right">Documento de Identidad:</td>
-                                <td ng-bind="dni" style="padding-left: 20px"></td>
-                                <td class="text-right" style="border-left: solid;border-width:1px;padding-left: 20px ">Fecha de reservas:</td>
-                                <td ng-bind="fecha_reserva" style="padding-left: 20px"></td>
+                                <td ng-bind="dni" style="padding-left: 10px"></td>
+                                <td class="text-right" style="border-left: solid;border-width:1px;padding-left: 10px ">Fecha de reservas:</td>
+                                <td ng-bind="fecha_reserva" style="padding-left: 10px"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td class="text-right">Total :</td>
-                                <td ng-bind="total" style="padding-left: 20px"></td>
+                                <td ng-bind="total" style="padding-left: 10px"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td class="text-right">Total Pagado :</td>
-                                <td ng-bind="total_pagado" style="padding-left: 20px"></td>
+                                <td ng-bind="total_pagado" style="padding-left: 10px"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,7 +92,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div style="width: 80%;margin:20px auto 20px 100px">
+                    <div style="width: 80%;margin:20px auto 20px 10%">
                         <div class="form-group">
                             <div class="col-xs-10">
                                 <label for="coment">Comentario</label>

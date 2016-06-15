@@ -2,11 +2,8 @@
   document.title = "Habitaciones - Residencial Moquegua";
 </script> 
 <section class="container" ng-controller="habtipoController" ng-init="buscarAuto();getHabTipo()" style="min-height:300px">
-<div onclick="badCar();">
-  <div class="booking hoverable center-block" style="margin-top:150px"> 
-  </div>
-  
-    <div class="cont-book row" style="padding-top: 20px;">
+<div onclick="badCar();">  
+    <div class="row bk" style="padding-top: 20px;color: black">
         <div class="col m5">
           <div class="calendar">
             <p style="margin-bottom: 15px;text-align: left;"> Fecha de Entrada</p>
@@ -22,7 +19,7 @@
           </div>
         </div>
         <div class="col m2">
-          <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:40px;padding-top:5px;color:white;text-align: center;" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
+          <a class="waves-effect black" style="display:block;margin:10px auto 0 auto;width:50px;height:50px;padding:10px;color:white;text-align: center;border-radius: 50%" ng-click='buscarHab();'> <i class="small material-icons">search</i></a>
         </div>
     </div>
     <div ng-if="dias == null" class="row wow fadeInUp card hab" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in habtipos" style="padding:10px;margin-top:30px;margin-bottom: 30px;">
