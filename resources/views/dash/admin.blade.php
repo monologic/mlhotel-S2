@@ -70,7 +70,8 @@
                     <li class="menu__item"><a class="menu__link"  href="#/configChecks" onclick="closes()">Hora de E/S</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver"onclick="closes()">Tipos de Cambio</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Banco/ver" onclick="closes()">Bancos</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver" onclick="closes()">Config. Pagos</a></li><li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes">Bitácora</a></li> 
+                    <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver" onclick="closes()">Config. Pagos</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes" onclick="closes()">Bitácora</a></li> 
 
 
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li>
