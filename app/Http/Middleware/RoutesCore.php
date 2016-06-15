@@ -16,10 +16,11 @@ class RoutesCore
      */
     public function handle($request, Closure $next)
     {   
+        /*
         $h = Hotel::all();
         if ($h[0]->nombre != env('APP_SERIAL')) {
             return redirect('/');
-        }
+        }*/
         return $next($request);
     }
 }
