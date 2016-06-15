@@ -91,21 +91,26 @@ app.controller('reservaController', function($scope,$http) {
     }
 
 	$scope.buscarHab = function () {
-        var fini = $('#fechaini').val();
-        fini = fini.split("-");
-        fini = fini[2] + "-" + fini[1] + "-" + fini[0];
 
-        var ffin = $('#fechafin').val();
-        ffin = ffin.split("-");
-        ffin = ffin[2] + "-" + ffin[1] + "-" + ffin[0];
+        if ($('#fechaini').val() == '' || $('#fechafin').val() == '') {
+            swal("", "Debes seleccionar una fecha", "warning");
+        }
+        else{
+            var fini = $('#fechaini').val();
+            fini = fini.split("-");
+            fini = fini[2] + "-" + fini[1] + "-" + fini[0];
 
-        $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
-        	window.location.href = '#/habitaciones';
-        }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        });
+            var ffin = $('#fechafin').val();
+            ffin = ffin.split("-");
+            ffin = ffin[2] + "-" + ffin[1] + "-" + ffin[0];
 
+            $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
+            	window.location.href = '#/habitaciones';
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
     }
 
     $scope.ReservaAConfirmar = function (id) {

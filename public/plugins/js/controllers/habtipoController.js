@@ -111,30 +111,39 @@ app.controller('habtipoController', function($scope,$http,$location) {
         });
     }
     $scope.buscarHab = function () {
-        $scope.car = null;
-        $scope.totalq = null;
-        $scope.Total = null;
-        var fini = $scope.formatDate($('#fechaini').val());
-        var ffin = $scope.formatDate($('#fechafin').val());
+        if ($('#fechaini').val() == '' || $('#fechafin').val() == '') {
+            swal("", "Debes seleccionar una fecha", "warning");
+        }
+        else{
+            $scope.car = null;
+            $scope.totalq = null;
+            $scope.Total = null;
+            var fini = $scope.formatDate($('#fechaini').val());
+            var ffin = $scope.formatDate($('#fechafin').val());
 
-        $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
-            $scope.getDias();
-            if ((response.data).hasOwnProperty('mensaje')) {
-                //$('#alertCambio').css('display','block');
-                alert(response.data.mensaje);
-            }
-            else{
-                $scope.tipoPerHabs = response.data;
-                fechas=$scope.fechaini;
-                fechas2=$scope.fechafin;
-                $scope.mayor;
-                $scope.menor;
-            }
+            $http.get('cart/buscarHabitaciones/'+fini+'/'+ffin ).then(function successCallback(response) {
+                $scope.getDias();
+                if ((response.data).hasOwnProperty('mensaje')) {
+                    //$('#alertCambio').css('display','block');
+                    alert(response.data.mensaje);
+                }
+                else{
+                    $scope.tipoPerHabs = response.data;
+                    fechas=$scope.fechaini;
+                    fechas2=$scope.fechafin;
+                    $scope.mayor;
+                    $scope.menor;
+                }
+            
+            }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            });
+        }
 
-        }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        });
+
+        
+        
 
     }
     $scope.addCarrito = function (data) {
