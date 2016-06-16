@@ -32,8 +32,9 @@
     <!-- food icons -->
     <link rel="stylesheet" type="text/css" href="plugins/multilevel/css/organicfoodicons.css" />
     <link rel="stylesheet" type="text/css" href="plugins/css/kira.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    
     <!-- demo styles -->
-     <link rel="stylesheet" href="plugins/Trumbowyg/ui/trumbowyg.min.css">
     <link rel="stylesheet" type="text/css" href="plugins/multilevel/css/demo.css" />
     <link rel="stylesheet" type="text/css" href="plugins/Trumbowyg/ui/trumbowyg.min.css" />
     <!-- menu styles -->
@@ -46,6 +47,15 @@
 
     <script src="plugins/SweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="plugins/SweetAlert/sweetalert.css">
+
+    <link rel="stylesheet" href="plugins/Editor/css/froala_editor.css">
+    <link rel="stylesheet" href="plugins/Editor/css/froala_style.css">
+    <link rel="stylesheet" href="plugins/Editor/css/plugins/code_view.css">
+    <link rel="stylesheet" href="plugins/Editor/css/plugins/colors.css">
+    <link rel="stylesheet" href="plugins/Editor/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="plugins/Editor/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="plugins/Editor/css/plugins/image.css">
+
 </head>
 
 <body ng-app="tutorialWebApp">
@@ -168,6 +178,15 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="plugins/Editor/js/froala_editor.min.js" ></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/align.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/draggable.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/font_family.min.js"></script>
     <script src="plugins/angular/angular.min.js"></script>
     <script src="plugins/angular/angular-route.min.js"></script>
 
@@ -180,8 +199,6 @@
     <script src="plugins/multilevel/js/classie.js"></script>
     <script src="plugins/multilevel/js/dummydata.js"></script>
     <script src="plugins/multilevel/js/main.js"></script>
-
-    <script src="plugins/Trumbowyg/trumbowyg.min.js"></script> 
 
     <!-- Controladrores de Angular -->
     <script src="plugins/js/controllers/bancoController.js"></script> 
@@ -208,6 +225,7 @@
 
     <script src="plugins/js/directivas/onFinishRender.js"></script>
     <script>
+
     (function() {
         var menuEl = document.getElementById('ml-menu'),
             mlmenu = new MLMenu(menuEl, {

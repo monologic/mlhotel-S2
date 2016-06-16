@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label for="descripcion">Descripcion</label>
-            <textarea class="form-control" required="required" name="descripcion" cols="50" rows="6" id="descripcion" required></textarea>
+            <textarea class="form-control" required="required" name="descripcion" cols="50" rows="6" id="edit" required></textarea>
         </div>
         <div class="form-group">
             <label for="tipo">Capacidad</label>
@@ -38,18 +38,15 @@
 
 </div>
 
-<script>
-      
-      $('.trumbowyg-demo').trumbowyg({
-    fullscreenable: false,
-    closable: true,
-    btns: [ 'formatting',
-      '|', 'btnGrp-design',
-      '|', 'btnGrp-justify',
-      '|', 'btnGrp-lists',
-      ]
-});
-</script>
+ <script>
+    $(function(){
+      $('#edit').froalaEditor({
+        enter: $.FroalaEditor.ENTER_P,
+        height: 350,
+         colorsText: ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE']
+      })
+    });
+  </script>
 
 
         
