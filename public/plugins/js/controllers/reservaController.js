@@ -66,7 +66,14 @@ app.controller('reservaController', function($scope,$http) {
         // or server returns response with an error status.
         });
 	}
-
+    $scope.getHoteles = function() {
+        $http.get('getHotelF').then(function successCallback(response) {
+            $scope.hotel = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
     $scope.getReservasPorConfirmar = function (){
         $http.get('admin/getReservasPorConfirmar').then(function successCallback(response) {
             $scope.reservas = response.data;

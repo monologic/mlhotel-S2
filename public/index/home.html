@@ -5,30 +5,30 @@
               
     <div class="swiper-container">
     <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide" ng-repeat="q in banners" style="margin-top: 50px;transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
-          <div class="title-s">
-             <div class="wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="font-size: 3.5rem;max-width: 400px;color: white;position:absolute;right: 60px;margin-top: 0px;line-height: 50px">{{q.titulo}}</p></div>
+      <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide" ng-repeat="q in banners" style="margin-top: 50px;transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
+            <div class="title-s">
+               <div class="wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="font-size: 3.5rem;max-width: 400px;color: white;position:absolute;right: 60px;margin-top: 0px;line-height: 50px">{{q.titulo}}</p></div>
+            </div>
+           
+            <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:500px">
+
           </div>
          
-          <img src="imagen/sliders/{{q.imagen}}" style="width:100%;max-height:500px">
-
-        </div>
-       
-        ...
-    </div>
+          ...
+      </div>
     <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-    
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
+      <div class="swiper-pagination"></div>
+      
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
   </div>
-</div>
 <div class="booking center-block" onclick="badCar()">
   <div ng-controller="reservaController">
     <div class=" cont-book  row" style="padding-top: 10px;">
@@ -55,8 +55,8 @@
   </div>
 </div>
 
-  <div class="row container" onclick="badCar()" style="width:70%;margin-left:15%; margin-right:15%">
-      <h4 class="center-align titulo1" style="font-family: 'Niconne', cursive;" >Bienvenido a Residencial Moquegua</h4><br><br>
+  <div ng-controller="reservaController" ng-init="getHoteles();" class="row container" onclick="badCar()" style="width:70%;margin-left:15%; margin-right:15%">
+      <h4 class="center-align titulo1" style="font-family: 'Niconne', cursive;" >Bienvenido a {{ hotel.nombre }}</h4><br><br>
       <div class="col s4 ser-cont">
         <div class="center-align"><i class="fa fa-cutlery ser-ico"></i></div>
         <p class="center-align ">Restaurant</p>
