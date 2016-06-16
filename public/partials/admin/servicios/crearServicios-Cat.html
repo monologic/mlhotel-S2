@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label for="descripcion">Descripcion</label>
-            <textarea class="form-control trumbowyg-demo" required="required" name="descripcion" cols="50" rows="5" id="descripcion"></textarea>
+            <textarea class="form-control" required="required" name="descripcion" cols="50" rows="5" id="descripcion"></textarea>
         </div>
         <div class="form-group" style="display: none">
             <input class="form-control"  required="required" name="categoria_id" type="text" id="categoria_id" ng-model="categoria_id">
@@ -29,3 +29,11 @@
        
     </form>  
 </div>
+<script>
+    $(function(){
+      $('#descripcion').froalaEditor({
+        enter: $.FroalaEditor.ENTER_P,
+        height: 350
+      })
+    });
+  </script>

@@ -14,6 +14,23 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
             });
            
         }
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    for(x in $scope.ser){
+                $('#'+ $scope.ser[x].id).html($scope.ser[x].descripcion);
+                for(y in $scope.ser[x].servicios)
+                {
+                    $('#'+ $scope.ser[x].servicios[y].id).html($scope.ser[x].servicios[y].descripcion);
+                }
+            }
+
+    });
+    $scope.$on('ngRepeatFinished2', function(ngRepeatFinishedEvent) {
+        alert('2');
+    for(x in $scope.ser){
+                
+            }
+
+    });
 
     $scope.getServiciosD= function () { 
             $http.get('admin/CategoriaServicio/'+ IdCat).then(function successCallback(response) {
@@ -48,13 +65,18 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
 
         $scope.id = data.id;
         $scope.servicio = data.servicio;
-        $scope.descripcion = data.descripcion;
+        $('#descripcionq').html("<div id='"+$scope.id+"e'></div>");
+        $('#' + $scope.id+'e').html(data.descripcion);
+        $('#'+$scope.id+'e').froalaEditor({
+            height: 200
+        })
+
         
     }
     $scope.editar = function () {
         $http.put('admin/servicio/'+$scope.id,
             {   'servicio':$scope.servicio,
-                'descripcion':$scope.descripcion
+                'descripcion': $('.fr-view').html()
             }).then(function successCallback(response) {
                 window.location.reload();
             }, function errorCallback(response) {
@@ -90,13 +112,18 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
 
         $scope.id = data.id;
         $scope.nombre = data.nombre;
-        $scope.descripcion = data.descripcion;
+        $('#descripcion').html("<div id='"+$scope.id+"'></div>");
+        $('#' + $scope.id).html(data.descripcion);
+        $('#'+$scope.id).froalaEditor({
+            height: 350
+        })
+
         
     }
     $scope.editarCat = function () {
         $http.put('admin/categoria/'+$scope.id,
             {   'nombre':$scope.nombre,
-                'descripcion':$scope.descripcion
+                'descripcion': $('.fr-view').html()
             }).then(function successCallback(response) {
                 window.location.reload();
             }, function errorCallback(response) {
@@ -133,6 +160,11 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
         $scope.idMain = $scope.main.id;
         $scope.nombreE = $scope.main.nombre;
         $scope.contenidoE = $scope.main.contenido;
+        $('#descripcionM').html("<div id='"+$scope.idMain+"p'></div>");
+        $('#' + $scope.idMain+'p').html($scope.contenidoE);
+        $('#'+$scope.idMain+'p').froalaEditor({
+            height: 350
+        })
     }
     
 });
