@@ -8,11 +8,20 @@ app.controller('habtipoController', function($scope,$http,$location) {
         $http.get('admin/AddHab').then(function successCallback(response) {
         	$scope.habtipos=response.data;
             gdata=response.data;
+            for(x in $scope.habtipos){
+                $('#'+ $scope.habtipos[x].id).html($scope.habtipos[x].descripcion);
+            }
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
     } 
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    for(x in $scope.habtipos){
+                $('#'+ $scope.habtipos[x].id).html($scope.habtipos[x].descripcion);
+            }
+
+    });
 
     var details = Array();
     $scope.addDetalleReserva =function (data) {
