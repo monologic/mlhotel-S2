@@ -52,7 +52,6 @@
     <link rel="stylesheet" href="plugins/Editor/css/froala_style.css">
     <link rel="stylesheet" href="plugins/Editor/css/plugins/code_view.css">
     <link rel="stylesheet" href="plugins/Editor/css/plugins/colors.css">
-    <link rel="stylesheet" href="plugins/Editor/css/plugins/emoticons.css">
     <link rel="stylesheet" href="plugins/Editor/css/plugins/image_manager.css">
     <link rel="stylesheet" href="plugins/Editor/css/plugins/image.css">
 
@@ -181,9 +180,9 @@
     <script type="text/javascript" src="plugins/Editor/js/plugins/code_view.min.js"></script>
     <script type="text/javascript" src="plugins/Editor/js/plugins/colors.min.js"></script>
     <script type="text/javascript" src="plugins/Editor/js/plugins/draggable.min.js"></script>
-    <script type="text/javascript" src="plugins/Editor/js/plugins/emoticons.min.js"></script>
     <script type="text/javascript" src="plugins/Editor/js/plugins/font_size.min.js"></script>
     <script type="text/javascript" src="plugins/Editor/js/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="plugins/Editor/js/plugins/lists.min.js"></script>
     <script src="plugins/angular/angular.min.js"></script>
     <script src="plugins/angular/angular-route.min.js"></script>
 

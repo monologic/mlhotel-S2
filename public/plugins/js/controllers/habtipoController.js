@@ -33,22 +33,26 @@ app.controller('habtipoController', function($scope,$http,$location) {
         idHabtipo = data.id;
 
         $scope.mlnombre = data.nombre;
-        $scope.mldescripcion = data.descripcion;
+        $('.descripcion').html(data.descripcion);
         $scope.mlnropersonas = data.nropersonas;
         $scope.mlprecio = data.precio;
+
+        $('.descripcion').froalaEditor({
+            height: 350
+        })
+
     }
 
        $scope.editarHabtipo = function () {
 
         $http.put('admin/habtipo/'+idHabtipo,
             {   'nombre':$scope.mlnombre,
-                'descripcion':$scope.mldescripcion,
+                'descripcion': $('.fr-view').html(),
                 'nropersonas':$scope.mlnropersonas,
                 'precio':$scope.mlprecio,
             }).then(function successCallback(response) {
                  $scope.habtipos = response.data;
             }, function errorCallback(response) {
-                
             });
     }
     $scope.eliminar = function (id) {
