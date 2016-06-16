@@ -30,14 +30,21 @@ app.controller('noticiaController', function($scope,$http) {
         $scope.mltitulo = data.titulo;
         $scope.mlfuente = data.fuente;
         $scope.mlfecha = data.fecha;
-        $scope.mlcontenido = data.contenido;
+    
         $scope.mlestado = data.estado;
+
+        $('#descripcion').html("<div id='"+idNot+"'></div>");
+        $('#' + idNot).html(data.contenido);
+
+        $('#'+idNot).froalaEditor({
+            height: 350
+        })
     }
      $scope.editarNot = function () {
 
         $http.put('admin/noticia/'+idNot,
             {   'titulo':$scope.mltitulo,
-                'contenido':$scope.mlcontenido,
+                'contenido':$('.fr-view').html(),
                 'fecha':$scope.mlfecha,
                 'fuente':$scope.fuente,
                 'estado':$scope.mlestado,

@@ -15,14 +15,20 @@ app.controller('galeryController', function($scope,$http) {
         idFoto = data.id;
         $scope.idFoto=data.id;
         $scope.mltitulo = data.titulo;
-        $scope.mldescripcion = data.descripcion;
         $scope.mlestado = data.estado;
+
+        $('#descripcion').html("<div id='"+idFoto+"'></div>");
+        $('#' + idFoto).html(data.descripcion);
+
+        $('#'+idFoto).froalaEditor({
+            height: 350
+        })
     }
-     $scope.editarfoto = function () {
+    $scope.editarfoto = function () {
 
         $http.put('admin/galeria/'+idFoto,
             {   'titulo':$scope.mltitulo,
-                'descripcion':$scope.mldescripcion,
+                'descripcion':$('.fr-view').html(),
                 'estado':$scope.mlestado,
             }).then(function successCallback(response) {
                 $('#alertCambio').css('display','block');
