@@ -342,7 +342,7 @@
 	z-index: 100;
 }
 
-@media screen and (max-width: 40em) {
+@media screen and (max-width: 50em) {
 	.action--open,
 	.action--close {
 		display: block;

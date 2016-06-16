@@ -146,9 +146,8 @@
                             {{ Auth::user()->empleado->hotel->nombre }}
                         @endif
                     </li>
-                    <li><a href="#" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></a></li>
+                    
+                  
                    <li class="dropdown">
                             <a href="" class="dropdown-toggle li" data-toggle="dropdown" role="button" aria-expanded="false">
                                 @if (Auth::user()->usuariotipo->nombre=="Root")
@@ -172,9 +171,7 @@
         </div>
         
         <div class="content">
-        <h1>Hola</h1>
             <div ng-view></div>
-
         </div>
     </div>
 
