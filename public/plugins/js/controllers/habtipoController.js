@@ -33,11 +33,14 @@ app.controller('habtipoController', function($scope,$http,$location) {
         idHabtipo = data.id;
 
         $scope.mlnombre = data.nombre;
-        $('.descripcion').html(data.descripcion);
+
+        $('#descripcion').html("<div id='"+idHabtipo+"'></div>");
+        $('#' + idHabtipo).html(data.descripcion);
+
         $scope.mlnropersonas = data.nropersonas;
         $scope.mlprecio = data.precio;
 
-        $('.descripcion').froalaEditor({
+        $('#'+idHabtipo).froalaEditor({
             height: 350
         })
 
