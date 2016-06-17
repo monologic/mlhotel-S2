@@ -185,7 +185,7 @@ class RegistroController extends Controller {
         $fechafin = strtotime($fechafin . " 00:00:00");
 
         $h = Hotel::all();
-        $hora = $h[0]->checkin ;
+        $hora = $h[0]->checkin;
 
         $disp = array();
         
@@ -405,9 +405,10 @@ class RegistroController extends Controller {
     }
 
     public static function registrosDeHoy()
-    {   self::$fechaInicio = date("Y-m-d")." 00:00:01";
-        $fechafin = date("Y-m-d")." 23:59:59";
-        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." 23:59:59"])
+    {   
+        $h = Hotel::all();
+        self::$fechaInicio = date("Y-m-d")." 00:00:01";
+        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." ".$h[0]->checkout])
                      ->orWhere(function($query){
                         $query->whereRaw(DB::raw("'".self::$fechaInicio."' between fechaentrada and fechasalida"));
                         })

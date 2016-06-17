@@ -399,10 +399,28 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     });
 
     $scope.printDiv = function(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
+    
+    var printContents = document.getElementById(divName).innerHTML;
         var popupWin = window.open('', '_blank', 'width=300,height=300');
         popupWin.document.open();
         popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
         popupWin.document.close();
+/*
+        elem = document.getElementById(divName);
+        var domClone = elem.cloneNode(true);
+    
+        var $printSection = document.getElementById("printSection");
+        
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
+        }
+        
+        $printSection.innerHTML = "";
+        
+        $printSection.appendChild(domClone);
+
+        window.print();*/
     }
 });
