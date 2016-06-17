@@ -407,8 +407,8 @@ class RegistroController extends Controller {
     public static function registrosDeHoy()
     {   
         $h = Hotel::all();
-        self::$fechaInicio = date("Y-m-d")." 00:00:01";
-        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d")." ".$h[0]->checkout])
+        self::$fechaInicio = date("Y-m-d")." ".$h[0]->checkin;
+        $r = Registro::whereBetween('fechaentrada', [ self::$fechaInicio, date("Y-m-d") ." 11:59:59"])
                      ->orWhere(function($query){
                         $query->whereRaw(DB::raw("'".self::$fechaInicio."' between fechaentrada and fechasalida"));
                         })

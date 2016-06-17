@@ -7,7 +7,7 @@
          <input type="text" class="form-control" ng-model="buscar" style="width: 320px"><i class="glyphicon glyphicon-search" style="top:-25px;float: right;color: black"></i>
     </div>
     <div id="Reservas">
-        <div ng-repeat="y in reservas | filter:buscar" class="row">
+        <div ng-repeat="y in reservas | filter:buscar" class="row reservaDiv">
             <p>
                 <button class="btn reserva-item row" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
                     <div class="col-md-2">
@@ -151,9 +151,7 @@
                                         <tr>
                                             <th>Habitaciones</th>
                                             <th>Cant.</th>
-                                            
                                         </tr>
-                                            
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="z in Reservas.habtiposcount">
@@ -219,7 +217,6 @@
 @media screen {
     #printSection {
         display: none;
-        width: 100%;
     }
 }
 
@@ -229,7 +226,12 @@
     }
     #printSection, #printSection * {
         visibility:visible;
+
+        display: block;
         width: 100%;
+    }
+    .reservaDiv {
+        margin-bottom: 100px;
     }
     #printSection {
         position:absolute;

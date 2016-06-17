@@ -23,4 +23,8 @@ app.controller('clienteController', function($scope,$http) {
         $scope.pais = data.pais;
         $scope.correo= data.email;
     }
+
+    $scope.test = function () {
+        alert('Hellos');
+    }
 });
