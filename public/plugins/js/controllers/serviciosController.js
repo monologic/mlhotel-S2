@@ -16,10 +16,10 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
         }
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(x in $scope.ser){
-                $('#'+ $scope.ser[x].id).html($scope.ser[x].descripcion);
+                $('#'+ $scope.ser[x].id+'k').html($scope.ser[x].descripcion);
                 for(y in $scope.ser[x].servicios)
                 {
-                    $('#'+ $scope.ser[x].servicios[y].id).html($scope.ser[x].servicios[y].descripcion);
+                    $('#'+ $scope.ser[x].servicios[y].id+'j').html($scope.ser[x].servicios[y].descripcion);
                 }
             }
 
@@ -31,7 +31,6 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
             }
 
     });
-
     $scope.getServiciosD= function () { 
             $http.get('admin/CategoriaServicio/'+ IdCat).then(function successCallback(response) {
                 $scope.infoser=response.data[0];  
@@ -45,12 +44,16 @@ app.controller('serviciosController', function($scope,$http, $routeParams,$locat
         }
     $scope.main = function (){
         $http.get('admin/getmainservices').then(function successCallback(response) {
-                $scope.main=response.data[0];  
+                $scope.main=response.data[0];
             }, function errorCallback(response) {
             // called asynchronously ialertf an error occurs
             // or server returns response with an error status.
             });
     }
+     $scope.$on('ngRepeatFinished3', function(ngRepeatFinishedEvent) {
+        $('#contmain').html($scope.main=response.data[0].contenido)
+    });
+
         $scope.goTo2 = function(data) {
          catId = data.id;
         $location.url('/Servicios/' + catId);

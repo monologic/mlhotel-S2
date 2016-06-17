@@ -46,7 +46,7 @@ app.controller('noticiaController', function($scope,$http) {
             {   'titulo':$scope.mltitulo,
                 'contenido':$('.fr-view').html(),
                 'fecha':$scope.mlfecha,
-                'fuente':$scope.fuente,
+                'fuente':$scope.mlfuente,
                 'estado':$scope.mlestado,
             }).then(function successCallback(response) {
                 $scope.noticia = response.data;
