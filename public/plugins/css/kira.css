@@ -361,10 +361,13 @@ li a span{
 	display: inline-block;
 	position: fixed;
 	top: 0;
-	width:100%;
-	right: 0;
+	width:97%;
+	right: 9px;
+	padding-left: 10%;
 	z-index: 50;
 	background-color: white;
+	padding-bottom: 30px;
+	box-shadow: 0px 2px 1px #888888;
 
 }
 .submenu{

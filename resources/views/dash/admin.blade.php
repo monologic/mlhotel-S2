@@ -136,9 +136,8 @@
         <!-- sub menu de cabezera --> 
         <div class="fix">
            <nav class="submenu">
-
-                    <ul class="navbar-right">
-                    <li  style="margin-top:10px; color:#446CB3; font-size: 2rem; left:0;padding-right:50px">
+                <ul class="navbar-center" style="width: 100%;">
+                    <li  style="margin-top:10px; color:#446CB3; font-size: 2.5rem; left:0;padding-right:40px;text-align: center;">
                         @if (Auth::user()->usuariotipo->nombre=="Root")
                             Administrador del Sistema
                         @else
@@ -147,7 +146,7 @@
                     </li>
                     
                   
-                   <li class="dropdown">
+                   <li class="dropdown" style="left:0;width: 100px;float: right;margin-top: -20px;margin-right: -50px">
                             <a href="" class="dropdown-toggle li" data-toggle="dropdown" role="button" aria-expanded="false">
                                 @if (Auth::user()->usuariotipo->nombre=="Root")
                                     Admin <span class="caret"></span>
