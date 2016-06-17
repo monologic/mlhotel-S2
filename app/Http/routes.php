@@ -42,8 +42,6 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::resource('mainservice', 'MainserviceController');
 	Route::resource('reserva', 'ReservaController');
 
-	
-	Route::get('getmainservices', 'MainserviceController@getMain');
 	Route::get('getclientess', 'ClienteController@getclientes');
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
 	Route::get('getEmpForUsers', 'empleadoController@getEmpleadosParaUsuarios');
@@ -150,6 +148,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );
 
 	Route::get('admin/getTiposPago', 'PagotipoController@index');
+
+	Route::get('admin/getmainservices', 'MainserviceController@getMain');
 
 	Route::resource('admin/banco', 'BancoController');
 
