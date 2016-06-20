@@ -94,8 +94,9 @@ class AuthController extends Controller
             $nombre = urlencode($h[0]->nombre);
             $dir = urlencode($h[0]->direccion);
             
-            return redirect('http://localhost:8001/verification/?hotel='.$nombre.'&direccion='.$dir);
-            
+
+            //return redirect('http://localhost:8001/verification/'.$nombre.'/'.$dir.'/'.$_SERVER['SERVER_NAME']);
+            return redirect()->intended($this->redirectPath());
         }
     }
 }
