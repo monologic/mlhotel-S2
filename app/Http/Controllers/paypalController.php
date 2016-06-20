@@ -302,7 +302,7 @@ class PaypalController extends BaseController
 		$fechaFin = $fechas['fecha_fin'] . " " . $hotel->checkout;
 
 	    $reserva = Reserva::create([
-	        'total_pagado' => $subtotal * $porcentaje['porcentaje'],
+	        'total_pagado' => 0.00,
 	        'total' => $subtotal,
 	        'reservaestado_id' => 3,
 	        'fecha_reserva' => date('Y-m-d'),

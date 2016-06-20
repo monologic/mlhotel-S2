@@ -48,6 +48,7 @@ class MailController extends Controller
     }
     public function getReserva($id, $cliente)
     {
+
         $reserva = Reserva::find($id);
         $reserva->habtiporeservas;
         $reserva->cliente;
@@ -61,6 +62,14 @@ class MailController extends Controller
         $moneda = $monedas[0];
         $reserva->moneda = $moneda;
         $reserva->hotel = $hotel[0];
+
+        $porcentaje = \Session::get('porcentaje');
+        $cart = \Session::get('cart');
+        $subtotal = 0;
+        foreach($cart as $item){
+            $subtotal += $item->precio * $item->quantity;
+        }
+        $reserva->apagar = $subtotal * $porcentaje['porcentaje'];
 
         $habReserva = $reserva->habtiporeservas;
         $reserva->habtiporeservas->each(function($habReserva){
@@ -93,6 +102,8 @@ class MailController extends Controller
         $reserva['habtiposcount'] = $ht;
 
         return $reserva;
+
+
 
     }
 
