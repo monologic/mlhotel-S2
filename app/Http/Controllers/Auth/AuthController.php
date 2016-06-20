@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Hotel;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -77,7 +78,8 @@ class AuthController extends Controller
 
 
     protected function authenticated()
-    {
+    {   
+        //intended($this->redirectPath());
         if (Auth::user()->activo == 0) {
             return redirect('logout');
         }
@@ -86,18 +88,14 @@ class AuthController extends Controller
             if (Auth::user()->usuariotipo->nombre != "Root") {
                 Auth::user()->empleado;
                 Auth::user()->empleado->hotel;
-                /*
-                if (Auth::user()->usuariotipo->nombre == "Administrador") 
-                    return redirect('admin#');
-                else
-                    return redirect('admin#/user');
-*/
-            }/*
-            else{
-                return redirect('admin#/root');
-            }*/
-
-            //return redirect()->intended($this->redirectPath());
+                
+            }
+            $h = Hotel::all();
+            $nombre = urlencode($h[0]->nombre);
+            $dir = urlencode($h[0]->direccion);
+            
+            return redirect('http://localhost:8001/verification/?hotel='.$nombre.'&direccion='.$dir);
+            
         }
     }
 }

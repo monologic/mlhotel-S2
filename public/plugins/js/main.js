@@ -16,7 +16,8 @@ var app = angular.module('tutorialWebApp', [
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
-    .when("/", {templateUrl: "partials/panelAdmin.html", controller: "PageCtrl"})
+    .when("/", {templateUrl: "partials/panelAdmin.html", controller: "panelController"})
+    .when("/administrador", {templateUrl: "partials/panelAdmin.html", controller: "PageCtrl"})
     .when("/user", {templateUrl: "partials/paneluser.html", controller: "PageCtrl"})
     .when("/root", {templateUrl: "partials/panelroot.html", controller: "PageCtrl"})
     .when("/Aregistro", {templateUrl: "partials/registrarh.html", controller: "PageCtrl"})
@@ -104,4 +105,16 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
   console.log("Page Controller reporting for duty(reconocio el controlador).");
 
 });
+app.controller('panelController', function($scope, $http) {
+
+    $http.get('admin/panel').then(function successCallback(response) {
+            window.location.href = 'admin#/' + response.data.mensaje;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    
+
+});
+
 

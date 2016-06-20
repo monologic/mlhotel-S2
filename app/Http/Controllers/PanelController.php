@@ -18,4 +18,24 @@ class PanelController extends Controller
     {
     	return view('dash.admin');
     }
+    public function getPanel()
+    {
+   		 if (Auth::user()->usuariotipo->nombre != "Root") {
+            if (Auth::user()->usuariotipo->nombre == "Administrador"){
+                return response()->json([
+		            "mensaje" => 'administrador'
+		        ]);
+            }
+            else{
+                return response()->json([
+		            "mensaje" => 'administrador'
+		        ]);
+            }
+        }
+        else{
+            return response()->json([
+		            "mensaje" => 'administrador'
+		        ]);
+        }
+    }
 }

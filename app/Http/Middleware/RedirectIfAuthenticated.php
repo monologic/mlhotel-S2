@@ -29,9 +29,8 @@ class RedirectIfAuthenticated
                 return redirect('admin#/root');
             }
         }*/
-
         if (Auth::guard($guard)->check()) {   
-            return redirect('http://www.google.com');
+            return redirect('admin');
         }
 
         return $next($request);

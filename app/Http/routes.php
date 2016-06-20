@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], function(){
 
     Route::get('/', 'PanelController@index');
+    Route::get('panel', 'PanelController@getPanel');
 
 	Route::resource('emptipo', 'EmptipoController');
 	
