@@ -9,6 +9,9 @@
 .max{
 	max-width: 300px;
 }
+.negrita{
+	font-weight: bold;
+}
 .coments{
 	left: -50px;
 	background-color:#1BBC9B;

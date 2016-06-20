@@ -10,19 +10,18 @@
         <div ng-repeat="y in reservas | filter:buscar" class="row reservaDiv">
             <p>
               <button class="btn reserva-item" type="button" data-toggle="collapse" data-target="#{{y.id}}" aria-expanded="false" aria-controls="collapseExample">
-              <div class="col-md-3">
-                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                         Código : {{ y.codigo_reserva }} 
-                    </div>
-                    <div class="col-md-3">
-                        {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
-                    </div>
-                    <div class="col-md-4">
-                        Entrada: {{ y.soloFecha | date:'d MMM yyyy'}}
-                    </div>
-                    <div class="col-md-2" style="text-align: right">
-                        {{ y.pagotipo.pagotipo }}
-                    </div>
+                <div class="col-md-2">
+                    <i class="glyphicon glyphicon-qrcode"></i>&nbsp; {{ y.codigo_reserva }} 
+                </div>
+                <div class="col-md-3">
+                    <i class="glyphicon glyphicon-user"></i>&nbsp; {{ y.cliente.nombres }} {{ y.cliente.apellidos }}
+                </div>
+                <div class="col-md-3">
+                    <i class="glyphicon glyphicon-calendar"> </i>&nbsp; {{ y.soloFecha | date:'d MMM yyyy'}}
+                </div>
+                <div class="col-md-2" style="text-align: right">
+                    {{ y.pagotipo.pagotipo }}
+                </div>
               </button>
             </p>
 
@@ -36,8 +35,12 @@
                     </div >    
                     
                     <div class="col-md-4">
-                        <table class="table">
-                            <p class="text-center">Habitaciones</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="text-center">Habitaciones</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr ng-repeat="z in y.habtiposcount">
                                     <td>{{ z.nombre }}</td>
@@ -47,9 +50,9 @@
                         </table>
                     </div>
                 <div class="col-sm-4" style="bottom: 0;">
-                    <p><a href="" ng-click="ReservaAConfirmar(y.id)" class="btn btn-success" data-toggle="modal" data-target="#confirmar">Confirmar Reserva</a></p>
-                    <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger">Cancelar Reserva</a></p>
-                    <p><a href="" ng-click="dataEditar(y)" class="btn btn-warning" data-toggle="modal" data-target="#editar">Editar Reserva</a></p>
+                    <p><a href="" ng-click="ReservaAConfirmar(y.id)" class="btn btn-success" data-toggle="modal" data-target="#confirmar" style="margin-bottom: 10px;min-width: 150px">Confirmar Reserva</a></p>
+                    <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger" style="margin-bottom: 10px;min-width: 150px">Cancelar Reserva</a></p>
+                    <p><a href="" ng-click="dataEditar(y)" class="btn btn-warning" data-toggle="modal" data-target="#editar" style="margin-bottom: 10px;min-width: 150px">Editar Reserva</a></p>
                 </div>
               </div>
             </div>
@@ -130,7 +133,7 @@
             </div>
         </div>
     </div>  
-    <button class="btn btn-primary" ng-click="printDiv('Reservas');"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir</button>
+    <button class="btn btn-primary" ng-click="printDiv('Reservas');"><span class="glyphicon glyphicon-print" aria-hidden="true" style="right: 0"></span> Imprimir</button>
 
 </div>  
 <script>
