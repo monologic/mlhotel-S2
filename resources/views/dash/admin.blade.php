@@ -217,6 +217,7 @@
     <script src="plugins/js/controllers/porcentajeController.js"></script>
     <script src="plugins/js/controllers/graficasController.js"></script>
     <script src="plugins/js/controllers/clienteController.js"></script>
+    <script src="plugins/js/controllers/estadisticasController.js"></script>
 
     <script src="plugins/js/directivas/onFinishRender.js"></script>
     <script>
