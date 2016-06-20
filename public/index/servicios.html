@@ -17,13 +17,13 @@
                     <div class="" style="width: 300px;margin: 10px auto 10px auto">
                       <img src="imagen/Categoria/main/{{main.imagen}}" width="300px" alt="Residencial Moquegua servicios hotel">
                     </div>
-                    <p style="text-align: center;line-height: 20px">{{main.contenido}}</p>
+                    <p style="text-align: center;line-height: 20px" id="contmain"></p>
                           
         </div>
 
         <div ng-repeat="r in ser" on-finish-render="ngRepeatFinished" id="test{{($index+1)}}" style="display: none;z-index: 10;min-height: 300px" onclick="eventc()" >
           <p class="tituloSer">{{r.nombre}}</p><br>
-          <div class="" style="background-image: url('imagen/sliders/{{r.foto}}');width:100%;height: 150px"></div>
+          <div class="" style="background-image: url('imagen/sliders/{{r.foto}}');width:80%;height: 200px;margin-left:10%"></div>
           <div style="width: 80%;margin: 40px auto 30px auto;text-align: center;">
             <p id="{{r.id}}k"></p>
           </div>

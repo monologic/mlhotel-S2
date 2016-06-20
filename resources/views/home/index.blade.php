@@ -47,7 +47,7 @@
 
 
 
-<body ng-controller="hotelController" ng-init="getHotelesF();">
+<body ng-controller="hotelController" ng-init="getHotelesF();" class="kit">
   <div class="navbar-fixed">
     <nav class="white" style="background: transparent;height: 110px">
       <div class="nav-wrapper" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
@@ -55,7 +55,7 @@
         <a class="btn-floating tooltipped btns2" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a>
 
         <a href="#" class="brand-logo center" style="color: black;margin-top: 15px">@{{infos.nombre}} </a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-30px;margin-top:5px">menu</i></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-15px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" row hide-on-med-and-down center">
           <li class="nav-txt col m3 s2"><a href="#/habitaciones"><div>HABITACIONES</div></a></li>
           <li class="nav-txt col m2 s2"><a href="#/servicios"><div>SERVICIOS</div></a></li>
@@ -64,13 +64,13 @@
           <li class="nav-txt col m2 s2"><a href="#/contacto"><div>CONTACTO</div> </a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
-          <li><a href="#/">Inicio </a></li>
-          <li><a href="#/habitaciones">Habitaciones</a></li>
-          <li><a href="#/contacto">Servicios</a></li>
-          <li><a href="#/galeria">Galeria</a></li>
-          <li><a href="#/noticias">Noticias</a></li>
-          <li><a href="#/contacto">Contacto</a></li>
-          <li><a href="#/micarrito">Mi carrito</a></li>
+          <li><a href="#/" onclick="cloMenu()">Inicio </a></li>
+          <li><a href="#/habitaciones" onclick="cloMenu()">Habitaciones</a></li>
+          <li><a href="#/servicios" onclick="cloMenu()">Servicios</a></li>
+          <li><a href="#/galeria" onclick="cloMenu()">Galeria</a></li>
+          <li><a href="#/noticias" onclick="cloMenu()">Noticias</a></li>
+          <li><a href="#/contacto" onclick="cloMenu()">Contacto</a></li>
+          <li><a href="#/micarrito" onclick="cloMenu()">Mi carrito</a></li>
         </ul>
       </div>
     </nav>
@@ -116,8 +116,8 @@
      <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-    <script type="text/javascript" src="plugins/materialize/js/materialize.js"></script>
-    <script type="text/javascript" src="plugins/materialize/js/angular-materialize.js"></script>
+    <script src="plugins/materialize/js/materialize.js"></script>
+    <script src="plugins/materialize/js/angular-materialize.js"></script>
     <script src="plugins/slider/js/swiper.min.js"></script>  
     <script src="plugins/slider/js/swiper.jquery.min.js"></script>  
 
@@ -166,6 +166,11 @@
     
     
     <script>
+    function cloMenu(){
+      $( "#sidenav-overlay" ).remove();
+      $( ".side-nav" ).css('left','-500px');
+      $( ".side-nav" ).css('transition','all 0.9s');
+    }
     function badCar(){
       document.getElementById("caja").style.right = "-400px";  
       document.getElementById("caja").style.transition = "all 0.4s"; 
