@@ -425,10 +425,13 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     }
 
     $scope.printDiv2 = function(divName) {
+    
         var printContents = document.getElementById(divName).innerHTML;
+        var popupWin = window.open('', '_blank', 'width=1024,height=768');
         popupWin.document.open();
         popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
         popupWin.document.close();
+/*
         elem = document.getElementById(divName);
         var domClone = elem.cloneNode(true);
     
@@ -444,4 +447,6 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         
         $printSection.appendChild(domClone);
 
+        window.print();*/
+    }
 });
