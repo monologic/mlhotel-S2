@@ -307,6 +307,7 @@ input[type=checkbox]:checked + label:before {
 	display: flex;
 	padding: 0px;
 	color: rgb(60,60,60);
+	margin-top: 50px;
 	
 }
 .inputs{

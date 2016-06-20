@@ -135,7 +135,7 @@
         </nav>
         <!-- sub menu de cabezera --> 
         <div class="fix">
-           <nav class="submenu">
+           <nav class="submenu" >
                 <ul class="navbar-center" style="width: 100%;">
                     <li  style="margin-top:10px; color:#446CB3; font-size: 2.5rem; left:0;padding-right:40px;text-align: center;">
                         @if (Auth::user()->usuariotipo->nombre=="Root")
@@ -169,7 +169,7 @@
         </div>
         
         <div class="content">
-            <div ng-view></div>
+            <div ng-view style="margin-top: 30px"></div>
         </div>
     </div>
 

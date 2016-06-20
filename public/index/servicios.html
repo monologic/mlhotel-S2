@@ -1,24 +1,27 @@
 <script>
   document.title = "Servicios - Residencial Moquegua";
 </script>
-<div class="row" ng-controller="serviciosController" ng-init="getServicios();main()" style="width: 90%;margin: 80px auto 20%  auto">
+<div>
+  
+</div>
+  <div class="row" ng-controller="serviciosController" ng-init="getServicios();main()" style="width: 90%;margin: 80px auto -20px  auto;">
     <p class="titulo2">Servicios</p>
     
     <div class="row" style="margin-top: 80px">
       <div class="col m3 s12" style="padding-bottom: 20px;margin-top: 20px;border:solid none solid solid;border-width: 1px;border-color: rgb(200,200,200);;border-radius: 10px;max-width: 250px">
         <ul class="tabs option2">
           <li class="tab col s3" ng-repeat="u in ser" >
-          	<a  name="#test{{$index}}"  id="#test{{$index}}" ng-href="#test{{$index+1}}">{{u.nombre}}</a></li>
+          	<a  name="#test{{$index}}"  id="#test{{$index}}" ng-href="#test{{$index+1}}" onclick="addCss()">{{u.nombre}}</a></li>
         </ul>
       </div>
      
       <div class="col m9 s12" style="background-color: white;">
-          <div class="text-alter" style="display: block">
-                    <div class="" style="width: 300px;margin: 10px auto 10px auto">
-                      <img src="imagen/Categoria/main/{{main.imagen}}" width="300px" alt="Residencial Moquegua servicios hotel">
-                    </div>
-                    <p style="text-align: center;line-height: 20px" id="contmain"></p>
-                          
+          <div class="aca">
+                    <div class="" style="margin: 0px auto 0px auto">
+                      <img src="imagen/Categoria/main/{{main.imagen}}" class="center-block" style="width:100%;max-width: 400px" alt="Residencial Moquegua servicios hotel">
+                      
+                    </div> 
+                    <p style="text-align: center;line-height: 20px;margin-top: 20px;margin-bottom: 40px" id="contmain"></p>     
         </div>
 
         <div ng-repeat="r in ser" on-finish-render="ngRepeatFinished" id="test{{($index+1)}}" style="display: none;z-index: 10;min-height: 300px" onclick="eventc()" >
@@ -42,10 +45,8 @@
 
       </div>
     </div>
-    
-    
-</div>
-<div id="caja" ng-controller="habtipoController" ng-init="getDias2();" style="top:75px;">
+  </div>
+  <div id="caja" ng-controller="habtipoController" ng-init="getDias2();" style="top:75px;">
     <br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>
     <div  style=";width: 80%;margin:40px auto 20px auto">
@@ -101,4 +102,8 @@
     $('ul.tabs').tabs();
      $( '#test1' ).click();
   });
+  function addCss(){
+    alert('agregando la clase');
+    $('.aca').addClass('text-alter');
+  }
 </script>
