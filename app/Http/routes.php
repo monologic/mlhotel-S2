@@ -36,7 +36,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::resource('porcentaje', 'PorcentajeController');
 	Route::resource('servicio', 'ServicioController');
 	Route::resource('categoria', 'categoriaController');
-	Route::resource('galeria', 'galeryController');
+	Route::resource('galeria', 'GaleryController');
 	Route::resource('noticia', 'NoticiaController');
 	Route::resource('pago', 'PagotipoController');
 	Route::resource('mainservice', 'MainserviceController');
