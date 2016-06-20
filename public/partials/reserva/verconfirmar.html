@@ -132,8 +132,33 @@
                 </div>
             </div>
         </div>
-    </div>  
-    <button class="btn btn-primary" ng-click="printDiv('Reservas');"><span class="glyphicon glyphicon-print" aria-hidden="true" style="right: 0"></span> Imprimir</button>
+    </div>
+    <div id='imprimiendo' class=" imp">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="5" class="text-center">Reservas por confirmar</th>
+                </tr>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombres y Apellidos</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  ng-repeat="kr in reservas">
+                    <td>{{ kr.codigo_reserva }}</td>
+                    <td>{{ kr.cliente.nombres }} {{ kr.cliente.apellidos }}</td>
+                    <td>{{ kr.soloFecha | date:'d MMM yyyy' }} | {{ kr.soloHora }}</td>
+                    <td>{{ kr.soloFecha2 | date:'d MMM yyyy' }} | {{ kr.soloHora2 }}</td>
+                    <td>S/ {{ kr.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-primary" ng-click="printDiv('imprimiendo');"><span class="glyphicon glyphicon-print" aria-hidden="true" style="right: 0"></span> Imprimir</button>
 
 </div>  
 <script>
@@ -142,7 +167,6 @@ $('#myCollapsible').collapse({
 })
 </script>
 <style type="text/css">
-
 @media screen {
     #printSection {
         display: none;
@@ -156,11 +180,12 @@ $('#myCollapsible').collapse({
     #printSection, #printSection * {
         visibility:visible;
 
-        display: block;
-        width: 100%;
     }
     .reservaDiv {
-        margin-bottom: 100px;
+        margin-bottom: 10px;
+    }
+    .imp{
+        display: block;
     }
     #printSection {
         position:absolute;

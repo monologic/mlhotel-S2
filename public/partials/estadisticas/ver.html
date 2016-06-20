@@ -1,5 +1,55 @@
 <div id="page-wrapper" ng-controller="estadisticasController">
-hola q ase
-<br><br><br>
-lorem
+	<br><br>
+	<h3 class="tit2">Estadísticas</h3>
+	<div class="row" style="width:100%;max-width:400px;margin:80px auto 20px auto">
+		<div class="col-md-5 col-xs-5">
+			<p style="color:black">Mes</p>
+			<select class="form-control">
+				
+				<option>Enero</option>
+				<option>Febrero</option>
+				<option>Marzo</option>
+				<option>Abril</option>
+				<option>Mayo</option>
+				<option>Junio</option>
+				<option>Julio</option>
+				<option>Agosto</option>
+				<option>Septiembre</option>
+				<option>Noviembre</option>
+				<option>Diciembre</option>
+			</select>
+		</div>
+		<div class="col-md-5 col-xs-5">
+			<p style="color:black">Año</p>
+			<select class="form-control">
+				
+					<option>2016</option>
+					<option>2017</option>
+					<option>2018</option>
+				</select>
+		</div>
+		<div class="col-md-2 col-xs-2">
+			<button class="btn btn-primary" style="margin-top:25px" ng-click='generar()'>Generar</button>
+		</div>
+		
+	</div>
+	
+	<table class="table table-bordered tabq" style="margin-top:50px">
+		<thead>
+			<tr>
+				<th>Tipo de Habitación</th>
+				<th># Arribos</th>
+				<th># Noches</th>
+				<th># Pernoctaciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 </div>

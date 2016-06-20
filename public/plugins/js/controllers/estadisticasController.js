@@ -11,4 +11,7 @@ app.controller('estadisticasController', function($scope,$http) {
             // or server returns response with an error status.
             });
     }
+    $scope.generar = function (){
+        $('.tabq').css('visibility','visible')
+    }
 });

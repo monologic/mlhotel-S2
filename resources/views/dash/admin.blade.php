@@ -81,7 +81,7 @@
                     <li class="menu__item"><a class="menu__link"  href="#/Banco/ver" onclick="closes()">Bancos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver" onclick="closes()">Config. Pagos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes" onclick="closes()">Bitácora</a></li> 
-
+                    <li class="menu__item"><a class="menu__link"  href="#/Estadisticas" onclick="closes()">Estadisticas</a></li>
 
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li>
 
@@ -146,7 +146,7 @@
                     </li>
                     
                   
-                   <li class="dropdown" style="left:0;width: 100px;float: right;margin-top: -20px;margin-right: -50px">
+                   <li class="dropdown" style="left:0;width: 120px;float: right;margin-top: -20px;margin-right: 0px">
                             <a href="" class="dropdown-toggle li" data-toggle="dropdown" role="button" aria-expanded="false">
                                 @if (Auth::user()->usuariotipo->nombre=="Root")
                                     Admin <span class="caret"></span>
