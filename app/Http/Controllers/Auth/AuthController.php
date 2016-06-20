@@ -86,16 +86,16 @@ class AuthController extends Controller
             if (Auth::user()->usuariotipo->nombre != "Root") {
                 Auth::user()->empleado;
                 Auth::user()->empleado->hotel;
-                
+                /*
                 if (Auth::user()->usuariotipo->nombre == "Administrador") 
                     return redirect('admin#');
                 else
                     return redirect('admin#/user');
-
-            }
+*/
+            }/*
             else{
                 return redirect('admin#/root');
-            }
+            }*/
 
             //return redirect()->intended($this->redirectPath());
         }

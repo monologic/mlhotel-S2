@@ -17,6 +17,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        /*
         if (Auth::guard($guard)->check()) {
             if (Auth::user()->usuariotipo->nombre != "Root") {
                 if (Auth::user()->usuariotipo->nombre == "Administrador") 
@@ -27,6 +28,10 @@ class RedirectIfAuthenticated
             else{
                 return redirect('admin#/root');
             }
+        }*/
+
+        if (Auth::guard($guard)->check()) {   
+            return redirect('http://www.google.com');
         }
 
         return $next($request);
