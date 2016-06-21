@@ -387,4 +387,7 @@ app.controller('reservaController', function($scope,$http) {
 
         window.print();
     }
+    $scope.mensaje = function (msj){
+        swal("Nota!", msj , "warning");
+    }
 });

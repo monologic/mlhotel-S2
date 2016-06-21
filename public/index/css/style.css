@@ -13,16 +13,16 @@ body{
 }
 @media (max-width: 860px) {
   .font-tab {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .newcont{
-    width: 90%;
+    width: 95%;
     margin:40px auto 20px auto;
   }
 }
 @media (max-width: 500px) {
   .font-tab {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
   .nombre{
     color: black;
