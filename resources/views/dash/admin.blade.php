@@ -137,13 +137,15 @@
         <div class="fix">
            <nav class="submenu" >
                 <ul class="navbar-center" style="width: 100%;">
-                    <li  style="margin-top:10px; color:#446CB3; font-size: 2.5rem; left:0;padding-right:40px;text-align: center;">
-                        @if (Auth::user()->usuariotipo->nombre=="Root")
-                            Administrador del Sistema
-                        @else
-                            {{ Auth::user()->empleado->hotel->nombre }}
-                        @endif
-                    </li>
+                    <a href="/login">
+                        <li  style="margin-top:10px; color:#446CB3; font-size: 2.5rem; left:0;padding-right:40px;text-align: center;">
+                            @if (Auth::user()->usuariotipo->nombre=="Root")
+                                Administrador del Sistema
+                            @else
+                                {{ Auth::user()->empleado->hotel->nombre }}
+                            @endif
+                        </li>
+                    </a>
                     
                   
                    <li class="dropdown" style="left:0;width: 120px;float: right;margin-top: -20px;margin-right: 0px">
