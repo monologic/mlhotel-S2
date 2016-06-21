@@ -2,6 +2,37 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.nombre{
+  color: black;
+  margin-top: 15px;
+
+}
+.newcont{
+  width: 80%;
+  margin:40px auto 20px auto;
+}
+@media (max-width: 860px) {
+  .font-tab {
+    font-size: 0.8rem;
+  }
+  .newcont{
+    width: 90%;
+    margin:40px auto 20px auto;
+  }
+}
+@media (max-width: 500px) {
+  .font-tab {
+    font-size: 0.7rem;
+  }
+  .nombre{
+    color: black;
+    margin-top: 25px;
+  }
+  .newcont{
+    width: 100%;
+    margin:80px auto 5px auto;
+  }
+}
 .table-tit{
   padding-left: 10px;
   padding-right:10px;

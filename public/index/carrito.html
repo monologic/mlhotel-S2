@@ -1,12 +1,12 @@
-<div style="width: 80%;margin:40px auto 20px auto" ng-controller="carritoController" ng-init="getDias();getTipoCambio();getTiposPago();getBancos();">
+<div class="newcont" ng-controller="carritoController" ng-init="getDias();getTipoCambio();getTiposPago();getBancos();">
     <form ng-submit="guardarCliente()" >
       <div class="row">
         <h2 style="color: #00897b">Mis reservas</h2>
-        <div class="col m6 s12" id="ventana" style="padding:20px 40px 20px 40px">
-          <div style="background-color: #b2dfdb;padding: 20px">
+        <div class="col m6 s12" id="ventana" style="padding-top:20px">
+          <div style="background-color: #b2dfdb;padding:2% 10%">
             <table class="highlight">
               <thead>
-                <tr>
+                <tr class="font-tab">
                   <th>Habitacion</th>
                   <th>Cant.</th>
                   <th>Precio</th>
@@ -14,19 +14,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="o in car">
-                  <td>{{o.nombre}}</td>
+                <tr class="font-tab" ng-repeat="o in car">
+                  <td >{{o.nombre}}</td>
                   <td>{{o.quantity}}</td>
                   <td>S/ {{o.precio}}</td>
                   <td id="{{$index+1}}s">S/ {{o.precio*o.quantity}}.00</td>
                 </tr>
-                <tr class="border-top">
+                <tr class="font-tab border-top">
                   <td></td>
                   <td></td>
-                  <td style="text-align: right;padding-right: 15px">Total por Noche: </td>
+                  <td style="text-align: right;padding-right: 5px">Total/noche: </td>
                   <td>{{totalq}}</td>
                 </tr>
-                <tr>
+                <tr class="font-tab">
                   <td> Por noches {{ dias }} </td>
                   <td></td>
                   <td style="text-align: right;padding-right: 15px">Total :</td>
@@ -38,8 +38,8 @@
           <div class="" style="margin-top: 15px">   
             <div>
                   <p style="color: #00897b">Elija un método de pago</p>
-                  <div class="row" style="margin-top: 0px">
-                     <div ng-if="pagoCero==1" class="col m4 s12" id="pagoCeroDiv">
+                  <div class="row" style="margin-top: 20px">
+                     <div ng-if="pagoCero==1" class="col m4 s12" id="pagoCeroDiv" style="margin-bottom:20px">
                       <input name="opciones" type="radio" id="test1" ng-model="formaPago.name" value="pagoCero" ng-change="cambioFormaPago()"/>
                       <label for="test1" style="color: #1976d2;font-weight: bold;">Pago en destino</label>
                     </div>

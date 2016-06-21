@@ -27,7 +27,7 @@
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}"  style="width:100%">
         <a class="btn" href="" ng-click="goTo3(y);">+ info</a>
       </div>
-      <div class="col s12 m6 l6 ">
+      <div class="col s12 m5 l6 ">
         <div class="black-text" style="padding-top:5px">
           <p class="cart-titulo" id="nombre">{{y.nombre}}</p>
           <p class="cart-contenido" id="{{y.id}}"></p>
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+      <div class="col s12 m3 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
         <div>
           <p class="cart-precio">Desde</p>
           <p class="cart-precio" id="precio"   style="font-size:1rem">S/. {{y.precio}} </p>
@@ -55,7 +55,7 @@
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}" style="width:100%">
       </div>
-      <div class="col s12 m6 l6 ">
+      <div class="col s12 m5 l6">
         <div class="black-text" style="padding-top:5px">
           <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
           <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m2 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
+      <div class="col s12 m3 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
         <div>
           <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
           <p class="cart-precio">Desde</p>
@@ -82,52 +82,51 @@
 
 </div>
   <div id="caja" style="top:75px;">
-    <br>
     <div class="title-reser teal lighten-2">Mis Reservas</div>
-    <div  style=";width: 80%;margin:40px auto 20px auto">
-    <div id="cont-table">
-      <div class="row">
-        <div class="col m8" style="padding-top: 10px">Estancia : {{ dias }} noche(s). </div>
+    <div class="cont-caja">
+      <div id="cont-table">
+        <div class="row">
+          <div class="col m8" style="padding-top: 10px">Estancia : {{ dias }} noche(s). </div>
+        </div>
+        
+        <br>
+        <table>
+          <thead>
+            <tr>
+              <th class="table-tit"> Habitación </th>
+              <th class="table-tit"> Cant. </th>
+              <th class="table-tit"> Precio </th>
+              <th class="table-tit"> Subtotal </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="o in car">
+              <td>{{o.nombre}}</td>
+              <td width="50px">
+                <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car, dias)">
+              </td>
+              <td style="text-align: center">{{o.precio}}</td>
+              <td id="{{$index+1}}s" style="text-align: center">{{o.precio*o.quantity}}.00</td>
+              <td><a class="btn-floating  waves-effect" style="width: 30px;height: 30px" ng-click="eliminarItem(o.id);"><i class="small material-icons " style="font-size: 20px;top: -120px">delete</i></a></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="2">Total por Día:</td>
+              <td ng-bind="totalq"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Total:</td>
+              <td>S/ {{Total}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      
-      <br>
-      <table>
-        <thead>
-          <tr>
-            <th class="table-tit"> Habitación </th>
-            <th class="table-tit"> Cant. </th>
-            <th class="table-tit"> Precio </th>
-            <th class="table-tit"> Subtotal </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="o in car">
-            <td>{{o.nombre}}</td>
-            <td width="50px">
-              <input type="number" class="mod" id="{{$index+1}}" name="points" min="1" max="{{o.max}}" step="1" ng-model="example" ng-change="actualizar({{$index+1}}, o.id, car);actualizarTotal(car, dias)">
-            </td>
-            <td style="text-align: center">{{o.precio}}</td>
-            <td id="{{$index+1}}s" style="text-align: center">{{o.precio*o.quantity}}.00</td>
-            <td><a class="btn-floating  waves-effect" style="width: 30px;height: 30px" ng-click="eliminarItem(o.id);"><i class="small material-icons " style="font-size: 20px;top: -120px">delete</i></a></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td colspan="2">Total por Día:</td>
-            <td ng-bind="totalq"></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>Total:</td>
-            <td>S/ {{Total}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-      <div id="alerta-dis" class=" yellow lighten-3" style="color: #f57f17;padding: 10px;margin-top: 15px;text-align: center;display: none"> Exceso de disponibilidad. </div>
+      <div id="alerta-dis" class=" yellow lighten-3" style="color: #f57f17;padding: 10px;margin-top: 15px;text-align: center;display: none"> Exceso de disponibilidad. 
+      </div>
       <div>
-        <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito()">Continuar</a>
+          <a id="btnc" class="waves-effect waves-light btn centrar" ng-click="actualizarCarrito()">Continuar</a>
       </div>    
     </div>
   </div> 
