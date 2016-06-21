@@ -3,7 +3,7 @@
     <head>
         <title>Error</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
@@ -36,7 +36,6 @@
             }
             .parrafo {
                 font-size: 40px;
-                margin-bottom: 40px;
             }
         </style>
     </head>
@@ -46,6 +45,8 @@
                 <div class="title">Usted no ha adquirido este Sistema.</div>
                 <div class="parrafo">Por favor comuníquese con nosotros.</div>
                 <div class="parrafo">RunaIT</div>
+                <div class="parrafo">javier.coaila@runait.com</div>
+                <div class="parrafo">983602707</div>
             </div>
         </div>
     </body>
