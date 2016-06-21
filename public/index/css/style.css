@@ -77,10 +77,12 @@ body{
   z-index: 12;
 }
 .bk{
-  
+  display: block;
+  position: relative;
   width: 80%;
   max-width: 500px;
-  margin: 100px auto 0px auto;
+  margin: 120px auto 0px auto;
+  left: 25%;
 }
 .cont-book{
   width: 80%;
