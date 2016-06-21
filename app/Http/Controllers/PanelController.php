@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Hotel;
+
 class PanelController extends Controller
 {
     /**
@@ -20,7 +22,7 @@ class PanelController extends Controller
     }
     public function getPanel()
     {
-   		 if (Auth::user()->usuariotipo->nombre != "Root") {
+   		if (Auth::user()->usuariotipo->nombre != "Root") {
             if (Auth::user()->usuariotipo->nombre == "Administrador"){
                 return response()->json([
 		            "mensaje" => 'administrador'
@@ -28,14 +30,21 @@ class PanelController extends Controller
             }
             else{
                 return response()->json([
-		            "mensaje" => 'administrador'
+		            "mensaje" => 'user'
 		        ]);
             }
         }
         else{
             return response()->json([
-		            "mensaje" => 'administrador'
+		            "mensaje" => 'root'
 		        ]);
         }
+    }
+    public function verification()
+    {
+        $h = Hotel::all();
+        $nombre = urlencode($h[0]->nombre);
+        $dir = urlencode($h[0]->direccion);
+        return redirect()->away('http://sykver.runait.com/verification/'.$nombre.'/'.$dir.'/'.$_SERVER['SERVER_NAME']);
     }
 }
