@@ -99,7 +99,7 @@
           </div>
           <div class="footer-copyright">
             <div class="container left">
-             © 2014 Copyright by Monologic
+             © 2016 Copyright by RunaIT
             </div>
           </div>
         </footer>   
