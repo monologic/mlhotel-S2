@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Hotel;
 
+use Illuminate\Support\Facades\Auth;
+
 class RoutesCore
 {
     /**
@@ -16,11 +18,13 @@ class RoutesCore
      */
     public function handle($request, Closure $next)
     {   
-        /*
-        $h = Hotel::all();
-        if ($h[0]->nombre != env('APP_SERIAL')) {
-            return redirect('/');
-        }*/
+        $checked = \Session::get('checked');
+        if ( $checked['checked'] == 0) {
+            return redirect('incomplete');
+        }
+        if ( $checked['checked'] == 2) {
+            return redirect('expired');
+        }
         return $next($request);
     }
 }

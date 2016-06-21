@@ -13,11 +13,11 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-
 Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], function(){
 
     Route::get('/', 'PanelController@index');
     Route::get('panel', 'PanelController@getPanel');
+    Route::get('verification', 'PanelController@verification');
 
 	Route::resource('emptipo', 'EmptipoController');
 	
@@ -103,6 +103,11 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::put('updateAdminHotel/{id}', 'HotelController@updateAdminHotel');
 
 });
+	Route::group(['middleware' => [ 'web', 'auth' ]], function () {
+	    Route::get('complete', 'PanelController@complete');
+	    Route::get('incomplete', 'PanelController@incomplete');
+	    Route::get('expired', 'PanelController@expired');
+	});
 	Route::get('admin/getAllReservas', 'ReservaController@getallreservas');
 	Route::get('admin/buscarCliente/{tipo}/{valor}', ['uses' => 'ClienteController@buscart', function ($tipo, $valor) {
 	}]);

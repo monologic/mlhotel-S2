@@ -13,13 +13,11 @@ app.controller('habtipoController', function($scope,$http,$location) {
         // or server returns response with an error status.
         });
     } 
+
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     for(x in $scope.habtipos){
-                $('#'+ $scope.habtipos[x].id).html($scope.habtipos[x].descripcion);
-            }
-
-    });
-    $scope.$on('ngRepeatFinished2', function(ngRepeatFinishedEvent) {
+            $('#'+ $scope.habtipos[x].id).html($scope.habtipos[x].descripcion);
+        }
     for(x in $scope.habtipos){
                 $('#'+ $scope.habtipos[x].id+'qw').html($scope.habtipos[x].descripcion);
             }

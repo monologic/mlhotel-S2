@@ -16,6 +16,10 @@ class PanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        if(!\Session::has('checked')) \Session::put('checked', array());
+    }
     public function index()
     {
     	return view('dash.admin');
@@ -46,5 +50,28 @@ class PanelController extends Controller
         $nombre = urlencode($h[0]->nombre);
         $dir = urlencode($h[0]->direccion);
         return redirect()->away('http://sykver.runait.com/verification/'.$nombre.'/'.$dir.'/'.$_SERVER['SERVER_NAME']);
+    }
+    public function complete()
+    {
+        $checked = \Session::get('checked');
+        $checked['checked'] = 1;
+        \Session::put('checked', $checked);
+
+        return redirect('admin');
+    }
+    public function incomplete()
+    {
+        $checked = \Session::get('checked');
+        $checked['checked'] = 0;
+        \Session::put('checked', $checked);
+        return view('errors.incomplete');
+    }
+    public function expired()
+    {
+        $checked = \Session::get('checked');
+        $checked['checked'] = 2;
+        \Session::put('checked', $checked);
+
+        return view('errors.expired');
     }
 }
