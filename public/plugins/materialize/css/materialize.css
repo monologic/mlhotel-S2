@@ -7987,7 +7987,7 @@ small {
   flex-grow: 1;
   display: block;
   float: left;
-  text-align: center;
+  text-align: left;
   line-height: 48px;
   height: 100%;
   padding: 0;
@@ -7997,7 +7997,7 @@ small {
   overflow: hidden;
   letter-spacing: .8px;
   width: 15%;
-  min-width: 200px;
+  min-width: 500px;
 }
 
 .tabs .tab a {

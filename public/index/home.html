@@ -1,5 +1,6 @@
 <script>
   document.title = "Residencial Moquegua";
+  window.scrollTo(0,0);
 </script> 
   <div ng-controller="bannerController" ng-init="getBanners2();" onclick="badCar()" style="min-height:300px">
               
@@ -7,7 +8,7 @@
     <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
           <!-- Slides -->
-          <div class="swiper-slide" ng-repeat="q in banners" style="margin-top: 50px;transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
+          <div class="swiper-slide" ng-repeat="q in banners" style="margin-top: 0px;transform: translate3d(0px, 0px, -112.5px) rotateX(0deg) rotateY(56.25deg); z-index: 0; transition-duration: 0ms; margin-right: 100px;">
             <div class="title-s">
                <div class="wow fadeInUp" data-wow-duration="{{$index+1}}s" data-wow-delay="{{$index*5}}s"><p style="font-size: 3.5rem;max-width: 400px;color: white;position:absolute;right: 60px;margin-top: 0px;line-height: 50px">{{q.titulo}}</p></div>
             </div>

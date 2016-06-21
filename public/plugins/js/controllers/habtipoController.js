@@ -19,6 +19,12 @@ app.controller('habtipoController', function($scope,$http,$location) {
             }
 
     });
+    $scope.$on('ngRepeatFinished2', function(ngRepeatFinishedEvent) {
+    for(x in $scope.habtipos){
+                $('#'+ $scope.habtipos[x].id+'qw').html($scope.habtipos[x].descripcion);
+            }
+
+    });
 
     var details = Array();
     $scope.addDetalleReserva =function (data) {
@@ -234,6 +240,8 @@ app.controller('habtipoController', function($scope,$http,$location) {
                 });
             }
             window.location.href = '#/micarrito';
+            window.scrollTo(0,0);
+
         }
     }
 

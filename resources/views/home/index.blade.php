@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="plugins/slider/css/swiper.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="index/css/reset.css">
     <link rel="stylesheet" href="index/css/animate.css">
-    <link rel="stylesheet" href="index/css/style.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
     <link rel="stylesheet" href="plugins/iconos/flaticon.css">
     
@@ -35,6 +34,7 @@
     <link rel="stylesheet" href="plugins/datepicker/jquery-ui.theme.css">
     <script src="plugins/SweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="plugins/SweetAlert/sweetalert.css">
+    <link rel="stylesheet" href="index/css/style.css">
   
 </head>
 <style>
@@ -49,7 +49,7 @@
 
 <body ng-controller="hotelController" ng-init="getHotelesF();" class="kit">
   <div class="navbar-fixed">
-    <nav class="white" style="background: transparent;height: 110px">
+    <nav class="white nav-p">
       <div class="nav-wrapper" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
         <a  class="btns" href="/login">Sign in</a>
         <a class="btn-floating tooltipped btns2" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a>
@@ -76,7 +76,7 @@
     </nav>
   </div>
 </div>
- <div ng-view style="margin-botton:100px;margin-top:-20px"></div>
+ <div ng-view style="margin-top:-20px"></div>
  <footer class="page-footer black">
           <div class="container">
             <div class="row">
@@ -170,6 +170,7 @@
       $( "#sidenav-overlay" ).remove();
       $( ".side-nav" ).css('left','-500px');
       $( ".side-nav" ).css('transition','all 0.9s');
+      window.scrollTo(0, 0);
     }
     function badCar(){
       document.getElementById("caja").style.right = "-400px";  

@@ -1,5 +1,6 @@
 <script>
   document.title = "Habitaciones - Residencial Moquegua";
+  window.scrollTo(0,0);
 </script> 
 <section class="container" ng-controller="habtipoController" ng-init="buscarAuto();getHabTipo()" style="min-height:300px">
 <div onclick="badCar();">  
@@ -50,15 +51,14 @@
       </div>
     </div> 
       <!-- Busqueda de habitaciones div none -->
-
-    <div ng-if="dias != null" class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" style="padding:10px;margin-top:30px;margin-bottom: 30px">
+    <div ng-if="dias != null" class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" on-finish-render="ngRepeatFinished2" style="padding:10px;margin-top:30px;margin-bottom: 30px">
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}" style="width:100%">
       </div>
       <div class="col s12 m5 l6">
         <div class="black-text" style="padding-top:5px">
           <p class="cart-titulo" id="nombre" ng-model="nombre">{{y.nombre}}</p>
-          <p class="cart-contenido" id="capacidad" ng-model="capacidad">{{y.descripcion}}</p>
+          <p class="cart-contenido" id="{{y.id}}qw"></p>
           <p class="cart-contenido"  style="display: none"  id="capacidad" ng-model="capacidad">{{y.nropersonas}}</p>
         </div>
         <div class="separador"></div>
@@ -71,8 +71,8 @@
       </div>
       <div class="col s12 m3 l2 cart-sk" style="display: flex;justify-content: center;align-items:center;padding-top:30px">
         <div>
-          <div class="teal lighten-2 dispo" >Disp. : {{y.habitacionescount-y.habtiporeservascount}} hab.</div>
-          <p class="cart-precio">Desde</p>
+          <div class="etiq"><i class="fa fa-info-circle" aria-hidden="true"></i><i style="margin-top:-15px"> Ultimas {{y.habitacionescount-y.habtiporeservascount}} habitaciones. </i></div>
+          <br>
           <p class="cart-precio" ng-model="precio" style="font-size:1rem">S/. {{y.precio}} </p>
 
           <a ng-if='(y.habitacionescount-y.habtiporeservascount)>0' class="waves-effect btn black" ng-click="addCarrito(y);" onclick="Materialize.toast('Añadido a tus reservas', 4000)">reservar</a>

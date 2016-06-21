@@ -4,6 +4,14 @@
 .sel {
 	max-width: 150px;
 }
+.etiq{
+	display: block;
+	position: relative;
+	background-color: #f44336;
+	padding: 10px;
+	color: white;
+	font-size: 0.8rem;
+}
 .icono-in-input{
 	position: absolute;
 	right: 35px;

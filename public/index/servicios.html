@@ -1,5 +1,6 @@
 <script>
   document.title = "Servicios - Residencial Moquegua";
+  window.scrollTo(0,0);
 </script>
 <div>
   
@@ -8,7 +9,7 @@
     <p class="titulo2">Servicios</p>
     
     <div class="row" style="margin-top: 80px">
-      <div class="col m3 s12" style="padding-bottom: 20px;margin-top: 20px;border:solid none solid solid;border-width: 1px;border-color: rgb(200,200,200);;border-radius: 10px;max-width: 250px">
+      <div class="col m3 s12" style="padding-bottom: 20px;margin-top: 20px;border:solid none solid solid;border-width: 1px;border-color: rgb(200,200,200);border-radius: 10px">
         <ul class="tabs option2">
           <li class="tab col s3" ng-repeat="u in ser" >
           	<a  name="#test{{$index}}"  id="#test{{$index}}" ng-href="#test{{$index+1}}" onclick="addCss()">{{u.nombre}}</a></li>
