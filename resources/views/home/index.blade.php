@@ -52,7 +52,7 @@
     <nav class="white nav-p">
       <div class="nav-wrapper" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
         <a  class="btns" href="/login">Sign in</a>
-        <a class="btn-floating tooltipped btns2" onclick="divLogin()" data-position="bottom" data-delay="50" data-tooltip="Mis Reservas"><i class="fa fa-ticket" style="margin-top:-13px"></i></a>
+        <a class="btn-floating btns2" onclick="divLogin()"><i  class="fa fa-cart-plus" style="margin-top:-13px;font-size: 1.4rem"></i></a>
 
         <a href="#" class="brand-logo center" style="color: black;margin-top: 15px">@{{infos.nombre}} </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-15px;margin-top:5px">menu</i></a>
@@ -170,6 +170,7 @@
       $( "#sidenav-overlay" ).remove();
       $( ".side-nav" ).css('left','-500px');
       $( ".side-nav" ).css('transition','all 0.9s');
+      $( ".kit" ).removeAttr( 'style' );
       window.scrollTo(0, 0);
     }
     function badCar(){

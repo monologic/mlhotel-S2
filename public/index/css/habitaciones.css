@@ -30,20 +30,6 @@
 	margin-top: 30px;
 	width: 100%;
 }
-#caja{
- display: block;
- position: fixed;
- background-color: white;
- width: 350px;
- margin: auto;
- padding-bottom: 40px;
- margin:15px auto 15px auto;
- right: -400px;
- z-index: 202;
-  transition: all .4s;
-  color: black;
-  overflow: auto
-}
 .cont-caja{
 	display: block;
 	width: 100%;
