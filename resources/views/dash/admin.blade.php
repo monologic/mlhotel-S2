@@ -74,11 +74,11 @@
 
                 @if (Auth::user()->usuariotipo->nombre == "Administrador")  
                     <li class="menu__item"><a class="menu__link" href="#/Habitaciones" onclick="closes()" >Info. Habitaciones</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Empleados/ver" onclick="closes()">Usuarios</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/804ee937289b6ca7015c3230d5f2eaae7a51411c" onclick="closes()">Usuarios</a></li>
 
                     <li class="menu__item"><a class="menu__link"  href="#/configChecks" onclick="closes()">Hora de E/S</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Moneda/ver"onclick="closes()">Tipos de Cambio</a></li>
-                    <li class="menu__item"><a class="menu__link"  href="#/Banco/ver" onclick="closes()">Bancos</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/58b38f0df4aa9c385f419877e07cbc5549162398" onclick="closes()">Bancos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver" onclick="closes()">Config. Pagos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes" onclick="closes()">Bitácora</a></li> 
                     <li class="menu__item"><a class="menu__link"  href="#/Estadisticas" onclick="closes()">Estadisticas</a></li>
@@ -112,7 +112,7 @@
                 <!-- Submenu 1 -->
                 <ul data-menu="submenu-1" class="menu__level">
                     <li class="menu__item"><a class="menu__link" href="#" onclick="closes()" >Ver Empleados</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#/Empleados/crear" onclick="closes()" >Crear Empleado</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#/d6ef98a9036dc01f45400ddc327e2c6e3bb2cde9" onclick="closes()" >Crear Empleado</a></li>
                     <li role="separador" class="menu__item"><a class="menu__separador" href="#" onclick="closes()" ></a></li>
                     <li class="menu__item"><a class="menu__link" href="#" onclick="closes()" >Ver Cargos</a></li>
                     <li class="menu__item"><a class="menu__link" href="#/Cargos/ver" onclick="closes()" >Cargos del Hotel</a></li>

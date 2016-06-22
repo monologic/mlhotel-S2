@@ -53,7 +53,7 @@ class UsuarioController extends Controller
         $usuario->save();
 
         $empController = new empleadoController();
-        return redirect('admin#//Empleados/ver');
+        return redirect('admin#//804ee937289b6ca7015c3230d5f2eaae7a51411c');
     }
 
     /**

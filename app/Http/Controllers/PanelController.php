@@ -29,18 +29,18 @@ class PanelController extends Controller
    		if (Auth::user()->usuariotipo->nombre != "Root") {
             if (Auth::user()->usuariotipo->nombre == "Administrador"){
                 return response()->json([
-		            "mensaje" => 'administrador'
+		            "mensaje" => '9dbf7c1488382487931d10235fc84a74bff5d2f4'
 		        ]);
             }
             else{
                 return response()->json([
-		            "mensaje" => 'user'
+		            "mensaje" => '12dea96fec20593566ab75692c9949596833adc9'
 		        ]);
             }
         }
         else{
             return response()->json([
-		            "mensaje" => 'root'
+		            "mensaje" => 'dc76e9f0c0006e8f919e0c515c66dbba3982f785'
 		        ]);
         }
     }

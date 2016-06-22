@@ -17,9 +17,9 @@ app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
     .when("/", {templateUrl: "partials/panelAdmin.html", controller: "panelController"})
-    .when("/administrador", {templateUrl: "partials/panelAdmin.html", controller: "PageCtrl"})
-    .when("/user", {templateUrl: "partials/paneluser.html", controller: "PageCtrl"})
-    .when("/root", {templateUrl: "partials/panelroot.html", controller: "PageCtrl"})
+    .when("/9dbf7c1488382487931d10235fc84a74bff5d2f4", {templateUrl: "partials/panelAdmin.html", controller: "PageCtrl"})
+    .when("/12dea96fec20593566ab75692c9949596833adc9", {templateUrl: "partials/paneluser.html", controller: "PageCtrl"})
+    .when("/dc76e9f0c0006e8f919e0c515c66dbba3982f785", {templateUrl: "partials/panelroot.html", controller: "PageCtrl"})
     .when("/Aregistro", {templateUrl: "partials/registrarh.html", controller: "PageCtrl"})
     // Pages
     /*
@@ -32,8 +32,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     .when("/Perfil", {templateUrl: "partials/usuario/perfil.html", controller: "PageCtrl"})
 
-    .when("/Empleados/ver", {templateUrl: "partials/empleado/ver.html", controller: "PageCtrl"})
-    .when("/Empleados/crear", {templateUrl: "partials/empleado/crear.html", controller: "PageCtrl"})
+    .when("/804ee937289b6ca7015c3230d5f2eaae7a51411c", {templateUrl: "partials/empleado/ver.html", controller: "PageCtrl"})
+    .when("/d6ef98a9036dc01f45400ddc327e2c6e3bb2cde9", {templateUrl: "partials/empleado/crear.html", controller: "PageCtrl"})
 
     .when("/Clientes/ver", {templateUrl: "partials/cliente/ver.html", controller: "PageCtrl"})
     
@@ -88,8 +88,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/Moneda/crear", {templateUrl: "partials/moneda/crear.html", controller: "PageCtrl"})
     .when("/Moneda/ver", {templateUrl: "partials/moneda/ver.html", controller: "PageCtrl"})
 
-    .when("/Banco/crear", {templateUrl: "partials/banco/crear.html", controller: "PageCtrl"})
-    .when("/Banco/ver", {templateUrl: "partials/banco/ver.html", controller: "PageCtrl"})
+    .when("/ffdd78bb8155ab90e82546c0a88aa06c9e396e90", {templateUrl: "partials/banco/crear.html", controller: "PageCtrl"})
+    .when("/58b38f0df4aa9c385f419877e07cbc5549162398", {templateUrl: "partials/banco/ver.html", controller: "PageCtrl"})
 
     .when("/Porcentaje/crear", {templateUrl: "partials/porcentaje/crear.html", controller: "PageCtrl"})
     .when("/Porcentaje/ver", {templateUrl: "partials/porcentaje/ver.html", controller: "PageCtrl"})

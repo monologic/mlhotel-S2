@@ -53,7 +53,7 @@ class BancoController extends Controller
 
         $banco->save();
 
-        return redirect('admin#/Banco/ver');
+        return redirect('admin#/58b38f0df4aa9c385f419877e07cbc5549162398');
     }
 
     /**

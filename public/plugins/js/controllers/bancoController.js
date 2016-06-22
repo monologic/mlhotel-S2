@@ -5,7 +5,7 @@ app.controller('bancoController', function($scope,$http) {
                 'cuenta':$scope.cuenta,
                 'cci':$scope.cci
             }).then(function successCallback(response) {
-                window.location.href = '#/Banco/ver';
+                window.location.href = '#/58b38f0df4aa9c385f419877e07cbc5549162398';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

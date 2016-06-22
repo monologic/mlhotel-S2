@@ -18,7 +18,7 @@ app.controller('empleadoController', function($scope,$http) {
                 //'hotel_id':$('#hotel_id').text()
             }).then(function successCallback(response) {
                 swal("Excelente!", "El usuario se ha creado.", "success");
-                window.location.href = 'admin#/Empleados/ver';
+                window.location.href = 'admin#/804ee937289b6ca7015c3230d5f2eaae7a51411c';
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
