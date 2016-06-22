@@ -309,7 +309,8 @@ class PaypalController extends BaseController
 	        'fecha_inicio' => $fechaInicio,
 	        'fecha_fin' => $fechaFin,
 	        'cliente_id' => $cliente['id'],
-	        'pagotipo_id' => 3
+	        'pagotipo_id' => 3,
+	        'fraccion_importe' => $subtotal * $porcentaje['porcentaje']
 	    ]);
 
 	    $reserva->codigo_reserva = $this->codigoReserva($reserva->id);
