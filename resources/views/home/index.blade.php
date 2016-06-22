@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="plugins/materialize/css/materialize.css"  media="screen,projection"/>
     <link rel="stylesheet" href="plugins/slider/css/swiper.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="index/css/reset.css">
+    <link rel="stylesheet" href="index/css/style.css">
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
     <link rel="stylesheet" href="plugins/iconos/flaticon.css">
@@ -34,7 +35,7 @@
     <link rel="stylesheet" href="plugins/datepicker/jquery-ui.theme.css">
     <script src="plugins/SweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="plugins/SweetAlert/sweetalert.css">
-    <link rel="stylesheet" href="index/css/style.css">
+    
   
 </head>
 <style>

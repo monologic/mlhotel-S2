@@ -54,6 +54,7 @@
     <div ng-if="dias != null" class="row wow fadeInUp card busquedas" data-wow-duration="0.8s"  data-wow-delay="0.5s" ng-repeat="y in tipoPerHabs" on-finish-render="ngRepeatFinished2" style="padding:10px;margin-top:30px;margin-bottom: 30px">
       <div class="col s12 m4 l4 " style="padding:10px">
         <img src="imagen/habitaciones/{{y.foto}}" alt="Hotel Moquegua {{y.nombre}}" style="width:100%">
+        <a class="btn" href="" ng-click="goTo3(y);">+ info</a>
       </div>
       <div class="col s12 m5 l6">
         <div class="black-text" style="padding-top:5px">

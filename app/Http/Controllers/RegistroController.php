@@ -291,6 +291,13 @@ class RegistroController extends Controller {
 
         $habtipos = Habtipo::where('activo', 1)->get();
 
+         $habtipos->each(function($habtipos){
+                $iconos=$habtipos->habtipo_serviciointernos;
+                $habtipos->habtipo_serviciointernos->each(function($iconos){
+                    $iconos->serviciointerno;
+                });
+
+            });
         if (count($habs->toArray()) != 0) {
 
             $habs->each(function($habs){

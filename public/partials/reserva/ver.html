@@ -235,14 +235,15 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th colspan="5" class="text-center">Reservas</th>
+                    <th colspan="7" class="text-center">Reservas</th>
                 </tr>
                 <tr>
                     <th>Código</th>
                     <th>Nombres y Apellidos</th>
                     <th>Check In</th>
                     <th>Check Out</th>
-                    <th>Total Pagado</th>
+                    <th>Habitaciones</th>
+                    <th>Pagado</th>
                     <th>Saldo</th>
                 </tr>
             </thead>
@@ -252,8 +253,10 @@
                     <td>{{ kr.cliente.nombres }} {{ kr.cliente.apellidos }}</td>
                     <td>{{ kr.soloFecha | date:'d MMM yyyy' }} | {{ kr.soloHora }}</td>
                     <td>{{ kr.soloFecha2 | date:'d MMM yyyy' }} | {{ kr.soloHora2 }}</td>
-                    <td>{{kr.total_pagado}}</td>
+                    <td><p ng-repeat="x in kr.habtiposcount"> - {{ x.count }} {{ x.nombre }}(s) </p></td>
+                    <td> S/ {{kr.total_pagado}}</td>
                     <td>S/ {{ kr.total - kr.total_pagado }}</td>
+                                
                 </tr>
             </tbody>
         </table>
