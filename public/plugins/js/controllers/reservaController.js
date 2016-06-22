@@ -127,6 +127,7 @@ app.controller('reservaController', function($scope,$http) {
         $scope.cerrarModal();
         $http.put('admin/reserva/' + $scope.reservaIdConf, {
             'reservaestado_id' : 2,
+            'comentario' : $('#comentarioD').val(),
             'total_pagado' : $('#total_pagado').val()
         }).then(function successCallback(response) {
             window.location.href = 'admin#/Reservas'
@@ -358,12 +359,12 @@ app.controller('reservaController', function($scope,$http) {
         $http.put('admin/reserva/' + id,
             {   'comentario': coment
             }).then(function successCallback(response) {
-                swal("Excelente!", "Se han guardado el comentario.", "success");
-                $scope.getAllreserva();
+                swal("Excelente!", "Se han guardado el comentario.");
+                window.location.reload();
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
-            }); 
+            });
     }
     $scope.eliminarComentario = function (id,coment){
         
@@ -383,7 +384,7 @@ app.controller('reservaController', function($scope,$http) {
                  $http.put('admin/reserva/' + id,
                 {   'comentario': $scope.comentario
                 }).then(function successCallback(response) {
-                    $scope.getAllreserva();
+                    window.location.reload();
                 }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
@@ -416,7 +417,8 @@ app.controller('reservaController', function($scope,$http) {
 
         window.print();
     }
-    $scope.mensaje = function (msj){
-        swal("Nota!", msj , "warning");
+    $scope.mensaje = function (id,msj){
+        $scope.id = id;
+        $scope.comentarios = msj
     }
 });

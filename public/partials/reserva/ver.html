@@ -28,7 +28,7 @@
                     </div>
                        
                 </button>
-                <div style="position: relative;float:right;color:white;font-size: 1.8rem;z-index: 10;top:-47px;" ng-click="mensaje(y.comentario)"><i class="glyphicon glyphicon-paperclip coments" style=""></i></div>
+                <div data-toggle="modal" data-target="#vercoment" style="position: relative;float:right;color:white;font-size: 1.8rem;z-index: 10;top:-47px;" ng-click="mensaje(y.id,y.comentario)"><i class="glyphicon glyphicon-paperclip coments" style=""></i></div>
                 </p>
                 <div class="collapse" id="{{y.id}}" style="padding: 20px;border-width:0.1px;border:solid;border-radius: 5px;margin-bottom:10px">
                   <div class="card card-block row" style="color:black">
@@ -208,7 +208,29 @@
                 </div>
             </div>
         </div>  
-    </div>  
+    </div> 
+    <div class="modal fade" id="vercoment" tabindex="-1" role="dialog" aria-labelledby="vercoment">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body row" style="color:black;font-size: 1.5rem">
+                    <div style="width: 80%;margin:20px auto 20px 10%">
+                        <div class="form-group">
+                            <div class="col-xs-10">
+                                <input type="text" ng-model="id" style="display: none">
+                                <label for="coment">Comentario</label>
+                                <textarea name="" id="co" cols="30" rows="5" class="form-control cos" ng-model="comentarios"></textarea>
+                            </div>
+                            <div class="col-xs-2">
+                                <button class="glyphicon glyphicon-ok-sign btn btn-success" style="top:25px;margin-bottom: 5px"  ng-click="editarComentario(id,comentarios)"></button>
+                                <button class="glyphicon glyphicon-remove-sign btn btn-danger" style="top:25px" ng-click="eliminarComentario(id,comentarios)"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
     <div id='imprimiendo' class=" imp">
         <table class="table table-bordered">
             <thead>
