@@ -96,7 +96,6 @@ app.controller('reservaController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
-
 	$scope.buscarHab = function () {
 
         if ($('#fechaini').val() == '' || $('#fechafin').val() == '') {
@@ -194,6 +193,36 @@ app.controller('reservaController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+    $scope.completarPago = function (data) {
+        if (data.total != data.total_pagado) {
+            swal({   title: "¿Se canceló el total de la reserva?",
+                text: "Total a pagar: " + data.total + " | Total pagado: " + data.total_pagado + " | Saldo: " + (data.total - data.total_pagado),
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Sí",
+                cancelButtonText: "No",
+                closeOnConfirm: true }, 
+                function(){
+                    $http.put('admin/reserva/' + data.id, {
+                        'total_pagado' : data.total
+                    }).then(function successCallback(response) {
+                        $('#asignar').modal('show');
+                        $scope.buscarHabs(data);
+                    }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    });
+                }
+            );
+        }
+        else{
+            $('#asignar').modal('show');
+            $scope.buscarHabs(data);
+        }
+
+    }
+
     var habsSeleccionadas = new Array();
     $scope.buscarHabs = function (data) {
 
