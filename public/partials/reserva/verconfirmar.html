@@ -54,7 +54,7 @@
                         </table>
                     </div>
                 <div class="col-sm-4" style="bottom: 0;">
-                    <p><a href="" ng-click="ReservaAConfirmar(y.id,y.total)" class="btn btn-success" data-toggle="modal" data-target="#confirmar" style="margin-bottom: 10px;min-width: 150px">Confirmar Reserva</a></p>
+                    <p><a href="" ng-click="ReservaAConfirmar(y.id,y.total,y.fraccion_importe)" class="btn btn-success" data-toggle="modal" data-target="#confirmar" style="margin-bottom: 10px;min-width: 150px">Confirmar Reserva</a></p>
                     <p><a href="" ng-click="cancelar(y.id)" class="btn btn-danger" style="margin-bottom: 10px;min-width: 150px">Cancelar Reserva</a></p>
                     <p><a href="" ng-click="dataEditar(y)" class="btn btn-warning" data-toggle="modal" data-target="#editar" style="margin-bottom: 10px;min-width: 150px">Editar Reserva</a></p>
                 </div>
@@ -124,12 +124,17 @@
                             <table class="table table-bordered marginez">
                                 <tbody>
                                     <tr>
-                                        <td>Total</td>
+                                        <td>Total reserva</td>
                                         <td ng-bind="totalver"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Depósito reserva</td>
+                                        <td ng-bind="verpagado"></td>
                                     </tr>
                                 </tbody>
                                 
                             </table>
+                            <br>
                                 <div class="form-group ">
                                     <label for="">Pago recibido: </label>
                                     <input type="text" class="form-control" id="total_pagado" ng-model="total_pagado" placeholder="Monto recibido en depósito" required>
