@@ -65,11 +65,13 @@ class MailController extends Controller
 
         $porcentaje = \Session::get('porcentaje');
         $cart = \Session::get('cart');
+        $fechas = \Session::get('fechas');
+
         $subtotal = 0;
         foreach($cart as $item){
             $subtotal += $item->precio * $item->quantity;
         }
-        $reserva->apagar = $subtotal * $porcentaje['porcentaje'];
+        $reserva->apagar = $subtotal * $fechas['dias'] * $porcentaje['porcentaje'];
 
         $habReserva = $reserva->habtiporeservas;
         $reserva->habtiporeservas->each(function($habReserva){
