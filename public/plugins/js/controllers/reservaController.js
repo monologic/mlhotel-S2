@@ -119,8 +119,9 @@ app.controller('reservaController', function($scope,$http) {
         }
     }
 
-    $scope.ReservaAConfirmar = function (id) {
+    $scope.ReservaAConfirmar = function (id,total) {
         $scope.reservaIdConf = id;
+        $scope.totalver = total;
     }
 
     $scope.confirmar = function () {

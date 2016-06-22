@@ -6,6 +6,10 @@
 	list-style-type: none;
 	list-style: none;
 }
+.marginez{
+	margin-top: 20px
+	margin-bottom:20px;
+}
 .tabq{
 	visibility: hidden;
 	width: 100%;
