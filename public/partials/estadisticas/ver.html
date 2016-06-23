@@ -1,4 +1,4 @@
-<div id="page-wrapper" ng-controller="estadisticasController">
+<div id="page-wrapper" ng-controller="estadisticasController" style="padding-bottom: 40px">
 	<br><br>
 	<h3 class="tit2">Estadísticas</h3>
 	<div class="row" style="width:100%;max-width:400px;margin:80px auto 20px auto">
@@ -44,29 +44,30 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr ng-repeat="q in arribosTipo">
+				<td>{{q.nombre}}</td>
+				<td>{{q.arribos}}</td>
+				<td>{{q.habitaciones_noche}}</td>
+				<td>{{q.pernoctaciones_tipo}}</td>
 			</tr>
 		</tbody>
 	</table>
 	<table class="table table-bordered tabq" style="margin-top:50px">
 		<thead>
 			<tr>
-				<th>Tipo de Habitación</th>
+				<th colspan="2"># Arribos por dias</th>
+			</tr>
+		</thead>
+		<thead>
+			<tr>
+				<th>Dia</th>
 				<th># Arribos</th>
-				<th># Noches</th>
-				<th># Pernoctaciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr ng-repeat="t in todo">
+				<td>{{t.dia | date:'fullDate'}}</td>
+				<td>{{t.arribos}}</td>
 			</tr>
 		</tbody>
 	</table>
