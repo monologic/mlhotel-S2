@@ -33,7 +33,7 @@ class estadisticaController extends Controller
     	          ->select(DB::raw('registros.fechaentrada, COUNT(regclientes.registro_id) as arribos'))
     	          ->join('registros', 'regclientes.registro_id', '=', 'registros.id')
     	          ->whereRaw("MONTH(registros.fechaentrada)=$month and YEAR(registros.fechaentrada)=$year")
-    	          ->groupBy(DB::raw('registros.fechaentrada'))
+    	          ->groupBy(DB::raw('DAY(registros.fechaentrada)'))
     	          ->get();
 
     	return $r;

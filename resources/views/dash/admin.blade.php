@@ -81,7 +81,7 @@
                     <li class="menu__item"><a class="menu__link"  href="#/58b38f0df4aa9c385f419877e07cbc5549162398" onclick="closes()">Bancos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/Porcentaje/ver" onclick="closes()">Config. Pagos</a></li>
                     <li class="menu__item"><a class="menu__link"  href="#/LibroHuespedes" onclick="closes()">Bitácora</a></li> 
-                    <li class="menu__item"><a class="menu__link"  href="#/Estadisticas" onclick="closes()">Estadisticas</a></li>
+                    <li class="menu__item"><a class="menu__link"  href="#/Estadisticas" onclick="closes()">Estadísticas</a></li>
 
                     <li class="menu__item"><a class="menu__link" data-submenu="submenu-9" href="#/">Recepcionista</a></li>
 
@@ -101,7 +101,7 @@
 
                         <li class="menu__item"><a class="menu__link" href="#/LisBanner" onclick="closes()" >Banners</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/LisHab" onclick="closes()" >Tipos de Habitaciones</a></li>
-                        <li class="menu__item"><a class="menu__link" href="#/LisGaleria" onclick="closes()" >Galeria de Fotos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#/LisGaleria" onclick="closes()" >Galería de Fotos</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/LisNoticias" onclick="closes()" >Noticias</a></li>
                         <li class="menu__item"><a class="menu__link" href="#/LisServicios" onclick="closes()" >Servicios</a></li>
                         <li role="separador" class="menu__item"><a class="menu__separador" href="#" onclick="closes()" ></a></li>
