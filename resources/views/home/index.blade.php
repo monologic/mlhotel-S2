@@ -78,7 +78,7 @@
   </div>
 </div>
  <div ng-view style="margin-top:-20px"></div>
- <footer class="page-footer black">
+ <footer class="page-footer black" style="padding-bottom: 20px">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -97,11 +97,6 @@
                   <p style="font-size:0.9rem;margin-top:5px;color:white;">@{{infos.ciudad}}</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container left">
-             © 2016 Copyright by RunaIT
             </div>
           </div>
         </footer>   

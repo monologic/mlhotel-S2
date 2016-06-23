@@ -4,36 +4,54 @@
 	<div class="row" style="width:100%;max-width:400px;margin:80px auto 20px auto">
 		<div class="col-md-5 col-xs-5">
 			<p style="color:black">Mes</p>
-			<select class="form-control">
-				
-				<option>Enero</option>
-				<option>Febrero</option>
-				<option>Marzo</option>
-				<option>Abril</option>
-				<option>Mayo</option>
-				<option>Junio</option>
-				<option>Julio</option>
-				<option>Agosto</option>
-				<option>Septiembre</option>
-				<option>Noviembre</option>
-				<option>Diciembre</option>
+			<select class="form-control" id="mes">
+				<option value="1">Enero</option>
+				<option value="2">Febrero</option>
+				<option value="3">Marzo</option>
+				<option value="4">Abril</option>
+				<option value="5">Mayo</option>
+				<option value="6">Junio</option>
+				<option value="7">Julio</option>
+				<option value="8">Agosto</option>
+				<option value="9">Septiembre</option>
+				<option value="10">Octubre</option>
+				<option value="11">Noviembre</option>
+				<option value="12">Diciembre</option>
 			</select>
 		</div>
 		<div class="col-md-5 col-xs-5">
 			<p style="color:black">Año</p>
-			<select class="form-control">
+			<select class="form-control" id="year">
 				
-					<option>2016</option>
-					<option>2017</option>
-					<option>2018</option>
+					<option value="2016">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
 				</select>
 		</div>
 		<div class="col-md-2 col-xs-2">
-			<button class="btn btn-primary" style="margin-top:25px" ng-click='generar()'>Generar</button>
+			<button class="btn btn-primary" style="margin-top:25px" ng-click='generar();buscarE()'>Generar</button>
 		</div>
 		
 	</div>
 	
+	<table class="table table-bordered tabq" style="margin-top:50px">
+		<thead>
+			<tr>
+				<th>Tipo de Habitación</th>
+				<th># Arribos</th>
+				<th># Noches</th>
+				<th># Pernoctaciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 	<table class="table table-bordered tabq" style="margin-top:50px">
 		<thead>
 			<tr>
