@@ -7,6 +7,10 @@ app.controller('estadisticasController', function($scope,$http) {
                     $scope.estadisticas = response.data;
                     $scope.todo = $scope.estadisticas.arribosPorDia;
                     $scope.arribosTipo = response.data.arribosPorTipo;
+                    $scope.paices = response.data.arriposPorPais;
+                    $scope.paicesP = response.data.pernoctacionesPorPais;
+                    $scope.regionA = response.data.arribosPorRegion;
+                    $scope.regionN = response.data.pernoctacionesPorRegion;
                     for(q in $scope.todo){
                        $scope.diasC = $scope.todo[q].fechaentrada.split(" ");
                        $scope.todo[q].dia = $scope.diasC[0];

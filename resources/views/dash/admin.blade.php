@@ -186,7 +186,7 @@
     <script type="text/javascript" src="plugins/Editor/js/plugins/lists.min.js"></script>
     <script src="plugins/angular/angular.min.js"></script>
     <script src="plugins/angular/angular-route.min.js"></script>
-
+    <script src="plugins/angular/angular-locale_es-pe.js"></script>
 
         <!-- Our Website Javascripts -->
 

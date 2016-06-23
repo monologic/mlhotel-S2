@@ -33,9 +33,13 @@
 		</div>
 		
 	</div>
-	
+	<p class="txte tabq">CAPACIDAD DE ALOJAMIENTO OFERTADA / UTILIDAD Y TARIFAS DEL MES</p>
 	<table class="table table-bordered tabq" style="margin-top:50px">
 		<thead>
+			<tr>
+				<th></th>
+				<th class="text-center" colspan="3">Alojamiento ulitizado</th>
+			</tr>
 			<tr>
 				<th>Tipo de Habitación</th>
 				<th># Arribos</th>
@@ -52,6 +56,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<p class="txte tabq">NUMERO DE ARRIBOS DE HUSPEDES POR DÍA DEL MES</p>
 	<table class="table table-bordered tabq" style="margin-top:50px">
 		<thead>
 			<tr>
@@ -71,4 +76,93 @@
 			</tr>
 		</tbody>
 	</table>
+	<div>
+	<p class="txte tabq">ARRIBOS Y PERNOCTACIONES SEGÚN LUGAR DE RESIDENCIA DEL HUÉSPED</p>
+		<div class="row">
+			<p class="txte tabq">Por paices</p>
+			
+				<div class="col-md-6">
+					<table class="table table-bordered tabq" style="margin-top:25px">
+						<thead>
+							<tr>
+								<th colspan="2" style="text-align: center;font-weight: bold;"># Arribos por país</th>
+							</tr>
+							<tr>
+								<th>Pais</th>
+								<th># Arribos</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="p in paices">
+								<td>{{p.pais}}</td>
+								<td>{{p.arribos}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-6">
+					<table class="table table-bordered tabq" style="margin-top:25px">
+						<thead>
+							<tr>
+								<th colspan="2" style="text-align: center;font-weight: bold;"># Pernoctaciones por país</th>
+							</tr>
+							<tr>
+								<th>Pais</th>
+								<th># Pernoctaciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="g in paicesP">
+								<td>{{g.pais}}</td>
+								<td>{{g.pernoctaciones_pais}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		</div>
+		<div class="row">
+			<p class="txte tabq">Por regiones</p>
+			
+			<div class="col-md-6">
+				<table class="table table-bordered tabq" style="margin-top:25px">
+					<thead>
+						<tr>
+							<th colspan="2" style="text-align: center;font-weight: bold;"># Arribos por Regiones</th>
+						</tr>
+						<tr>
+							<th>Región</th>
+							<th># Arribos</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="ty in regionA">
+							<td>{{ty.ciudad}}</td>
+							<td>{{ty.arribos}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<table class="table table-bordered tabq" style="margin-top:25px">
+					<thead>
+						<tr>
+							<th colspan="2" style="text-align: center;font-weight: bold;"># Pernoctaciones por Regiones</th>
+						</tr>
+						<tr>
+							<th>Región</th>
+							<th># Pernoctaciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="th in regionN">
+							<td>{{th.ciudad}}</td>
+							<td>{{th.pernoctaciones_pais}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>

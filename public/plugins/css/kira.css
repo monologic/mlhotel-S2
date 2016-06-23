@@ -10,6 +10,14 @@
 	margin-top: 20px
 	margin-bottom:20px;
 }
+.txte{
+	margin-top: 30px;
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	color: #428bca;
+
+}
 .tabq{
 	visibility: hidden;
 	width: 100%;
