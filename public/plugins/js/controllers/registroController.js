@@ -211,6 +211,10 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     }
     
     $scope.nuevoHuesped = function () {
+        if ($scope.pais == 'Perú')
+            ciudad = $('#ciudad').val();
+        else
+            ciudad = $('#ciudadText').val();
         $http.post('admin/cliente',
             {   'nombres':$scope.nombres,
                 'apellidos':$scope.apellidos,
@@ -218,7 +222,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 'fecha_nac':$scope.fechanac,
                 'dni':$scope.dni,
                 'pais':$scope.pais,
-                'ciudad':$scope.ciudad,
+                'ciudad':ciudad,
                 'procedencia':$scope.procedencia,
                 'estado_civil':$scope.estadoCivil,
                 'destino':$scope.destino,
@@ -262,6 +266,11 @@ app.controller('registroController', function($scope,$http , $routeParams) {
     }
     
     $scope.editarHuesped = function () {
+        if ($scope.pais == 'Perú')
+            ciudad = $('#ciudad').val();
+        else
+            ciudad = $('#ciudadText').val();
+
         $http.put('admin/cliente/' + $scope.idHuesped,
             {   'nombres':$scope.nombres,
                 'apellidos':$scope.apellidos,
@@ -269,7 +278,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 'fecha_nac':$scope.fechanac,
                 'dni':$scope.dni,
                 'pais':$scope.pais,
-                'ciudad':$scope.ciudad,
+                'ciudad':ciudad,
                 'procedencia':$scope.procedencia,
                 'estado_civil':$scope.estadoCivil,
                 'destino':$scope.destino,

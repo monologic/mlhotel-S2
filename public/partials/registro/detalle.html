@@ -9,11 +9,11 @@
 					<td style="padding-left: 20px">{{ registro.habitacion.habtipo.nombre }}</td>
 				</tr>
 				<tr style="height: 30px">
-					<td class="text-right" width="150">Numero habitación :</td>
+					<td class="text-right" width="150">Número habitación :</td>
 					<td style="padding-left: 20px">{{ registro.habitacion.numero }}</td>
 				</tr>
 				<tr style="height: 30px">
-					<td class="text-right" width="150">Maximo de personas :</td>
+					<td class="text-right" width="150">Máximo de personas :</td>
 					<td style="padding-left: 20px" id="cantidadp" >{{ registro.habitacion.habtipo.nropersonas }}</td>
 				</tr>
 			</tbody>
@@ -61,7 +61,7 @@
 	</div>
 	<object class="addcliente" id="caja">
 		<div style="display:block;background-color: #4183D7;height: 50px;padding: 15px">
-			<div class="text-center" style="display: block;font-size: 1.5rem;font-weight: bold;color: white;">Registro de Huespedes</div>
+			<div class="text-center" style="display: block;font-size: 1.5rem;font-weight: bold;color: white;">Registro de Huéspedes</div>
 		</div>
 		
 		<div class="form-registro">
@@ -76,11 +76,11 @@
 			<br>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Nombres</label>
-			    <input type="text" class="form-control" id="nom" placeholder="Nombres del cliente" ng-model="nombres">
+			    <input type="text" class="form-control" id="nom" placeholder="" ng-model="nombres">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Apellidos</label>
-			    <input type="text" class="form-control" id="" placeholder="Apellidos del cliente" ng-model="apellidos">
+			    <input type="text" class="form-control" id="" placeholder="" ng-model="apellidos">
 			</div>
 			<div class="radio">
 			  <label>
@@ -99,7 +99,7 @@
 			</div>
 			<div class="form-group">
 				<p style="font-weight: bold;">Estado Civil</p>
-				<select class="form-control" ng-model="estadoCivil" placeholder="Pais">
+				<select class="form-control" ng-model="estadoCivil" placeholder="">
 					<option>Soltero</option>
 					<option>Casado</option>
 					<option>Viudo</option>
@@ -107,7 +107,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<p style="font-weight: bold;">Pais</p>
+				<p style="font-weight: bold;">País</p>
 				<select for="pais" class="form-control"  ng-model="pais">
 					<option>Estados Unidos</option>
 					<option>Perú</option>
@@ -115,31 +115,61 @@
 					<option>Bolivia</option>
 					<option>Colombia</option>
 					<option>Uruguay</option>
-					<option>Mexico</option>
+					<option>México</option>
 					<option>Venezuela</option>
 					<option>Colombia</option>
 					<option>Otros</option>
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputEmail1">Ciudad</label>
-			    <input type="text" class="form-control" id="" placeholder="Ciudad" ng-model="ciudad">
+			<div class="form-group"  ng-if="pais != 'Perú'">
+				<label for="exampleInputEmail1">Región</label>
+			    <input type="text" class="form-control" placeholder="" id="ciudadText">
+			</div>
+			<div class="form-group" ng-if="pais == 'Perú'">
+				<label for="exampleInputEmail1">Región</label>
+			    <select for="ciudad" class="form-control" id="ciudad">
+				    <option value="Amazonas">Amazonas</option>
+				    <option value="Ancash">Ancash</option>
+					<option value="Apurimac">Apurimac</option>
+					<option value="Arequipa">Arequipa</option>
+					<option value="Ayacucho">Ayacucho</option>
+					<option value="Cajamarca">Cajamarca</option>
+					<option value="Callao">Callao</option>
+					<option value="Cusco">Cusco</option>
+					<option value="Huancavelica">Huancavelica</option>
+					<option value="Huánuco">Huánuco</option>
+					<option value="Ica">Ica</option>
+					<option value="Junín">Junín</option>
+					<option value="La Libertad">La Libertad</option>
+					<option value="Lambayeque">Lambayeque</option>
+					<option value="Lima">Lima</option>
+					<option value="Loreto">Loreto</option>
+					<option value="Madre De Dios">Madre De Dios</option>
+					<option value="Moquegua">Moquegua</option>
+					<option value="Pasco">Pasco</option>
+					<option value="Piura">Piura</option>
+					<option value="Puno">Puno</option>
+					<option value="San Martin">San Martin</option>
+					<option value="Tacna">Tacna</option>
+					<option value="Tumbes">Tumbes</option>
+					<option value="Ucayali">Ucayali</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Procedencia</label>
-			    <input type="text" class="form-control" id="" placeholder="Pais/Ciudad de Procedencia del cliente" ng-model="procedencia">
+			    <input type="text" class="form-control" id="" placeholder="" ng-model="procedencia">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Destino</label>
-			    <input type="text" class="form-control" id="" placeholder="Destino final" ng-model="destino">
+			    <input type="text" class="form-control" id="" placeholder="" ng-model="destino">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Telefono movil</label>
-			    <input type="text" class="form-control" id="" placeholder="Telefono movil" ng-model="celular">
+				<label for="exampleInputEmail1">Teléfono móvil</label>
+			    <input type="text" class="form-control" id="" placeholder="" ng-model="celular">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">E-mail</label>
-			    <input type="email" class="form-control" id="" placeholder="Correo electronico" ng-model="email">
+			    <input type="email" class="form-control" id="" placeholder="" ng-model="email">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Profesión u Ocupación</label>
