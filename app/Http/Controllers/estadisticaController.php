@@ -34,7 +34,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('registros.fechaentrada'))
     	          ->get();
 
-    	return $r->toArray();
+    	return $r;
     }
     public function getArribosPorTipo($month, $year)
     {
@@ -46,7 +46,7 @@ class estadisticaController extends Controller
     	          ->whereRaw("MONTH(registros.fechaentrada)=$month and YEAR(registros.fechaentrada)=$year")
     	          ->groupBy(DB::raw('habtipos.nombre'))
     	          ->get();
-    	return $r->toArray();
+    	return $r;
     }
     public function getHabitacionesOcupadasPorNoche($month, $year)
     {
@@ -58,7 +58,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('habtipos.nombre'))
     	          ->get();
 
-    	return $r->toArray();
+    	return $r;
     }
     public function getPernoctacionesPorTipo($month, $year)
     {
@@ -70,7 +70,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('habtipos.nombre'))
     	          ->get();
 
-    	return $r->toArray();          
+    	return $r;          
     }
     public function getArribosPorPais($month, $year)
     {
@@ -82,7 +82,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('clientes.pais'))
     	          ->get();
 
-    	return $r->toArray();       
+    	return $r;       
     }
     public function getPernoctacionesPorPais($month, $year)
     {
@@ -94,7 +94,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('clientes.pais'))
     	          ->get();
 
-    	return $r->toArray();          
+    	return $r;          
     }
     public function getArribosPorRegion($month, $year)
     {
@@ -106,7 +106,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('clientes.ciudad'))
     	          ->get();
 
-    	return $r->toArray();          
+    	return $r;          
     }
     public function getPernoctacionesPorRegion($month, $year)
     {
@@ -118,7 +118,7 @@ class estadisticaController extends Controller
     	          ->groupBy(DB::raw('clientes.ciudad'))
     	          ->get();
 
-    	return $r->toArray();          
+    	return $r;          
     }
 
 }

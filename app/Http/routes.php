@@ -102,6 +102,8 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::put('updateAdmin/{id}', 'HotelController@updateAdmin');
 	Route::put('updateAdminHotel/{id}', 'HotelController@updateAdminHotel');
 
+	Route::get('estadisticas/{month}/{year}', 'estadisticaController@getAll');
+
 });
 	Route::group(['middleware' => [ 'web', 'auth' ]], function () {
 	    Route::get('complete', 'PanelController@complete');
