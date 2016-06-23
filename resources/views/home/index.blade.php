@@ -60,7 +60,7 @@
         <ul id="nav-mobile" class=" row hide-on-med-and-down center">
           <li class="nav-txt col m3 s2"><a href="#/habitaciones"><div>HABITACIONES</div></a></li>
           <li class="nav-txt col m2 s2"><a href="#/servicios"><div>SERVICIOS</div></a></li>
-          <li class="nav-txt col m2 s2"><a href="#/galeria"><div>GALERIA</div></a></li>  
+          <li class="nav-txt col m2 s2"><a href="#/galeria"><div>GALERÍA</div></a></li>  
           <li class="nav-txt col m2 s2"><a href="#/noticias"><div>NOTICIAS</div> </a></li>
           <li class="nav-txt col m2 s2"><a href="#/contacto"><div>CONTACTO</div> </a></li>
         </ul>
@@ -89,7 +89,7 @@
               </div>
               <div class="col l4 offset-l2 s12 white-text">
                 <div >
-                  <h5 class="white-text">Informacion</h5>
+                  <h5 class="white-text">Información</h5>
                   <p style="font-size:0.9rem;margin-top:5px;color:white;" >@{{infos.nombre}}</p>
                    <p style="font-size:0.9rem;margin-top:5px;color:white;">Dirección: @{{infos.direccion}}</p>
                   <p id="correo" style="font-size:0.9rem;margin-top:5px;color:white;">E-mail: @{{infos.correo}}</p>
