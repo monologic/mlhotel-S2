@@ -125,6 +125,7 @@ class estadisticaController extends Controller
     	          ->select(DB::raw('clientes.ciudad, COUNT(regclientes.registro_id) as arribos'))
     	          ->join('registros', 'regclientes.registro_id', '=', 'registros.id')
     	          ->join('clientes', 'regclientes.cliente_id', '=', 'clientes.id')
+                  ->where('pais', 'Perú')
     	          ->whereRaw("MONTH(registros.fechaentrada)=$month and YEAR(registros.fechaentrada)=$year")
     	          ->groupBy(DB::raw('clientes.ciudad'))
     	          ->get();
