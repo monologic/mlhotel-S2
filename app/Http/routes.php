@@ -42,6 +42,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::resource('pago', 'PagotipoController');
 	Route::resource('mainservice', 'MainserviceController');
 	Route::resource('reserva', 'ReservaController');
+	Route::resource('social', 'SocialController');
 
 	Route::get('getclientess', 'ClienteController@getclientes');
 	Route::get('getEmptipos', 'EmptipoController@getEmptipos');
