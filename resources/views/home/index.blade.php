@@ -50,9 +50,9 @@
     <nav class="white nav-p">
       <div class="nav-wrapper" style="width:90%;margin-left:auto;margin-right:auto;margin-top:0">
         <a  class="btns" href="/login">Sign in</a>
-        <a class="btn-floating btns2" onclick="divLogin()"><i  class="fa fa-cart-plus" style="margin-top:-13px;font-size: 1.4rem"></i></a>
+        <a class="btn-floating btns2" onclick="divLogin()"><i  class="fa fa-cart-plus icoq" style="margin-top:-13px;font-size: 1.3rem"></i></a>
 
-        <a href="#" class="brand-logo center" style="color: black;margin-top: 15px">@{{infos.nombre}} </a>
+        <a href="#" class="brand-logo center ve" style="color: black;margin-top: 15px">@{{infos.nombre}} </a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color:black;margin-left:-15px;margin-top:5px">menu</i></a>
         <ul id="nav-mobile" class=" row hide-on-med-and-down center">
           <li class="nav-txt col m3 s2"><a href="#/habitaciones"><div>HABITACIONES</div></a></li>

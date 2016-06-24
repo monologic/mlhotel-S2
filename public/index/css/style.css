@@ -2,6 +2,10 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.icoq{
+  margin-top:-13px;
+  font-size: 1.4rem;
+}
 .btns{
   position: absolute;
   font-size: 0.8rem;
@@ -79,6 +83,31 @@ body{
     border-width: 1px;
     top:20px;
     right: 80px;
+    background-color:#4db6ac;
+  }
+}
+@media (max-width: 550px) {
+  .btns2{
+    position: absolute;
+    top:20px;
+    height: 35px;
+    width: 35px;
+    right: -10px;
+    font-size: 10px;
+    background-color: #4db6ac;
+  }
+  .btns{
+    position: absolute;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color:white;
+    height: 35px;
+    width: 40px;
+    padding: 8px;
+    border-radius: 5px;
+    border-width: 1px;
+    top:20px;
+    right: 30px;
     background-color:#4db6ac;
   }
 }
