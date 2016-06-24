@@ -46,6 +46,18 @@ app.controller('hotelController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+
+        for( i in $scope.social ){
+            if ($scope.social[i].estado == 'true') {
+                $('#'+$scope.social[i].id +'c').prop('checked',true);
+                $scope.verI($scope.social[i].id);
+                $('#'+$scope.social[i].id +'face').val($scope.social[i].link);
+            }
+        }
+    });
+
     $scope.verI = function (id){
         if( $('#'+id +'c').prop('checked') ) {
             $('#' + id + 'face').css('visibility','visible')

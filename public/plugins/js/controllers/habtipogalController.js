@@ -1,4 +1,4 @@
-fvar IdHab=0
+var IdHab=0;
 app.controller('habtipogalController', function($scope,$http, $routeParams) {
     var IdHab=0;
 	$scope.habId =$routeParams.habtipoId;

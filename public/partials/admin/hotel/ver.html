@@ -233,8 +233,8 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div ng-repeat="s in social">
-                                        <input type="checkbox"  id="{{s.id}}c" name="social" ng-model="sociales" ng-change="verI(s.id)">
+                                    <div ng-repeat="s in social" on-finish-render="ngRepeatFinished">
+                                        <input type="checkbox"  id="{{s.id}}c"  name="social" ng-model="sociales" ng-change="verI(s.id)">
                                         <i class="fa {{s.icono}} socialB" style="background-color: {{s.color}}"> </i><i class="nomsocial"> {{s.nombre}} </i>
                                         <input type="text" id="{{s.id}}face" class="inpkira">
                                     </div>
