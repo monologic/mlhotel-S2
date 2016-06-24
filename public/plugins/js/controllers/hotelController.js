@@ -32,14 +32,31 @@ app.controller('hotelController', function($scope,$http) {
         });
     }
 
-     $scope.getHotelesF= function () {
+     $scope.getHotelesF = function () {
         $http.get('/getHotelF').then(function successCallback(response) {
             $scope.infos = response.data;
-            console.log($scope.infos);
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+        $http.get('admin/social').then(function successCallback(response) {
+            $scope.social = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
+    $scope.verI = function (id){
+        if( $('#'+id +'c').prop('checked') ) {
+            $('#' + id + 'face').css('visibility','visible')
+        }
+        else
+        {
+            $('#' + id + 'face').css('visibility','hidden');
+            $('#' + id + 'face').val(" ");
+        }
+            
+        
     }
 
     var dataAdmin;
@@ -138,7 +155,27 @@ app.controller('hotelController', function($scope,$http) {
         $scope.correo = data.correo;
     }
     $scope.editarHotel = function () {
+        for (var i = 0; i < $scope.social.length; i++) {
+                if ($('#'+ $scope.social[i].id +'c').prop('checked')){
+                    //alert('entro')
+                    ids =  $scope.social[i].id;
+                    $scope.social[i].estado='true';
+                    $scope.social[i].link=$('#' + ids + 'face').val();
+                }
+                else
+                {
+                    $scope.social[i].estado='false';
+                }
 
+                $http.put('admin/social/'+$scope.social[i].id,{   
+                    'estado':$scope.social[i].estado,
+                    'link':$scope.social[i].link
+                    }).then(function successCallback(response) {
+                    }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                });
+            } 
         $http.put('admin/hotel/'+idHotel,
             {   'nombre':$scope.nomHotel,
                 'pais':$scope.paisHotel,
@@ -148,11 +185,11 @@ app.controller('hotelController', function($scope,$http) {
                 'telefono':$scope.fonoHotel,
                 'correo':$scope.correo
             }).then(function successCallback(response) {
-                swal("Excelente!", "Se edito la información del hotel", "success");
                  $scope.hoteles = response.data;
             }, function errorCallback(response) {
                 
             });
+            swal("Excelente!", "Se edito la información del hotel", "success");
     }
 
     $scope.eliminar = function (id) {

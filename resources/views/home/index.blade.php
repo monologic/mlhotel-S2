@@ -79,9 +79,7 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Nuestras Redes Sociales</h5><br>
-                 <a class="btn-floating btn-large waves-effect waves-light  blue darken-4" style="margin-right:20px"><i class="fa fa-facebook"></i></a>
-                 <a class="btn-floating btn-large waves-effect waves-light blue" style="margin-right:20px"><i class="fa fa-twitter"></i></a>
-                 <a class="btn-floating btn-large waves-effect waves-light red" style="margin-right:20px"><i class="fa fa-youtube-play"></i></a>
+                 <a ng-repeat="q in social" class="btn-floating btn-large waves-effect waves-light" style="margin-right:20px;background-color: @{{q.color}}" ng-if="q.estado == 'true'" href="@{{q.link}}" target="_blank"><i class="fa @{{q.icono}}"></i></a>
               </div>
               <div class="col l4 offset-l2 s12 white-text">
                 <div >

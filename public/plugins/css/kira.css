@@ -6,6 +6,21 @@
 	list-style-type: none;
 	list-style: none;
 }
+.nomsocial{
+	display: inline-block;
+	width: 100px;
+	padding-left: 15px;
+}
+.vr{
+	background-color: red;
+	margin-bottom: 10px;
+}
+.inpkira{
+	visibility: hidden;
+	height: 35px;
+	border-radius: 5px;
+	width: 50%;
+}
 .socialB{
 	width: 35px;
 	height: 35px;
@@ -15,6 +30,7 @@
 	padding-top: 10px;
 	color: white;
 	margin-left: 10px;
+	margin-bottom: 15px
 }
 .marginez{
 	margin-top: 20px

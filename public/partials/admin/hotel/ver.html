@@ -188,7 +188,7 @@
                     <h2 class="modal-title" id="myModalLabel">Editar Hotel</h2>
                 </div>
                 <div class="modal-body">
-                    <ul class="nav nav-tabs" id="myTab">
+                    <ul class="nav nav-tabs">
                         <li class="active"><a data-target="#infoH" data-toggle="tab" style="color: black">Hotel</a></li>
                         <li><a data-target="#social" data-toggle="tab" style="color:black">Redes Sociales</a></li>
                     </ul>
@@ -227,15 +227,17 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="tab-pane active" id="social" style="color: black">
+                        <div class="tab-pane" id="social" style="color: black">
+                            <br>
                             <p>Seleciones las opciones.</p>
+                            <br>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <input type="checkbox" name="social">
-                                    <i class="fa fa-facebook socialB" style="background-color: blue"></i>
-                                </div>
-                                <div class="col-md-7">
-                                    
+                                <div class="col-md-12">
+                                    <div ng-repeat="s in social">
+                                        <input type="checkbox"  id="{{s.id}}c" name="social" ng-model="sociales" ng-change="verI(s.id)">
+                                        <i class="fa {{s.icono}} socialB" style="background-color: {{s.color}}"> </i><i class="nomsocial"> {{s.nombre}} </i>
+                                        <input type="text" id="{{s.id}}face" class="inpkira">
+                                    </div>
                                 </div>
                             </div>
                         </div>
