@@ -6,6 +6,16 @@
 	list-style-type: none;
 	list-style: none;
 }
+.socialB{
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	text-align: center;
+	font-size:1.6rem;
+	padding-top: 10px;
+	color: white;
+	margin-left: 10px;
+}
 .marginez{
 	margin-top: 20px
 	margin-bottom:20px;

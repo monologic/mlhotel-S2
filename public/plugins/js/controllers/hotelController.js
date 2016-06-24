@@ -24,6 +24,12 @@ app.controller('hotelController', function($scope,$http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+        $http.get('admin/social').then(function successCallback(response) {
+            $scope.social = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
     }
 
      $scope.getHotelesF= function () {
