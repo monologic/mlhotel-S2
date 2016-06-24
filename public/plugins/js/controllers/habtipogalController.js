@@ -17,6 +17,7 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             $http.get('admin/gethabitaciones/'+IdHab).then(function successCallback(response) {
                 $scope.habfotos = response.data;
                 $scope.galeria = response.data[0].habtipofotos;
+                $scope.contenido = response.data[0].descripcion;
                 iconos=response.data[0].habtipo_serviciointernos;
             }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -24,6 +25,9 @@ app.controller('habtipogalController', function($scope,$http, $routeParams) {
             });
            
         }
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+        $('#descrip').html($scope.contenido)
+    });
 
     $scope.GuardarIcon= function () { 
             for (var i = 0; i < iconos.length; i++) {

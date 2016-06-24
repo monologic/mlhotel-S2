@@ -103,13 +103,13 @@
   
       <div class="row" ng-controller="habtipogalController" ng-init="gethabitacionG();">
         <div class="col s12 m7 " style="padding-top: 45px">
-         <div ng-repeat="c in habfotos" style="color:rgb(100,100,100);">
+         <div ng-repeat="c in habfotos" on-finish-render="ngRepeatFinished" style="color:rgb(100,100,100);">
           <h3 style="position: absolute;top:150px;font-size: 2rem">{{c.nombre}}</h3><br>
           <p>Máximo : {{c.nropersonas}} personas</p>
           <div class="separador-index"></div>
           <div class="row">
-            <div class="col s12 m3">Descripción :</div>
-            <div class="col s12 m9" style="line-height: 20px;text-align: justify;">{{c.descripcion}}</div>
+            <div class="col s12 m4">Descripción:</div>
+            <div class="col s12 m8" id="descrip" style="line-height: 20px;"></div>
           </div>
           
 
@@ -117,8 +117,8 @@
 
           <div class="row">
 
-            <div class="col s12 m3">Servicios :</div>
-            <div class="col s12 m9" style="padding:20px 10px 10px 0px">
+            <div class="col s12 m4">Servicios:</div>
+            <div class="col s12 m8" style="padding:20px 10px 10px 0px">
               <div ng-repeat="servicios in c.habtipo_serviciointernos" style="display: inline-block;">
                 <div ng-if="servicios.estado=='true'" style="width: 130px;color: black;margin:0px 15px 25px 0px">
                 <i class="fa {{servicios.serviciointerno.icono}}" style="font-size: 1.2rem"></i> <div style="font-size: 1rem;display: inline-block;margin-left:10px">{{servicios.serviciointerno.nombre}}</div>

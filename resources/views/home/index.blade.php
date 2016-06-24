@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Hotel,Moquegua,Residencial Moquegua,Servicios">
-    <meta name="description" content="Residencial moquegua, uno de los mejores hoteles de la cuidad de Moquegua">
+    <meta name="description" content="moquegua, uno de los mejores hoteles de la cuidad de Moquegua">
     <meta name="author" content="Javier Coaila">
 
     <title>@{{infos.nombre}}</title>
@@ -22,10 +22,6 @@
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/habitaciones.css">
     <link rel="stylesheet" href="plugins/iconos/flaticon.css">
-    
-
-     <!-- text tarea-->
-    <link rel="stylesheet" href="index/css/owl.transitions.css">
     <!-- galery-->
    
 
@@ -35,6 +31,7 @@
     <link rel="stylesheet" href="plugins/datepicker/jquery-ui.theme.css">
     <script src="plugins/SweetAlert/sweetalert.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="plugins/SweetAlert/sweetalert.css">
+
     
   
 </head>
