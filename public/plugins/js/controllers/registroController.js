@@ -169,6 +169,16 @@ app.controller('registroController', function($scope,$http , $routeParams) {
         // or server returns response with an error status.
         });
     }
+    $scope.inputRegion = function () {
+        if ($scope.pais == 'Perú') {
+            $('#region').css('display','block');
+            $('#regText').css('display','none');  
+        } else {
+            $('#region').css('display','none');
+            $('#regText').css('display','block');
+        }
+    }
+
     $scope.finalizar = function (id) {
         $http.get('admin/finalizarRegistro/' + id).then(function successCallback(response) {
             
@@ -193,21 +203,45 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.estadoCivil = response.data[0].estado_civil;
                 $scope.fechanac = response.data[0].fecha_nac;
                 $scope.pais = response.data[0].pais;
+                
                 $scope.ciudad = response.data[0].ciudad;
+
                 $scope.celular = response.data[0].celular;
                 $scope.email = response.data[0].email;
                 $scope.prof_ocup = response.data[0].prof_ocup;
-
             }
             else{
                 $('#nom').focus();
                 $scope.huesped = 'false';
-            }
+                $scope.nombres = "";
+                $scope.apellidos = "";
+                $scope.fechanac = "";
+                $scope.pais = "";
+                $scope.ciudad = "";
+                $scope.celular = "";
+                $scope.prof_ocup = "";
+                $scope.procedencia = "";
+                $scope.estadoCivil = "";
+                $scope.destino = "";
+                $scope.email = "";
 
+            }
+            if ($scope.pais == 'Perú') {
+                $('#region').css('display','block');
+                $('#regText').css('display','none');
+                $('#ciudad').val($scope.ciudad);
+            }
+            else{
+                $('#region').css('display','none');
+                $('#regText').css('display','block');
+                $('#ciudadText').val($scope.ciudad);
+            }
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         });
+        
+            
     }
     
     $scope.nuevoHuesped = function () {
@@ -250,6 +284,7 @@ app.controller('registroController', function($scope,$http , $routeParams) {
                 $scope.procedencia = "";
                 $scope.estadoCivil = "";
                 $scope.destino = "";
+                $scope.email = "";
                 document.getElementById("caja").style.width = "0px"; 
                 document.getElementById("caja").style.transition = "all 1s"; 
 
