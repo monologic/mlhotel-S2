@@ -17,7 +17,7 @@ class SocialController extends Controller
     public function index()
     {
         $socials = Social::all();
-        return response()->json( $pagoTipos );
+        return response()->json( $socials );
     }
 
     /**
