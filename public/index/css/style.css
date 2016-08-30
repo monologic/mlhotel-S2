@@ -2,6 +2,9 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
+.cont-serv{
+  background-color: red;
+}
 .icoq{
   margin-top:-13px;
   font-size: 1.4rem;
@@ -292,6 +295,7 @@ font-family: 'Titan One', cursive;
 }
 
 .swiper-container {
+        margin-top:60px;
         width: 100%;
         height: 100%;
     }
@@ -338,6 +342,12 @@ font-family: 'Titan One', cursive;
     padding: 15px 0px 10px 0px;
     color: black;
 }
+@media (max-width: 992px) {
+  .swiper-container{
+    margin-top: 0px;
+  }
+}
+
 .input-field input[type=text]:focus + label {
      color: black;
    }

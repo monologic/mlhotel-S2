@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Ico;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\habtipo_serviciointerno;
 
-class IconController extends Controller
+class IcosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -60,7 +58,7 @@ class IconController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -71,10 +69,14 @@ class IconController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        $iconos = habtipo_serviciointerno::find($id);
-        $iconos->fill($request->all());
+    {
+        $iconos = Ico::find($id);
+        $iconos->estado = $request->estado;
         $iconos->save(); 
+        $res = $this->hoteliconos();
+
+        return $res;
+
     }
 
     /**
@@ -86,5 +88,10 @@ class IconController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function hoteliconos()
+    {
+        $iconos = Ico::all();
+        return response()->json( $iconos);   
     }
 }

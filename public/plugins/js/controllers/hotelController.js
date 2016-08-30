@@ -187,7 +187,24 @@ app.controller('hotelController', function($scope,$http) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
                 });
-            } 
+            }
+        for (var i = 0; i < $scope.iconoshotel.length; i++) {
+                if ($('#'+ $scope.iconoshotel[i].id +'i').prop('checked')){
+                    ids =  $scope.iconoshotel[i].id;
+                    $scope.iconoshotel[i].estado='true';
+                }
+                else
+                {
+                    $scope.iconoshotel[i].estado='false';
+                }
+
+                $http.put('admin/icogeneral/'+$scope.iconoshotel[i].id,
+                {   'estado':$scope.iconoshotel[i].estado
+                }).then(function successCallback(response) {
+                }, function errorCallback(response) {
+                    
+                });
+            }  
         $http.put('admin/hotel/'+idHotel,
             {   'nombre':$scope.nomHotel,
                 'pais':$scope.paisHotel,
@@ -197,7 +214,7 @@ app.controller('hotelController', function($scope,$http) {
                 'telefono':$scope.fonoHotel,
                 'correo':$scope.correo
             }).then(function successCallback(response) {
-                 $scope.hoteles = response.data;
+                 
             }, function errorCallback(response) {
                 
             });
@@ -269,5 +286,13 @@ app.controller('hotelController', function($scope,$http) {
         else {
             swal("", "El password no coincide.", "warning");
         }
+    }
+    $scope.iconografia = function (){
+        $http.get('admin/misicnonos').then(function successCallback(response) {
+            $scope.iconoshotel = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
     }
 });

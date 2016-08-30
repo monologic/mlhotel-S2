@@ -74,6 +74,14 @@ app.controller('reservaController', function($scope,$http) {
         // or server returns response with an error status.
         });
     }
+    $scope.getIconos = function() {
+        $http.get('admin/misicnonos').then(function successCallback(response) {
+            $scope.iconos = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        });
+    }
     $scope.getReservasPorConfirmar = function (){
         $http.get('admin/getReservasPorConfirmar').then(function successCallback(response) {
             $scope.reservas = response.data;

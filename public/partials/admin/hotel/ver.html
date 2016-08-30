@@ -1,4 +1,4 @@
-<div id="page-wrapper" ng-controller="hotelController" ng-init="getHoteles();">
+<div id="page-wrapper" ng-controller="hotelController" ng-init="getHoteles();iconografia();">
     <br><br><br>
 
     <h3 class="tit2">Hotel</h3>
@@ -191,6 +191,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-target="#infoH" data-toggle="tab" style="color: black">Hotel</a></li>
                         <li><a data-target="#social" data-toggle="tab" style="color:black">Redes Sociales</a></li>
+                        <li><a data-target="#servicios" data-toggle="tab" style="color:black">Servicios Generales</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="infoH">
@@ -239,6 +240,31 @@
                                         <input type="text" id="{{s.id}}face" class="inpkira">
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="servicios" style="color: black">
+                            <br>
+                            <p>Seleciones las opciones.</p>
+                            <br>
+                            <div class="row reds" >
+                                <div>
+                                   <label class="checkbox-inline col-md-3 col-xs-4" ng-repeat="servicios in iconoshotel" style="margin-left:0px; margin-bottom: 60px;padding-top: 0">
+                                    <div ng-if="servicios.estado=='true'">
+                                        <div  class="col-xs-12" style="text-align:center">
+                                            <input type="checkbox" id="{{servicios.id}}i" value="option1" checked="" style="margin-top: 20%;display: none">
+                                            <label for=""></label>
+                                            <i class="{{servicios.icono}}" style="text-align: center;font-size:3.5rem;z-index: 10px;"></i>
+                                            <div style="font-size: 1.4rem;text-align: center">{{servicios.nombre}}</div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="servicios.estado=='false'">
+                                        <div style="text-align:center">
+                                            <input type="checkbox" id="{{servicios.id}}i" value="option1" style="margin-top: 20%;display: none">
+                                            <label for=""></label>
+                                            <i class="{{servicios.icono}}" style="text-align: center;font-size:3.5rem;"></i>
+                                            <div style="font-size: 1.4rem;text-align: center">{{servicios.nombre}}</div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>

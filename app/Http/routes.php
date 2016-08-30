@@ -31,6 +31,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::resource('habitacion', 'HabitacionController');
 	Route::resource('registro', 'RegistroController');
 	Route::resource('icono', 'IconController');
+	Route::resource('icogeneral', 'IcosController');
 	Route::resource('cliente', 'ClienteController');
 	Route::resource('regcliente', 'RegclienteController');
 	Route::resource('moneda', 'CambioMonedaTipoController');
@@ -134,8 +135,6 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::post('admin/EditarMainService', 'categoriaController@editarMainService');
 	Route::post('admin/ServiceCreateCategory', 'categoriaController@ServiceCreateforCategory');
 	Route::get('admin/getServicios', 'categoriaController@getServices');
-
-
 	
 	Route::get('admin/gethabitaciones/{id}', ['uses' => 'HabtipoController@getHabitaciones', function ($id) {}]);
 	Route::get('admin/CategoriaServicio/{id}', ['uses' => 'categoriaController@getServicesompletoC', function ($id) {}]);
@@ -161,6 +160,7 @@ Route::group(['prefix'=> 'admin', 'middleware' => [ 'web', 'core', 'auth' ]], fu
 	Route::get('admin/getmainservices', 'MainserviceController@getMain');
 
 	Route::resource('admin/banco', 'BancoController');
+	Route::get('admin/misicnonos','IcosController@hoteliconos');
 
 /*
 |--------------------------------------------------------------------------
